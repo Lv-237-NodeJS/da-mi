@@ -26,7 +26,7 @@ module.exports = {
     new HtmlWebpackPlugin(({
       title: 'DA-MI',
       filename: 'index.html',
-      template: '</ttt>'
+      template: './app/src/component/template1.html'
     }))
   ]
 };
