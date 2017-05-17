@@ -3,30 +3,31 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: ["./app/src/app.js"]
+    app: ['./app/src/app.js']
   },
   output: {
-    path: path.resolve("build"),
-    filename: "bundle.js"
+    path: path.resolve('build'),
+    filename: 'bundle.js'
   },
   devServer : {
-    contentBase : "build"
+    contentBase : 'build'
   },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: "babel-loader"
+        loader: 'babel-loader'
       }
-    ],
-    loaders: []
+    ]
   },
   plugins: [
-    new HtmlWebpackPlugin(({
+    new HtmlWebpackPlugin({
       title: 'DA-MI',
       filename: 'index.html',
-      template: './app/src/component/template1.html'
-    }))
+      inject: false,
+      template: require('html-webpack-template'),
+      appMountId: 'app'
+    })
   ]
 };
