@@ -1,1 +1,1 @@
-export {default as Hello} from './Hello/Hello.js';
+export Hello from './Hello/Hello';
