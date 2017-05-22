@@ -3,10 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const Webpack = require('webpack');
+const entryPath = './app/src/app.js';
 
 module.exports = {
   entry: {
-    app: ['./app/src/app.js']
+    app: [entryPath]
   },
   output: {
     path: path.resolve('build'),
@@ -20,7 +21,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        use: ['babel-loader']
       },
       {
         test: /\.scss$/,
