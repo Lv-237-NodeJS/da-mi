@@ -1,0 +1,22 @@
+{
+  "name": "da-mi",
+  "version": "1.0.0",
+  "description": "Front End",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lv-237-NodeJS/da-mi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lv-237-NodeJS/da-mi/issues"
+  },
+  "homepage": "https://github.com/Lv-237-NodeJS/da-mi#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}
