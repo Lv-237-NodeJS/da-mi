@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -40,10 +41,6 @@ module.exports = {
       appMountId: 'root'
     }),
     new ExtractTextPlugin('bundle.css'),
-    new CleanWebpackPlugin(['build'], {
-      root: path.resolve('./'),
-      verbose: true,
-      dry: false
-    })
+    new Webpack.EnvironmentPlugin(['NODE_ENV'])
   ]
 };
