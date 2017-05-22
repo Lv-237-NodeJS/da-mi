@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
@@ -16,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
@@ -35,8 +36,13 @@ module.exports = {
       filename: 'index.html',
       inject: false,
       template: require('html-webpack-template'),
-      appMountId: 'app'
+      appMountId: 'root'
     }),
-    new ExtractTextPlugin('bundle.css')
+    new ExtractTextPlugin('bundle.css'),
+    new CleanWebpackPlugin(['build'], {
+      root: path.resolve('./'),
+      verbose: true,
+      dry: false
+    })
   ]
 };
