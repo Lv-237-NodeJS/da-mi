@@ -17,6 +17,7 @@
   "devDependencies": {},
   "dependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "react-router": "^3.0.5"
   }
 }
