@@ -1,5 +1,5 @@
 const WebpackStripLoader = require('strip-loader');
-const devConfig = require('./webpack.config.dev.js');
+let devConfig = require('./webpack.config.dev.js');
 
 let stripLoader = {
 	test: [/\.js$/],
@@ -7,6 +7,6 @@ let stripLoader = {
 	loader: 'strip-loader'
 }
 
-devConfig.module.rules.push(stripLoader);
+devConfig.module.loaders.push(stripLoader);
 
 module.exports = devConfig;

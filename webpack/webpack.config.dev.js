@@ -11,8 +11,8 @@ module.exports = {
     path: path.resolve('build'),
     filename: 'bundle.js'
   },
-  devServer : {
-    contentBase : 'build'
+  devServer: {
+    contentBase: 'build'
   },
   module: {
     rules: [
@@ -28,7 +28,8 @@ module.exports = {
           use: ['css-loader', 'sass-loader']
         })
       }
-    ]
+    ],
+    loaders: []
   },
   plugins: [
     new HtmlWebpackPlugin({
