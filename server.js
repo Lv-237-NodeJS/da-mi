@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const INDEX_PATH = __dirname + '/build/index.html';
-const BUILD_PATH = __dirname + '/build';
+const indexPath = __dirname + '/build/index.html';
+const buildPath = __dirname + '/build';
 
-app.use(express.static(BUILD_PATH));
+app.use(express.static(buildPath));
 
 app.get('*', function(req, res) {
-  res.sendFile(INDEX_PATH);
+  res.sendFile(indexPath);
 });
 
 app.listen(PORT, function () {
