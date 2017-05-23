@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-const indexPath = __dirname + '/build/index.html';
-const buildPath = __dirname + '/build';
+const path = require('path');
+const indexPath = path.resolve('build/index.html');
+const buildPath = path.resolve('build');
 
 app.use(express.static(buildPath));
 

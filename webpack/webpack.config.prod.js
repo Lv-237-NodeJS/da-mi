@@ -1,8 +1,9 @@
 const WebpackStripLoader = require('strip-loader');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 let devConfig = require('./webpack.config.dev.js');
-const rootPath = __dirname + '/';
-const buildPath = __dirname + '/build';
+const path = require('path');
+const rootPath = path.resolve('./');
+const buildPath = path.resolve('build');
 
 let stripLoader = {
 	test: [/\.js$/],

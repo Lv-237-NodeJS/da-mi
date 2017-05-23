@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './hello.scss';
+import style from './Hello.scss';
 
 export default class Hello extends React.Component {
   render() {
