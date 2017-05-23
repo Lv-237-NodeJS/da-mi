@@ -4,6 +4,8 @@ const rootPath = path.resolve('./');
 const buildPath = path.resolve('build');
 let devConfig = require('./webpack.config.dev.js');
 
+devConfig.output.path = path.resolve('./build');
+
 let cleanBuildplagin = new cleanWebpackPlugin([buildPath], {
   root: rootPath,
   verbose: true,
