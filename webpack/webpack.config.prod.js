@@ -6,12 +6,12 @@ let devConfig = require('./webpack.config.dev.js');
 
 devConfig.output.path = path.resolve('./build');
 
-let cleanBuildplagin = new cleanWebpackPlugin([buildPath], {
+let cleanBuildPlugin = new cleanWebpackPlugin([buildPath], {
   root: rootPath,
   verbose: true,
   dry: false
 });
 
-devConfig.plugins.push(cleanBuildplagin);
+devConfig.plugins.push(cleanBuildPlugin);
 
 module.exports = devConfig;
