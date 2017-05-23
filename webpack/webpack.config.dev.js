@@ -1,13 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const Webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin');
+const extractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
 const entryPath = './app/src/app.js';
 
 module.exports = {
   entry: {
-    app: [entryPath]
+    app: entryPath
   },
   output: {
     path: path.resolve('build'),
@@ -21,27 +20,26 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: 'babel-loader'
       },
       {
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
+        use: extractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })
       }
-    ],
-    loaders: []
+    ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
+    new htmlWebpackPlugin({
       title: 'DA-MI',
       filename: 'index.html',
       inject: false,
       template: require('html-webpack-template'),
       appMountId: 'root'
     }),
-    new ExtractTextPlugin('bundle.css'),
-    new Webpack.EnvironmentPlugin(['NODE_ENV'])
+    new extractTextPlugin('bundle.css'),
+    new webpack.EnvironmentPlugin({'NODE_ENV': 'development'})
   ]
 };
