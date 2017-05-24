@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { App } from './container';
+import { App } from './containers';
 
 const app = document.getElementById('root');
 
