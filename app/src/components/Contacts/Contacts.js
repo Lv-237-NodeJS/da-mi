@@ -6,9 +6,7 @@ export default class Contacts extends React.Component {
     return (
       <div>
         <h1>Contacts</h1>
-        <Link to='contacts/address'>Address</Link>&nbsp;
-        <Link to='contacts/maps'>Maps</Link>
-        {this.props.children}
+        <h2>Contact us</h2>
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { About, Home, Contacts, Main, Address, Maps } from '../components';
+import { About, Home, Contacts, Main } from '../components';
 
 const routes = (
   <Route path='/' component={Main}>
