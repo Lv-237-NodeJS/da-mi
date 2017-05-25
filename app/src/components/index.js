@@ -5,3 +5,6 @@ export Contacts from './Contacts/Contacts';
 export Home from './Home/Home';
 export Main from './Main/Main';
 export Maps from './Maps/Maps';
+export Login from './Login/Login';
+export Signup from './Signup/Signup';
+export CheckEmail from './CheckEmail/CheckEmail';
