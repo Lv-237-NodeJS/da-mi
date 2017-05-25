@@ -1,4 +1,3 @@
-export Hello from './Hello/Hello';
 export About from './About/About';
 export Address from './Address/Address';
 export Contacts from './Contacts/Contacts';
