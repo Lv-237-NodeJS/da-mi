@@ -37,7 +37,10 @@ module.exports = {
       filename: 'index.html',
       inject: false,
       template: require('html-webpack-template'),
-      appMountId: 'root'
+      appMountId: 'root',
+      links: [
+        'https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css'
+      ]
     }),
     new extractTextPlugin('bundle.css'),
     new webpack.EnvironmentPlugin({'NODE_ENV': 'development'})
