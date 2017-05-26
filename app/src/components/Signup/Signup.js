@@ -7,7 +7,7 @@ function FieldGroup({ id, label, ...props }) {
   return (
     <FormGroup controlId={id}>
       <ControlLabel>{label}</ControlLabel>
-      <FormControl {...props} />
+      <FormControl {...props} required/>
     </FormGroup>
   );
 }
@@ -18,29 +18,31 @@ export default class Signup extends React.Component {
 			<div className="container">
 	      <Form>
 			    <FieldGroup
-			      id="formControlsText"
+			      id="name"
 			      type="text"
 			      label="YOUR NAME"
 			      placeholder="Enter your name"
 			    />
 			    <FieldGroup
-			      id="formControlsEmail"
+			      id="email"
 			      type="email"
 			      label="EMAIL ADDRESS"
 			      placeholder="Enter your email"
 			    />
 			    <FieldGroup
-			      id="formControlsPassword"
+			      id="password"
 			      label="PASSWORD"
 			      type="password"
+			      placeholder="Enter your password"
 			    />
 			    <FieldGroup
-			      id="formControlsPassword"
+			      id="password-repeat"
 			      label="REPEAT YOUR PASSWORD"
 			      type="password"
+			      placeholder="Repeat your password"
 			    />
-			    <Link to='/home/email'>
-	      		<Button bsSize="large" block>SUBMIT</Button>
+			    <Link to='/email'>
+	      		<Button type="submit" bsSize="large">SUBMIT</Button>
 	      	</Link>
 	    	</Form>
 		  </div>

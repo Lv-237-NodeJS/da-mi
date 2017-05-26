@@ -27,7 +27,7 @@ export default class Login extends React.Component {
 
 		    <FormGroup>
 		      <Col smOffset={0} sm={12} mdOffset={3} md={9}>
-		        <Button type="submit" bsStyle="primary" bsSize="large" block>
+		        <Button type="submit" bsStyle="primary" bsSize="large">
 		          Sign in
 		        </Button>
 		      </Col>
