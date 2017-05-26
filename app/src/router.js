@@ -7,7 +7,7 @@ const Routes = (
   <Route path='/' component={Main}>
     <IndexRoute component={Home}/>
     <Route path='/' component={Home}>
-    	<Route path='email' component={CheckEmail}/>
+      <Route path='email' component={CheckEmail}/>
     </Route>
     <Route path='about' component={About}/>
     <Route path='contacts' component={Contacts}/>
