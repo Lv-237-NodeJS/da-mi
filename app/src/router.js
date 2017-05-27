@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { About, Home, Contacts, Signup, Main, CheckEmail}
+import { About, Home, Contacts, Signup, Main, CheckEmail }
 from './components';
 
 const Routes = (
