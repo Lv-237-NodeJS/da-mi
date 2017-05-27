@@ -6,4 +6,4 @@ export Main from './Main/Main';
 export Maps from './Maps/Maps';
 export Login from './Login/Login';
 export Signup from './Signup/Signup';
-export CheckEmail from './CheckEmail/CheckEmail';
+export Navigation from './Navigation/Navigation';
