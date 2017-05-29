@@ -4,4 +4,3 @@ before_script:
 
 script:
   - sass-lint -v -q 'app/**/*.scss'
-  - sass-lint -v -q 'app/**/*.css'
