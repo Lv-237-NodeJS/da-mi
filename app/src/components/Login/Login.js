@@ -10,23 +10,14 @@ export default class Login extends React.Component {
       email: '',
       password: ''
     };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
-    event.target.type == 'email' ?
-    this.setState({
-      email: event.target.value
-    }) :
-    this.setState({
-      password: event.target.value
-    });
+  handleChange = (stateName) => (e) => {
+    this.setState({[stateName]: e.target.value});
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  handleSubmit = (e) => {
+    e.preventDefault();
   }
 
   render () {
@@ -39,7 +30,8 @@ export default class Login extends React.Component {
           <Col sm={12} md={9}>
             <FormControl type="email"
                          placeholder="Email"
-                         value={this.state.email} onChange={this.handleChange}
+                         value={this.state.email}
+                         onChange={this.handleChange('email')}
                          required />
           </Col>
         </FormGroup>
@@ -50,7 +42,8 @@ export default class Login extends React.Component {
           <Col sm={12} md={9}>
             <FormControl type="password"
                          placeholder="Password"
-                         value={this.state.password} onChange={this.handleChange}
+                         value={this.state.password}
+                         onChange={this.handleChange('password')}
                          required />
           </Col>
         </FormGroup>
