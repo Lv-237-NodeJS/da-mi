@@ -34,22 +34,17 @@ export default class Login extends React.Component {
   render () {
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
-        <InputGroup
-          id="email"
-          label="Email"
-          type="email"
-          placeholder="Email"
-          value={this.state.email}
-          onChange={this.handleChange('email')}
-        />
-        <InputGroup
-          id="password"
-          label="Password"
-          type="password"
-          placeholder="Password"
-          value={this.state.password}
-          onChange={this.handleChange('password')}
-        />
+        {['email', 'password'].map(param =>
+          <InputGroup
+            key={param}
+            id={param}
+            label={param}
+            type={param}
+            placeholder={param.toUpperCase()}
+            value={this.state.param}
+            onChange={this.handleChange(param)}
+          />
+        )}
         <FormGroup>
           <Col smOffset={0} sm={12} mdOffset={3} md={9}>
             <Button type="submit" bsStyle="primary" bsSize="large">
