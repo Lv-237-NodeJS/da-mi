@@ -32,7 +32,7 @@ class Test extends React.Component {
   render () {
     return (
       <div>
-        <h1>test page</h1>
+        <h1>Redux demonstration</h1>
         {this.props.items.map(this.itemRow)}
         <h2>Add something!</h2>
         <input
