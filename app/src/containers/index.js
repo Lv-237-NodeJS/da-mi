@@ -1,3 +1,4 @@
+export Signup from './Signup/Signup';
 export About from './About/About';
 export Address from './Address/Address';
 export Contacts from './Contacts/Contacts';
