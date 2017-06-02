@@ -7,7 +7,7 @@ export default class Navigation extends React.Component {
     return (
       <div>
         <Navbar>
-          <Nav bsStyle="pills" activeKey={1}>
+          <Nav bsStyle='pills' activeKey={1}>
             <LinkContainer to='/'>
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
@@ -16,6 +16,9 @@ export default class Navigation extends React.Component {
             </LinkContainer>
             <LinkContainer to='/contacts'>
               <NavItem eventKey={3}>Contacts</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/test'>
+              <NavItem eventKey={4}>Test</NavItem>
             </LinkContainer>
           </Nav>
         </Navbar>
