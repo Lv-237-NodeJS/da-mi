@@ -10,20 +10,17 @@ class Test extends React.Component {
     this.state = {
       item: {title: ''}
     };
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
   }
 
-  onTitleChange(event) {
+  onTitleChange = (event) => {
     const item = this.state.item;
     item.title = event.target.value;
     this.setState({item: item});
-  }
+  };
 
-  onClickSave() {
+  onClickSave = () => {
     this.props.actions.createItem(this.state.item);
-  }
+  };
 
   itemRow(item, index) {
     return <div key={index}>{item.title}</div>;
