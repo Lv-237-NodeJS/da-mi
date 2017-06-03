@@ -1,0 +1,27 @@
+$base-width: 240px;
+$bor-radius: 25px;
+$bor-type: solid;
+$bor-width: 2px;
+$bor-color: white;
+$bck-color: #20B2AA;
+$marg: auto;
+$contain-width: 300px;
+$pad1: 10px;
+$pad2: 5px;
+
+
+.LoginForm{
+  width: $base-width;
+  margin:$marg;
+  
+}
+
+.containerLog{
+	border: $bor-type $bor-width $bor-color;
+	border-radius: $bor-radius;
+	padding: $pad1 $pad2 $pad1 $pad2;
+	width: $contain-width;
+	background-color:$bck-color;
+	margin:$marg;
+}
+
