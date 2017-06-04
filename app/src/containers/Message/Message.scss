@@ -1,0 +1,35 @@
+$bor-type: solid;
+$bor-width: 2px;
+$bor-color: green;
+$bck-color: #98ff98;
+$z-in: 5;
+$text-color: black;
+$con-width: 400px;
+$left: 30%;
+$top: 10%;
+$padd: 30px;
+$marg: auto;
+$bor-radius: 5px;
+
+#modal-container {
+  position: absolute; 
+  left: $left;
+  top: $top;
+  z-index: $z-in;
+  margin: $marg;
+  width: $con-width;
+  border: $bor-type $bor-width $bor-color;
+  border-radius: $bor-radius;
+  background-color:$bck-color;
+  padding: $padd;
+  color: $text-color;
+}
+
+#modButton {
+	border-color:green;
+}
+
+#modButton:hover {
+	border-color:red;
+}
+
