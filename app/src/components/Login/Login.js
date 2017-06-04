@@ -2,9 +2,10 @@ import React from 'react';
 import { Form, FormGroup, ControlLabel, FormControl, Col, Button }
 from 'react-bootstrap';
 const request = require('superagent');
-import { browserHistory, Link } from 'react-router';
+import { Link } from 'react-router';
 import { URL } from './../../helper/constants';
 import style from './Login.scss';
+
 
 let InputGroup = ({id, label, ...props}) => (
   <FormGroup controlId={id}>
