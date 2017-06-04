@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, ControlLabel, FormControl, Col, Button }
 from 'react-bootstrap';
-const request = require('superagent');
+import request from 'superagent'
 import { Link } from 'react-router';
 import { URL } from './../../helper/constants';
 import style from './Login.scss';
