@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import style from './Message.scss';
-import MESSAGES from '../../helper/messages.js';
+import messages from '../../helper/messages.js';
 
 export default class Message extends React.Component {
   constructor(props) {
@@ -28,7 +28,7 @@ export default class Message extends React.Component {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-lg">
-            <p>{MESSAGES.SIGNUP}</p>          
+            <p>{messages.signup}</p>          
           </Modal.Title>
         </Modal.Header>
         <Modal.Footer>
