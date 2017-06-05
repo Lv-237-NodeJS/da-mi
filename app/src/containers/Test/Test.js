@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as itemActions from '../../actions/actions';
+import * as itemActions from '../../redux/Test';
 
 class Test extends React.Component {
   constructor (props, context) {
