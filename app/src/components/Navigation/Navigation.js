@@ -1,8 +1,27 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 export default class Navigation extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loggedIn: false
+    }
+  }
+  
+  componentWillMount () {
+    sessionStorage.getItem('token')?
+      this.setState({loggedIn: true}): this.setState({loggedIn: false})
+  }
+
+  logout = () => {
+    sessionStorage.removeItem('token');
+    window.location.reload();
+  }
+  
   render() {
     return (
       <div>
@@ -21,6 +40,9 @@ export default class Navigation extends React.Component {
               <NavItem eventKey={4}>Test</NavItem>
             </LinkContainer>
           </Nav>
+          {this.state.loggedIn &&
+            <Button className="pull-right" type="button" onClick={this.logout}>Log out</Button>
+          }
         </Navbar>
       </div>
     );
