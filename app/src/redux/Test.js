@@ -10,3 +10,7 @@ export default function itemReducer(state = initialState, action) {
       return state;
   }
 }
+
+export function createItem(item) {
+  return {type: CREATE_ITEM, item};
+}
