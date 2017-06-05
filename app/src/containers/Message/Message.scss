@@ -1,34 +1,22 @@
-$bor-type: solid;
-$bor-width: 2px;
-$bor-color: green;
-$bck-color: #98ff98;
-$z-in: 5;
-$text-color: black;
-$con-width: 400px;
-$left: 30%;
-$top: 10%;
-$padd: 30px;
-$marg: auto;
-$bor-radius: 5px;
+@import '../../common.scss';
 
 #modal-container {
-  position: absolute; 
-  left: $left;
-  top: $top;
-  z-index: $z-in;
-  margin: $marg;
-  width: $con-width;
-  border: $bor-type $bor-width $bor-color;
-  border-radius: $bor-radius;
-  background-color:$bck-color;
-  padding: $padd;
-  color: $text-color;
+  position: $position1; 
+  left: $left1;
+  top: $top1;
+  margin: $margin1;
+  width: $conteiner-width1;
+  border: $border-type1 $border-width1 $border-colorG1;
+  border-radius: $border-radius1;
+  background-color:$background-color1;
+  padding: $padding1;
+  color: $text-colorB1;
 }
 
 #modButton {
-	border-color:green;
+	border-color: $border-colorG1;
 }
 
 #modButton:hover {
-	border-color:red;
+	border-color: $border-colorR1;
 }
