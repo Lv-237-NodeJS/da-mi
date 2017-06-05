@@ -1,10 +1,11 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { About, Address, Home, Contacts, Main, Maps, Signup } from './containers';
+import { Dashboard, About, Address, Home, Contacts, Main, Maps, Signup } from './containers';
 
 const Routes = (
   <Route path='/' component={Main}>
     <IndexRoute component={Home}/>
+    <Route path='dashboard' component={Dashboard}/>
     <Route path='about' component={About}/>
     <Route path='contacts' component={Contacts}>
       <Route path='address' component={Address}/>
