@@ -19,7 +19,7 @@ export default class Navigation extends React.Component {
 
   logout = () => {
     sessionStorage.removeItem('token');
-    window.location.reload();
+    window.location.href = '/';
   }
   
   render() {

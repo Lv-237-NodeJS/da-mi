@@ -12,7 +12,8 @@ export default class Home extends React.Component {
   }
   
   componentWillMount () {
-    sessionStorage.getItem('token')? this.setState({loggedIn: true}): this.setState({loggedIn: false})
+    sessionStorage.getItem('token')?
+      this.setState({loggedIn: true}): this.setState({loggedIn: false})
   }
 
   render() {

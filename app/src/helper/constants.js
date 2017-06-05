@@ -1,5 +1,6 @@
-const URL = {
-  LOGIN: 'http://localhost:8082/api/auth/login'
+const API = {
+  HOST: 'http://localhost:',
+  PORT: '8082'
 }
 
-export { URL };
+export { API };

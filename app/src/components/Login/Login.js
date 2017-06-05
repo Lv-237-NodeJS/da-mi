@@ -3,7 +3,7 @@ import { Form, FormGroup, ControlLabel, FormControl, Col, Button }
 from 'react-bootstrap';
 import request from 'superagent'
 import { Link } from 'react-router';
-import { URL } from './../../helper/constants';
+import { API } from './../../helper/constants';
 import style from './Login.scss';
 
 
@@ -29,7 +29,7 @@ export default class Login extends React.Component {
     };
   }
 
-  handleChange = (stateName) => (e) => {
+  handleChange = stateName => e => {
     this.setState({[stateName]: e.target.value});
   }
   
@@ -38,11 +38,11 @@ export default class Login extends React.Component {
     'password': this.state.password
   })
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     const self = this;
     e.preventDefault();
     request
-      .post(URL.LOGIN)
+      .post(API.HOST + API.PORT + '/api/auth/login')
       .send(self.user())
       .end(function(err, res) {
         if (err || !res.ok) {
