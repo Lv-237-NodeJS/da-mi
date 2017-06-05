@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-import rootReducer from './../reducer';
+import rootReducer from './../redux/reducer';
 
 const middleware = routerMiddleware(browserHistory);
 
