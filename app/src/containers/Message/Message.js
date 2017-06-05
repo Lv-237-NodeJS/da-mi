@@ -1,10 +1,7 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import style from './Message.scss';
-
-const MESSAGES = {
-  SIGNUP: 'You have successfully signed up! For confirmation please visit your e-mail'
-};
+import MESSAGES from '../../helper/messages.js';
 
 export default class Message extends React.Component {
   constructor(props) {
@@ -12,13 +9,13 @@ export default class Message extends React.Component {
     this.state = {show: false};
   }
 
-  showModal = (e) => {
-    let show = this.state.show
+  showModal = () => {
+    let show = this.state.show; 
     this.setState({show: show});
   }
   
-  hideModal = (e) => {
-    let show = this.state.show
+  hideModal = () => {
+    let show = this.state.show;
     this.setState({show: !show});
   }
 
