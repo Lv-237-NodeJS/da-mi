@@ -1,9 +1,10 @@
 import React from 'react';
 import { Form, FormGroup, ControlLabel, FormControl, Col, Button }
 from 'react-bootstrap';
-import request from 'superagent'
 import { Link } from 'react-router';
-import { API } from './../../helper/constants';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as loginActions from '../../redux/Login';
 import style from './Login.scss';
 
 
@@ -18,7 +19,7 @@ let InputGroup = ({id, label, ...props}) => (
   </FormGroup>
 );
 
-export default class Login extends React.Component {
+class Login extends React.Component {
   constructor (props) {
     super(props);
 
@@ -32,27 +33,10 @@ export default class Login extends React.Component {
   handleChange = stateName => e => {
     this.setState({[stateName]: e.target.value});
   }
-  
-  user = () => ({
-    'email': this.state.email,
-    'password': this.state.password
-  })
 
   handleSubmit = e => {
-    const self = this;
     e.preventDefault();
-    request
-      .post(API.HOST + API.PORT + '/api/auth/login')
-      .send(self.user())
-      .end(function(err, res) {
-        if (err || !res.ok) {
-          self.setState({'notAutorized': true});
-        } else {
-          const token = JSON.parse(res.text).token;
-          sessionStorage.setItem('token', token);
-          window.location.reload();
-        }
-    });
+    this.props.actions.loginUser(this.state.email, this.state.password);
   }
 
   render () {
@@ -89,3 +73,19 @@ export default class Login extends React.Component {
     );
   }
 }
+
+function mapStatetoProps(state) {
+  return {
+    email: state.email,
+    password: state.password,
+    notAutorized: state.notAutorized
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(loginActions, dispatch)
+  };
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Login);
