@@ -7,7 +7,6 @@ import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/Login';
 import style from './Login.scss';
 
-
 let InputGroup = ({id, label, ...props}) => (
   <FormGroup controlId={id}>
     <Col componentClass={ControlLabel} sm={12} md={3}>
@@ -24,9 +23,8 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
-      notAutorized: false
+      email: null,
+      password: null
     };
   }
 
@@ -59,7 +57,7 @@ class Login extends React.Component {
               <Button type="submit" bsStyle="primary" bsSize="large">
                 Login
               </Button>
-              {this.state.notAutorized &&
+              {this.props.badInputs &&
                 <p className="text-danger">Email or password is not valid!</p>
               }
             </Col>
@@ -74,18 +72,13 @@ class Login extends React.Component {
   }
 }
 
-function mapStatetoProps(state) {
-  return {
-    email: state.email,
-    password: state.password,
-    notAutorized: state.notAutorized
-  };
-}
+const mapStatetoProps = state => ({
+  badInputs: state.login.illegalInput,
+  isToken: state.login.isToken
+});
 
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(loginActions, dispatch)
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(loginActions, dispatch)
+});
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Login);

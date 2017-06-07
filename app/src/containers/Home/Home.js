@@ -1,26 +1,14 @@
 import React from 'react';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
 import { Login, Secret } from '../../components';
+import { connect } from 'react-redux';
 
-export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loggedIn: false
-    }
-  }
-  
-  componentWillMount () {
-    sessionStorage.getItem('token')?
-      this.setState({loggedIn: true}): this.setState({loggedIn: false})
-  }
+class Home extends React.Component {
 
   render() {
-
     return (
       <Grid>
-        {!this.state.loggedIn ?
+        {!this.props.isToken ?
           <Row className="show-grid">
             <Col sm={12} md={8}>
               <PageHeader className="text-center">Da-Mi</PageHeader>
@@ -36,3 +24,9 @@ export default class Home extends React.Component {
     );
   }
 }
+
+const mapStatetoProps = state => ({
+  isToken: state.login.isToken
+});
+
+export default connect(mapStatetoProps)(Home);

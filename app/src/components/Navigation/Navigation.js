@@ -1,25 +1,14 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as loginActions from '../../redux/Login';
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loggedIn: false
-    }
-  }
-  
-  componentWillMount () {
-    sessionStorage.getItem('token')?
-      this.setState({loggedIn: true}): this.setState({loggedIn: false})
-  }
-
-  logout = () => {
-    sessionStorage.removeItem('token');
-    window.location.href = '/';
+  componentWillMount() {
+    this.props.actions.checkToken();
   }
   
   render() {
@@ -40,11 +29,23 @@ export default class Navigation extends React.Component {
               <NavItem eventKey={4}>Test</NavItem>
             </LinkContainer>
           </Nav>
-          {this.state.loggedIn &&
-            <Button className="pull-right" type="button" onClick={this.logout}>Log out</Button>
+          {this.props.isToken &&
+            <Button className="pull-right"
+                    type="button"
+                    onClick={this.props.actions.logout}>Log out</Button>
           }
         </Navbar>
       </div>
     );
   }
 }
+
+const mapStatetoProps = state => ({
+  isToken: state.login.isToken
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(loginActions, dispatch)
+});
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Navigation);

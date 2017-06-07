@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Lv-237-NodeJS/da-mi#readme",
   "devDependencies": {
+    "redux-logger": "^3.0.6",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
