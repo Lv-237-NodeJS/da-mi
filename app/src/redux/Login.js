@@ -67,7 +67,7 @@ export function checkToken() {
   }
 }
 
-export function logout(dispatch) {
+export function logout() {
   sessionStorage.removeItem('token');
   push('/');
   return {
@@ -90,5 +90,5 @@ export function loginUser(email, password) {
           dispatch(loginUserSuccess(token));
         }
       })
-    }
+  }
 }

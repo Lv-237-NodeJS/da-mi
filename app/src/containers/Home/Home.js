@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
-import { Login, Secret } from '../../components';
 import { connect } from 'react-redux';
+import { Login, Secret } from '../../components';
 
 class Home extends React.Component {
 
