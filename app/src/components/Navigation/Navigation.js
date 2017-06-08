@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import ProfileSubNav from './ProfileSubNav';
 
 export default class Navigation extends React.Component {
   render() {
@@ -20,6 +21,9 @@ export default class Navigation extends React.Component {
             <LinkContainer to='/test'>
               <NavItem eventKey={4}>Test</NavItem>
             </LinkContainer>
+          </Nav>
+          <Nav pullRight>
+              <ProfileSubNav />
           </Nav>
         </Navbar>
       </div>
