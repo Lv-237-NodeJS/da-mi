@@ -3,4 +3,4 @@ const API = {
   PORT: '8082'
 }
 
-export API;
+export { API };
