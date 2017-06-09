@@ -21,7 +21,7 @@ class EventDetails extends React.Component {
     //   }
     // });
 
-    event = this.props.event;
+    const event = this.props.event;
 
     return (
       <Grid>
@@ -73,4 +73,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventDetailPage);
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
