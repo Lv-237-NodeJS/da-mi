@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Secret extends React.Component {
+export default class Dashboard extends React.Component {
   render () {
     return <h1>Here will be dashboard</h1>;
   }
