@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Login, Secret } from '../../components';
+import { Login, Dashboard } from '../../components';
 
 class Home extends React.Component {
 
@@ -18,7 +18,7 @@ class Home extends React.Component {
                <Login />
             </Col>
           </Row> :
-          <Secret />
+          <Dashboard />
         }
       </Grid>
     );

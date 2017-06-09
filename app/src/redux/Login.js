@@ -8,30 +8,25 @@ const LOGOUT_USER = 'LOGOUT_USER';
 const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 const CHECK_TOKEN = 'CHECK_TOKEN';
 
-const initialState = {
-  illegalInput: false,
-  isToken: false
-};
-
-export default function loginReduser(state = initialState, action) {
+export default function loginReduser(state = {}, action) {
   switch (action.type) {
     case LOGIN_USER_FAILURE:
-      return Object.assign({}, {
+      return {
         illegalInput: true
-      });
+      };
     case LOGIN_USER_SUCCESS:
-      return Object.assign({}, {
+      return {
         illegalInput: false,
         isToken: true
-      });
+      };
     case LOGOUT_USER:
-      return Object.assign({}, {
+      return {
         isToken: false
-      });
+      };
     case CHECK_TOKEN:
-      return Object.assign({}, {
+      return {
         isToken: action.isToken
-      });
+      };
     default:
       return state
   }
@@ -40,8 +35,7 @@ export default function loginReduser(state = initialState, action) {
 export function loginUserSuccess(token) {
   sessionStorage.setItem('token', token);
   return {
-    type: LOGIN_USER_SUCCESS,
-    isToken: true
+    type: LOGIN_USER_SUCCESS
   }
 }
 
@@ -59,7 +53,8 @@ export function loginUserRequest() {
 
 export function checkToken() {
   let isToken;
-  sessionStorage.getItem('token')? isToken = true:
+  sessionStorage.getItem('token') ? 
+    isToken = true :
     isToken = false;
   return {
     type: CHECK_TOKEN,
@@ -71,17 +66,20 @@ export function logout() {
   sessionStorage.removeItem('token');
   push('/');
   return {
-    type: LOGOUT_USER,
-    isToken: false
+    type: LOGOUT_USER
   }
 }
 
 export function loginUser(email, password) {
+  let user = {
+    email: email,
+    password: password
+  };
   return dispatch => {
     dispatch(loginUserRequest());
     request
       .post(API.HOST + API.PORT + '/api/auth/login')
-      .send({email: email, password: password})
+      .send(user)
       .end((err, res) => {
         if (err || !res.ok) {
           dispatch(loginUserFailure());

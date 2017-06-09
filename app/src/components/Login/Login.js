@@ -40,7 +40,7 @@ class Login extends React.Component {
   render () {
     return (
       <div>
-        <Form className="login-form" horizontal onSubmit={this.handleSubmit}>
+        <Form className='login-form' horizontal onSubmit={this.handleSubmit}>
           {['email', 'password'].map(param =>
             <InputGroup
               key={param}
@@ -54,18 +54,18 @@ class Login extends React.Component {
           )}
           <FormGroup>
             <Col smOffset={0} sm={12} mdOffset={3} md={9}>
-              <Button type="submit" bsStyle="primary" bsSize="large">
+              <Button type='submit' bsStyle='primary' bsSize='large'>
                 Login
               </Button>
               {this.props.badInputs &&
-                <p className="text-danger">Email or password is not valid!</p>
+                <p className='text-danger'>Email or password is not valid!</p>
               }
             </Col>
           </FormGroup>
         </Form>
-        <p className="text-center">OR</p>
+        <p className='text-center'>OR</p>
         <Link to='/signup'>
-          <Button bsSize="large" block>SIGN UP</Button>
+          <Button bsSize='large' block>SIGN UP</Button>
         </Link>
       </div>
     );
