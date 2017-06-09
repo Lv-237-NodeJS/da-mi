@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col, PageHeader, } from 'react-bootstrap';
 import { Nav, NavItem } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import * as EventActions from '../../redux/actions/EventActions';
 
 class EventDetails extends React.Component {
   constructor(props, context) {
