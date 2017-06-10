@@ -1,0 +1,22 @@
+@import '../../common.scss';
+
+#modal-container {
+  position: $position-absolute; 
+  left: $left-modalMessage;
+  top: $top-modalMessage;
+  margin: $margin-auto;
+  width: $conteiner-width-modalMessage;
+  border: $border-type-solid $border-width-two $border-color-green;
+  border-radius: $border-radius-five;
+  background-color: $background-color-mint;
+  padding: $padding-thirty;
+  color: $text-color-black;
+}
+
+#modButton {
+	border-color: $border-color-green;
+}
+
+#modButton:hover {
+	border-color: $border-color-red;
+}
