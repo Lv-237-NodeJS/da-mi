@@ -17,18 +17,18 @@ export default function loginReduser(state = {}, action) {
     case LOGIN_USER_SUCCESS:
       return {
         illegalInput: false,
-        isToken: true
+        isAuth: true
       };
     case LOGOUT_USER:
       return {
-        isToken: false
+        isAuth: false
       };
     case CHECK_TOKEN:
       return {
-        isToken: action.isToken
+        isAuth: action.isAuth
       };
     default:
-      return state
+      return state;
   }
 }
 
@@ -36,19 +36,19 @@ export function loginUserSuccess(token) {
   sessionStorage.setItem('token', token);
   return {
     type: LOGIN_USER_SUCCESS
-  }
+  };
 }
 
 export function loginUserFailure() {
   return {
     type: LOGIN_USER_FAILURE
-  }
+  };
 }
 
 export function loginUserRequest() {
   return {
     type: LOGIN_USER_REQUEST
-  }
+  };
 }
 
 export function checkToken() {
@@ -58,8 +58,8 @@ export function checkToken() {
     isToken = false;
   return {
     type: CHECK_TOKEN,
-    isToken: isToken
-  }
+    isAuth: isToken
+  };
 }
 
 export function logout() {
@@ -67,7 +67,7 @@ export function logout() {
   push('/');
   return {
     type: LOGOUT_USER
-  }
+  };
 }
 
 export function loginUser(email, password) {
@@ -88,5 +88,5 @@ export function loginUser(email, password) {
           dispatch(loginUserSuccess(token));
         }
       })
-  }
+  };
 }

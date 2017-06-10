@@ -8,7 +8,7 @@ class Home extends React.Component {
   render() {
     return (
       <Grid>
-        {!this.props.isToken ?
+        {!this.props.isAuth ?
           <Row className="show-grid">
             <Col sm={12} md={8}>
               <PageHeader className="text-center">Da-Mi</PageHeader>
@@ -26,7 +26,7 @@ class Home extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  isToken: state.login.isToken
+  isAuth: state.login.isAuth
 });
 
 export default connect(mapStatetoProps)(Home);

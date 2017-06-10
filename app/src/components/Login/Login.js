@@ -73,8 +73,7 @@ class Login extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  badInputs: state.login.illegalInput,
-  isToken: state.login.isToken
+  badInputs: state.login.illegalInput
 });
 
 const mapDispatchToProps = dispatch => ({

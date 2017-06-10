@@ -29,9 +29,9 @@ class Navigation extends React.Component {
               <NavItem eventKey={4}>Test</NavItem>
             </LinkContainer>
           </Nav>
-          {this.props.isToken &&
-            <Button className="pull-right"
-                    type="button"
+          {this.props.isAuth &&
+            <Button className='pull-right'
+                    type='button'
                     onClick={this.props.actions.logout}>Log out</Button>
           }
         </Navbar>
@@ -41,7 +41,7 @@ class Navigation extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  isToken: state.login.isToken
+  isAuth: state.login.isAuth
 });
 
 const mapDispatchToProps = dispatch => ({
