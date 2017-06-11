@@ -1,0 +1,15 @@
+@import '../../common.scss';
+
+.Signup {
+  width: $base-width-registration;
+  margin: $margin-auto; 
+}
+
+.containerLog {
+  border: $border-type-solid $border-width-two $border-color-white;
+  border-radius: $border-radius-twentyFive;
+  padding: $padding-ten $padding-five $padding-ten $padding-five;
+  width: $container-width-registration;
+  background-color: $background-color-lightseagreen;
+  margin: $margin-auto;
+}
