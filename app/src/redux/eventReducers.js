@@ -5,7 +5,7 @@ const apiUrl = 'http://localhost:8082';
 
 import request from 'superagent';
 
-export function fetchEvents() {
+export const fetchEvents = () => {
   return (dispatch) => {
     request
     .get(apiUrl + '/api/events')
@@ -23,14 +23,15 @@ export function fetchEvents() {
       }
     });
   };
-}
+};
 
-export default function reducer(state={
-  events: [],
-  fetching: false,
-  fetched: false,
-  error: null,
-}, action) {
+export const eventReducers = (
+  state = {
+    events: [],
+    fetching: false,
+    fetched: false,
+    error: null,
+  }, action) => {
   switch (action.type) {
     case FETCH_EVENTS: {
       return { ...state, fetching: true };
@@ -54,4 +55,6 @@ export default function reducer(state={
     }
   }
   return state;
-}
+};
+
+export default eventReducers;
