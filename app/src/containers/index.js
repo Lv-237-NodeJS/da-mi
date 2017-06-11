@@ -11,4 +11,3 @@ export Event from './Event/Event';
 export Guest from './Guest/sampleGuest';
 export Gift from './Gift/sampleGift';
 export Dashboard from './Dashboard/Dashboard';
-
