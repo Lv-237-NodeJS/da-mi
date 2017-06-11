@@ -4,9 +4,9 @@ import { LinkContainer } from 'react-router-bootstrap';
 // import { connect } from 'react-redux';
 // import { bindActionCreators } from 'redux';
 // import * as loginActions from '../../redux/Login';
-// import request from 'superagent';
-// import { API } from './../../helper/constants';
+
 import ProfileSubNav from './ProfileSubNav';
+import ProfileAvatar from './ProfileAvatar';
 
 export default class Navigation extends React.Component {
 
@@ -37,6 +37,9 @@ export default class Navigation extends React.Component {
               <ProfileSubNav />
           </Nav>
           {/*}*/}
+          <div className='pull-right'>
+          < ProfileAvatar />
+          </div>
         </Navbar>
       </div>
     );
