@@ -6,15 +6,14 @@ import { bindActionCreators } from 'redux';
 import * as eventActions from '../../redux/eventReducers';
 
 class EventDetails extends React.Component {
-  
+
   constructor (props, context) {
     super(props, context);
-
     this.state = {
-      events: []
+      events: [],
     };
   }
-  
+
   componentDidMount() {
     this.props.actions.fetchEvents(this.state.events);
   }
@@ -24,14 +23,13 @@ class EventDetails extends React.Component {
     this.setState({ events: data.events });
   }
 
-  render() {       
-    const id = this.props.params.id; 
-   
+  render() {
+    const id = this.props.params.id;
     const event = this.state.events.filter((item) => {
-      if (item.id == id) { 
-        return item;                   
-      }  
-    }); 
+      if (item.id == id) {
+        return item;
+      }
+    });
 
     return (
       <Grid>
@@ -57,17 +55,16 @@ class EventDetails extends React.Component {
               <Button bsStyle="danger"> Delete </Button>
             </ButtonToolbar>
             <div>
-                <h3>Details: </h3>                
+                <h3>Details: </h3>
                 <p><strong> Date </strong>: { event[0].date_event } </p>
                 <p><strong> Place </strong>: { event[0].location_name } </p>
                 <p><strong> Description </strong>: { event[0].description } </p>
             </div>
-            
             { this.props.children }
           </Col>
         </Row>
       </Grid>
-    )
+    );
   }
 }
 
@@ -79,7 +76,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(eventActions, dispatch)
+    actions: bindActionCreators(eventActions, dispatch),
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
