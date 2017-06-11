@@ -1,9 +1,19 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+// import { connect } from 'react-redux';
+// import { bindActionCreators } from 'redux';
+// import * as loginActions from '../../redux/Login';
+// import request from 'superagent';
+// import { API } from './../../helper/constants';
 import ProfileSubNav from './ProfileSubNav';
 
 export default class Navigation extends React.Component {
+
+  // componentWillMount() {
+  //   this.props.actions.checkToken();
+  // }
+
   render() {
     return (
       <div>
@@ -22,11 +32,19 @@ export default class Navigation extends React.Component {
               <NavItem eventKey={4}>Test</NavItem>
             </LinkContainer>
           </Nav>
+          {/*{this.props.isToken &&*/}
           <Nav pullRight>
               <ProfileSubNav />
           </Nav>
+          {/*}*/}
         </Navbar>
       </div>
     );
   }
 }
+
+// const mapStateProps = state => ({
+//   isToken: state.login.isToken
+// });
+
+// export default connect(mapStateProps, mapDispatchToProps)(Navigation);
