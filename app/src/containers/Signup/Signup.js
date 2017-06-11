@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button, Form, HelpBlock } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
+import { Message } from '../';
 import messages from '../../helper/messages';
 import request from 'superagent';
 import style from './Signup.scss';
