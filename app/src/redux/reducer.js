@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
 import items from './Test';
-import { eventsReducer, eventReducer } from './reducers/EventReducer';
+import eventReducers from './eventReducers';
 import { routerReducer } from 'react-router-redux';
 
 export default combineReducers({
   items,
-  events: eventsReducer,
-  event: eventReducer,
+  events: eventReducers,  
   routing: routerReducer,
 });
