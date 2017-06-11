@@ -6,7 +6,7 @@ import * as showActions from '../../redux/Signup';
 import style from './Message.scss';
 
 class Message extends React.Component {
-  hide = () =>{
+  hide = () => {
     this.props.actions.showModal(false);
   }
 
