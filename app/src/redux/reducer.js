@@ -5,6 +5,6 @@ import { routerReducer } from 'react-router-redux';
 
 export default combineReducers({
   items,
-  events: eventReducers,  
   routing: routerReducer,
+  events: eventReducers,
 });
