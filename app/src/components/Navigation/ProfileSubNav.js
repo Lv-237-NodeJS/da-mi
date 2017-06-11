@@ -32,11 +32,11 @@ export default class ProfileSubNav extends React.Component {
   render() {
     return (
       <div >
-          <NavDropdown eventKey={4} title = {this.state.firstName + '' + this.state.lastName} id='basic-nav-dropdown'>
+          <NavDropdown eventKey={5} title = {this.state.firstName + ' ' + this.state.lastName} id='basic-nav-dropdown'>
              <LinkContainer to='/profile'>
-                <MenuItem eventKey={4.1}>Edit Profile</MenuItem>
+                <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
              </LinkContainer>
-                <MenuItem eventKey={4.2} onClick={this.logout}>Log Out</MenuItem>
+                <MenuItem eventKey={5.2} onClick={this.logout}>Log Out</MenuItem>
          </NavDropdown>
      </div>
     );

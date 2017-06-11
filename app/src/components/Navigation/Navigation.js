@@ -17,8 +17,8 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <div>
-        <Navbar>
-          <Nav bsStyle='pills' activeKey={1}>
+          <Navbar>
+          <Nav bsStyle='pills' activeKey={4}>
             <LinkContainer to='/'>
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
@@ -30,6 +30,9 @@ export default class Navigation extends React.Component {
             </LinkContainer>
             <LinkContainer to='/test'>
               <NavItem eventKey={4}>Test</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/dashboard'>
+              <NavItem eventKey={5}>Dashboard</NavItem>
             </LinkContainer>
           </Nav>
           {/*{this.props.isToken &&*/}
