@@ -49,7 +49,7 @@ return dispatch => {
 
   dispatch(signupRequest());
     request
-    .post( API.HOST + API.PORT + '/api/auth/Signup')
+    .post(API.HOST + API.PORT + '/api/auth/Signup')
     .send(data)
     .end(function(err, res) {
       if (err || !res.ok) {
