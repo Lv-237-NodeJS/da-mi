@@ -25,11 +25,11 @@ export default class Login extends React.Component {
 
   handleChange = (stateName) => (e) => {
     this.setState({[stateName]: e.target.value});
-  }
+  };
 
   handleSubmit = (e) => {
     e.preventDefault();
-  }
+  };
 
   render () {
     return (
@@ -47,7 +47,7 @@ export default class Login extends React.Component {
         )}
         <FormGroup>
           <Col smOffset={0} sm={12} mdOffset={3} md={9}>
-            <Button type="submit" bsStyle="primary" bsSize="large">
+            <Button type='submit' bsStyle="primary" bsSize='large'>
               Login
             </Button>
           </Col>
