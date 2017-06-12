@@ -25,7 +25,7 @@ class EventDetails extends React.Component {
 
   render() {
     const id = this.props.params.id;
-    const event = this.state.events.filter((item) => {
+    const event = this.state.events.filter(item => {
       if (item.id == id) {
         return item;
       }
@@ -68,16 +68,12 @@ class EventDetails extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
+const mapStateToProps = (state, ownProps) => ({
     events: state.events,
-  };
-};
+  });
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(eventActions, dispatch),
-  };
-};
+  });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
