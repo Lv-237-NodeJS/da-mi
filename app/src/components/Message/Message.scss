@@ -1,22 +1,28 @@
 @import '../../common.scss';
 
+$widthModalMessage: 400px;
+$lefModalMessage: 30%;
+$topModalMessage: 10%;
+$positionModalMessage: absolute;
+$paddingModalMessage: 30px;
+
 #modal-container {
-  position: $position-absolute; 
-  left: $left-modalMessage;
-  top: $top-modalMessage;
-  margin: $margin-auto;
-  width: $conteiner-width-modalMessage;
-  border: $border-type-solid $border-width-two $border-color-green;
-  border-radius: $border-radius-five;
-  background-color: $background-color-mint;
-  padding: $padding-thirty;
-  color: $text-color-black;
+  position: $positionModalMessage; 
+  left: $lefModalMessage;
+  top: $topModalMessage;
+  margin: $marginBase;
+  width: $widthModalMessage;
+  border: $borderTypeBase $borderWidthBase $green;
+  border-radius: $borderRadiusBase;
+  background-color: $mint;
+  padding: $paddingBaseLadge;
+  color: $black;
 }
 
 #modButton {
-	border-color: $border-color-green;
+  border-color: $green;
 }
 
 #modButton:hover {
-	border-color: $border-color-red;
+  border-color: $red;
 }
