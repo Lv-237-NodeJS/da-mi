@@ -1,6 +1,6 @@
-import request from 'superagent';
-import { push } from 'react-router-redux';
+import request from './../helper/request';
 import { API } from './../helper/constants';
+import { browserHistory } from 'react-router';
 
 const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
@@ -34,6 +34,7 @@ export default function loginReduser(state = {}, action) {
 
 export function loginUserSuccess(token) {
   sessionStorage.setItem('token', token);
+  browserHistory.push('/events');
   return {
     type: LOGIN_USER_SUCCESS
   };
@@ -53,7 +54,7 @@ export function loginUserRequest() {
 
 export function checkToken() {
   let isToken;
-  sessionStorage.getItem('token') ? 
+  sessionStorage.getItem('token') ?
     isToken = true :
     isToken = false;
   return {
@@ -64,7 +65,7 @@ export function checkToken() {
 
 export function logout() {
   sessionStorage.removeItem('token');
-  push('/');
+  browserHistory.push('/');
   return {
     type: LOGOUT_USER
   };
@@ -87,6 +88,6 @@ export function loginUser(email, password) {
           const token = JSON.parse(res.text).token;
           dispatch(loginUserSuccess(token));
         }
-      })
+      });
   };
 }
