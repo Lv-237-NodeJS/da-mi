@@ -1,14 +1,14 @@
 const FETCH_EVENTS = 'FETCH_EVENTS';
 const FETCH_EVENTS_FULFILLED = 'FETCH_EVENTS_FULFILLED';
 const FETCH_EVENTS_REJECTED = 'FETCH_EVENTS_REJECTED';
-const apiUrl = 'http://localhost:8082';
+import  API  from '../helper/constants';
 
 import request from 'superagent';
 
 export const fetchEvents = () => {
   return (dispatch) => {
     request
-    .get(apiUrl + '/api/events')
+    .get(API.HOST + API.PORT + '/api/events')
     .end((err, res) => {
       if (err) {
         dispatch({
@@ -53,8 +53,9 @@ export const eventReducers = (
               error: action.payload,
             };
     }
+
+    default: return state;
   }
-  return state;
 };
 
 export default eventReducers;

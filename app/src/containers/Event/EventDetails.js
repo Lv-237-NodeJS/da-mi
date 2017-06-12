@@ -25,11 +25,7 @@ class EventDetails extends React.Component {
 
   render() {
     const id = this.props.params.id;
-    const event = this.state.events.filter(item => {
-      if (item.id == id) {
-        return item;
-      }
-    });
+    const event = this.state.events.filter(item => item.id == id);
 
     return (
       <Grid>
