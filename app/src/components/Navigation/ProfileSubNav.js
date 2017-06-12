@@ -2,37 +2,41 @@ import React from 'react';
 import request from 'superagent';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { API } from './../../helper/constants';
+import { Link } from 'react-router';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { retrieveProfile } from '../../redux/Profile';
 
 
 export default class ProfileSubNav extends React.Component {
-  constructor() {
-    super();
+  constructor(porps) {
+    super(props);
     this.state = {
-        firstName: '',
-        lastName: '',
+        firstName: null,
+        lastName: null,
       };
   }
 
   componentWillMount() {
-    // let token = sessionStorage.getItem('token')
-    request
-      .get(API.HOST + API.PORT + '/api/user/1')
-      .accept('json')
-    //   .set('x-access-token', token)
-      .set('Content-Type', 'application/json')
-      .then((response) => {
-              this.setState({
-                  firstName: response.body.firstName,
-                  lastName: response.body.lastName,
-                });
-            });
+    this.props.dispatch(retrieveProfile());
+  //   // let token = sessionStorage.getItem('token')
+  //   request
+  //     .get(API.HOST + API.PORT + '/api/user/1')
+  //     .accept('json')
+  //   //   .set('x-access-token', token)
+  //     .set('Content-Type', 'application/json')
+  //     .then((response) => {
+  //             this.setState({
+  //                 firstName: response.body.firstName,
+  //                 lastName: response.body.lastName,
+  //               });
+  //           });
   };
 
   render() {
     return (
       <div >
-          <NavDropdown eventKey={5} title = {this.state.firstName + ' ' + this.state.lastName} id='basic-nav-dropdown'>
+          <NavDropdown eventKey={5} title = {this.props.firstName + ' ' + this.props.lastName} id='basic-nav-dropdown'>
              <LinkContainer to='/profile'>
                 <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
              </LinkContainer>

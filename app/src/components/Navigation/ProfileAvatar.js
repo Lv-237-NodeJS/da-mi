@@ -6,10 +6,10 @@ import { API } from './../../helper/constants';
 
 
 export default class ProfileAvatar extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-        avatar: ''
+        avatar: 'http://www.rbpost411.org/Page-Accessories/Profile%20Icon.jpg'
       };
   }
 
@@ -30,7 +30,7 @@ export default class ProfileAvatar extends React.Component {
   render() {
     return (
       <div >
-          <Image src='http://www.rbpost411.org/Page-Accessories/Profile%20Icon.jpg' circle width='45'/>
+          <Image src={this.state.avatar} circle width='45'/>
      </div>
     );
   }
