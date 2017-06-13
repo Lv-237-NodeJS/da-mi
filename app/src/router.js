@@ -4,8 +4,6 @@ import { About, Address, Home, Contacts, Main, Maps, Signup, Test,
          Gift, Guest, Dashboard, EventDetails } from './containers';
 import checkAuth from './helper/redirections';
 
-
-
 const Routes = (
   <Route path='/' component={Main}>
     <IndexRoute component={Home} onEnter={checkAuth} />
