@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
 import { Login } from '../../components';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
 
   render() {
     return (
