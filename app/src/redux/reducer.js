@@ -7,6 +7,6 @@ import event from './eventReducers';
 export default combineReducers({
   items,
   login,
-  routing: routerReducer
   event,
+  routing: routerReducer
 });
