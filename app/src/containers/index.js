@@ -10,3 +10,4 @@ export Dashboard from './Dashboard/Dashboard';
 export EventDetails from './Event/EventDetails';
 export Guest from './Guest/sampleGuest';
 export Gift from './Gift/sampleGift';
+export EventsList from './Events/EventsList';
