@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { About, Address, Home, Contacts, Main, Maps, Signup, Test, Dashboard } from './containers';
+import { About, Address, Home, Contacts, Main, Maps, Signup, Test, Dashboard, Profile } from './containers';
 import checkAuth from './helper/redirections';
 
 const Routes = (
@@ -14,6 +14,7 @@ const Routes = (
     <Route path='signup' component={Signup}/>
     <Route path='test' component={Test}/>
     <Route path='events' component={Dashboard}/>
+    <Route path='profile' component={Profile}/>
   </Route>
 );
 

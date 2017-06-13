@@ -7,3 +7,4 @@ export Main from './Main/Main';
 export Maps from './Maps/Maps';
 export Test from './Test/Test';
 export Dashboard from './Dashboard/Dashboard';
+export Profile from './Profile/Profile';
