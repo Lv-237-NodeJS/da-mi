@@ -1,42 +1,51 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Form, FormGroup, ControlLabel, FormControl, Col, Button, Table , Panel } from 'react-bootstrap';
+import { Nav, NavItem, Tab, Row, Col } from 'react-bootstrap';
 
-export default class Dashboard extends React.Component {  
+import EventsList from './EventsList';
+
+export default class Dashboard extends React.Component {
+
   render() {
     return (
       <div>
         <h1>Dashboard</h1>
-        <Table>
-            <thead>
-             <tr>
-               <th>#</th>
-               <th>First Name</th>
-               <th>Last Name</th>
-               <th>Username</th>
-             </tr>
-         </thead>
-             <tbody>
-      <tr>
-        <td>1</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td colSpan="2">Larry the Bird</td>
-        <td>@twitter</td>
-      </tr>
-  </tbody>
-        </Table>
-        {this.props.children}      
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+          <Row className="clearfix">
+            <Col sm={4}>
+             <Nav bsStyle="pills" stacked>
+               <NavItem eventKey="first">
+                 My Cabinet
+              </NavItem>
+              <NavItem eventKey="second">
+                My Events
+              </NavItem>
+              <NavItem eventKey="third">
+                Invited
+              </NavItem>
+              <NavItem eventKey="fourth">
+                Create New Event
+              </NavItem>
+             </Nav>
+            </Col>
+      <Col sm={8}>
+        <Tab.Content animation>
+          <Tab.Pane eventKey="first">
+            Profile component will be here
+          </Tab.Pane>
+          <Tab.Pane eventKey="second">
+            <EventsList />
+          </Tab.Pane>
+          <Tab.Pane eventKey="third">
+            My guests will he here
+          </Tab.Pane>
+          <Tab.Pane eventKey="fourth">
+            Create new event coponent will be here
+          </Tab.Pane>
+        </Tab.Content>
+      </Col>
+    </Row>
+  </Tab.Container>
       </div>
     );
   }

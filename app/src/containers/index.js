@@ -1,5 +1,6 @@
 export Signup from './Signup/Signup';
 export Dashboard from './Dashboard/Dashboard';
+export EventsList from './Dashboard/EventsList';
 export About from './About/About';
 export Address from './Address/Address';
 export Contacts from './Contacts/Contacts';
