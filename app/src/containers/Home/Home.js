@@ -1,6 +1,5 @@
 import React from 'react';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
-import { connect } from 'react-redux';
 import { Login } from '../../components';
 
 class Home extends React.Component {
@@ -21,9 +20,3 @@ class Home extends React.Component {
     );
   }
 }
-
-const mapStatetoProps = state => ({
-  isAuth: state.login.isAuth
-});
-
-export default connect(mapStatetoProps)(Home);
