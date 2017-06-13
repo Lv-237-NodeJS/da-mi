@@ -32,8 +32,9 @@ export default function loginReduser(state = {}, action) {
   }
 }
 
-export function loginUserSuccess(token) {
+export function loginUserSuccess(token, userId) {
   sessionStorage.setItem('token', token);
+  sessionStorage.setItem('userId', userId);
   browserHistory.push('/events');
   return {
     type: LOGIN_USER_SUCCESS
@@ -86,7 +87,8 @@ export function loginUser(email, password) {
           dispatch(loginUserFailure());
         } else {
           const token = JSON.parse(res.text).token;
-          dispatch(loginUserSuccess(token));
+          const userId = JSON.parse(res.text).user_id;
+          dispatch(loginUserSuccess(token, userId));
         }
       });
   };
