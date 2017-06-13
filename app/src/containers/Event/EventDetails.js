@@ -9,36 +9,34 @@ class EventDetails extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.state = {
-      event: [],
+      current: {},
     };
   }
 
   componentWillMount() {
     this.props.actions.fetchEventById(this.props.params.id);
-    const data = this.props.event;
-    this.setState({ event: data.event });
+    this.setState({ event: this.props.event.current });
   }
 
   render() {
+
     const id = this.props.params.id;
-    const event = this.state.event;
+    const event = this.props.event.current;
 
     return (
       <Grid>
         <Row className="show-grid">
           <Col sm={12} md={4}>
           <PageHeader className="text-center"> Menu </PageHeader>
-            <Nav bsStyle="pills" stacked >
-              <Link className="list-group-item" to={'/events/' + id + '/guests'}>
-                  Guests
-                </Link>
-                <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
-                  Gifts
-                </Link>
-                <Link className="list-group-item" to='/events'>
-                  Back to Events
-                </Link>
-            </Nav>
+            <Link className="list-group-item" to={'/events/' + id + '/guests'}>
+              Guests
+            </Link>
+            <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
+              Gifts
+            </Link>
+            <Link className="list-group-item" to='/events'>
+              Back to Events
+            </Link>
           </Col>
           <Col sm={12} md={8}>
           <PageHeader className="text-center"> { event.name } </PageHeader>
