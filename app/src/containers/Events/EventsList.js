@@ -18,7 +18,7 @@ export default class EventsList extends React.Component {
             </thead>
             <tbody>
                 <tr>
-                    <td>Tom's Birthday Party</td>
+                    <td>Toms Birthday Party</td>
                     <td>06/29/2017  6:30 pm</td>
                     <td>Lviv, Street 1, 22/2</td>
                     <td> <Button>Accept</Button>  <Button>Decline</Button></td>
