@@ -1,14 +1,13 @@
 const FETCH_EVENT_BY_ID = 'FETCH_EVENT_BY_ID';
 const FETCH_EVENT_BY_ID_FULFILLED = 'FETCH_EVENT_BY_ID_FULFILLED';
 const FETCH_EVENT_BY_ID_REJECTED = 'FETCH_EVENT_BY_ID_REJECTED';
-import  API  from '../helper/constants';
-
-import request from 'superagent';
+import  API  from './../helper/constants';
+import request from './../helper/request';
 
 export const fetchEventById = eventId => {
-  return (dispatch) => {
+  return dispatch => {
     return request
-    .get(API.HOST + API.PORT + eventId)
+    .get(API.HOST + API.PORT + '/api/events/' + eventId)
     .end((err, res) => {
       if (err) {
         dispatch({
@@ -26,7 +25,7 @@ export const fetchEventById = eventId => {
 };
 
 const initialState = {
-  event: [],
+  current: {},
   fetching: false,
   fetched: false,
   error: null,
@@ -43,7 +42,7 @@ export const eventReducers = (state = initialState, action) => {
         ...state,
         fetching: false,
         fetched: true,
-        event: action.payload,
+        current: action.payload,
       };
     }
 
