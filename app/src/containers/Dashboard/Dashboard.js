@@ -13,40 +13,40 @@ export default class Dashboard extends React.Component {
         <Tab.Container id='left-tabs-example' defaultActiveKey='first'>
           <Row className='clearfix'>
             <Col sm={4}>
-             <Nav bsStyle='pills' stacked>
-               <NavItem eventKey='first'>
-                 My Cabinet
-              </NavItem>
-              <NavItem eventKey='second'>
-                My Events
-              </NavItem>
-              <NavItem eventKey='third'>
-                Invited
-              </NavItem>
-              <NavItem eventKey='fourth'>
-                Create New Event
-              </NavItem>
-             </Nav>
+              <Nav bsStyle='pills' stacked>
+                <NavItem eventKey='first'>
+                  My Cabinet
+                </NavItem>
+                <NavItem eventKey='second'>
+                  My Events
+                </NavItem>
+                <NavItem eventKey='third'>
+                  Invited
+                </NavItem>
+                <NavItem eventKey='fourth'>
+                  Create New Event
+                </NavItem>
+              </Nav>
             </Col>
             <Col sm={8}>
-            <Tab.Content animation>
+              <Tab.Content animation>
                 <Tab.Pane eventKey='first'>
-                    Profile component will be here
+                  Profile component will be here
                 </Tab.Pane>
                 <Tab.Pane eventKey='second'>
-                   <EventsList />
+                  <EventsList />
                 </Tab.Pane>
                 <Tab.Pane eventKey='third'>
-                    My guests will he here
+                  My guests will he here
                 </Tab.Pane>
                 <Tab.Pane eventKey='fourth'>
-                    Create new event coponent will be here
+                  Create new event coponent will be here
                 </Tab.Pane>
-            </Tab.Content>
+              </Tab.Content>
             </Col>
-        </Row>
-    </Tab.Container>
-    </div>
+          </Row>
+        </Tab.Container>
+      </div>
     );
   }
 }
