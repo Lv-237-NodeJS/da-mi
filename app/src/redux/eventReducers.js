@@ -1,23 +1,23 @@
-const FETCH_EVENTS = 'FETCH_EVENTS';
-const FETCH_EVENTS_FULFILLED = 'FETCH_EVENTS_FULFILLED';
-const FETCH_EVENTS_REJECTED = 'FETCH_EVENTS_REJECTED';
+const FETCH_EVENT_BY_ID = 'FETCH_EVENT_BY_ID';
+const FETCH_EVENT_BY_ID_FULFILLED = 'FETCH_EVENT_BY_ID_FULFILLED';
+const FETCH_EVENT_BY_ID_REJECTED = 'FETCH_EVENT_BY_ID_REJECTED';
 import  API  from '../helper/constants';
 
 import request from 'superagent';
 
-export const fetchEvents = () => {
+export const fetchEventById = eventId => {
   return (dispatch) => {
-    request
-    .get(API.HOST + API.PORT + '/api/events')
+    return request
+    .get(API.HOST + API.PORT + eventId)
     .end((err, res) => {
       if (err) {
         dispatch({
-          type: FETCH_EVENTS_REJECTED,
+          type: FETCH_EVENT_BY_ID_REJECTED,
           payload: err,
         });
       } else {
         dispatch({
-          type: FETCH_EVENTS_FULFILLED,
+          type: FETCH_EVENT_BY_ID_FULFILLED,
           payload: res.body,
         });
       }
@@ -25,33 +25,34 @@ export const fetchEvents = () => {
   };
 };
 
-export const eventReducers = (
-  state = {
-    events: [],
-    fetching: false,
-    fetched: false,
-    error: null,
-  }, action) => {
+const initialState = {
+  event: [],
+  fetching: false,
+  fetched: false,
+  error: null,
+};
+
+export const eventReducers = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_EVENTS: {
+    case FETCH_EVENT_BY_ID: {
       return { ...state, fetching: true };
     }
 
-    case FETCH_EVENTS_FULFILLED: {
+    case FETCH_EVENT_BY_ID_FULFILLED: {
       return {
-              ...state,
-              fetching: false,
-              fetched: true,
-              events: action.payload,
-            };
+        ...state,
+        fetching: false,
+        fetched: true,
+        event: action.payload,
+      };
     }
 
-    case FETCH_EVENTS_REJECTED: {
+    case FETCH_EVENT_BY_ID_REJECTED: {
       return {
-              ...state,
-              fetching: false,
-              error: action.payload,
-            };
+        ...state,
+        fetching: false,
+        error: action.payload,
+      };
     }
 
     default: return state;
