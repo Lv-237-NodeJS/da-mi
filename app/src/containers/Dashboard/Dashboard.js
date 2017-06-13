@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Nav, NavItem, Tab, Row, Col } from 'react-bootstrap';
 
-import EventsList from './EventsList';
+import EventsList from './../Events/EventsList';
 
 export default class Dashboard extends React.Component {
 
