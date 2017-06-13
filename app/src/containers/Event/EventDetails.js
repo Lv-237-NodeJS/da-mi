@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Nav, Col, Button, ButtonToolbar, PageHeader, } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -6,26 +6,22 @@ import { bindActionCreators } from 'redux';
 import * as eventActions from '../../redux/eventReducers';
 
 class EventDetails extends React.Component {
-
   constructor (props, context) {
     super(props, context);
     this.state = {
-      events: [],
+      event: [],
     };
   }
 
-  componentDidMount() {
-    this.props.actions.fetchEvents(this.state.events);
-  }
-
   componentWillMount() {
-    const data = this.props.events;
-    this.setState({ events: data.events });
+    this.props.actions.fetchEventById(this.props.params.id);
+    const data = this.props.event;
+    this.setState({ event: data.event });
   }
 
   render() {
     const id = this.props.params.id;
-    const event = this.state.events.filter(item => item.id == id);
+    const event = this.state.event;
 
     return (
       <Grid>
@@ -45,16 +41,16 @@ class EventDetails extends React.Component {
             </Nav>
           </Col>
           <Col sm={12} md={8}>
-          <PageHeader className="text-center"> { event[0].name } </PageHeader>
+          <PageHeader className="text-center"> { event.name } </PageHeader>
             <ButtonToolbar>
               <Button bsStyle="primary"> Edit </Button>
               <Button bsStyle="danger"> Delete </Button>
             </ButtonToolbar>
             <div>
                 <h3>Details: </h3>
-                <p><strong> Date </strong>: { event[0].date_event } </p>
-                <p><strong> Place </strong>: { event[0].location_name } </p>
-                <p><strong> Description </strong>: { event[0].description } </p>
+                <p><strong> Date </strong>: { event.date_event } </p>
+                <p><strong> Place </strong>: { event.location_name } </p>
+                <p><strong> Description </strong>: { event.description } </p>
             </div>
             { this.props.children }
           </Col>
@@ -65,7 +61,7 @@ class EventDetails extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    events: state.events,
+    event: state.event,
   });
 
 const mapDispatchToProps = dispatch => ({
