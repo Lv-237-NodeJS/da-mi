@@ -1,6 +1,5 @@
 {
    "preset": "google",
-   "esnext": true,
    "requireCamelCaseOrUpperCaseIdentifiers": {"ignoreProperties": true },
    "maximumLineLength": 100,
    "validateIndentation": 2
