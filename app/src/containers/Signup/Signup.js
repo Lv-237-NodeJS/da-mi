@@ -18,7 +18,7 @@ let FieldGroup = ({className, label, isErrors, ...props}) => (
   </div>
 );
 
-class Signup extends React.Component {
+export default class Signup extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
