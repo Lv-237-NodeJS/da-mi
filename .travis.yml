@@ -12,3 +12,4 @@ before_script:
 script:
   - sass-lint -v -q 'app/**/*.scss'
   - eslint ./app/src
+  - eslint ./test
