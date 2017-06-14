@@ -7,7 +7,6 @@ import * as profileActions from '../../redux/ProfileReducers';
 class Profile extends React.Component {
 
   constructor(props, context) {
-    console.log('constructor');
     super(props, context);
 
     this.state = {
@@ -16,9 +15,8 @@ class Profile extends React.Component {
   };
 
   componentWillMount() {
-    this.props.actions.retrieveProfile();
+    this.props.actions.retrieveProfile(this.props.userId);
     this.setState({profile: this.props.profile});
-    console.log('wil mount', this.state.profile);
   };
 
   render() {
@@ -34,9 +32,9 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state', state);
   return {
     profile: state.profile.profile,
+    userId: state.login.userId
   };
 };
 

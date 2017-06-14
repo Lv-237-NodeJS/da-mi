@@ -18,16 +18,16 @@ class ProfileDropDown extends React.Component {
   render() {
     return (
       <div >
-          <NavDropdown style={{display: 'inline-block'}} eventKey={5} id='basic-nav-dropdown' title={this.props.profile.firstName + ' ' + this.props.profile.lastName}>
-             <LinkContainer to='/profile'>
-                <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
-             </LinkContainer>
-                <MenuItem eventKey={5.2} onClick={this.props.actions.logout}>Log Out</MenuItem>
-         </NavDropdown>
-         <span> 
-              <Image src='http://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png'circle width='45'/>
+        <NavDropdown style={{display: 'inline-block'}} eventKey={5} id='basic-nav-dropdown' title={this.props.profile.firstName + ' ' + this.props.profile.lastName}>
+          <LinkContainer to='/profile'>
+            <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
+          </LinkContainer>
+          <MenuItem eventKey={5.2} onClick={this.props.actions.logout}>Log Out</MenuItem>
+        </NavDropdown>
+        <span> 
+          <Image src='http://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png'circle width='45'/>
         </span>
-     </div>
+      </div>
     );
   }
 }
@@ -38,7 +38,10 @@ const mapStatetoProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(loginActions, profileActions, dispatch)
+  actions: {
+    loginActions: bindActionCreators(loginActions, dispatch),
+    profileActions: bindActionCreators(profileActions, dispatch)
+  }
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ProfileDropDown);

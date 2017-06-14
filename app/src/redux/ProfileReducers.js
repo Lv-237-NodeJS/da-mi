@@ -6,24 +6,23 @@ const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';
 const RETRIEVE_PROFILE_FAILURE = 'RETRIEVE_PROFILE_FAILURE';
 
 
-export const retrieveProfile = () => {
-  const userId = sessionStorage.getItem('userId');
+export const retrieveProfile = (userId) => {
   return (dispatch) => {
     return request
-    .get(API.HOST + API.PORT + '/api/user/' + userId)
-    .end((err, res) => {
-      if (err) {
-        dispatch({
-          type: RETRIEVE_PROFILE_FAILURE,
-          payload: err,
-        });
-      } else {
-        dispatch({
-          type: RETRIEVE_PROFILE_SUCCESS,
-          payload: res.body
-        });
-      }
-    });
+      .get(API.HOST + API.PORT + '/api/user/' + userId)
+      .end((err, res) => {
+        if (err) {
+          dispatch({
+            type: RETRIEVE_PROFILE_FAILURE,
+            payload: err,
+          });
+        } else {
+          dispatch({
+            type: RETRIEVE_PROFILE_SUCCESS,
+            payload: res.body
+          });
+        }
+      });
   };
 };
 
