@@ -12,23 +12,23 @@ class Profile extends React.Component {
     this.state = {
       profile: {},
     };
-  };
+  }
 
   componentWillMount() {
     this.props.actions.retrieveProfile(this.props.userId);
     this.setState({profile: this.props.profile});
-  };
+  }
 
   render() {
 
     return (
       <div>
         <h1>Manage My Profile Data</h1>
-          <p>First Name: {this.props.profile.firstName}</p>
-          <p>Last Name: {this.props.profile.lastName}</p>
+        <p>First Name: {this.props.profile.firstName}</p>
+        <p>Last Name: {this.props.profile.lastName}</p>
       </div>
     );
-  };
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {

@@ -11,7 +11,7 @@ class ProfileDropDown extends React.Component {
 
   componenWillMount() {
     this.props.actions.checkToken();
-    this.props.actions.retrieveProfile();
+    this.props.actions.retrieveProfile(this.props.userId);
     this.setState({profile: this.props.profile});
   };
 
@@ -38,7 +38,7 @@ const mapStatetoProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: {
+  actions:{
     loginActions: bindActionCreators(loginActions, dispatch),
     profileActions: bindActionCreators(profileActions, dispatch)
   }

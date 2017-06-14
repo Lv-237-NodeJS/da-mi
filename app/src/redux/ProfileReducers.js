@@ -36,29 +36,28 @@ const initialState = {
 export const profileReducers = (state = initialState, action) => {
   switch (action.type) {
 
-    case RETRIEVE_PROFILE: {
-      return {...state, retrieving: true};
-    }
-
-    case RETRIEVE_PROFILE_SUCCESS: {
-      return {
-        ...state,
-        retrieving: false,
-        retrieved: true,
-        profile: action.payload
-      };
-    }
-
-    case RETRIEVE_PROFILE_FAILURE: {
-      return {
-        ...state,
-        retrieving: false,
-        error: action.payload
-      };
-    }
-
-    default: return state;
+  case RETRIEVE_PROFILE: {
+    return {...state, retrieving: true};
   }
+
+  case RETRIEVE_PROFILE_SUCCESS: {
+    return {
+      ...state,
+      retrieving: false,
+      retrieved: true,
+      profile: action.payload
+    };
+  }
+
+  case RETRIEVE_PROFILE_FAILURE: {
+    return {
+      ...state,
+      retrieving: false,
+      error: action.payload
+    };
+  }
+
+  default: return state;}
 };
 
 export default profileReducers;
