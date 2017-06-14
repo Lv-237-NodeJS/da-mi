@@ -10,34 +10,35 @@ const CHECK_TOKEN = 'CHECK_TOKEN';
 
 export default function loginReduser(state = {}, action) {
   switch (action.type) {
-    case LOGIN_USER_FAILURE:
-      return {
-        illegalInput: true
-      };
-    case LOGIN_USER_SUCCESS:
-      return {
-        illegalInput: false,
-        isAuth: true
-      };
-    case LOGOUT_USER:
-      return {
-        isAuth: false
-      };
-    case CHECK_TOKEN:
-      return {
-        isAuth: action.isAuth
-      };
-    default:
-      return state;
-  }
+  case LOGIN_USER_FAILURE:
+    return {
+      illegalInput: true
+    };
+  case LOGIN_USER_SUCCESS:
+    return {
+      illegalInput: false,
+      isAuth: true,
+      userId: action.userId
+    };
+  case LOGOUT_USER:
+    return {
+      isAuth: false
+    };
+  case CHECK_TOKEN:
+    return {
+      isAuth: action.isAuth
+    };
+  default:
+    return state;
+ }
 }
 
 export function loginUserSuccess(token, userId) {
   sessionStorage.setItem('token', token);
-  sessionStorage.setItem('userId', userId);
   browserHistory.push('/events');
   return {
-    type: LOGIN_USER_SUCCESS
+    type: LOGIN_USER_SUCCESS,
+    userId: userId
   };
 }
 
