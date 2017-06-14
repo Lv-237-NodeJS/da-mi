@@ -5,24 +5,20 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/Login';
+import * as profileActions from '../../redux/ProfileReducers';
 
 class ProfileDropDown extends React.Component {
-//   constructor(porps) {
-//     super(props);
-//     this.state = {
-//         firstName: null,
-//         lastName: null,
-//       };
-//   }
 
   componenWillMount() {
     this.props.actions.checkToken();
+    this.props.actions.retrieveProfile();
+    this.setState({profile: this.props.profile});
   };
 
   render() {
     return (
       <div >
-          <NavDropdown style={{display: 'inline-block'}} eventKey={5} id='basic-nav-dropdown' title='First Name Last Name'>
+          <NavDropdown style={{display: 'inline-block'}} eventKey={5} id='basic-nav-dropdown' title={this.props.profile.firstName + ' ' + this.props.profile.lastName}>
              <LinkContainer to='/profile'>
                 <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
              </LinkContainer>
@@ -37,11 +33,12 @@ class ProfileDropDown extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  isAuth: state.login.isAuth
+  isAuth: state.login.isAuth,
+  profile: state.profile.profile
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(loginActions, dispatch)
+  actions: bindActionCreators(loginActions, profileActions, dispatch)
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ProfileDropDown);

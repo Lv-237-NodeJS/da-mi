@@ -5,8 +5,9 @@ const RETRIEVE_PROFILE = 'RETRIEVE_PROFILE';
 const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';
 const RETRIEVE_PROFILE_FAILURE = 'RETRIEVE_PROFILE_FAILURE';
 
+
 export const retrieveProfile = () => {
-  let userId = sessionStorage.getItem('userId');
+  const userId = sessionStorage.getItem('userId');
   return (dispatch) => {
     return request
     .get(API.HOST + API.PORT + '/api/user/' + userId)
@@ -27,10 +28,7 @@ export const retrieveProfile = () => {
 };
 
 const initialState = {
-  profile: {
-    firstName: null,
-    lastName: null,
-  },
+  profile: {},
   retrieving: false,
   retrieved: false,
   error: null

@@ -7,46 +7,38 @@ import * as profileActions from '../../redux/ProfileReducers';
 class Profile extends React.Component {
 
   constructor(props, context) {
+    console.log('constructor');
     super(props, context);
 
     this.state = {
-        firstName: null,
-        lastName: null
-      };
-  }
+      profile: {},
+    };
+  };
 
   componentWillMount() {
-    this.props.actions.retrieveProfile(this.state.profile);
-    const data = this.props.profile;
-    this.setState({
-      firstName: data.profile.firstName,
-      lastName: data.profle.lastName,
-    });
-    // let userId = sessionStorage.getItem('userId')
-    // request
-    //     .get(API.HOST + API.PORT + '/api/user/' + userId)
-    //     .accept('json')
-    //     .set('Content-Type', 'application/json')
-    //     .then((response) => {
-    //         this.setState({
-    //             firstName: response.body.firstName,
-    //             lastName: response.body.lastName,
-    //           });
-    //       });
+    this.props.actions.retrieveProfile();
+    this.setState({profile: this.props.profile});
+    console.log('wil mount', this.state.profile);
   };
 
   render() {
-    const profileNode = this.props.profile.profile.map((item) => {
-      return (
-        <div>
-          <h1>Manage My Profile Data</h1>
-            <p>First Name: {this.props.state.firstName}</p>
-            <p>Last Name: {this.props.state.lastName}</p>
-        </div>
-      );
-    });
-  }
+
+    return (
+      <div>
+        <h1>Manage My Profile Data</h1>
+          <p>First Name: {this.props.profile.firstName}</p>
+          <p>Last Name: {this.props.profile.lastName}</p>
+      </div>
+    );
+  };
 }
+
+const mapStateToProps = (state, ownProps) => {
+  console.log('state', state);
+  return {
+    profile: state.profile.profile,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -54,4 +46,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapDispatchToProps, mapDispatchToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
