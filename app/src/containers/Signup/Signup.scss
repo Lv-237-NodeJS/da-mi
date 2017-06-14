@@ -1,18 +1,18 @@
 @import '../../common.scss';
 
-$baseWidthRegistration: 250px;
-$containerWidthRegistration: 300px;
+$inside-width: 250px;
+$outside-width: 300px;
+$margin: auto;
 
 .Signup {
-  width: $baseWidthRegistration;
-  margin: $marginBase; 
+  width: $inside-width;
+  margin: $margin; 
 }
 
 .containerLog {
-  border: $borderTypeBase $borderWidthBase $white;
-  border-radius: $borderRadiusBaseMiddle;
-  padding: $paddingBaseMiddle $paddingBaseSmall $paddingBaseMiddle $paddingBaseSmall;
-  width: $containerWidthRegistration;
-  background-color: $lightseagreen;
-  margin: $marginBase;
+  width: $outside-width;
+  border: $border1;
+  border-radius: $border-radius;
+  margin: $margin;
+  padding: $padding;
 }
