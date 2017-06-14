@@ -29,6 +29,10 @@
             "error",
             "single"
         ],
+        "eol-last": [
+            "error",
+            "always"
+        ],
         "semi": [
             "error",
             "always"
