@@ -1,6 +1,5 @@
 import React from 'react';
 import { Nav, NavItem, Tab, Row, Col } from 'react-bootstrap';
-
 import EventsList from './../Events/EventsList';
 
 export default class Dashboard extends React.Component {
@@ -13,8 +12,17 @@ export default class Dashboard extends React.Component {
           <Row className='clearfix'>
             <Col sm={4}>
               <Nav bsStyle='pills' stacked>
-                <NavItem eventKey={index}>
-                  ['My Cabinet', 'My Events', 'Invitations', 'Create New Event'].map.((title, index) => <NavItem eventKey={index}> {title} </NavItem>});
+                <NavItem eventKey='first'>
+                  My Cabinet
+                </NavItem>
+                <NavItem eventKey='second'>
+                  My Events
+                </NavItem>
+                <NavItem eventKey='third'>
+                  Invited
+                </NavItem>
+                <NavItem eventKey='fourth'>
+                  Create New Event
                 </NavItem>
               </Nav>
             </Col>
