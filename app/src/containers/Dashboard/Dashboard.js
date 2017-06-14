@@ -27,7 +27,7 @@ export default class Dashboard extends React.Component {
                   <EventsList />,
                   'My invitations will be here',
                   'Create new Event component will be here'
-                 ].map((content, index) => <Tab.Pane eventKey={index}> {content} </Tab.Pane>)}
+                ].map((content, index) => <Tab.Pane eventKey={index}> {content} </Tab.Pane>)}
               </Tab.Content>
             </Col>
           </Row>
