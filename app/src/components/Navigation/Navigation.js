@@ -31,8 +31,8 @@ class Navigation extends React.Component {
           </Nav>
           {this.props.isAuth &&
             <Button className='pull-right'
-                    type='button'
-                    onClick={this.props.actions.logout}>Log out</Button>
+              type='button'
+              onClick={this.props.actions.logout}>Log out</Button>
           }
         </Navbar>
       </div>
