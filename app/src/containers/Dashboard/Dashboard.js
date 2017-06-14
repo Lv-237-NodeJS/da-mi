@@ -12,34 +12,14 @@ export default class Dashboard extends React.Component {
           <Row className='clearfix'>
             <Col sm={4}>
               <Nav bsStyle='pills' stacked>
-                <NavItem eventKey='first'>
-                  My Cabinet
-                </NavItem>
-                <NavItem eventKey='second'>
-                  My Events
-                </NavItem>
-                <NavItem eventKey='third'>
-                  Invited
-                </NavItem>
-                <NavItem eventKey='fourth'>
-                  Create New Event
-                </NavItem>
+                  {['My Cabinet', 'My Events', 'Invitations', 'Create New Event'].map(
+                    (title, index) => <NavItem eventKey={index}> {title} </NavItem>)}
               </Nav>
             </Col>
             <Col sm={8}>
               <Tab.Content animation>
-                <Tab.Pane eventKey='first'>
-                  Profile component will be here
-                </Tab.Pane>
-                <Tab.Pane eventKey='second'>
-                  <EventsList />
-                </Tab.Pane>
-                <Tab.Pane eventKey='third'>
-                  My guests will he here
-                </Tab.Pane>
-                <Tab.Pane eventKey='fourth'>
-                  Create new event coponent will be here
-                </Tab.Pane>
+                {['Profile Component will be here', <EventsList />, 'My invitations will be here', 'Create new Event component will be here'].map(
+                  (content, index) => <Tab.Pane eventKey={index}> {content} </Tab.Pane>)}
               </Tab.Content>
             </Col>
           </Row>
