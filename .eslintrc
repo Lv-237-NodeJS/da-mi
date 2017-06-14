@@ -1,11 +1,10 @@
 {
-   "extends": "google",
+   "extends": ["eslint:recommended", "google"],
    "env": {
      "es6": true,
      "node": true,
      "browser": true
     },
-    "extends": "eslint:recommended",
     "ecmaFeatures": {
       "jsx": true
     },
