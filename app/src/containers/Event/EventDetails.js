@@ -7,7 +7,7 @@ import * as eventActions from '../../redux/eventReducers';
 
 @connect( (state, ownProps) => ({ 
   event: state.event
-  }), dispatch => ({  actions: bindActionCreators(eventActions, dispatch)}))
+  }), dispatch => ({  actions: bindActionCreators(eventActions, dispatch) }))
 
 export default class EventDetails extends React.Component {
   constructor (props, context) {
