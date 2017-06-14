@@ -6,6 +6,7 @@ before_script:
   - npm install -g npm@'>=4.0.0'
   - npm install -g sass-lint
   - npm install -g eslint
+  - nmp install -g babel-eslint
   - npm install -g eslint-plugin-react@latest
 
 script:
