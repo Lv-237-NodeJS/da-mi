@@ -1,44 +1,60 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Table, Button } from 'react-bootstrap';
+import { ListGroup,ListGroupItem} from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as eventsActions from '../../redux/EventsReducers';
 
-export default class EventsList extends React.Component {
+ class EventsList extends React.Component {
+
+  constructor (props, context) {
+    super(props, context);
+    this.state = {
+      events: [],
+    };
+  }
+
+  componentWillMount() {
+    this.props.actions.retrieveEvents(this.state.events);
+    const data = this.props.events;
+    this.setState({ events: data.events })
+  }
+
   render() {
+
+    const id = this.props.id;
+    const eventNode = this.props.events.events.map((item) => {
+      return (
+        <Link
+            to={'/events/' + item.id}
+            className='list-group-item'
+            key={item.id} >
+            {item.name}
+        </Link>
+      );
+    });
+
     return (
       <div>
-        <h1>My Mock Events</h1>
-        <Table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Date</th>
-              <th>Place</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Toms Birthday Party</td>
-              <td>06/29/2017  6:30 pm</td>
-              <td>Lviv, Street 1, 22/2</td>
-              <td> <Button>Accept</Button>  <Button>Decline</Button></td>
-            </tr>
-            <tr>
-              <td>Wedding 1</td>
-              <td>06/29/2017  6:30 pm</td>
-              <td>Lviv, Street 1, 22/2</td>
-              <td> <Button>Edit</Button>  <Button>Delete</Button></td>
-            </tr>
-            <tr>
-              <td>Wedding 1</td>
-              <td>06/29/2017  6:30 pm</td>
-              <td>Lviv, Street 1, 22/2</td>
-              <td> <Button>Edit</Button>  <Button>Delete</Button></td>
-            </tr>
-          </tbody>
-        </Table>
-        {this.props.children}      
+      <h2>Events</h2>
+      <ListGroup>
+        <ListGroupItem> {eventNode}</ListGroupItem>
+      </ListGroup>
       </div>
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    events: state.events,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    actions: bindActionCreators(eventsActions, dispatch),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsList);
