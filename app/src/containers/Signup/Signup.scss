@@ -1,17 +1,11 @@
 @import '../../common.scss';
 
-$inside-width: 250px;
-$outside-width: 300px;
-$margin: auto;
-
 .Signup {
-  width: $inside-width;
   margin: $margin; 
 }
 
 .containerLog {
-  width: $outside-width;
-  border: $border1;
+  border: $border-white;
   border-radius: $border-radius;
   margin: $margin;
   padding: $padding;
