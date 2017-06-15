@@ -4,7 +4,7 @@ import items from './Test';
 import login from './Login';
 import event from './eventReducers';
 
-export default combineReducers({
+export default combineReducers({  
   items,
   login,
   event,

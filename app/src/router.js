@@ -19,6 +19,10 @@ const Routes = (
       <Route path='gifts' component={Gift}/>
     </Route> 
     <Route path='events' component={Dashboard}/>
+    <Route path='events/:id' component={EventDetails}>
+      <Route path='guests' component={Guest}/>
+      <Route path='gifts' component={Gift}/>
+    </Route>
   </Route>
 );
 
