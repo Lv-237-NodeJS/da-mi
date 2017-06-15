@@ -9,7 +9,7 @@ export default class Home extends React.Component {
     
     return (
       <Grid>
-      <Message />
+        <Message />
         <Row className="show-grid">
           <Col sm={12} md={8}>
             <PageHeader className="text-center">Da-Mi</PageHeader>

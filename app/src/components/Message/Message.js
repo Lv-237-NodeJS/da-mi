@@ -27,12 +27,12 @@ class Message extends React.Component {
 }
 
 const mapStatetoProps = (state, ownProps) => ({
-    message: state.signup.message,
-    show: state.signup.show  
+  message: state.signup.message,
+  show: state.signup.show  
 });
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(showActions, dispatch)
+  actions: bindActionCreators(showActions, dispatch)
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Message);
