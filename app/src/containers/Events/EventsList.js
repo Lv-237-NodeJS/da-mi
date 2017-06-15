@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventsActions from '../../redux/EventsReducers';
 
- class EventsList extends React.Component {
+class EventsList extends React.Component {
 
   constructor (props, context) {
     super(props, context);
@@ -17,7 +17,7 @@ import * as eventsActions from '../../redux/EventsReducers';
   componentWillMount() {
     this.props.actions.retrieveEvents(this.state.events);
     const data = this.props.events;
-    this.setState({ events: data.events })
+    this.setState({ events: data.events });
   }
 
   render() {
@@ -26,20 +26,20 @@ import * as eventsActions from '../../redux/EventsReducers';
     const eventNode = this.props.events.events.map((item) => {
       return (
         <Link
-            to={'/events/' + item.id}
-            className='list-group-item'
-            key={item.id} >
-            {item.name}
+          to={'/events/' + item.id}
+          className='list-group-item'
+          key={item.id} >
+          {item.name}
         </Link>
       );
     });
 
     return (
       <div>
-      <h2>Events</h2>
-      <ListGroup>
-        <ListGroupItem> {eventNode}</ListGroupItem>
-      </ListGroup>
+        <h2>Events</h2>
+        <ListGroup>
+          <ListGroupItem> {eventNode}</ListGroupItem>
+        </ListGroup>
       </div>
     );
   }
