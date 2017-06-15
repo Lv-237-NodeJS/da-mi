@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+
+import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Nav, Col, Button, ButtonToolbar, PageHeader, } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -52,7 +53,7 @@ class EventDetails extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   event: state.event,
 });
 
