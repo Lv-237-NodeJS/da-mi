@@ -21,28 +21,28 @@ class EventDetails extends React.Component {
       <Grid>
         <Row className="show-grid">
           <Col sm={12} md={4}>
-          <PageHeader className="text-center"> Menu </PageHeader>
-            <Link className="list-group-item" to={'/events/' + id + '/guests'}>
-              Guests
-            </Link>
-            <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
-              Gifts
-            </Link>
-            <Link className="list-group-item" to='/events'>
-              Back to Events
-            </Link>
-          </Col>
-          <Col sm={12} md={8}>
-          <PageHeader className="text-center"> { event.name } </PageHeader>
+            <PageHeader className="text-center"> Menu </PageHeader>
+              <Link className="list-group-item" to={'/events/' + id + '/guests'}>
+                Guests
+              </Link>
+              <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
+                Gifts
+              </Link>
+              <Link className="list-group-item" to='/events'>
+                Back to Events
+              </Link>
+            </Col>
+            <Col sm={12} md={8}>
+            <PageHeader className="text-center"> { event.name } </PageHeader>
             <ButtonToolbar>
               <Button bsStyle="primary"> Edit </Button>
               <Button bsStyle="danger"> Delete </Button>
             </ButtonToolbar>
             <div>
-                <h3>Details: </h3>
-                <p><strong> Date </strong>: { event.date_event } </p>
-                <p><strong> Place </strong>: { event.location_name } </p>
-                <p><strong> Description </strong>: { event.description } </p>
+              <h3>Details: </h3>
+              <p><strong> Date </strong>: { event.date_event } </p>
+              <p><strong> Place </strong>: { event.location_name } </p>
+              <p><strong> Description </strong>: { event.description } </p>
             </div>
             { this.props.children }
           </Col>
@@ -53,11 +53,11 @@ class EventDetails extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    event: state.event,
-  });
+  event: state.event,
+});
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(eventActions, dispatch),
-  });
+  actions: bindActionCreators(eventActions, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
