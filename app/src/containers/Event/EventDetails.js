@@ -22,15 +22,15 @@ class EventDetails extends React.Component {
         <Row className="show-grid">
           <Col sm={12} md={4}>
             <PageHeader className="text-center"> Menu </PageHeader>
-              <Link className="list-group-item" to={'/events/' + id + '/guests'}>
-                Guests
-              </Link>
-              <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
-                Gifts
-              </Link>
-              <Link className="list-group-item" to='/events'>
-                Back to Events
-              </Link>
+            <Link className="list-group-item" to={'/events/' + id + '/guests'}>
+              Guests
+            </Link>
+            <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
+              Gifts
+            </Link>
+            <Link className="list-group-item" to='/events'>
+              Back to Events
+            </Link>
             </Col>
             <Col sm={12} md={8}>
             <PageHeader className="text-center"> { event.name } </PageHeader>
