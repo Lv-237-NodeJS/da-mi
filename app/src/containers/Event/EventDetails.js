@@ -10,13 +10,7 @@ import * as eventActions from '../../redux/eventReducers';
   }), dispatch => ({  actions: bindActionCreators(eventActions, dispatch) }))
 
 export default class EventDetails extends React.Component {
-  constructor (props, context) {
-    super(props, context);
-    this.state = {
-      current: {},
-    };
-  }
-
+  
   componentWillMount() {
     this.props.actions.fetchEventById(this.props.params.id);
     this.setState({ event: this.props.event.current });
