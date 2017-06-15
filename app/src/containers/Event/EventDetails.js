@@ -5,12 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventActions from '../../redux/eventReducers';
 
-@connect( (state, ownProps) => ({ 
-  event: state.event
-  }), dispatch => ({  actions: bindActionCreators(eventActions, dispatch) }))
+class EventDetails extends React.Component {
 
-export default class EventDetails extends React.Component {
-  
   componentWillMount() {
     this.props.actions.fetchEventById(this.props.params.id);
     this.setState({ event: this.props.event.current });
@@ -55,3 +51,13 @@ export default class EventDetails extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state, ownProps) => ({
+    event: state.event,
+  });
+
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(eventActions, dispatch),
+  });
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
