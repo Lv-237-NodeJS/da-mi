@@ -9,7 +9,6 @@ class Message extends React.Component {
   hide = () => {
     this.props.actions.showModal(false);
   };
-
   render() {
     return (
       <Modal
