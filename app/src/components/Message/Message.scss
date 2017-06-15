@@ -1,28 +1,10 @@
 @import '../../common.scss';
 
-$width: 400px;
-$left: 30%;
-$top: 10%;
-$position: absolute;
-$margin: auto;
-
 #modal-container {
-  position: $position; 
-  left: $left;
-  top: $top;
   margin: $margin;
-  width: $width;
-  border: $border2;
+  border: $border-green-dark;
   border-radius: $border-radius;
   background-color: $mint;
   padding: $padding;
   color: $green-dark;
-}
-
-#modButton {
-  border-color: $green-dark;
-}
-
-#modButton:hover {
-  border-color: $green-ligth;
 }
