@@ -1,6 +1,6 @@
 import React from 'react';
 import { Form, FormGroup, ControlLabel, FormControl, Col, Button }
-from 'react-bootstrap';
+  from 'react-bootstrap';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
