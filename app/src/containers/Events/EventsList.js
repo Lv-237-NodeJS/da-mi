@@ -45,16 +45,15 @@ class EventsList extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    events: state.events,
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+ 
+  events: state.events,
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(eventsActions, dispatch),
-  };
-};
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  actions: bindActionCreators(eventsActions, dispatch),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsList);
