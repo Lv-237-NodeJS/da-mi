@@ -45,7 +45,7 @@ class EventsList extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
  
   events: state.events,
 
