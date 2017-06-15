@@ -31,8 +31,8 @@ class EventDetails extends React.Component {
             <Link className="list-group-item" to='/events'>
               Back to Events
             </Link>
-            </Col>
-            <Col sm={12} md={8}>
+          </Col>
+          <Col sm={12} md={8}>
             <PageHeader className="text-center"> { event.name } </PageHeader>
             <ButtonToolbar>
               <Button bsStyle="primary"> Edit </Button>
