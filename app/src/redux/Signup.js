@@ -1,13 +1,8 @@
 import request from '../helper/request';
 import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-<<<<<<< fc32869f6a43c8bee4aa7cf3b5e60e3da2bdfd54
-import messages from '../helper/messages.js';
-import API from '../helper/constants';
-=======
 import messages from '../helper/messages';
-import  {API}  from '../helper/constants';
->>>>>>> modify route in redux
+import  { API }  from '../helper/constants';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
