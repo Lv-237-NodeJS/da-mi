@@ -7,9 +7,13 @@ const RETRIEVE_PROFILE_FAILURE = 'RETRIEVE_PROFILE_FAILURE';
 
 
 export const retrieveProfile = (userId) => {
+
+  let token = sessionStorage.getItem('token');
+
   return (dispatch) => {
     return request
       .get(API.HOST + API.PORT + '/api/user/' + userId)
+      .set('x-access-token', token)
       .end((err, res) => {
         if (err) {
           dispatch({
@@ -36,28 +40,29 @@ const initialState = {
 export const profileReducers = (state = initialState, action) => {
   switch (action.type) {
 
-  case RETRIEVE_PROFILE: {
-    return {...state, retrieving: true};
-  }
+    case RETRIEVE_PROFILE: {
+      return {...state, retrieving: true};
+    }
 
-  case RETRIEVE_PROFILE_SUCCESS: {
-    return {
-      ...state,
-      retrieving: false,
-      retrieved: true,
-      profile: action.payload
-    };
-  }
+    case RETRIEVE_PROFILE_SUCCESS: {
+      return {
+        ...state,
+        retrieving: false,
+        retrieved: true,
+        profile: action.payload
+      };
+    }
 
-  case RETRIEVE_PROFILE_FAILURE: {
-    return {
-      ...state,
-      retrieving: false,
-      error: action.payload
-    };
-  }
+    case RETRIEVE_PROFILE_FAILURE: {
+      return {
+        ...state,
+        retrieving: false,
+        error: action.payload
+      };
+    }
 
-  default: return state;}
+    default: return state;
+  }
 };
 
 export default profileReducers;
