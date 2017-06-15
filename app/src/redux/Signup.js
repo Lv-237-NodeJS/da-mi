@@ -1,8 +1,12 @@
+<<<<<<< a053ff66e59c68934d3be07121ab3b88a5f4a9ae
 import request from '../helper/request';
+=======
+import request from 'superagent';
+>>>>>>> return "export default connect"
 import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-import messages from '../helper/messages';
-import  { API }  from '../helper/constants';
+import messages from '../helper/messages.js';
+import API from '../helper/constants';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
