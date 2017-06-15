@@ -6,4 +6,3 @@ export Home from './Home/Home';
 export Main from './Main/Main';
 export Maps from './Maps/Maps';
 export Test from './Test/Test';
-export Message from './Message/Message';
