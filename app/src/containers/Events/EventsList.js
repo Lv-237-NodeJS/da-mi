@@ -7,15 +7,8 @@ import * as eventsActions from '../../redux/EventsReducers';
 
 class EventsList extends React.Component {
 
-  constructor (props, context) {
-    super(props, context);
-    this.state = {
-      events: []
-    };
-  }
-
   componentWillMount() {
-    this.props.actions.retrieveEvents(this.state.events);
+    this.props.actions.retrieveEvents();
     this.setState({ eventsList: this.props.eventsList });
   }
 
