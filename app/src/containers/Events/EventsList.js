@@ -16,13 +16,12 @@ class EventsList extends React.Component {
 
   componentWillMount() {
     this.props.actions.retrieveEvents(this.state.events);
-    const data = this.props.eventsList;
-    this.setState({ eventsList: data.events });
+    this.setState({ eventsList: this.props.eventsList });
   }
 
   render() {
     const id = this.props.id;
-    const eventNode = this.props.eventsList.events.map((item) => {
+    const eventNode = this.props.eventsList.map((item) => {
       return (
         <Link
           to={'/events/' + item.id}
@@ -44,11 +43,11 @@ class EventsList extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  eventsList: state.eventsList
+const mapStateToProps = state => ({
+  eventsList: state.eventsList.events
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(eventsActions, dispatch)
 });
 
