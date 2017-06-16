@@ -5,12 +5,10 @@ import  { API }  from './../helper/constants';
 import request from './../helper/request';
 
 export const retrieveEvents = () => {
-  let token = sessionStorage.getItem('token');
 
   return dispatch => {
-    return request
+    return request()
       .get(API.HOST + API.PORT + '/api/events')
-      .set('x-access-token', token)
       .end((err, res) => {
         if (err) {
           dispatch({
