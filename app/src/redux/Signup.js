@@ -1,8 +1,12 @@
+<<<<<<< 9c29bc7b9edf6d6521ab5e4e023a9854dc0aee6a
 <<<<<<< a053ff66e59c68934d3be07121ab3b88a5f4a9ae
 import request from '../helper/request';
 =======
 import request from 'superagent';
 >>>>>>> return "export default connect"
+=======
+import request from '../helper/request';
+>>>>>>> change superagent on request
 import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import messages from '../helper/messages.js';
