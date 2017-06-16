@@ -30,7 +30,7 @@ const initialState = {
   events: [],
   fetching: false,
   fetched: false,
-  error: null,
+  error: null
 };
 
 export const EventsReducers = (state = initialState, action) => {
@@ -45,7 +45,7 @@ export const EventsReducers = (state = initialState, action) => {
         ...state,
         retrieving: false,
         retrieved: true,
-        events: action.payload,
+        events: action.payload
       };
     }
 
@@ -53,7 +53,7 @@ export const EventsReducers = (state = initialState, action) => {
       return {
         ...state,
         retrieving: false,
-        error: action.payload,
+        error: action.payload
       };
     }
 

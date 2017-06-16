@@ -10,25 +10,24 @@ class EventsList extends React.Component {
   constructor (props, context) {
     super(props, context);
     this.state = {
-      events: [],
+      events: []
     };
   }
 
   componentWillMount() {
     this.props.actions.retrieveEvents(this.state.events);
-    const data = this.props.events;
-    this.setState({ events: data.events });
+    const data = this.props.eventsList;
+    this.setState({ eventsList: data.events });
   }
 
   render() {
-
     const id = this.props.id;
-    const eventNode = this.props.events.events.map((item) => {
+    const eventNode = this.props.eventsList.events.map((item) => {
       return (
         <Link
           to={'/events/' + item.id}
           className='list-group-item'
-          key={item.id} >
+          key={item.id}>
           {item.name}
         </Link>
       );
@@ -38,7 +37,7 @@ class EventsList extends React.Component {
       <div>
         <h2>Events</h2>
         <ListGroup>
-          <ListGroupItem> {eventNode}</ListGroupItem>
+          <ListGroupItem>{eventNode}</ListGroupItem>
         </ListGroup>
       </div>
     );
@@ -46,14 +45,11 @@ class EventsList extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
- 
-  events: state.events,
-
+  eventsList: state.eventsList
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
-  actions: bindActionCreators(eventsActions, dispatch),
+  actions: bindActionCreators(eventsActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsList);
