@@ -7,6 +7,7 @@ export Main from './Main/Main';
 export Maps from './Maps/Maps';
 export Test from './Test/Test';
 export Dashboard from './Dashboard/Dashboard';
+export EventsList from './Events/EventsList';
 export EventDetails from './Event/EventDetails';
 export Guest from './Guest/sampleGuest';
 export Gift from './Gift/sampleGift';
