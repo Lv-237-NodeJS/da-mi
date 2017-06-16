@@ -6,7 +6,7 @@ import request from './../helper/request';
 
 export const fetchEventById = eventId => {
   return dispatch => {
-    return request
+    return request()
       .get(API.HOST + API.PORT + '/api/events/' + eventId)
       .end((err, res) => {
         if (err) {

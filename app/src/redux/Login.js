@@ -78,7 +78,7 @@ export function loginUser(email, password) {
   };
   return dispatch => {
     dispatch(loginUserRequest());
-    request
+    request()
       .post(API.HOST + API.PORT + '/api/auth/login')
       .send(user)
       .end((err, res) => {
