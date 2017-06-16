@@ -26,7 +26,7 @@ class Message extends React.Component {
   } 
 }
 
-const mapStatetoProps = (state, ownProps) => ({
+const mapStatetoProps = state => ({
   message: state.signup.message,
   show: state.signup.show  
 });
