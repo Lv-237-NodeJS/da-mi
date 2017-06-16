@@ -10,7 +10,7 @@ class Profile extends React.Component {
     super(props, context);
 
     this.state = {
-      profile: {},
+      profile: {}
     };
   }
 
@@ -31,17 +31,17 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    profile: state.profile.profile,
-    userId: state.login.userId
-  };
-};
+const mapStateToProps = (state) => ({
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    actions: bindActionCreators(profileActions, dispatch),
-  };
-};
+  profile: state.profile.profile,
+  userId: state.login.userId
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+  actions: bindActionCreators(profileActions, dispatch)
+
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

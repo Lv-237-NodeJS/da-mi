@@ -10,7 +10,7 @@ export const retrieveProfile = (userId) => {
 
   let token = sessionStorage.getItem('token');
 
-  return (dispatch) => {
+  return dispatch => {
     return request
       .get(API.HOST + API.PORT + '/api/user/' + userId)
       .set('x-access-token', token)
