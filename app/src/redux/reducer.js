@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 import items from './Test';
 import signup from './Signup';
-import { routerReducer } from 'react-router-redux';
 import login from './Login';
 import event from './eventReducers';
 import eventsList from './EventsReducers';
