@@ -6,7 +6,6 @@ const RETRIEVE_PROFILE = 'RETRIEVE_PROFILE';
 const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';
 const RETRIEVE_PROFILE_FAILURE = 'RETRIEVE_PROFILE_FAILURE';
 
-
 export const retrieveProfile = (userId) => {
 
   return dispatch => {
@@ -16,7 +15,7 @@ export const retrieveProfile = (userId) => {
         if (err) {
           dispatch({
             type: RETRIEVE_PROFILE_FAILURE,
-            payload: err,
+            payload: err
           });
         } else {
           dispatch({
@@ -39,7 +38,10 @@ export const profileReducers = (state = initialState, action) => {
   switch (action.type) {
 
     case RETRIEVE_PROFILE: {
-      return {...state, retrieving: true};
+      return {
+        ...state,
+        retrieving: true
+      };
     }
 
     case RETRIEVE_PROFILE_SUCCESS: {
