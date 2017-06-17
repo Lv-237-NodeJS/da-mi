@@ -17,7 +17,8 @@ export default function loginReduser(state = {}, action) {
     case LOGIN_USER_SUCCESS:
       return {
         illegalInput: false,
-        isAuth: true
+        isAuth: true,
+        userId: action.userId
       };
     case LOGOUT_USER:
       return {
@@ -32,11 +33,12 @@ export default function loginReduser(state = {}, action) {
   }
 }
 
-export function loginUserSuccess(token) {
+export function loginUserSuccess(token, userId) {
   sessionStorage.setItem('token', token);
   browserHistory.push('/events');
   return {
-    type: LOGIN_USER_SUCCESS
+    type: LOGIN_USER_SUCCESS,
+    userId: userId
   };
 }
 
@@ -86,7 +88,8 @@ export function loginUser(email, password) {
           dispatch(loginUserFailure());
         } else {
           const token = JSON.parse(res.text).token;
-          dispatch(loginUserSuccess(token));
+          const userId = JSON.parse(res.text).user_id;
+          dispatch(loginUserSuccess(token, userId));
         }
       });
   };
