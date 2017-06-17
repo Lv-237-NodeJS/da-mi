@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
-import { Login } from '../../components';
-import { Message } from '../../components';
+import { Login, Message } from '../../components';
 
 export default class Home extends React.Component {
   render() {
