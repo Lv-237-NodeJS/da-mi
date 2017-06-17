@@ -26,7 +26,7 @@ class ProfileDropDown extends React.Component {
           <MenuItem eventKey={5.2} onClick={this.props.actions.logout}>Log Out</MenuItem>
         </NavDropdown>
         <span> 
-          <Image src='http://www.freeiconspng.com/uploads/am-a-19-year-old-multimedia-artist-student-from-manila--21.png'circle width='45'/>
+          <Image src={require('../../../img/profile.svg')} width='45'/>
         </span>
       </div>
     );
