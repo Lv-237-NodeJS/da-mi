@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
+import { connect } from 'react-redux';
 import { Login, Message } from '../../components';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
+
   render() {
-    
     return (
       <Grid>
         <Message />
@@ -16,13 +16,15 @@ export default class Home extends React.Component {
           </Col>
           <Col sm={12} md={4}>
             <Login />
-            <p className="text-center">OR</p>
-            <Link to='/signup'>
-              <Button bsSize="large" block>SIGN UP</Button>
-            </Link>
           </Col>
         </Row>
       </Grid>
     );
   }
 }
+
+const mapStatetoProps = state => ({
+  isAuth: state.login.isAuth
+});
+
+export default connect(mapStatetoProps)(Home);

@@ -20,16 +20,10 @@
   },
   "homepage": "https://github.com/Lv-237-NodeJS/da-mi#readme",
   "devDependencies": {
+    "redux-logger": "^3.0.6",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
-    "express": "^4.15.3",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "react-router": "^3.0.5",
-    "redux": "^3.6.0",
-    "react-redux": "^5.0.5",
-    "react-router-redux": "^4.0.8",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
     "babel-polyfill": "^6.23.0",
@@ -51,12 +45,17 @@
     "react": "^15.5.4",
     "react-bootstrap": "^0.31.0",
     "react-dom": "^15.5.4",
+    "react-redux": "^5.0.5",
     "react-router": "^3.0.5",
     "react-router-bootstrap": "^0.23.3",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0",
     "resolve-url-loader": "^2.0.2",
     "sass-loader": "^6.0.5",
     "style-loader": "^0.17.0",
     "superagent": "^3.5.2",
+    "superagent-defaults": "^0.1.14",
     "url-loader": "^0.5.8",
     "webpack": "^2.6.0"
   }

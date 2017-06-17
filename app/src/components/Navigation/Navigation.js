@@ -1,8 +1,16 @@
 import React from 'react';
-import { Navbar, Nav, NavItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as loginActions from '../../redux/Login';
 
-export default class Navigation extends React.Component {
+class Navigation extends React.Component {
+
+  componentWillMount() {
+    this.props.actions.checkToken();
+  }
+  
   render() {
     return (
       <div>
@@ -21,8 +29,23 @@ export default class Navigation extends React.Component {
               <NavItem eventKey={4}>Test</NavItem>
             </LinkContainer>
           </Nav>
+          {this.props.isAuth &&
+            <Button className='pull-right'
+              type='button'
+              onClick={this.props.actions.logout}>Log out</Button>
+          }
         </Navbar>
       </div>
     );
   }
 }
+
+const mapStatetoProps = state => ({
+  isAuth: state.login.isAuth
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(loginActions, dispatch)
+});
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Navigation);
