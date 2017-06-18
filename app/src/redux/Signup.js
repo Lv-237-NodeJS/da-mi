@@ -2,7 +2,7 @@ import request from '../helper/request';
 import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 import messages from '../helper/messages.js';
-import API from '../helper/constants';
+import { API } from '../helper/constants';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
