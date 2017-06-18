@@ -12,6 +12,7 @@ class ProfileDropDown extends React.Component {
   componentWillMount() {
     this.props.actions.loginActions.checkToken();
     this.props.actions.profileActions.retrieveProfile(this.props.userId);
+    this.setState({profile: this.props.profile});
   }
 
   render() {
