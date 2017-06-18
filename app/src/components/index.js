@@ -1,3 +1,3 @@
 export Navigation from './Navigation/Navigation';
-export ProfileDropdown from './Navigation/ProfileDropDown';
+export ProfileDropdown from './ProfileDropDown/ProfileDropDown';
 export Login from './Login/Login';

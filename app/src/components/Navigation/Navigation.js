@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/Login';
-import ProfileDropdown from './ProfileDropDown';
+import ProfileDropdown from '../ProfileDropDown/ProfileDropDown';
 
 class Navigation extends React.Component {
 
