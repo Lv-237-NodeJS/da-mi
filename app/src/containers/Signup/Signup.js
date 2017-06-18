@@ -1,9 +1,7 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button, Form, HelpBlock } from 'react-bootstrap';
-import { browserHistory } from 'react-router';
-import { Message } from '../';
+import { Message } from '../../components';
 import messages from '../../helper/messages';
-import request from 'superagent';
 import style from './Signup.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -36,35 +34,32 @@ class Signup extends React.Component {
       passwordValid: false,
       confirmationValid: false
     };
-  };
+  }
 
   handleChange = param => e => {
     let value = e.target.value;
     this.setState({[param]: value},
-                  () => {this.validateField(param, value)});
+      () => {this.validateField(param, value);});
   };
 
   validateField = (fieldName, value) => {
     const mail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
     const pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/;
 
-    let isErrors = this.state.isErrors;
-    let emailValid = this.state.emailValid;
-    let passwordValid = this.state.passwordValid;
-    let confirmationValid = this.state.confirmationValid;
+    let {isErrors, emailValid, passwordValid, confirmationValid} = this.state;
 
     switch (fieldName) {
       case 'email':
         emailValid = value.match(mail);
         isErrors.email = emailValid ?
-        '' :
-        `${messages.emailError}`;
+          '' :
+          `${messages.emailError}`;
         break;
       case 'password':
         passwordValid = value.match(pass);
         isErrors.password = passwordValid ?
-        '' :
-        `${messages.passwordError}`;
+          '' :
+          `${messages.passwordError}`;
         break;
       case 'confirmation':
         isErrors.confirmation =
@@ -77,9 +72,9 @@ class Signup extends React.Component {
     }
 
     this.setState({isErrors: isErrors,
-                    emailValid: emailValid,
-                    passwordValid: passwordValid,
-                  }, this.isValidate);
+      emailValid: emailValid,
+      passwordValid: passwordValid,
+    }, this.isValidate);
   }
 
   isValidate = () => {
@@ -91,32 +86,20 @@ class Signup extends React.Component {
     });
   }
 
-  errorClass = (error) => {
-    return (error.length === 0 ? '' : 'has-error');
-  }
+  errorClass = error => (
+    error.length === 0 ? '' : 'has-error'
+  )
 
   handleButtonClick = e => {
     e.preventDefault();
-    this.props.actions.signupUser(this.state.email, this.state.password)
+    this.props.actions.signupUser(this.state.email, this.state.password);
   }
 
   render() {
     return (
       <div className='containerLog'>
-      <Message />
+        <Message />
         <Form className='Signup' onSubmit={this.handleButtonClick}>
-          {['first_Name', 'last_Name'].map(param =>
-            <FieldGroup
-              key={param}
-              label={param[0].toUpperCase() + param.slice(1).replace('_', ' ')}
-              type={'text'}
-              name={param}
-              placeholder={'Enter ' + param[0].toUpperCase() +
-              param.slice(1).replace('_', ' ')}
-              value={this.state.param}
-              onChange={this.handleChange(param)}
-            />
-          )}
           {['email', 'password', 'confirmation'].map(param =>
             <FieldGroup
               key={param}
@@ -145,12 +128,12 @@ class Signup extends React.Component {
   }
 }
 
-const mapStatetoProps = (state, ownProps) => ({
+const mapStatetoProps = state => ({
   signup: state.signup
 });
 
-const mapDispatchToProps = (dispatch) => ({
-    actions: bindActionCreators(showActions, dispatch)
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(showActions, dispatch)
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Signup);

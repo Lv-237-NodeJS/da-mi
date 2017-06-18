@@ -1,13 +1,14 @@
-import request from 'superagent';
+import request from '../helper/request';
+import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-import messages from '../helper/messages';
-import  API  from '../helper/constants';
+import messages from '../helper/messages.js';
+import API from '../helper/constants';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 const MESSAGE_MODAL = 'MESSAGE_MODAL';
 
-export default function changeReducer(state = {show: false, message:''}, action) {
+export default function changeReducer(state = {show: false, message: ''}, action) {
   switch (action.type) {
     case SHOW_MODAL:
       return Object.assign({}, state, {show: action.show});
@@ -38,32 +39,30 @@ export function signupRequest() {
   };
 }
 
-
 export function signupUser(email, password) {
   let data = {
     email: email,
     password: password
   };
 
-return dispatch => {
-
-  dispatch(signupRequest());
-    request
-    .post(API.HOST + API.PORT + '/api/auth/Signup')
-    .send(data)
-    .end(function(err, res) {
-      if (err || !res.ok) {
-        return (
-          dispatch(messageModal(messages.error)),
+  return dispatch => {
+    dispatch(signupRequest());
+    request()
+      .post(API.HOST + API.PORT + '/api/users')
+      .send(data)
+      .end(function(err, res) {
+        if (res.status == 201) {
+          return (
+            browserHistory.push('/'),
+          dispatch(messageModal(messages.successSignup)),
           dispatch(showModal(true))
-        )
-      } else {
-        return (
-          browserHistory.push('/'),
-          dispatch(messageModal(messages.signup)),
-          dispatch(showModal(true))                 
-        )
-      }
-    });
-  }
+          );
+        } else {
+          return (
+            dispatch(messageModal(err.response.text)),
+          dispatch(showModal(true))
+          );
+        }
+      });
+  };
 }
