@@ -13,7 +13,6 @@ class Profile extends React.Component {
 
   render() {
     const profile = this.props.profile;
-
     return (
       <div>
         <h1>My Profile Info</h1>
@@ -24,12 +23,12 @@ class Profile extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   profile: state.profile.profile,
   userId: state.login.userId
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(profileActions, dispatch)
 });
 
