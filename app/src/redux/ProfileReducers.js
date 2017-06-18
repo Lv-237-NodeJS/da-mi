@@ -43,16 +43,13 @@ export const profileReducers = (state = initialState, action) => {
 
     case RETRIEVE_PROFILE: {
       return {
-        ...state,
-        retrieving: true
+        ...state
       };
     }
 
     case RETRIEVE_PROFILE_SUCCESS: {
       return {
         ...state,
-        retrieving: false,
-        retrieved: true,
         profile: action.payload
       };
     }
@@ -60,7 +57,6 @@ export const profileReducers = (state = initialState, action) => {
     case RETRIEVE_PROFILE_FAILURE: {
       return {
         ...state,
-        retrieving: false,
         error: action.payload
       };
     }
