@@ -50,7 +50,6 @@ export function signupUser(email, password) {
     password: password
   };
 
-<<<<<<< fc32869f6a43c8bee4aa7cf3b5e60e3da2bdfd54
   return dispatch => {
     dispatch(signupRequest());
     request()
