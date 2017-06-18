@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 import { About, Address, Home, Contacts, Main, Maps, Signup,
-  Gift, Guest, Dashboard, Test, EventDetails } from './containers';
+  Gift, Guest, EventsList, Test, EventDetails } from './containers';
 import checkAuth from './helper/redirections';
 
 const Routes = (
@@ -14,7 +14,7 @@ const Routes = (
     </Route>
     <Route path='signup' component={Signup}/>
     <Route path='test' component={Test}/>
-    <Route path='events' component={Dashboard}/>
+    <Route path='events' component={EventsList}/>
     <Route path='events/:id' component={EventDetails}>
       <Route path='guests' component={Guest}/>
       <Route path='gifts' component={Gift}/>

@@ -1,14 +1,12 @@
 import React from 'react';
 import { Grid, Row, Col, Button, PageHeader } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { Login, Message } from '../../components';
+import { Login } from '../../components';
 
-class Home extends React.Component {
+export default class Home extends React.Component {
 
   render() {
     return (
       <Grid>
-        <Message />
         <Row className="show-grid">
           <Col sm={12} md={8}>
             <PageHeader className="text-center">Da-Mi</PageHeader>
@@ -22,9 +20,3 @@ class Home extends React.Component {
     );
   }
 }
-
-const mapStatetoProps = state => ({
-  isAuth: state.login.isAuth
-});
-
-export default connect(mapStatetoProps)(Home);
