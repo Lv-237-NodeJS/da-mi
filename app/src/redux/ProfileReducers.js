@@ -5,9 +5,10 @@ const RETRIEVE_PROFILE = 'RETRIEVE_PROFILE';
 const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';
 const RETRIEVE_PROFILE_FAILURE = 'RETRIEVE_PROFILE_FAILURE';
 
-export const retrieveProfile = (userId) => {
+export const retrieveProfile = userId => {
 
   return dispatch => {
+    dispatch(retrieveProfilerRequest());
     return request()
       .get(API.HOST + API.PORT + '/api/user/' + userId)
       .end((err, res) => {
@@ -26,10 +27,14 @@ export const retrieveProfile = (userId) => {
   };
 };
 
+export const retrieveProfilerRequest = () => {
+  return {
+    type: RETRIEVE_PROFILE
+  };
+};
+
 const initialState = {
   profile: {},
-  retrieving: false,
-  retrieved: false,
   error: null
 };
 
