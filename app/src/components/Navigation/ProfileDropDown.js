@@ -10,9 +10,9 @@ import * as profileActions from '../../redux/ProfileReducers';
 
 class ProfileDropDown extends React.Component {
 
-  componenWillMount() {
-    this.props.actions.checkToken();
-    this.props.actions.retrieveProfile(this.props.userId);
+  componentWillMount() {
+    this.props.actions.loginActions.checkToken();
+    this.props.actions.profileActions.retrieveProfile(this.props.userId);
     this.setState({profile: this.props.profile});
   }
 
@@ -24,7 +24,7 @@ class ProfileDropDown extends React.Component {
           <LinkContainer to='/profile'>
             <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
           </LinkContainer>
-          <MenuItem eventKey={5.2} onClick={this.props.actions.logout}>Log Out</MenuItem>
+          <MenuItem eventKey={5.2} onClick={this.props.actions.loginActions.logout}>Log Out</MenuItem>
         </NavDropdown>
         <span> 
           <Image src={require('../../../img/profile.svg')} width='45'/>
@@ -36,7 +36,8 @@ class ProfileDropDown extends React.Component {
 
 const mapStatetoProps = state => ({
   isAuth: state.login.isAuth,
-  profile: state.profile.profile
+  profile: state.profile.profile,
+  userId: state.login.userId
 });
 
 const mapDispatchToProps = dispatch => ({
