@@ -18,7 +18,7 @@ let FieldGroup = ({className, label, isErrors, ...props}) => (
   </div>
 );
 
-export default class Signup extends React.Component {
+class Signup extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -78,7 +78,7 @@ export default class Signup extends React.Component {
   }
 
   isValidate = () => {
-    this.setState({
+    this.setState({ 
       Validate:
         this.state.emailValid &&
         this.state.passwordValid &&
