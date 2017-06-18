@@ -1,0 +1,9 @@
+@import '../../common.scss';
+
+#modal-container {
+  border: $border-green-dark;
+  border-radius: $border-radius;
+  background-color: $mint;
+  padding: $padding;
+  color: $green-dark;
+}
