@@ -56,15 +56,21 @@ class Signup extends React.Component {
     switch (fieldName) {
       case 'email':
         emailValid = value.match(mail);
-        isErrors.email = emailValid ? '' : `${messages.emailError}`;
+        isErrors.email = emailValid ?
+        '' :
+        `${messages.emailError}`;
         break;
       case 'password':
         passwordValid = value.match(pass);
-        isErrors.password = passwordValid ? '' : `${messages.passwordError}`;
+        isErrors.password = passwordValid ?
+        '' :
+        `${messages.passwordError}`;
         break;
       case 'confirmation':
         isErrors.confirmation =
-          (this.state.confirmation === this.state.password) ? '' : `${messages.confirmationError}`;
+          (this.state.confirmation === this.state.password) ?
+            '' :
+            `${messages.confirmationError}`;
         break;
       default:
         break;
@@ -139,16 +145,12 @@ class Signup extends React.Component {
   }
 }
 
-const mapStatetoProps = (state, ownProps) => {
-  return {
-    signup: state.signup
-  };
-};
+const mapStatetoProps = (state, ownProps) => ({
+  signup: state.signup
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
+const mapDispatchToProps = (dispatch) => ({
     actions: bindActionCreators(showActions, dispatch)
-  };
-};
+});
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Signup);
