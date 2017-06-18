@@ -1,37 +1,31 @@
 import React from 'react';
 import { Nav, NavItem, Tab, Row, Col } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import EventsList from '../../containers/Events/EventsList';
+import style from './dashboard.scss';
 
 export default class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Dashboard</h1>
-        <Tab.Container id='left-tabs-example' defaultActiveKey={0}>
-          <Row className='clearfix'>
-            <Col sm={4}>
-              <Nav bsStyle='pills' stacked>
-                {[
-                  'My Cabinet',
-                  'My Events',
-                  'Invitations',
-                  'Create New Event'
-                ].map((title, index) => <NavItem key={index} eventKey={index}>{title}</NavItem>)}
-              </Nav>
-            </Col>
-            <Col sm={8}>
-              <Tab.Content animation>
-                {[
-                  'Profile Component will be here',
-                  <EventsList />,
-                  'My invitations will be here',
-                  'Create new Event component will be here'
-                ].map((content, index) => <Tab.Pane key={index} eventKey={index}>{content}</Tab.Pane>)}
-              </Tab.Content>
-            </Col>
-          </Row>
-        </Tab.Container>
+      <div className='dashboard-menu'>
+        <Col sm={3}>
+          <h1>Dashboard</h1>
+          <Nav bsStyle="pills" stacked activeKey={1} >
+            <LinkContainer to='/events'>
+              <NavItem eventKey={1}>My Events</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/newEvent'>
+              <NavItem eventKey={2}>Create New Event</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/invitations'>
+              <NavItem eventKey={3}>My Invitations</NavItem>
+            </LinkContainer>
+            <LinkContainer to='/profile'>
+              <NavItem eventKey={4}>My Profile</NavItem>
+            </LinkContainer>
+          </Nav>
+        </Col>
       </div>
     );
   }
