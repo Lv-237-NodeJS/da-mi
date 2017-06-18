@@ -8,7 +8,6 @@ class Profile extends React.Component {
 
   componentWillMount() {
     this.props.actions.retrieveProfile(this.props.userId);
-    this.setState({profile: this.props.profile});
   }
 
   render() {
