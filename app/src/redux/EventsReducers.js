@@ -13,7 +13,8 @@ export const retrieveEvents = () => {
         if (err) {
           dispatch({
             type: RETRIEVE_EVENTS_FAILURE,
-            payload: err,});
+            payload: err
+          });
         } else {
           dispatch({
             type: RETRIEVE_EVENTS_SUCCESS,
