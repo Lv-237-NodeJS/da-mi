@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/login';
 import { ProfileDropDown } from './../';
+import './Navigation.scss';
 
 class Navigation extends React.Component {
 
