@@ -1,1 +1,34 @@
 @import '../../common.scss';
+
+nav.navbar-default {
+  background-color: $blue;
+}
+
+.navbar-nav>.active>a {
+  background-color: $blue;
+}
+.navbar-nav>.active>a:hover {
+  background-color: $orange;
+  color: $white;
+  border-radius: 5px;
+}
+
+.navbar-nav>.active>a:focus {
+  color: $orange;
+}
+
+.navbar-nav>li>a {
+  text-transform: lowercase;
+  color: $white;
+  font-size: 20px;
+}
+
+.navbar-nav>li>a:hover {
+  background-color: $orange;
+  color: $white;
+  border-radius: 5px;
+}
+
+.navbar-nav>li>a:focus {
+  color: $orange;
+}
