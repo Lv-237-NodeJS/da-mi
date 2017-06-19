@@ -10,10 +10,10 @@ class Main extends React.Component {
     return (
       <div>
         <Navigation />
-        {this.props.children}
         {this.props.isAuth &&
           <Dashboard />
         }
+        {this.props.children}
       </div>
     );
   }

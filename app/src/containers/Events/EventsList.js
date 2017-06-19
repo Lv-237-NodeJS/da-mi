@@ -16,11 +16,10 @@ class EventsList extends React.Component {
   render() {
     const eventNode = this.props.eventsList.map((item) => {
       return (
-        <Link
-          to={'/events/' + item.id}
-          className='list-group-item'
-          key={item.id}>
-          {item.name}
+        <Link to={'/events/' + item.id} className='list-group-item' key={item.id}>
+          <ListGroup>
+            <ListGroupItem header={item.name}>{Date(item.date_event)}</ListGroupItem>
+          </ListGroup>  
         </Link>
       );
     });
@@ -28,9 +27,7 @@ class EventsList extends React.Component {
     return (
       <div className='eventsList'>
         <h2>Events</h2>
-        <ListGroup>
-          <ListGroupItem>{eventNode}</ListGroupItem>
-        </ListGroup>
+        {eventNode}
       </div>
     );
   }
