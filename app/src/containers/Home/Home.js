@@ -8,7 +8,7 @@ class Home extends React.Component {
   render() {
     return (
       <Grid>
-        <Message />
+        <Message /> 
         <Row className="show-grid">
           <Col sm={12} md={8}>
             <PageHeader className="text-center">Da-Mi</PageHeader>
