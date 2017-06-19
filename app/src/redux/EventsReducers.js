@@ -7,6 +7,7 @@ import request from './../helper/request';
 export const retrieveEvents = () => {
 
   return dispatch => {
+    dispatch(retrieveEventsRequest());
     return request()
       .get(API.HOST + API.PORT + '/api/events')
       .end((err, res) => {
@@ -25,10 +26,14 @@ export const retrieveEvents = () => {
   };
 };
 
+export const retrieveEventsRequest = () => {
+  return {
+    type: RETRIEVE_EVENTS
+  };
+};
+
 const initialState = {
   events: [],
-  fetching: false,
-  fetched: false,
   error: null
 };
 
@@ -36,14 +41,14 @@ export const EventsReducers = (state = initialState, action) => {
   switch (action.type) {
 
     case RETRIEVE_EVENTS: {
-      return { ...state, retrieving: true };
+      return {
+        ...state
+      };
     }
 
     case RETRIEVE_EVENTS_SUCCESS: {
       return {
         ...state,
-        retrieving: false,
-        retrieved: true,
         events: action.payload
       };
     }
@@ -51,7 +56,6 @@ export const EventsReducers = (state = initialState, action) => {
     case RETRIEVE_EVENTS_FAILURE: {
       return {
         ...state,
-        retrieving: false,
         error: action.payload
       };
     }
