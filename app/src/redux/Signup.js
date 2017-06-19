@@ -47,7 +47,7 @@ export function signupUser(email, password) {
   return dispatch => {
     dispatch(signupRequest());
     request()
-      .post(API.HOST + API.PORT + '/api/users')
+      .post(API.HOST + API.PORT + '/api/auth/users')
       .send(data)
       .end(function(err, res) {
         if (res.status == 201) {
