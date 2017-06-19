@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { ListGroup,ListGroupItem } from 'react-bootstrap';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventsActions from '../../redux/EventsReducers';
@@ -14,7 +14,6 @@ class EventsList extends React.Component {
   }
 
   render() {
-    const id = this.props.id;
     const eventNode = this.props.eventsList.map((item) => {
       return (
         <Link

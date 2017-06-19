@@ -1,7 +1,6 @@
 import React from 'react';
 import { Nav, NavItem, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import EventsList from '../../containers';
 import style from './dashboard.scss';
 
 export default class Dashboard extends React.Component {
