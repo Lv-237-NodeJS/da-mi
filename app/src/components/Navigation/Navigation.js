@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/Login';
+import ProfileDropDown from './../ProfileDropDown/ProfileDropDown';
 
 class Navigation extends React.Component {
 
@@ -30,9 +31,9 @@ class Navigation extends React.Component {
             </LinkContainer>
           </Nav>
           {this.props.isAuth &&
-            <Button className='pull-right'
-              type='button'
-              onClick={this.props.actions.logout}>Log out</Button>
+            <Nav pullRight>
+              <ProfileDropDown />
+            </Nav>
           }
         </Navbar>
       </div>
