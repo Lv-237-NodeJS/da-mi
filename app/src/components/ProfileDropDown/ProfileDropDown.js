@@ -10,16 +10,24 @@ import './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      profile: {}
+    };
+  }
+
   componentWillMount() {
     this.props.actions.loginActions.checkToken();
     this.props.actions.profileActions.retrieveProfile(this.props.userId);
+    this.setState({profile: this.props.profile});
   }
 
   render() {
     const profile = this.props.profile;
     return (
       <div >
-        <NavDropdown style={{display: 'inline-block'}} eventKey={5} id='basic-nav-dropdown'
+        <NavDropdown eventKey={5} id='basic-nav-dropdown'
           title={profile.firstName + ' ' + profile.lastName}>
           <LinkContainer to='/profile'>
             <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
