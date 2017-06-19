@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router';
 import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventActions from '../../redux/eventReducers';
-import style from './eventDetails.scss';
+import './eventDetails.scss';
 
 class EventDetails extends React.Component {
 
@@ -22,12 +21,12 @@ class EventDetails extends React.Component {
     return (
       <div className='eventDetails'>
         <Col sm={6}>
-          <Tabs defaultActiveKey={1} id="uncontrolled-tab-example">
-            <Tab eventKey={1} title="Event Details">
-              <PageHeader className="text-center"> { event.name } </PageHeader>
+          <Tabs defaultActiveKey={1} id='uncontrolled-tab-example'>
+            <Tab eventKey={1} title='Event Details'>
+              <PageHeader className='text-center'> { event.name } </PageHeader>
               <ButtonToolbar>
-                <Button bsStyle="primary"> Edit </Button>
-                <Button bsStyle="danger"> Delete </Button>
+                <Button bsStyle='primary'> Edit </Button>
+                <Button bsStyle='danger'> Delete </Button>
               </ButtonToolbar>
               <div>
                 <h3>Details: </h3>
@@ -37,11 +36,11 @@ class EventDetails extends React.Component {
               </div>
               { this.props.children }
             </Tab>
-            <Tab eventKey={2} title="Guests">
-              <Link className="list-group-item" to={'/events/' + id + '/guests'}>Guests</Link>
+            <Tab eventKey={2} title='Guests'>
+              <Link className='list-group-item' to={'/events/' + id + '/guests'}>Guests</Link>
             </Tab>
-            <Tab eventKey={3} title="Gifts">
-              <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
+            <Tab eventKey={3} title='Gifts'>
+              <Link className='list-group-item' to={'/events/' + id + '/gifts'}>
                   Gifts
               </Link>
             </Tab>

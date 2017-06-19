@@ -25,9 +25,6 @@ class Navigation extends React.Component {
             <LinkContainer to='/contacts'>
               <NavItem eventKey={3}>Contacts</NavItem>
             </LinkContainer>
-            <LinkContainer to='/test'>
-              <NavItem eventKey={4}>Test</NavItem>
-            </LinkContainer>
           </Nav>
           {this.props.isAuth &&
             <Button className='pull-right'

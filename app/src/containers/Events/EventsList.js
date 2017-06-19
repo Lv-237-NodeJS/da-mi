@@ -4,7 +4,7 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventsActions from '../../redux/EventsReducers';
-import style from './eventsList.scss';
+import './eventsList.scss';
 
 class EventsList extends React.Component {
 

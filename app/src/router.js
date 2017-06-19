@@ -13,7 +13,6 @@ const Routes = (
       <Route path='maps' component={Maps}/>
     </Route>
     <Route path='signup' component={Signup}/>
-    <Route path='test' component={Test}/>
     <Route path='events' component={EventsList}/>
     <Route path='events/:id' component={EventDetails}>
       <Route path='guests' component={Guest}/>

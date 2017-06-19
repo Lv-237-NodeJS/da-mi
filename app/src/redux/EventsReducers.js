@@ -55,8 +55,7 @@ export const EventsReducers = (state = initialState, action) => {
 
     case RETRIEVE_EVENTS_FAILURE: {
       return {
-        ...state,
-        error: action.payload
+        ...state
       };
     }
 

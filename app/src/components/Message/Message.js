@@ -2,8 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from '../../redux/Signup';
-import style from './Message.scss';
+import './Message.scss';
 
 class Message extends React.Component {
   hide = () => {
@@ -14,10 +13,10 @@ class Message extends React.Component {
       <Modal
         show={this.props.show}
         onHide={this.hide}
-        id="modal-container"
-        className="modal-backdrop">
+        id='modal-container'
+        className='modal-backdrop'>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">
+          <Modal.Title id='contained-modal-title-lg'>
             <p>{this.props.message}</p>
           </Modal.Title>
         </Modal.Header>     
@@ -31,8 +30,4 @@ const mapStatetoProps = state => ({
   show: state.signup.show  
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(showActions, dispatch)
-});
-
-export default connect(mapStatetoProps, mapDispatchToProps)(Message);
+export default connect(mapStatetoProps)(Message);

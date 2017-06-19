@@ -1,8 +1,6 @@
 import React from 'react';
 import { Navigation, Dashboard } from './../../components';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/Login';
 
 class Main extends React.Component {
 
@@ -23,8 +21,4 @@ const mapStatetoProps = state => ({
   isAuth: state.login.isAuth
 });
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(loginActions, dispatch)
-});
-
-export default connect(mapStatetoProps, mapDispatchToProps)(Main);
+export default connect(mapStatetoProps)(Main);
