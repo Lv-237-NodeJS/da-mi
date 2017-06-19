@@ -31,7 +31,7 @@ class Navigation extends React.Component {
             </LinkContainer>
           </Nav>
           {this.props.isAuth &&
-            <Nav pullRight>
+            <Nav className='pull-right'>
               <ProfileDropDown />
             </Nav>
           }
