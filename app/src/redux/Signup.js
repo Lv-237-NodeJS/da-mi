@@ -50,7 +50,6 @@ export function signupUser(email, password) {
       .post(API.HOST + API.PORT + '/api/users')
       .send(data)
       .end(function(err, res) {
-        console.log(err,res);
         if (res.status == 201) {
           return (
             browserHistory.push('/'),
