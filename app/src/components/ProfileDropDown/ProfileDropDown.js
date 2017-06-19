@@ -6,14 +6,25 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/Login';
 import * as profileActions from '../../redux/ProfileReducers';
+import style from './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {
 
   componentWillMount() {
     this.props.actions.loginActions.checkToken();
-    this.props.actions.profileActions.retrieveProfile(this.props.userId);
+    this.props.actions.profileActions.retrieveProfile(this.props.userId).then(profile => {
+      this.this.setState({
+        profile: profile
+      });
+    });
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      profile: {}
+    };
+  }
   render() {
     const profile = this.props.profile;
     return (
@@ -26,7 +37,8 @@ class ProfileDropDown extends React.Component {
           <MenuItem eventKey={5.2} onClick={this.props.actions.loginActions.logout}>Log Out</MenuItem>
         </NavDropdown>
         <span> 
-          <Image src={require('../../../img/profile.svg')} width='45'/>
+          <div className='avatar'> </div>
+          {/*<Image src={require('../../../img/profile.svg')} width='45'/>*/}
         </span>
       </div>
     );

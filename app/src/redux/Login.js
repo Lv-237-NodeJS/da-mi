@@ -55,13 +55,9 @@ export function loginUserRequest() {
 }
 
 export function checkToken() {
-  let isToken;
-  sessionStorage.getItem('token') ?
-    isToken = true :
-    isToken = false;
   return {
     type: CHECK_TOKEN,
-    isAuth: isToken
+    isAuth: !!sessionStorage.getItem('token')
   };
 }
 

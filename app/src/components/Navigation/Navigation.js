@@ -4,7 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/Login';
-import { ProfileDropDown } from './../';
+import ProfileDropDown from './../ProfileDropDown/ProfileDropDown';
 
 class Navigation extends React.Component {
 
@@ -32,7 +32,7 @@ class Navigation extends React.Component {
           </Nav>
           {this.props.isAuth &&
             <Nav pullRight>
-              <ProfileDropdown />
+              <ProfileDropDown />
             </Nav>
           }
         </Navbar>
