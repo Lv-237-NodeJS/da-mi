@@ -50,7 +50,7 @@ class Signup extends React.Component {
 
     let Valid = fieldName === 'email' ? value.match(mail) : fieldName === 'password' ? 
       value.match(pass): this.state.confirmation === this.state.password;
-      isErrors[fieldName] = Valid ? '' : messages[fieldName + 'Error'];
+    isErrors[fieldName] = Valid ? '' : messages[fieldName + 'Error'];
 
     this.setState({isErrors: isErrors,
       emailValid: Valid,
