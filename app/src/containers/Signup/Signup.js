@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button, Form, HelpBlock } from 'react-bootstrap';
 import { Message } from '../../components';
 import messages from '../../helper/messages';
-import style from './Signup.scss';
+import './Signup.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as showActions from '../../redux/Signup';
@@ -48,33 +48,15 @@ class Signup extends React.Component {
 
     let {isErrors, emailValid, passwordValid, confirmationValid} = this.state;
 
-    switch (fieldName) {
-      case 'email':
-        emailValid = value.match(mail);
-        isErrors.email = emailValid ?
-          '' :
-          `${messages.emailError}`;
-        break;
-      case 'password':
-        passwordValid = value.match(pass);
-        isErrors.password = passwordValid ?
-          '' :
-          `${messages.passwordError}`;
-        break;
-      case 'confirmation':
-        isErrors.confirmation =
-          (this.state.confirmation === this.state.password) ?
-            '' :
-            `${messages.confirmationError}`;
-        break;
-      default:
-        break;
-    }
+    let Valid = fieldName === 'email' ? value.match(mail) : fieldName === 'password' ? 
+      value.match(pass): this.state.confirmation === this.state.password;
+      isErrors[fieldName] = Valid ? '' : messages[fieldName + 'Error'];
 
     this.setState({isErrors: isErrors,
-      emailValid: emailValid,
-      passwordValid: passwordValid,
+      emailValid: Valid,
+      passwordValid: Valid,
     }, this.isValidate);
+
   }
 
   isValidate = () => {
