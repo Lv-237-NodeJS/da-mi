@@ -13,8 +13,7 @@ export const retrieveEvents = () => {
       .end((err, res) => {
         if (err) {
           dispatch({
-            type: RETRIEVE_EVENTS_FAILURE,
-            payload: err
+            type: RETRIEVE_EVENTS_FAILURE
           });
         } else {
           dispatch({
@@ -33,8 +32,7 @@ export const retrieveEventsRequest = () => {
 };
 
 const initialState = {
-  events: [],
-  error: null
+  events: []
 };
 
 export const EventsReducers = (state = initialState, action) => {
