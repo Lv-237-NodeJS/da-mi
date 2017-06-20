@@ -10,11 +10,10 @@ class EventsList extends React.Component {
 
   componentWillMount() {
     this.props.actions.retrieveEvents();
-    this.setState({ eventsList: this.props.eventsList });
   }
 
   render() {
-    const eventNode = this.props.eventsList.map((item) => {
+    const eventNode = this.props.eventsList.map(item => {
       return (
         <Link to={'/events/' + item.id} className='list-group-item' key={item.id}>
           <ListGroup>
