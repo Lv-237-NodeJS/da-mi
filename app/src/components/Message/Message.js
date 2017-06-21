@@ -1,8 +1,14 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import './Message.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as showActions from '../../redux/Signup';
+import style from './Message.scss';
 
-export default class Message extends React.Component {
+class Message extends React.Component {
+  hide = () => {
+    this.props.actions.showModal(false);
+  };
   render() {
     return (
       <Modal
@@ -12,9 +18,21 @@ export default class Message extends React.Component {
         className='modal-backdrop'>
         <Modal.Header closeButton>
           <Modal.Title id='contained-modal-title-lg'>
+            <p>{this.props.message}</p>
           </Modal.Title>
         </Modal.Header>     
       </Modal>
     );
   } 
 }
+
+const mapStatetoProps = state => ({
+  message: state.signup.message,
+  show: state.signup.show  
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(showActions, dispatch)
+});
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Message);
