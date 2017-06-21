@@ -21,18 +21,16 @@ let FieldGroup = ({className, label, isErrors, ...props}) => (
 class Signup extends React.Component {
   constructor (props) {
     super(props);
-    this.state = {
-      email: '',
-      password: '',
-      confirmation: '',
-      isErrors: {
+      this.state = {
         email: '',
         password: '',
-        confirmation: ''
-      },
-      emailValid: false,
-      passwordValid: false,
-      confirmationValid: false
+        confirmation: '',
+        isErrors: {
+          email: false,
+          password: false,
+          confirmation: false,
+        },
+        enableBatton: false
     };
   }
 
@@ -43,34 +41,24 @@ class Signup extends React.Component {
   };
 
   validateField = (fieldName, value) => {
-    const mail = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
-    const pass = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/;
-
-    let {isErrors, emailValid, passwordValid, confirmationValid} = this.state;
-
-    let Valid = fieldName === 'email' ? value.match(mail) : fieldName === 'password' ? 
-      value.match(pass): this.state.confirmation === this.state.password;
-    isErrors[fieldName] = Valid ? '' : messages[fieldName + 'Error'];
-
-    this.setState({isErrors: isErrors,
-      emailValid: Valid,
-      passwordValid: Valid,
-    }, this.isValidate);
-
+    const pattern = {
+      email: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
+      password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/,
+      confirmation: this.state.password 
+    };
+    const valid = value.match(pattern[fieldName]);
+    const newState = this.state;
+    newState.isErrors[fieldName] = !valid ? messages[fieldName + 'Error'] : '';
+    const isEmpty = errors => {
+      let result = true;
+      for(let key in errors) {
+        (errors[key] !== '') && (result = false);
+      }
+      return result;
+    }
+    newState.enableBatton = isEmpty(newState.isErrors);
+    this.setState({enableBatton: newState.enableBatton && (this.state.confirmation === this.state.password)});
   }
-
-  isValidate = () => {
-    this.setState({ 
-      Validate:
-        this.state.emailValid &&
-        this.state.passwordValid &&
-        this.state.confirmation === this.state.password
-    });
-  }
-
-  errorClass = error => (
-    error.length === 0 ? '' : 'has-error'
-  )
 
   handleButtonClick = e => {
     e.preventDefault();
@@ -85,7 +73,7 @@ class Signup extends React.Component {
           {['email', 'password', 'confirmation'].map(param =>
             <FieldGroup
               key={param}
-              className={`${this.errorClass(this.state.isErrors[param])}`}
+              className={!!this.state.isErrors[param] && 'has-error'}
               label={param[0].toUpperCase() +
                 param.slice(1).replace('onfirmation', 'onfirmation Password') +
                 '*'}
@@ -101,8 +89,8 @@ class Signup extends React.Component {
           )}
           <Button 
             className='btn btn-primary'
-            disabled={!this.state.Validate}
-            type='submit'>Regist
+            type='submit'
+            disabled = {!this.state.enableBatton}>Regist
           </Button>
         </Form>
       </div>
