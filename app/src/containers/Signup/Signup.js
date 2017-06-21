@@ -21,16 +21,16 @@ let FieldGroup = ({className, label, isErrors, ...props}) => (
 class Signup extends React.Component {
   constructor (props) {
     super(props);
-      this.state = {
-        email: '',
-        password: '',
-        confirmation: '',
-        isErrors: {
-          email: false,
-          password: false,
-          confirmation: false,
-        },
-        enableBatton: false
+    this.state = {
+      email: '',
+      password: '',
+      confirmation: '',
+      isErrors: {
+        email: false,
+        password: false,
+        confirmation: false,
+      },
+      enableBatton: false
     };
   }
 
@@ -55,7 +55,7 @@ class Signup extends React.Component {
         (errors[key] !== '') && (result = false);
       }
       return result;
-    }
+    };
     newState.enableBatton = isEmpty(newState.isErrors);
     this.setState({enableBatton: newState.enableBatton && (this.state.confirmation === this.state.password)});
   }
