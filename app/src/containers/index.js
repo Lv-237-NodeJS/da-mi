@@ -4,7 +4,7 @@ export Contacts from './Contacts/Contacts';
 export Home from './Home/Home';
 export Main from './Main/Main';
 export Maps from './Maps/Maps';
-export Dashboard from './Dashboard/Dashboard';
+export EventsList from './Events/EventsList';
 export EventDetails from './Event/EventDetails';
 export Guest from './Guest/sampleGuest';
 export Gift from './Gift/sampleGift';

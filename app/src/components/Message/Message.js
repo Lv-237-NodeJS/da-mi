@@ -1,6 +1,9 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import style from './Message.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as showActions from '../../redux/Signup';
+import './Message.scss';
 
 export default class Message extends React.Component {
   hide = () => {
@@ -11,10 +14,11 @@ export default class Message extends React.Component {
       <Modal
         show={this.props.show}
         onHide={this.hide}
-        id="modal-container"
-        className="modal-backdrop">
+        id='modal-container'
+        className='modal-backdrop'>
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">
+          <Modal.Title id='contained-modal-title-lg'>
+            <p>{this.props.message}</p>
           </Modal.Title>
         </Modal.Header>     
       </Modal>
