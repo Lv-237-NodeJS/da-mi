@@ -39,6 +39,7 @@ export default function loginReduser(state = {}, action) {
 
 export function loginUserSuccess(token, userId) {
   sessionStorage.setItem('token', token);
+  sessionStorage.setItem('userId', userId);
   browserHistory.push('/events');
   return {
     type: LOGIN_USER_SUCCESS,

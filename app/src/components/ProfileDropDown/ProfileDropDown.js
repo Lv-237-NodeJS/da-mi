@@ -10,18 +10,9 @@ import './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      profile: {},
-      userId: null
-    };
-  }
-
   componentWillMount() {
     this.props.actions.loginActions.checkToken();
-    this.props.actions.profileActions.retrieveProfile(this.props.userId);
-    this.setState({profile: this.props.profile, userId: this.props.userId});
+    this.props.actions.profileActions.retrieveProfile(sessionStorage.getItem('userId'));
   }
 
   render() {
