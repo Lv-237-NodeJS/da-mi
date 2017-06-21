@@ -3,7 +3,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as showActions from '../../redux/Signup';
-import style from './Message.scss';
+import './Message.scss';
 
 class Message extends React.Component {
   hide = () => {
