@@ -12,20 +12,24 @@ export default function loginReduser(state = {}, action) {
   switch (action.type) {
     case LOGIN_USER_FAILURE:
       return {
+        ...state,
         illegalInput: true
       };
     case LOGIN_USER_SUCCESS:
       return {
+        ...state,
         illegalInput: false,
         isAuth: true,
         userId: action.userId
       };
     case LOGOUT_USER:
       return {
+        ...state,
         isAuth: false
       };
     case CHECK_TOKEN:
       return {
+        ...state,
         isAuth: action.isAuth
       };
     default:
