@@ -1,10 +1,10 @@
-
 import React from 'react';
 import { Link } from 'react-router';
-import { Grid, Row, Nav, Col, Button, ButtonToolbar, PageHeader, } from 'react-bootstrap';
+import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventActions from '../../redux/eventReducers';
+import './eventDetails.scss';
 
 class EventDetails extends React.Component {
 
@@ -19,36 +19,34 @@ class EventDetails extends React.Component {
     const event = this.props.event.current;
 
     return (
-      <Grid>
-        <Row className="show-grid">
-          <Col sm={12} md={4}>
-            <PageHeader className="text-center"> Menu </PageHeader>
-            <Link className="list-group-item" to={'/events/' + id + '/guests'}>
-              Guests
-            </Link>
-            <Link className="list-group-item" to={'/events/' + id + '/gifts'}>
-              Gifts
-            </Link>
-            <Link className="list-group-item" to='/events'>
-              Back to Events
-            </Link>
-          </Col>
-          <Col sm={12} md={8}>
-            <PageHeader className="text-center"> { event.name } </PageHeader>
-            <ButtonToolbar>
-              <Button bsStyle="primary"> Edit </Button>
-              <Button bsStyle="danger"> Delete </Button>
-            </ButtonToolbar>
-            <div>
-              <h3>Details: </h3>
-              <p><strong> Date </strong>: { event.date_event } </p>
-              <p><strong> Place </strong>: { event.location_name } </p>
-              <p><strong> Description </strong>: { event.description } </p>
-            </div>
-            { this.props.children }
-          </Col>
-        </Row>
-      </Grid>
+      <div className='eventDetails'>
+        <Col sm={6}>
+          <Tabs defaultActiveKey={1} id='uncontrolled-tab-example'>
+            <Tab eventKey={1} title='Event Details'>
+              <PageHeader className='text-center'> { event.name } </PageHeader>
+              <ButtonToolbar>
+                <Button bsStyle='primary'> Edit </Button>
+                <Button bsStyle='danger'> Delete </Button>
+              </ButtonToolbar>
+              <div>
+                <h3>Details: </h3>
+                <p><strong> Date </strong>: { Date(event.date_event) } </p>
+                <p><strong> Place </strong>: { event.location_name } </p>
+                <p><strong> Description </strong>: { event.description } </p>
+              </div>
+              { this.props.children }
+            </Tab>
+            <Tab eventKey={2} title='Guests'>
+              <Link className='list-group-item' to={'/events/' + id + '/guests'}>Guests</Link>
+            </Tab>
+            <Tab eventKey={3} title='Gifts'>
+              <Link className='list-group-item' to={'/events/' + id + '/gifts'}>
+                  Gifts
+              </Link>
+            </Tab>
+          </Tabs>
+        </Col>
+      </div>
     );
   }
 }
