@@ -60,7 +60,7 @@ class Signup extends React.Component {
     
     newState.enableButton = Object.keys(newState.isErrors).map(key => 
       newState.isErrors[key]).every(element => element === '');
-      this.setState(newState);
+    this.setState(newState);
   }
   
   handleButtonClick = e => {
@@ -73,7 +73,7 @@ class Signup extends React.Component {
       email: 'Email',
       password: 'Password',
       confirmation: 'Confirmation password',
-    }
+    };
     return (
       <div className='containerLog'>
         <Message />
