@@ -1,6 +1,6 @@
 import request from '../helper/request';
 import { browserHistory } from 'react-router';
-import messages from '../helper/messages.js';
+import messages from '../helper/messages';
 import { API } from '../helper/constants';
 
 const SHOW_MODAL = 'SHOW_MODAL';
@@ -47,7 +47,7 @@ export function signupUser(email, password) {
   return dispatch => {
     dispatch(signupRequest());
     request()
-      .post(API.HOST + API.PORT + '/api/auth/users')
+      .post(API.HOST + API.PORT + '/api/users')
       .send(data)
       .end(function(err, res) {
         if (res.status == 201) {

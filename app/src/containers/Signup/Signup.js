@@ -26,62 +26,67 @@ class Signup extends React.Component {
       password: '',
       confirmation: '',
       isErrors: {
-        email: false,
-        password: false,
-        confirmation: false,
+        email: null,
+        password: null,
+        confirmation: null,
       },
-      enableBatton: false
+      enableButton: false
     };
   }
 
   handleChange = param => e => {
     let value = e.target.value;
     this.setState({[param]: value},
-      () => {this.validateField(param, value);});
+      () => {this.validateField(param);});
   };
 
-  validateField = (fieldName, value) => {
+  validateField = fieldName => {
     const pattern = {
       email: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
-      password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/,
-      confirmation: this.state.password 
+      password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/
     };
-    const valid = value.match(pattern[fieldName]);
     const newState = this.state;
-    newState.isErrors[fieldName] = !valid ? messages[fieldName + 'Error'] : '';
-    const isEmpty = errors => {
-      let result = true;
-      for(let key in errors) {
-        (errors[key] !== '') && (result = false);
-      }
-      return result;
+    const validateByPattern = name => {
+      newState.isErrors[name] = !newState[name].match(pattern[name]) && 
+      messages[name + 'Error'] || '';
     };
-    newState.enableBatton = isEmpty(newState.isErrors);
-    this.setState({enableBatton: newState.enableBatton && (this.state.confirmation === this.state.password)});
+    const validateConfirmation = () => {
+      newState.isErrors.confirmation = newState.confirmation !== newState.password && 
+      messages.confirmationError || '';
+    };
+    validateByPattern(fieldName) || newState.isErrors.confirmation !== null &&
+    validateConfirmation() && newState.isErrors.password !== null &&
+    validateByPattern('password') && validateConfirmation();
+    
+    newState.enableButton = Object.keys(newState.isErrors).map(key => 
+      newState.isErrors[key]).every(element => element === '');
+      this.setState(newState);
   }
-
+  
   handleButtonClick = e => {
     e.preventDefault();
     this.props.actions.signupUser(this.state.email, this.state.password);
   }
 
   render() {
+    const inputsName = {
+      email: 'Email',
+      password: 'Password',
+      confirmation: 'Confirmation password',
+    }
     return (
       <div className='containerLog'>
         <Message />
         <Form className='Signup' onSubmit={this.handleButtonClick}>
-          {['email', 'password', 'confirmation'].map(param =>
+          { Object.keys(inputsName).map(param =>
             <FieldGroup
               key={param}
               className={!!this.state.isErrors[param] && 'has-error'}
-              label={param[0].toUpperCase() +
-                param.slice(1).replace('onfirmation', 'onfirmation Password') +
-                '*'}
-              type={param.replace('confirmation', 'password')}
+              label={inputsName[param]}
+              type={param === 'email' && param || 'password'}
               name={param}
               isErrors={this.state.isErrors[param]}
-              placeholder={'Enter ' + param[0].toUpperCase() +
-                param.slice(1).replace('onfirmation', 'onfirmation Password')}
+              placeholder={inputsName[param]}
               value={this.state.param}
               onChange={this.handleChange(param)}
               required
@@ -90,7 +95,7 @@ class Signup extends React.Component {
           <Button 
             className='btn btn-primary'
             type='submit'
-            disabled = {!this.state.enableBatton}>Regist
+            disabled = {!this.state.enableButton}>Regist
           </Button>
         </Form>
       </div>
