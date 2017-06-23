@@ -43,7 +43,7 @@ class Signup extends React.Component {
   validateField = fieldName => {
     const pattern = {
       email: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
-      password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,20}$/
+      password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[#?!@$%^&*-]).{6,20}$/
     };
     const newState = this.state;
     const validateByPattern = name => {
