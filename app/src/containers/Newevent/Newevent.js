@@ -4,11 +4,7 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as showActions from '../../redux/createNewEventReducer';
-
-const messages = {
-  nameError: 'The name of your event must have minimum 4 letters',
-  date_eventError: 'Date of your event must be like this: dd/mm/yyyy'
-}
+import messages from '../../helper/messages';
 
 let InputGroup = ({id, label, className, isErrors, ...props}) => (
   <FormGroup controlId={id} className = {className}>
