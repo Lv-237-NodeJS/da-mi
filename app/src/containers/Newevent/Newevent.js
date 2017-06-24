@@ -88,17 +88,17 @@ class Newevent extends React.Component {
         <Label bsStyle='success'>Here, you can create your own event:</Label>
         <Form onSubmit={this.handleButtonClick}>
           { Object.keys(inputsEventData).map(param =>
-          <InputGroup
-            id={param}
-            key={param}
-            type="text"
-            className={!!this.state.isErrors[param] && 'has-error'}
-            label={inputsEventData[param] + ' of your event:'}
-            placeholder={inputsEventData[param]}
-            value={this.state.param}
-            onChange={this.handleChange(param)}
-            isErrors={this.state.isErrors[param]}
-          />
+            <InputGroup
+              id={param}
+              key={param}
+              type="text"
+              className={!!this.state.isErrors[param] && 'has-error'}
+              label={inputsEventData[param] + ' of your event:'}
+              placeholder={inputsEventData[param]}
+              value={this.state.param}
+              onChange={this.handleChange(param)}
+              isErrors={this.state.isErrors[param]}
+            />
           )}
           <FormGroup>
             <Col>
@@ -107,11 +107,11 @@ class Newevent extends React.Component {
               </Button>
             </Col>
           </FormGroup>
-       </Form>
-       </Col>
+        </Form>
+      </Col>
     );
-  };
-};
+  }
+}
 
 const mapStatetoProps = state => ({
   newevent: state.newevent
