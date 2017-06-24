@@ -1,9 +1,6 @@
 import  React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Label } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
-import { URL } from './../../helper/constants';
-import request from 'superagent';
-import './Newevent.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as showActions from '../../redux/createNewEventReducer';
