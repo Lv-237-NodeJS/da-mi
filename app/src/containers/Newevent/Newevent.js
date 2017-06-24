@@ -13,14 +13,14 @@ let InputGroup = ({id, label, className, isErrors, ...props}) => (
     </Col>
     <Col md={9}><br/>
       <FormControl {...props} />
-       {isErrors && <HelpBlock>{isErrors}</HelpBlock>}
+      {isErrors && <HelpBlock>{isErrors}</HelpBlock>}
       <FormControl.Feedback />
     </Col>
   </FormGroup>
 );
 
 class Newevent extends React.Component {
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       name: null,
@@ -85,40 +85,40 @@ class Newevent extends React.Component {
     };
     return (
       <Col sm={9}>
-      <Label bsStyle='success'>Here, you can create your own event:</Label>
-      <Form onSubmit={this.handleButtonClick}>
-      { Object.keys(inputsEventData).map(param =>
-        <InputGroup
-          id={param}
-          key={param}
-          type="text"
-          className={!!this.state.isErrors[param] && 'has-error'}
-          label={inputsEventData[param] + ' of your event:'}
-          placeholder={inputsEventData[param]}
-          value={this.state.param}
-          onChange={this.handleChange(param)}
-          isErrors={this.state.isErrors[param]}
-        />
-         )}
+        <Label bsStyle='success'>Here, you can create your own event:</Label>
+        <Form onSubmit={this.handleButtonClick}>
+          { Object.keys(inputsEventData).map(param =>
+          <InputGroup
+            id={param}
+            key={param}
+            type="text"
+            className={!!this.state.isErrors[param] && 'has-error'}
+            label={inputsEventData[param] + ' of your event:'}
+            placeholder={inputsEventData[param]}
+            value={this.state.param}
+            onChange={this.handleChange(param)}
+            isErrors={this.state.isErrors[param]}
+          />
+          )}
           <FormGroup>
             <Col>
-             <Button type='submit' bsStyle='primary' bsSize='large' disabled = {!this.state.enableButton}>
-               Save
-             </Button>
+              <Button type='submit' bsStyle='primary' bsSize='large' disabled = {!this.state.enableButton}>
+              Save
+              </Button>
             </Col>
           </FormGroup>
-      </Form>
-      </Col>
+       </Form>
+       </Col>
     );
   };
 };
 
 const mapStatetoProps = state => ({
-   newevent: state.newevent
+  newevent: state.newevent
 });
 
 const mapDispatchToProps = dispatch => ({
-   actions: bindActionCreators(showActions, dispatch),
+  actions: bindActionCreators(showActions, dispatch),
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Newevent);
