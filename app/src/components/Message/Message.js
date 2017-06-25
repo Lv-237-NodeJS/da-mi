@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import * as showActions from '../../redux/Signup';
 import './Message.scss';
 
-export default class Message extends React.Component {
+class Message extends React.Component {
   hide = () => {
     this.props.actions.showModal(false);
   };
@@ -25,3 +25,14 @@ export default class Message extends React.Component {
     );
   } 
 }
+
+const mapStatetoProps = state => ({
+  message: state.signup.message,
+  show: state.signup.show  
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(showActions, dispatch)
+});
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Message);
