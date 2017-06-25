@@ -28,11 +28,11 @@ export default class About extends React.Component {
         <Row className='show-grid'>
           <PageHeader className='text-center'>Our Team</PageHeader>
           {Object.keys(Names).map(param =>
-             <Col xs={3} sm={3} md={3}>
-               <Image src={Names[param]} thumbnail/>
-               <p>{param}</p>
-             </Col>
-            )}
+            <Col xs={3} sm={3} md={3}>
+              <Image src={Names[param]} thumbnail/>
+              <p>{param}</p>
+            </Col>
+          )}
         </Row>
         <Row className='show-grid'>
           <p>We are a young, talented and fun team that creates a new and promising product. 
