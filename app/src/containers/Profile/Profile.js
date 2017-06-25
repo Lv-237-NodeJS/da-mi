@@ -3,9 +3,25 @@ import { Row, Col, Image, FormGroup, ControlLabel, Form, FormControl, Button, Bu
   Tabs, Tab  } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
+import 'react-datepicker/src/stylesheets/datepicker.scss';
 import './profile-style.scss';
 
 class Profile extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      startDate: moment()
+    };
+  }
+
+  handleChange(date) {
+    this.setState({
+      startDate: date
+    });
+  }
 
   render() {
     const profile = this.props.profile;
@@ -19,34 +35,32 @@ class Profile extends React.Component {
                 <Col  md={4} className='text-center'>
                   <div className='no-avatar'></div>
                   <h6>Upload a different photo</h6>
-                  <input type="file" className="form-control" />
+                  <input type='file' className='form-control' />
                 </Col>
               </Row>
               
-              <Form block='true' horizontal>
+              <Form horizontal>
                 <Row>
                   <Col sm={5}>
                     <FormGroup controlId='formBasicText' />
                     <ControlLabel>First Name</ControlLabel>
                     <FormControl
                       value={profile.firstName}
-                      type="text"
-                      placeholder="Enter text"
+                      type='text'
+                      placeholder='First Name'
                     />
                     <FormGroup  controlId='formBasicText' />
                     <ControlLabel>Last Name</ControlLabel>
                     <FormControl
                       value={profile.lastName}
-                      type="text"
-                      placeholder="Enter text"
+                      type='text'
+                      placeholder='Last Name'
                     />
                     <FormGroup  controlId='formBasicText' />
                     <ControlLabel>Birthdate</ControlLabel>
-                    <FormControl
-                      value={profile.birthdate}
-                      type="text"
-                      placeholder="Enter text"
-                    />
+                    <DatePicker value={profile.birthdate}
+                      selected={this.state.startDate}
+                      onChange={this.handleChange.bind(this)}/>
                   </Col>
 
                   <Col  sm={5}>
@@ -54,28 +68,28 @@ class Profile extends React.Component {
                     <ControlLabel>Address</ControlLabel>
                     <FormControl
                       value={profile.address}
-                      type="text"
-                      placeholder="Enter text"
+                      type='text'
+                      placeholder='Enter text'
                     />
                     <FormGroup  controlId='formBasicText' />
                     <ControlLabel>City</ControlLabel>
                     <FormControl
                       value={profile.city}
-                      type="text"
-                      placeholder="Enter text"
+                      type='text'
+                      placeholder='Enter text'
                     />
                     <FormGroup  controlId='formBasicText' />
                     <ControlLabel>Country</ControlLabel>
                     <FormControl
                       value={profile.country}
-                      type="text"
+                      type='text'
                       placeholder='Enter text'
                     />
                   </Col>
                 </Row>
                 <Row> 
                   <hr/> 
-                  <ButtonToolbar smOffset={2} sm={10}>
+                  <ButtonToolbar>
                     <Button type='submit' bsStyle='primary'>
                       Save Changes
                     </Button>
