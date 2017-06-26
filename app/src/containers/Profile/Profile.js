@@ -8,12 +8,26 @@ import moment from 'moment';
 import 'react-datepicker/src/stylesheets/datepicker.scss';
 import './profile-style.scss';
 
+let FieldGroup = ({id, label, ...props}) => (
+  <div>
+    <FormGroup controlId = {id}>
+      <ControlLabel>{label}</ControlLabel>
+      <FormControl {...props} />
+    </FormGroup>
+  </div>
+);
+
 class Profile extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      startDate: moment()
+      // firstName: this.props.profile.firstName,
+      // lastName: this.props.profile.lastName,
+      // birthdate: this.props.profile.birthdate,
+      // address: this.props.profile.address,
+      // city: this.props.profile.address,
+      // country: this.props.profile.country
     };
   }
 
@@ -24,7 +38,18 @@ class Profile extends React.Component {
   }
 
   render() {
-    const profile = this.props.profile;
+    // const profile = this.props.profile;
+
+    const fieldsName = {
+      firstName: 'First Name',
+      lastName: 'Last Name',
+      birthdate: 'Birthdate',
+      address: 'Address',
+      city: 'City',
+      country: 'Country'
+    };
+
+
     return (
       <div className='profile-details'>
         <Col sm={8} className='container'>
@@ -41,51 +66,16 @@ class Profile extends React.Component {
               
               <Form horizontal>
                 <Row>
-                  <Col sm={5}>
-                    <FormGroup controlId='formBasicText' />
-                    <ControlLabel>First Name</ControlLabel>
-                    <FormControl
-                      value={profile.firstName}
-                      type='text'
-                      placeholder='First Name'
+                  { Object.keys(fieldsName).map(param => 
+                    <FieldGroup 
+                      key={param}
+                      controlId='formBasicTex'
+                      label={fieldsName[param]}
+                      name={param}
+                      placeholder={fieldsName[param]}
+                      value={this.state.profile}
                     />
-                    <FormGroup  controlId='formBasicText' />
-                    <ControlLabel>Last Name</ControlLabel>
-                    <FormControl
-                      value={profile.lastName}
-                      type='text'
-                      placeholder='Last Name'
-                    />
-                    <FormGroup  controlId='formBasicText' />
-                    <ControlLabel>Birthdate</ControlLabel>
-                    <DatePicker value={profile.birthdate}
-                      selected={this.state.startDate}
-                      onChange={this.handleChange.bind(this)}/>
-                  </Col>
-
-                  <Col  sm={5}>
-                    <FormGroup  controlId='formBasicText' />
-                    <ControlLabel>Address</ControlLabel>
-                    <FormControl
-                      value={profile.address}
-                      type='text'
-                      placeholder='Enter text'
-                    />
-                    <FormGroup  controlId='formBasicText' />
-                    <ControlLabel>City</ControlLabel>
-                    <FormControl
-                      value={profile.city}
-                      type='text'
-                      placeholder='Enter text'
-                    />
-                    <FormGroup  controlId='formBasicText' />
-                    <ControlLabel>Country</ControlLabel>
-                    <FormControl
-                      value={profile.country}
-                      type='text'
-                      placeholder='Enter text'
-                    />
-                  </Col>
+                  )}
                 </Row>
                 <Row> 
                   <hr/> 
