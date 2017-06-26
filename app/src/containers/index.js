@@ -6,7 +6,6 @@ export Main from './Main/Main';
 export Maps from './Maps/Maps';
 export EventsList from './Events/EventsList';
 export EventDetails from './Event/EventDetails';
-export Guest from './Guest/sampleGuest';
 export Gift from './Gift/sampleGift';
 export Signup from './Signup/Signup';
 export Profile from './Profile/Profile';
