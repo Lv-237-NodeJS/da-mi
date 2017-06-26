@@ -17,8 +17,7 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.profile.data,
-  userId: state.login.userId
+  profile: state.profile.data
 });
 
 export default connect(mapStateToProps)(Profile);
