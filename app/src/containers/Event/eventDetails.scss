@@ -1,5 +1,15 @@
+@import './../../common';
+
 .eventsDetails {
   position: relative;  
   display: inline-block;
   width: 900px;
+}
+
+.btn.guests-delete-btn {
+  padding: 1px 6px;
+}
+
+.list-group-item {
+  color: $black;
 }
