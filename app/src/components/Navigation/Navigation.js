@@ -8,7 +8,7 @@ import { ProfileDropDown } from './../';
 import './Navigation.scss';
 
 class Navigation extends React.Component {
-  componentWillMount() {
+  componentWillMount = () => {
     this.props.actions.checkToken();
   }
 
@@ -20,7 +20,7 @@ class Navigation extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  handleSelect(selectedKey) {
+  handleSelect = selectedKey => {
     this.setState({activeKey: selectedKey});
   }
   
