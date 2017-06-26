@@ -7,7 +7,7 @@ import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/login';
 import './Login.scss';
 
-let InputGroup = ({id, label, ...props}) => (
+const InputGroup = ({id, label, ...props}) => (
   <FormGroup controlId={id}>
     <Col componentClass={ControlLabel} sm={12} md={3}>
       {label}

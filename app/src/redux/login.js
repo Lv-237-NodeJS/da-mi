@@ -75,7 +75,7 @@ export function logout() {
 }
 
 export function loginUser(email, password) {
-  let user = {
+  const user = {
     email: email,
     password: password
   };
