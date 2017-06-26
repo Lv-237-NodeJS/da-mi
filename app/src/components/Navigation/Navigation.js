@@ -8,7 +8,6 @@ import { ProfileDropDown } from './../';
 import './Navigation.scss';
 
 class Navigation extends React.Component {
-
   componentWillMount() {
     this.props.actions.checkToken();
   }
