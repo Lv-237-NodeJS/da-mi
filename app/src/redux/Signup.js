@@ -53,13 +53,13 @@ export function signupUser(email, password) {
         if (res.status == 201) {
           return (
             browserHistory.push('/'),
-          dispatch(messageModal(messages.successSignup)),
-          dispatch(showModal(true))
+            dispatch(messageModal(messages.successSignup)),
+            dispatch(showModal(true))
           );
         } else {
           return (
             dispatch(messageModal(err.response.text)),
-          dispatch(showModal(true))
+            dispatch(showModal(true))
           );
         }
       });
