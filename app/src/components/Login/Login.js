@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/Login';
-import style from './Login.scss';
+import './Login.scss';
 
 let InputGroup = ({id, label, ...props}) => (
   <FormGroup controlId={id}>
