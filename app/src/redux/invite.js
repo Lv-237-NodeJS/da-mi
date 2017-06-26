@@ -1,7 +1,7 @@
 import request from './../helper/request';
 import { API } from './../helper/constants';
 
-const SEND_INVITE = 'SEND_INVITE';
+const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
 const DELETE_GUEST = 'DELETE_GUEST';
 
@@ -20,12 +20,6 @@ export default function inviteReducer(state = {guests: []}, action) {
   }
 }
 
-export function sendInvitesRequest() {
-  return {
-    type: SEND_INVITE_REQUEST,
-  };
-}
-
 export function sendInvites() {
   const eventId = location.pathname.split('/')[2];
   return dispatch => {
@@ -34,7 +28,7 @@ export function sendInvites() {
       .end((err, res) => {
         res &&
         dispatch({
-          type: SEND_INVITE
+          type: SEND_INVITES
         });
       });
   };
