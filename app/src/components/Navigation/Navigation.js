@@ -10,19 +10,19 @@ class Navigation extends React.Component {
 
   componentWillMount() {
     this.props.actions.checkToken();
-  };
+  }
 
   constructor(props) {
     super(props);
     this.state = {
       activeKey: 1
-    }
+    };
     this.handleSelect = this.handleSelect.bind(this);
-  };
+  }
 
   handleSelect(selectedKey) {
     this.setState({activeKey: selectedKey});
-  };
+  }
   
   render() {
     return (
