@@ -27,6 +27,10 @@ class EventDetails extends React.Component {
   }
 
   sendInvites = () => {
+    this.props.guestActions.sendInvites();
+  }
+
+  sendInvites = () => {
     this.props.guestActions.sendInvites(this.props.params.id);
   }
 
