@@ -8,27 +8,35 @@ import * as eventActions from '../../redux/eventReducers';
 import * as inviteActions from '../../redux/invite';
 import './eventDetails.scss';
 
+const GuestsList = ({guest, ...props}) => (
+  <ListGroupItem>{guest}
+    <Button
+      {...props}
+      type='button'
+      className='guests-delete-btn pull-right'
+      bsStyle='danger'>X
+    </Button>
+  </ListGroupItem>
+);
+
 class EventDetails extends React.Component {
 
   componentWillMount() {
     this.props.actions.fetchEventById(this.props.params.id);
-    this.props.guestActions.getEmails();
+    this.props.guestActions.getEmails(this.props.params.id);
   }
 
   sendInvites = () => {
-    this.props.guestActions.sendInvites();
+    this.props.guestActions.sendInvites(this.props.params.id);
   }
 
   deleteGuestEmail = i => () => {
     const guest = this.props.guests[i];
-    this.props.guestActions.deleteGuest(guest);
+    this.props.guestActions.deleteGuest(guest.user_id);
   }
 
   render() {
-
-    const id = this.props.params.id;
-    const event = this.props.event.current;
-    const guests = this.props.guests;
+    const {id, event, guests} = {...this.props.params, ...this.props};
 
     return (
       <div className='eventDetails'>
@@ -58,16 +66,12 @@ class EventDetails extends React.Component {
                 <ListGroupItem className='clearfix'>
                   <h4 className='pull-left'>Guests list</h4>
                 </ListGroupItem>
-                {guests.length ? guests.map((guest, index) =>
-                  <ListGroupItem key={index}>{guest.User.email}
-                    <Button
-                      type='button'
-                      onClick={this.deleteGuestEmail(index)}
-                      className='guests-delete-btn pull-right'
-                      bsStyle='danger'>
-                  X
-                    </Button>
-                  </ListGroupItem>) :
+                {guests.length && guests.map((guest, index) =>
+                  <GuestsList
+                    key={index}
+                    guest={guest.User.email}
+                    onClick={this.deleteGuestEmail(index)}
+                  />) ||
                   <p className='text-center'>You have not added guests yet.</p>
                 }
               </ListGroup>
