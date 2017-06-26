@@ -1,9 +1,10 @@
 import React from 'react';
-import { Navbar, Nav, NavItem, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/Login';
+import * as loginActions from '../../redux/login';
+import { ProfileDropDown } from './../';
 
 class Navigation extends React.Component {
 
@@ -27,9 +28,9 @@ class Navigation extends React.Component {
             </LinkContainer>
           </Nav>
           {this.props.isAuth &&
-            <Button className='pull-right'
-              type='button'
-              onClick={this.props.actions.logout}>Log out</Button>
+            <Nav className='pull-right'>
+              <ProfileDropDown />
+            </Nav>
           }
         </Navbar>
       </div>

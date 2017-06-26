@@ -1,13 +1,15 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import signup from './Signup';
-import login from './Login';
+import signup from './signUp';
+import login from './login';
 import event from './eventReducers';
-import eventsList from './EventsReducers';
+import profile from './profileReducers';
+import eventsList from './eventsReducers';
 
 export default combineReducers({
   login,
   event,
+  profile,
   eventsList,
   signup,
   routing: routerReducer
