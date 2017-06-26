@@ -1,22 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab } from 'react-bootstrap';
+import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem }
+  from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventActions from '../../redux/eventReducers';
+import * as inviteActions from '../../redux/Invite';
 import './eventDetails.scss';
 
 class EventDetails extends React.Component {
 
   componentWillMount() {
     this.props.actions.fetchEventById(this.props.params.id);
-    this.setState({ event: this.props.event.current });
+    this.props.guestActions.getEmails();
+  }
+
+  sendInvites = () => {
+    this.props.guestActions.sendInvites();
+  }
+
+  deleteGuestEmail = i => () => {
+    const guest = this.props.guests[i];
+    this.props.guestActions.deleteGuest(guest);
   }
 
   render() {
 
     const id = this.props.params.id;
     const event = this.props.event.current;
+    const guests = this.props.guests;
 
     return (
       <div className='eventDetails'>
@@ -27,6 +39,11 @@ class EventDetails extends React.Component {
               <ButtonToolbar>
                 <Button bsStyle='primary'> Edit </Button>
                 <Button bsStyle='danger'> Delete </Button>
+                <Button
+                  type='button'
+                  bsStyle='primary'
+                  onClick={this.sendInvites}>
+                  Send Invites</Button>
               </ButtonToolbar>
               <div>
                 <h3>Details: </h3>
@@ -37,7 +54,23 @@ class EventDetails extends React.Component {
               { this.props.children }
             </Tab>
             <Tab eventKey={2} title='Guests'>
-              <Link className='list-group-item' to={'/events/' + id + '/guests'}>Guests</Link>
+              <ListGroup>
+                <ListGroupItem className='clearfix'>
+                  <h4 className='pull-left'>Guests list</h4>
+                </ListGroupItem>
+                {guests.length ? guests.map((guest, index) =>
+                <ListGroupItem key={index}>{guest.User.email}
+                <Button
+                  type='button'
+                  onClick={this.deleteGuestEmail(index)}
+                  className='guests-delete-btn pull-right'
+                  bsStyle='danger'>
+                  X
+                </Button>
+                </ListGroupItem>) :
+                <p className='text-center'>You have not added guests yet.</p>
+                }
+              </ListGroup>
             </Tab>
             <Tab eventKey={3} title='Gifts'>
               <Link className='list-group-item' to={'/events/' + id + '/gifts'}>
@@ -53,10 +86,12 @@ class EventDetails extends React.Component {
 
 const mapStateToProps = state => ({
   event: state.event,
+  guests: state.invite.guests
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(eventActions, dispatch),
+  guestActions: bindActionCreators(inviteActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
