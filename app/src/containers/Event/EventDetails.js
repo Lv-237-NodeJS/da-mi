@@ -39,10 +39,11 @@ class EventDetails extends React.Component {
               <ButtonToolbar>
                 <Button bsStyle='primary'> Edit </Button>
                 <Button bsStyle='danger'> Delete </Button>
-                <Button type='button'
-                        bsStyle='primary'
-                        onClick={this.sendInvites}>
-                        Send Invites</Button>
+                <Button
+                  type='button'
+                  bsStyle='primary'
+                  onClick={this.sendInvites}>
+                  Send Invites</Button>
               </ButtonToolbar>
               <div>
                 <h3>Details: </h3>
@@ -59,14 +60,15 @@ class EventDetails extends React.Component {
                 </ListGroupItem>
                 {guests.length ? guests.map((guest, index) =>
                 <ListGroupItem key={index}>{guest.User.email}
-                <Button type='button'
-                        onClick={this.deleteGuestEmail(index)}
-                        className='guests-delete-btn pull-right'
-                        bsStyle='danger'>
-                        X
-                      </Button>
+                <Button
+                  type='button'
+                  onClick={this.deleteGuestEmail(index)}
+                  className='guests-delete-btn pull-right'
+                  bsStyle='danger'>
+                  X
+                </Button>
                 </ListGroupItem>) :
-                <p className='text-center'>You haven't added guests yet.</p>
+                <p className='text-center'>You have not added guests yet.</p>
                 }
               </ListGroup>
             </Tab>
