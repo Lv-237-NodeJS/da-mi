@@ -1,22 +1,20 @@
 import React from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Image } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/Login';
-import * as profileActions from '../../redux/ProfileReducers';
+import * as loginActions from '../../redux/login';
+import * as profileActions from '../../redux/profileReducers';
 import './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {
 
   componentWillMount() {
-    this.props.actions.loginActions.checkToken();
     this.props.actions.profileActions.retrieveProfile(sessionStorage.getItem('userId'));
   }
 
   render() {
-    const profile = this.props.profile;
+    const { profile, actions } = this.props;
     return (
       <div>
         <NavDropdown className='profileDropDown' eventKey={5} id='basic-nav-dropdown'
@@ -24,7 +22,7 @@ class ProfileDropDown extends React.Component {
           <LinkContainer to='/profile'>
             <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
           </LinkContainer>
-          <MenuItem eventKey={5.2} onClick={this.props.actions.loginActions.logout}>Log Out</MenuItem>
+          <MenuItem eventKey={5.2} onClick={actions.loginActions.logout}>Log Out</MenuItem>
         </NavDropdown>
         <span> 
           <div className='avatar'> </div>
@@ -35,9 +33,7 @@ class ProfileDropDown extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  isAuth: state.login.isAuth,
-  profile: state.profile.profile,
-  userId: state.login.userId
+  profile: state.profile.data
 });
 
 const mapDispatchToProps = dispatch => ({

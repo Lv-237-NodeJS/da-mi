@@ -4,7 +4,7 @@ import { Form, FormGroup, ControlLabel, FormControl, Col, Button }
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/Login';
+import * as loginActions from '../../redux/login';
 import './Login.scss';
 
 let InputGroup = ({id, label, ...props}) => (
