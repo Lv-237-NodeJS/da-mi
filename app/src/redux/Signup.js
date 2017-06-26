@@ -2,6 +2,7 @@ import request from '../helper/request';
 import { browserHistory } from 'react-router';
 import messages from '../helper/messages';
 import { API } from '../helper/constants';
+
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 const MESSAGE_MODAL = 'MESSAGE_MODAL';
@@ -16,6 +17,7 @@ export default function changeReducer(state = {show: false, message: ''}, action
       return state;
   }
 }
+
 export function showModal(show) {
   return {
     type: SHOW_MODAL,
@@ -29,7 +31,6 @@ export function messageModal(message) {
     message: message
   };
 }
-
 
 export function signupRequest() {
   return {
