@@ -20,8 +20,7 @@ export default function inviteReducer(state = {guests: []}, action) {
   }
 }
 
-export function sendInvites() {
-  const eventId = location.pathname.split('/')[2];
+export function sendInvites(eventId) {
   return dispatch => {
     request()
       .post(API.HOST + API.PORT + `/api/event/${eventId}/guest/invite`)
@@ -34,8 +33,7 @@ export function sendInvites() {
   };
 }
 
-export function getEmails() {
-  const eventId = location.pathname.split('/')[2];
+export function getEmails(eventId) {
   return dispatch => {
     request()
       .get(API.HOST + API.PORT + `/api/event/${eventId}/guest/get`)
@@ -49,8 +47,7 @@ export function getEmails() {
   };
 }
 
-export function deleteGuest(guest) {
-  const userId = guest.user_id;
+export function deleteGuest(userId) {
   return dispatch => {
     request()
       .delete(API.HOST + API.PORT + `/api/user/${userId}`)
