@@ -4,14 +4,13 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/Login';
-import * as profileActions from '../../redux/ProfileReducers';
+import * as loginActions from '../../redux/login';
+import * as profileActions from '../../redux/profileReducers';
 import './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {
 
   componentWillMount() {
-    this.props.actions.loginActions.checkToken();
     this.props.actions.profileActions.retrieveProfile(sessionStorage.getItem('userId'));
   }
 
@@ -36,8 +35,7 @@ class ProfileDropDown extends React.Component {
 
 const mapStatetoProps = state => ({
   isAuth: state.login.isAuth,
-  profile: state.profile.profile,
-  userId: state.login.userId
+  profile: state.profile.data
 });
 
 const mapDispatchToProps = dispatch => ({

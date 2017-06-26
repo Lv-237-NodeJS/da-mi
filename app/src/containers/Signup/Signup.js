@@ -5,7 +5,7 @@ import messages from '../../helper/messages';
 import './Signup.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from '../../redux/Signup';
+import * as showActions from '../../redux/signUp';
 
 let FieldGroup = ({className, label, isErrors, ...props}) => (
   <div>

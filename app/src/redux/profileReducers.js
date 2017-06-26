@@ -11,11 +11,11 @@ export const retrieveProfile = userId => {
     dispatch(retrieveProfilerRequest());
     return request()
       .get(API.HOST + API.PORT + '/api/user/' + userId)
-      .end((err, res) => {
-        if (err) {
+      .end((error, res) => {
+        if (error) {
           dispatch({
             type: RETRIEVE_PROFILE_FAILURE,
-            payload: err
+            payload: error
           });
         } else {
           dispatch({
@@ -34,7 +34,7 @@ export const retrieveProfilerRequest = () => {
 };
 
 const initialState = {
-  profile: {},
+  data: {},
   error: null
 };
 
@@ -50,7 +50,7 @@ export const profileReducers = (state = initialState, action) => {
     case RETRIEVE_PROFILE_SUCCESS: {
       return {
         ...state,
-        profile: action.payload
+        data: action.payload
       };
     }
 

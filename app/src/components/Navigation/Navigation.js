@@ -3,7 +3,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/Login';
+import * as loginActions from '../../redux/login';
 import { ProfileDropDown } from './../';
 
 class Navigation extends React.Component {
