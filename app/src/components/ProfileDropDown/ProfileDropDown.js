@@ -33,7 +33,6 @@ class ProfileDropDown extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  isAuth: state.login.isAuth,
   profile: state.profile.data
 });
 
