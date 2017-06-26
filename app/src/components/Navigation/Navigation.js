@@ -12,10 +12,6 @@ class Navigation extends React.Component {
     this.props.actions.checkToken();
   };
 
-  componentWillMount() {
-    this.props.actions.checkToken();
-  };
-
   constructor(props) {
     super(props);
     this.state = {
