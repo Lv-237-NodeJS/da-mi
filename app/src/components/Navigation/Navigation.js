@@ -7,7 +7,6 @@ import * as loginActions from '../../redux/Login';
 import './Navigation.scss';
 
 class Navigation extends React.Component {
-
   componentWillMount() {
     this.props.actions.checkToken();
   }
