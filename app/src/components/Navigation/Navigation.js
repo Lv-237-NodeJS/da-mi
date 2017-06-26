@@ -10,14 +10,30 @@ class Navigation extends React.Component {
 
   componentWillMount() {
     this.props.actions.checkToken();
-  }
+  };
+
+  componentWillMount() {
+    this.props.actions.checkToken();
+  };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeKey: 1
+    }
+    this.handleSelect = this.handleSelect.bind(this);
+  };
+
+  handleSelect(selectedKey) {
+    this.setState({activeKey: selectedKey});
+  };
   
   render() {
     return (
       <div>
         <Navbar>
-          <Nav bsStyle='pills' activeKey={1}>
-            <LinkContainer to='/'>
+          <Nav activeKey={this.state.activeKey} onSelect={this.handleSelect}>
+            <LinkContainer to='/events'>
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
             <LinkContainer to='/about'>
