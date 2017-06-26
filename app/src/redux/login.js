@@ -67,8 +67,7 @@ export function checkToken() {
 }
 
 export function logout() {
-  sessionStorage.removeItem('token');
-  sessionStorage.removeItem('userId');
+  sessionStorage.clear();
   browserHistory.push('/');
   return {
     type: LOGOUT_USER
