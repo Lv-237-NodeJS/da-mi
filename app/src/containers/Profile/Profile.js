@@ -8,9 +8,9 @@ import moment from 'moment';
 import 'react-datepicker/src/stylesheets/datepicker.scss';
 import './profile-style.scss';
 
-let FieldGroup = ({id, label, ...props}) => (
+let FieldGroup = ({label, ...props}) => (
   <div>
-    <FormGroup controlId = {id}>
+    <FormGroup>
       <ControlLabel>{label}</ControlLabel>
       <FormControl {...props} />
     </FormGroup>
@@ -19,26 +19,8 @@ let FieldGroup = ({id, label, ...props}) => (
 
 class Profile extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      // firstName: this.props.profile.firstName,
-      // lastName: this.props.profile.lastName,
-      // birthdate: this.props.profile.birthdate,
-      // address: this.props.profile.address,
-      // city: this.props.profile.address,
-      // country: this.props.profile.country
-    };
-  }
-
-  handleChange(date) {
-    this.setState({
-      startDate: date
-    });
-  }
-
   render() {
-    // const profile = this.props.profile;
+    const { profile } = this.props;
 
     const fieldsName = {
       firstName: 'First Name',
@@ -48,7 +30,6 @@ class Profile extends React.Component {
       city: 'City',
       country: 'Country'
     };
-
 
     return (
       <div className='profile-details'>
@@ -66,15 +47,14 @@ class Profile extends React.Component {
               
               <Form horizontal>
                 <Row>
-                  { Object.keys(fieldsName).map(param => 
+                  { Object.keys(fieldsName, profile).map(param => 
                     <FieldGroup 
                       key={param}
-                      controlId='formBasicTex'
                       label={fieldsName[param]}
                       name={param}
                       placeholder={fieldsName[param]}
-                      value={this.state.profile}
-                    />
+                      value={profile[param]}
+                    /> 
                   )}
                 </Row>
                 <Row> 

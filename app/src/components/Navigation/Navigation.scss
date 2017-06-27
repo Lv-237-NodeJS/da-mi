@@ -1,0 +1,46 @@
+@import '../../common.scss';
+
+nav.navbar-default {
+  background-color: $blue;
+  border: 0;
+
+  .navbar-nav {
+    .active {
+      a {
+        background-color: $green-teal;
+        color: $white;
+        text-transform: uppercase;
+        font-size: 18px;
+
+        &:hover {
+          background-color: $orange;
+          color: $white;
+        }
+
+        &:focus {
+          color: $white;
+          background-color: $green-teal;
+        }
+      }
+    }
+
+    li {
+      a {
+        text-transform: uppercase;
+        color: $white;
+        font-size: 15px;
+        text-decoration: none;
+        
+        &:hover {
+          background-color: $orange;
+          color: $white;
+        }
+
+        &:focus {
+          color: $white;
+          background-color: $green-teal;
+        }
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@import '../../common.scss';
+
 .avatar {
   background: url(../../../img/profile.svg);
   height: 45px;
@@ -8,4 +10,16 @@
 
 .profileDropDown {
   display: inline-block;
+}
+
+#basic-nav-dropdown {
+  &:hover, &:focus {
+    background-color: $blue;
+  }
+}
+
+ul {
+  .dropdown-menu {
+    background-color: $lime;
+  }
 }
