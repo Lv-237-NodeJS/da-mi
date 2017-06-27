@@ -5,19 +5,30 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from '../../redux/login';
 import { ProfileDropDown } from './../';
+import './Navigation.scss';
 
 class Navigation extends React.Component {
-
-  componentWillMount() {
+  componentWillMount = () => {
     this.props.actions.checkToken();
+  }
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      activeKey: 1
+    };
+  }
+
+  handleSelect = selectedKey => {
+    this.setState({activeKey: selectedKey});
   }
   
   render() {
     return (
       <div>
         <Navbar>
-          <Nav bsStyle='pills' activeKey={1}>
-            <LinkContainer to='/'>
+          <Nav className="test" activeKey={this.state.activeKey} onSelect={this.handleSelect}>
+            <LinkContainer to='/events'>
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
             <LinkContainer to='/about'>
