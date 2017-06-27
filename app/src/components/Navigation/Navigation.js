@@ -17,7 +17,6 @@ class Navigation extends React.Component {
     this.state = {
       activeKey: 1
     };
-    this.handleSelect = this.handleSelect.bind(this);
   }
 
   handleSelect = selectedKey => {
@@ -28,7 +27,7 @@ class Navigation extends React.Component {
     return (
       <div>
         <Navbar>
-          <Nav activeKey={this.state.activeKey} onSelect={this.handleSelect}>
+          <Nav className="test" activeKey={this.state.activeKey} onSelect={this.handleSelect}>
             <LinkContainer to='/events'>
               <NavItem eventKey={1}>Home</NavItem>
             </LinkContainer>
