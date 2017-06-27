@@ -113,38 +113,67 @@ export const deleteGift = (eventId, giftId) => {
   };
 };
 
-
-
-const initialState = {
-  current: {},
-  fetching: false,
-  fetched: false,
-  error: null,
+const initialState = { 
+  giftsList: {gifts: [], error:null, fetching:false},
+  newGift: {gift:null, error:null, fetching:false},
+  activeGift: {gift:null, error:null, fetching:false},
+  updatedGift: {gift:null, error:null, fetching:false},
+  deletedGift: {gift:null, error:null, fetching:false},
 };
 
 const giftReducer = (state = initialState, action) => {
+  let error;
   switch (action.type) { 
     case FETCH_GIFT: {
-      return { ...state, fetching: true };
+      return { ...state, activeGift:{...state.activeGift, fetching: true}};
     }
-
     case FETCH_GIFT_SUCCESS: {
-      return {
-        ...state,
-        fetching: false,
-        fetched: true,
-        current: action.payload,
-      };
+      return { ...state, activeGift: {gift: action.payload, error:null, fetching: false}};
     }
-
     case FETCH_GIFT_FAIL: {
-      return {
-        ...state,
-        fetching: false,
-        error: action.payload,
-      };
+      error = action.payload || {message: action.payload.message};
+      return { ...state, activeGift: {gift: null, error: error, fetching: false}};
     }
-
+    case FETCH_GIFTS: {
+      return { ...state, giftsList:{gifts: [], error:null, fetching: true}};
+    }
+    case FETCH_GIFTS_SUCCESS: {
+      return { ...state, giftsList: {gifts: action.payload, error:null, fetching: false}};
+    }
+    case FETCH_GIFTS_FAIL: {
+      error = action.payload || {message: action.payload.message};
+      return { ...state, giftsList: {gifts: [], error: error, fetching: false}};
+    }
+    case CREATE_GIFT: {
+      return { ...state, newGift:{...state.newGift, fetching: true}};
+    }
+    case CREATE_GIFT_SUCCESS: {
+      return { ...state, newGift: {gift: action.payload, error:null, fetching: false}};
+    }
+    case CREATE_GIFT_FAIL: {
+      error = action.payload || {message: action.payload.message};
+      return { ...state, newGift: {gift: null, error: error, fetching: false}};
+    }
+    case UPDATE_GIFT: {
+      return { ...state, updatedGift:{...state.updatedGift, fetching: true}};
+    }
+    case UPDATE_GIFT_SUCCESS: {
+      return { ...state, updatedGift: {gift: action.payload, error:null, fetching: false}};
+    }
+    case UPDATE_GIFT_FAIL: {
+      error = action.payload || {message: action.payload.message};
+      return { ...state, updatedGift: {gift: null, error: error, fetching: false}};
+    }
+    case DELETE_GIFT: {
+      return { ...state, deletedGift:{...state.deletedGift, fetching: true}};
+    }
+    case DELETE_GIFT_SUCCESS: {
+      return { ...state, deletedGift: {gift: action.payload, error:null, fetching: false}};
+    }
+    case DELETE_GIFT_FAIL: {
+      error = action.payload || {message: action.payload.message};
+      return { ...state, deletedGift: {gift: null, error: error, fetching: false}};
+    }
     default: return state;
   }
 };
