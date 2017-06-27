@@ -20,10 +20,11 @@ export default function inviteReducer(state = {guests: []}, action) {
   }
 }
 
-export function sendInvites(eventId) {
+export function sendInvites(eventId, owner) {
   return dispatch => {
     request()
       .post(API.HOST + API.PORT + `/api/event/${eventId}/guest/invite`)
+      .send({owner})
       .end((err, res) => {
         res &&
         dispatch({

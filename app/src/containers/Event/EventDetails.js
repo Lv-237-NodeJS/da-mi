@@ -27,11 +27,8 @@ class EventDetails extends React.Component {
   }
 
   sendInvites = () => {
-    this.props.guestActions.sendInvites();
-  }
-
-  sendInvites = () => {
-    this.props.guestActions.sendInvites(this.props.params.id);
+    const {firstName, lastName} = this.props.owner;
+    this.props.guestActions.sendInvites(this.props.params.id, {firstName, lastName});
   }
 
   deleteGuestEmail = i => () => {
@@ -94,7 +91,8 @@ class EventDetails extends React.Component {
 
 const mapStateToProps = state => ({
   event: state.event,
-  guests: state.invite.guests
+  guests: state.invite.guests,
+  owner: state.profile.data
 });
 
 const mapDispatchToProps = dispatch => ({
