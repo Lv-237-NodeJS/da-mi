@@ -23,7 +23,7 @@ export default function inviteReducer(state = {guests: []}, action) {
 export function sendInvites(eventId, owner) {
   return dispatch => {
     request()
-      .post(API.HOST + API.PORT + `/api/event/${eventId}/guest/invite`)
+      .post(API.URL + `/api/event/${eventId}/guest/invite`)
       .send({owner})
       .end((err, res) => {
         res &&
@@ -37,7 +37,7 @@ export function sendInvites(eventId, owner) {
 export function getEmails(eventId) {
   return dispatch => {
     request()
-      .get(API.HOST + API.PORT + `/api/event/${eventId}/guest/get`)
+      .get(API.URL + `/api/event/${eventId}/guest/get`)
       .end((err, res) => {
         res &&
         dispatch({
@@ -51,7 +51,7 @@ export function getEmails(eventId) {
 export function deleteGuest(userId) {
   return dispatch => {
     request()
-      .delete(API.HOST + API.PORT + `/api/user/${userId}`)
+      .delete(API.URL + `/api/user/${userId}`)
       .end((err, res) => {
         res &&
         dispatch({
