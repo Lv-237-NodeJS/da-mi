@@ -1,46 +1,23 @@
 @import '../../common.scss';
 
-#gift {
-  background: url('../../../img/gift.svg');
+$list: gift, Maryana, Denis, Ivan, Vanja, Yulya, Yura, Andriy;
+
+@each $author in $list {
+  #photo-#{$author} {
+    background: url('../../../img/#{$author}.svg') no-repeat;
+    width: 100%;
+  }
+}
+
+#photo-gift {
   height: 450px;
   max-width: 450px;
-  width: $width-100;
-  background-repeat: $background-repeat;
-  }
-
-#Maryana {
-  background: url('../../../img/Maryana.svg');
 }
 
-#Denis {
-  background: url('../../../img/Denis.svg');
-}
-
-#Ivan {
-  background: url('../../../img/Ivan.svg');
-}
-
-#Vanja {
-  background: url('../../../img/Vanja.svg');
-}
-
-#Yulya {
-  background: url('../../../img/Yulya.svg');
-}
-
-#Yura {
-  background: url('../../../img/Yura.svg');
-}
-
-#Andriy {
-  background: url('../../../img/Andriy.svg');
-}
-
-#Maryana, #Denis, #Ivan, #Vanja, #Yulya, #Yura, #Andriy {
+#photo-Maryana, #photo-Denis, #photo-Ivan, 
+#photo-Vanja, #photo-Yulya, #photo-Yura, #photo-Andriy {
   height: 170px;
   max-width: 170px;
-  width: $width-100;
-  background-repeat: $background-repeat;  
 }
 
 .textTeam, .textAbout {
@@ -56,4 +33,3 @@
 .textTeam {
   text-indent: 3em;
 }
-
