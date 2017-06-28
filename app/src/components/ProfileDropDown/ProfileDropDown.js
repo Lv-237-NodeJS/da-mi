@@ -24,9 +24,7 @@ class ProfileDropDown extends React.Component {
           </LinkContainer>
           <MenuItem eventKey={5.2} onClick={actions.loginActions.logout}>Log Out</MenuItem>
         </NavDropdown>
-        
-          <div className='avatar'> </div>
-        
+        <div className='avatar'> </div>
       </div>
     );
   }
