@@ -14,22 +14,14 @@ $list: gift, Maryana, Denis, Ivan, Vanja, Yulya, Yura, Andriy;
   max-width: 450px;
 }
 
-#photo-Maryana, #photo-Denis, #photo-Ivan, 
-#photo-Vanja, #photo-Yulya, #photo-Yura, #photo-Andriy {
+.team {
   height: 170px;
   max-width: 170px;
 }
 
-.textTeam, .textAbout {
+.text {
   text-align: $text-align;
   font-size: $font-size;
-  line-height: $line-height;	
-}
-
-.textAbout{
+  line-height: $line-height;
   text-indent: $text-indent;	
-}
-
-.textTeam {
-  text-indent: 3em;
 }
