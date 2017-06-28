@@ -18,21 +18,21 @@ export default class About extends React.Component {
       <Grid>
         <Row className='show-grid'>
           <Col xs={6} sm={6} md={6} >
-            <div id='photo-gift'className="container"></div>
+            <div id='photo-gift'></div>
           </Col>
           <Col xs={6} sm={6} md={6}>
             <PageHeader className='text-center'>Da-Mi</PageHeader>
-            <p className='textAbout'>{texts.descriptionOurProgectPart1}</p> 
-            <p className='textAbout'>{texts.descriptionOurProgectPart2}</p>
+            <p className='text'>{texts.descriptionOurProgectPart1}</p> 
+            <p className='text'>{texts.descriptionOurProgectPart2}</p>
           </Col>
         </Row>
         <Row className='show-grid'>
           <PageHeader className='text-center'>Our Team</PageHeader>
-          <p className='textAbout'>{texts.descriptionOurTeam}</p>
+          <p className='text'>{texts.descriptionOurTeam}</p>
           {Object.keys(names).map(param =>
             <Col xs={6} sm={4} md={3} key={param}>
-              <div id={names[param]} className="container"></div>
-              <p className='textTeam'>{param}</p>
+              <div id={names[param]} className="team"></div>
+              <p className='text'>{param}</p>
             </Col>
           )}
         </Row>        
