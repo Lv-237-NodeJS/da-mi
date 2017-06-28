@@ -37,18 +37,19 @@ export const fetchGift = (giftId, eventId) => {
   };
 };
 
-export const fetchGifts = (eventId) => {
+export const fetchGifts = eventId => {
   return dispatch => {
     return request()
-      .get(API.HOST + API.PORT + '/api/events' + eventId + '/gifts')
+      .get(API.HOST + API.PORT + '/api/events/' + eventId + '/gifts')
       .end((err, res) => {
         if (err) {
           dispatch({
-            type: FETCH_GIFTS_SUCCESS
+            type: FETCH_GIFTS_FAIL,
+            payload: err,
           });
         } else {
           dispatch({
-            type: FETCH_GIFTS_FAIL,
+            type: FETCH_GIFTS_SUCCESS,
             payload: res.body,
           });
         }
@@ -56,18 +57,18 @@ export const fetchGifts = (eventId) => {
   };
 };
 
-export const createGift = (eventId) => {
+export const createGift = eventId => {
   return dispatch => {
     return request()
       .post(API.HOST + API.PORT + '/api/events' + eventId + '/gifts')
       .end((err, res) => {
         if (err) {
           dispatch({
-            type: CREATE_GIFT_SUCCESS
+            type: CREATE_GIFT_FAIL
           });
         } else {
           dispatch({
-            type: CREATE_GIFT_FAIL,
+            type: CREATE_GIFT_SUCCESS,
             payload: res.body,
           });
         }
@@ -113,7 +114,7 @@ export const deleteGift = (eventId, giftId) => {
   };
 };
 
-const initialState = { 
+const initialState = {
   giftsList: {gifts: [], error:null, fetching:false},
   newGift: {gift:null, error:null, fetching:false},
   activeGift: {gift:null, error:null, fetching:false},
@@ -123,7 +124,7 @@ const initialState = {
 
 const giftReducer = (state = initialState, action) => {
   let error;
-  switch (action.type) { 
+  switch (action.type) {
     case FETCH_GIFT: {
       return { ...state, activeGift:{...state.activeGift, fetching: true}};
     }

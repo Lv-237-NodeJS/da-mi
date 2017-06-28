@@ -9,6 +9,7 @@ import invite from './inviteReducers';
 import newEvent from './newEventReducers';
 import editEvent from './editEventReducers';
 import contactInfo from './contactInfo';
+import gift from './gift';
 
 export default combineReducers({
   login,
@@ -20,5 +21,6 @@ export default combineReducers({
   newEvent,
   editEvent,
   contactInfo,
+  gift,
   routing: routerReducer
 });

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem }
+import { Col, Button, Checkbox, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem }
   from 'react-bootstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -10,6 +10,7 @@ import * as eventActions from 'src/redux/eventReducers';
 import * as inviteActions from 'src/redux/inviteReducers';
 import * as editEventActions from 'src/redux/editEventReducers';
 import './eventDetails.scss';
+import { GiftList, AddGift } from '../';
 
 const GuestsList = ({guest, ...props}) => (
   <ListGroupItem>{guest}
@@ -24,9 +25,10 @@ const GuestsList = ({guest, ...props}) => (
 
 class EventDetails extends React.Component {
   componentWillMount() {
-    const {params: {id}, actions, guestActions} = this.props;
+    const {params: {id}, actions, guestActions, giftsActions} = this.props;
     actions.fetchEventById(id);
     guestActions.getEmails(id);
+    giftsActions.fetchGifts(id);
   }
 
   sendInvites = () => {
@@ -66,7 +68,6 @@ class EventDetails extends React.Component {
                 <p><span className='event-caption'>Place:</span>{event.location_name}</p>
                 <p><span className='event-caption'>Description:</span>{event.description}</p>
               </div>
-              { this.props.children }
             </Tab>
             <Tab eventKey={2} title='Guests'>
               <ListGroup>

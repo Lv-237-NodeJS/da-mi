@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
-import { About, Home, Contacts, Main, Signup, Gift,
+import { About, Home, Contacts, Main, Signup,
   EventsList, EventDetails, Profile, newEvent } from './containers';
 import checkAuth from './helper/redirections';
 
@@ -12,9 +12,7 @@ const Routes = (
     <Route path='signup' component={Signup}/>
     <Route path='events' component={EventsList}/>
     <Route  path='newevent' component={newEvent}/>
-    <Route path='events/:id' component={EventDetails}>
-      <Route path='gifts' component={Gift}/>
-    </Route>
+    <Route path='events/:id' component={EventDetails}/>
     <Route path='profile' component={Profile}/>
   </Route>
 );
