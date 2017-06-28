@@ -17,7 +17,7 @@ export default class About extends React.Component {
     return (
       <Grid>
         <Row className='show-grid'>
-          <Col xs={6} sm={6} md={6} >
+          <Col xs={6} sm={6} md={6}>
             <div id='photo-gift'></div>
           </Col>
           <Col xs={6} sm={6} md={6}>
