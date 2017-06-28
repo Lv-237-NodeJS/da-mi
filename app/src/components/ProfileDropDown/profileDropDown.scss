@@ -17,16 +17,16 @@
 }
 
 #basic-nav-dropdown {
-  background-color: #4abdac;
+  background-color: $puerto-rico;
 
   &:hover, &:focus {
-    background-color: #4abdac;
+    background-color: $puerto-rico;
   }
 }
 
 ul {
   .dropdown-menu {
-    background-color: #4abdac;
+    background-color: $puerto-rico;
     border: 0.5px solid black;
   }
 }

@@ -10,11 +10,11 @@ nav.navbar-default {
   .navbar-nav {
     .active {
       a {
-        background-color: #F7B733;
+        background-color: $saffron;
         color: $white;  
 
         &:focus, &:hover {
-          background-color: #F7B733;
+          background-color: $saffron;
           color: $white;
         }
       }
@@ -26,7 +26,7 @@ nav.navbar-default {
         text-decoration: none;
         
         &:hover {
-          background-color: #F7B733;
+          background-color: $saffron;
           color: $white;
         }   
       }
