@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Row, Col, PageHeader, Image } from 'react-bootstrap';
+import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
 import texts from '../../helper/texts';
 import './About.scss';
 
