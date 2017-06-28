@@ -17,16 +17,14 @@ class ProfileDropDown extends React.Component {
     const { profile, actions } = this.props;
     return (
       <div>
-        <NavDropdown className='profileDropDown' eventKey={5} id='basic-nav-dropdown'
+        <NavDropdown eventKey={5} id='basic-nav-dropdown'
           title={profile.firstName + ' ' + profile.lastName}>
           <LinkContainer to='/profile'>
             <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
           </LinkContainer>
           <MenuItem eventKey={5.2} onClick={actions.loginActions.logout}>Log Out</MenuItem>
         </NavDropdown>
-        <span> 
-          <div className='avatar'> </div>
-        </span>
+        <div className='avatar'> </div>
       </div>
     );
   }
