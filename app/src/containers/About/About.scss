@@ -1,0 +1,27 @@
+@import '../../common.scss';
+
+$list: gift, Maryana, Denis, Ivan, Vanja, Yulya, Yura, Andriy;
+
+@each $author in $list {
+  #photo-#{$author} {
+    background: url('../../../img/#{$author}.svg') no-repeat;
+    width: 100%;
+  }
+}
+
+#photo-gift {
+  height: 450px;
+  max-width: 450px;
+}
+
+.team {
+  height: 170px;
+  max-width: 170px;
+}
+
+.text {
+  text-align: $text-align;
+  font-size: $font-size;
+  line-height: $line-height;
+  text-indent: $text-indent;	
+}
