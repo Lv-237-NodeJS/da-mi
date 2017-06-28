@@ -22,13 +22,14 @@ const GuestsList = ({guest, ...props}) => (
 class EventDetails extends React.Component {
 
   componentWillMount() {
-    this.props.actions.fetchEventById(this.props.params.id);
-    this.props.guestActions.getEmails(this.props.params.id);
+    const {params: {id}, actions, guestActions} = this.props;
+    actions.fetchEventById(id);
+    guestActions.getEmails(id);
   }
 
   sendInvites = () => {
-    const {firstName, lastName} = this.props.owner;
-    this.props.guestActions.sendInvites(this.props.params.id, {firstName, lastName});
+    const {params: {id}, owner: {firstName, lastName}, guestActions} = this.props;
+    guestActions.sendInvites(id, {firstName, lastName});
   }
 
   deleteGuestEmail = i => () => {
@@ -37,7 +38,7 @@ class EventDetails extends React.Component {
   }
 
   render() {
-    const {id, event, guests} = {...this.props.params, ...this.props};
+    const {params: {id}, event, guests} = this.props;
 
     return (
       <div className='eventDetails'>
