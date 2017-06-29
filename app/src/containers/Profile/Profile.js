@@ -7,6 +7,7 @@ import DatePicker from 'react-datepicker';
 import moment from 'moment';
 import 'react-datepicker/src/stylesheets/datepicker.scss';
 import './profile.scss';
+import datePicker from 'react-bootstrap-date-picker';
 
 let FieldGroup = ({label, ...props}) => (
   <div>
@@ -24,7 +25,7 @@ class Profile extends React.Component {
     this.state = {
       firstName: '',
       lastName: '',
-      birthdate: null,
+      birthdate: '',
       address: '',
       city: '',
       country: ''
@@ -69,14 +70,21 @@ class Profile extends React.Component {
               <Form horizontal onSubmit={this.handleSubmit}>
                 <Row>
                   { Object.keys(fieldsName, profile).map(param => 
-                    <FieldGroup 
-                      key={param}
-                      label={fieldsName[param]}
-                      name={param}
-                      placeholder={fieldsName[param]}
-                      value={profile[param]}
-                      onChange={this.handleChange(param)}
-                    /> 
+                    param == 'birthdate'?
+                      <FormGroup >
+                        <ControlLabel>Birthdate</ControlLabel>
+                        <DatePicker bsSize="large" dateFormat="MM/DD/YYYY" value={profile[param]} onChange={this.handleChange}/>
+                      </FormGroup>
+                      : 
+                      <FieldGroup 
+                        key={param}
+                        label={fieldsName[param]}
+                        name={param}
+                        type={param == 'birthdate' && 'date' || 'text' }
+                        placeholder={profile[param]}
+                        value={this.state.param}
+                        onChange={this.handleChange(param)}
+                      /> 
                   )}
                 </Row>
                 <Row> 
