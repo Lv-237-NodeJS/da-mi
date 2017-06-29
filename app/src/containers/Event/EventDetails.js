@@ -34,7 +34,7 @@ class EventDetails extends React.Component {
 
   deleteGuestEmail = i => () => {
     const guest = this.props.guests[i];
-    this.props.guestActions.deleteGuest(guest.user_id);
+    this.props.guestActions.deleteGuest(guest.id);
   }
 
   render() {
@@ -71,7 +71,7 @@ class EventDetails extends React.Component {
                 {guests.length && guests.map((guest, index) =>
                   <GuestsList
                     key={index}
-                    guest={guest.User.email}
+                    guest={guest.email}
                     onClick={this.deleteGuestEmail(index)}
                   />) ||
                   <p className='text-center'>You have not added guests yet.</p>
