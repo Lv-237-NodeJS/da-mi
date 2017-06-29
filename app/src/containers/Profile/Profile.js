@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col, Image, FormGroup, ControlLabel, Form, FormControl, Button, ButtonToolbar,
   Tabs, Tab  } from 'react-bootstrap';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import DatePicker from 'react-bootstrap-date-picker';
 import './profile.scss';
@@ -70,8 +69,7 @@ class Profile extends React.Component {
                     param == 'birthdate'?
                       <FormGroup  bsSize='medium'>
                         <ControlLabel>Birthdate</ControlLabel>
-                        <DatePicker dateFormat='MM/DD/YYYY' value={profile[param]} onChange={this.handleChange}
-                        />
+                        <DatePicker dateFormat='MM/DD/YYYY' value={profile[param]} onChange={this.handleChange}/>
                       </FormGroup>
                       : 
                       <FieldGroup 
