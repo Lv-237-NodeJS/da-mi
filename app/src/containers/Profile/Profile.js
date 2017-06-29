@@ -3,11 +3,10 @@ import { Row, Col, Image, FormGroup, ControlLabel, Form, FormControl, Button, Bu
   Tabs, Tab  } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import DatePicker from 'react-datepicker';
-import moment from 'moment';
-import 'react-datepicker/src/stylesheets/datepicker.scss';
+// import moment from 'moment';
+// import 'react-datepicker/src/stylesheets/datepicker.scss';
 import './profile.scss';
-import datePicker from 'react-bootstrap-date-picker';
+import DatePicker from 'react-bootstrap-date-picker';
 
 let FieldGroup = ({label, ...props}) => (
   <div>
@@ -71,9 +70,10 @@ class Profile extends React.Component {
                 <Row>
                   { Object.keys(fieldsName, profile).map(param => 
                     param == 'birthdate'?
-                      <FormGroup >
+                      <FormGroup  bsSize="medium">
                         <ControlLabel>Birthdate</ControlLabel>
-                        <DatePicker bsSize="large" dateFormat="MM/DD/YYYY" value={profile[param]} onChange={this.handleChange}/>
+                        <DatePicker dateFormat="MM/DD/YYYY" value={profile[param]} onChange={this.handleChange}
+                        />
                       </FormGroup>
                       : 
                       <FieldGroup 
