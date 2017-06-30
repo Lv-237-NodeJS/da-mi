@@ -5,6 +5,7 @@ const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
 const DELETE_GUEST = 'DELETE_GUEST';
 const SAVE_EMAILS = 'SAVE_EMAILS';
+const getGuests = (err, text) => (!err && JSON.parse(text).guests);
 
 export default function inviteReducer(state = {guests: []}, action) {
   switch (action.type) {
@@ -45,28 +46,27 @@ export function getEmails(eventId) {
     request()
       .get(API.URL + `/api/event/${eventId}/guest/get`)
       .end((err, res) => {
-        let guests;
-        !err && (guests = JSON.parse(res.text).guests) &&
+        const guests = getGuests(err, res.text);
+        let id;
+        let email;
+        guests &&
           dispatch({
             type: GET_EMAILS,
-            guests: guests.map(guest => {
-              const {id, email} = guest.User;
-              return {id, email};
-            })
+            guests: guests.map(guest => ({id, email} = guest.User))
           });
       });
   };
 }
 
-export function deleteGuest(id) {
+export function deleteGuest(eventId, userId) {
   return dispatch => {
     request()
-      .delete(API.URL + `/api/user/${id}`)
+      .delete(API.URL + `/api/event/${eventId}/guest/${userId}`)
       .end((err, res) => {
         !err &&
           dispatch({
             type: DELETE_GUEST,
-            id
+            id: userId
           });
       });
   };
@@ -76,11 +76,11 @@ export function saveEmails(emails, eventId) {
   const data = {emails, eventId};
   return dispatch => {
     request()
-      .post(API.HOST + API.PORT + `/api/event/${eventId}/guests`)
+      .post(API.URL + `/api/event/${eventId}/guests`)
       .send(data)
       .end((err, res) => {
-        let guests;
-        !err && (guests = JSON.parse(res.text).guests) &&
+        const guests = getGuests(err, res.text);
+        guests &&
           dispatch({
             type: SAVE_EMAILS,
             guests

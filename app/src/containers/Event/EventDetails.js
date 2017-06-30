@@ -13,8 +13,8 @@ const GuestsList = ({guest, ...props}) => (
     <Button
       {...props}
       type='button'
-      className='guests-delete-btn pull-right'
-      bsStyle='danger'>X
+      className='guests-delete-btn pull-right glyphicon glyphicon-trash'
+      bsStyle='danger'>
     </Button>
   </ListGroupItem>
 );
@@ -33,8 +33,9 @@ class EventDetails extends React.Component {
   }
 
   deleteGuestEmail = i => () => {
-    const guest = this.props.guests[i];
-    this.props.guestActions.deleteGuest(guest.id);
+    const {params: {id}, guests} = this.props;
+    const guest = guests[i];
+    this.props.guestActions.deleteGuest(id, guest.id);
   }
 
   render() {
@@ -91,7 +92,7 @@ class EventDetails extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  event: state.event,
+  event: state.event.current,
   guests: state.invite.guests,
   owner: state.profile.data
 });
