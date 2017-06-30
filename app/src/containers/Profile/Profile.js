@@ -8,8 +8,8 @@ class Profile extends React.Component {
     return (
       <div>
         <h1>My Profile Info</h1>
-        <p>First Name: {profile.firstName}</p>
-        <p>Last Name: {profile.lastName}</p>
+        <p>First Name: {profile.first_name}</p>
+        <p>Last Name: {profile.last_name}</p>
       </div>
     );
   }
