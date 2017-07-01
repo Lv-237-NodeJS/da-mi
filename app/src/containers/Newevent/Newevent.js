@@ -63,15 +63,8 @@ class newEvent extends React.Component {
   };
 
   handleButtonClick = e => {
-    e.preventDefault();
-    this.props.actions.createNewEvent(
-      this.state.name,
-      this.state.date_event,
-      this.state.location_name,
-      this.state.longitude,
-      this.state.latitude,
-      this.state.description
-    );
+   e.preventDefault();
+    this.props.actions.createNewEvent(this.state);
   };
 
   render() {

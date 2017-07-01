@@ -49,15 +49,7 @@ export function createNewEventRequest() {
   };
 }
 
-export function createNewEvent(name, date_event, location_name, longitude, latitude, description) {
-  let event = {
-    name: name,
-    date_event: date_event,
-    location_name: location_name,
-    longitude: longitude,
-    latitude: latitude,
-    description: description
-  };
+export function createNewEvent(event) {
   return dispatch => {
     dispatch(createNewEventRequest());
     request()
