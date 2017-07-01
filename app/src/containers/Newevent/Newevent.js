@@ -39,14 +39,14 @@ class newEvent extends React.Component {
 
   getValidationState = fieldName => {
     const newState = this.state;
-      if (this.state.name.length < 4) {
-        newState.enableButton = false;
-        newState.isErrors.name = messages['nameError'];     
-      } else {
-        newState.isErrors.name = null;
-        newState.enableButton = true; 
-      }
-        this.setState(newState);
+    if (this.state.name.length < 4) {
+      newState.enableButton = false;
+      newState.isErrors.name = messages['nameError'];     
+    } else {
+      newState.isErrors.name = null;
+      newState.enableButton = true; 
+    }
+    this.setState(newState);
   };
 
   handleChange = param => e => {
@@ -57,13 +57,13 @@ class newEvent extends React.Component {
 
   dateTimeFieldHandleChange = e => {
     const date = new Date(parseInt(e));
-     this.setState({
+    this.setState({
       date_event: date
     });
   };
 
   handleButtonClick = e => {
-   e.preventDefault();
+    e.preventDefault();
     this.props.actions.createNewEvent(this.state);
   };
 
@@ -82,23 +82,23 @@ class newEvent extends React.Component {
         <Form onSubmit={this.handleButtonClick}>
           { Object.keys(inputsEventData).map(param =>
             (param == 'date_event') ?
-             <DateTimeField
+              <DateTimeField
                 key={param}
                 value={this.state.param}
                 onChange={this.dateTimeFieldHandleChange}
-             />     
-            :
-            <InputGroup
-              id={param}
-              key={param}
-              type="text"
-              className={!!this.state.isErrors[param] && 'has-error'}
-              label={inputsEventData[param] + ' of your event:'}
-              placeholder={inputsEventData[param]}
-              value={this.state.param}
-              onChange={this.handleChange(param)}
-              isErrors={this.state.isErrors[param]}
-            />
+              />     
+             :
+              <InputGroup
+                id={param}
+                key={param}
+                type="text"
+                className={!!this.state.isErrors[param] && 'has-error'}
+                label={inputsEventData[param] + ' of your event:'}
+                placeholder={inputsEventData[param]}
+                value={this.state.param}
+                onChange={this.handleChange(param)}
+                isErrors={this.state.isErrors[param]}
+              />
           )}
           <FormGroup>
             <Col>
