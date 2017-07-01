@@ -8,7 +8,7 @@ import messages from '../../helper/messages';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import './Newevent.scss';
 
-let InputGroup = ({id, label, className, isErrors, ...props}) => (
+const InputGroup = ({id, label, className, isErrors, ...props}) => (
   <FormGroup controlId={id} className = {className}>
     <Col componentClass={ControlLabel} md={3}><br/>
       {label}
@@ -25,7 +25,7 @@ class newEvent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: null,
+      name: '',
       date_event: new Date(),
       location_name: null,
       longitude: null,
@@ -38,7 +38,7 @@ class newEvent extends React.Component {
     };
   }
 
-  getValidationState = fieldName => {
+  getValidationState = name => {
     const newState = this.state;
     if (this.state.name.length < 4) {
       newState.enableButton = false;
@@ -51,9 +51,8 @@ class newEvent extends React.Component {
   };
 
   handleChange = param => e => {
-    let value = e.target.value.trim();
-    this.setState({ [param]: value},
-      () => {this.getValidationState(param);});
+    const value = e.target.value.trim();
+    this.setState({ [param]: value}, () => {this.getValidationState();});
   };
 
   dateTimeFieldHandleChange = e => {
@@ -83,11 +82,19 @@ class newEvent extends React.Component {
         <Form onSubmit={this.handleButtonClick}>
           { Object.keys(inputsEventData).map(param =>
             (param == 'date_event') ?
-              <DateTimeField
-                key={param}
-                value={this.state.param}
-                onChange={this.dateTimeFieldHandleChange}
-              />     
+              <FormGroup key={param}>
+                <Col md={3} className='dateEventFormGroupItem'>
+                  <label>Choose the date of your event:</label>
+                </Col>
+                <Col md={9} className='dateEventFormGroupItem'>
+                  <DateTimeField
+                    key={param}
+                    inputProps={{readOnly:true}}
+                    value={this.state.param}
+                    onChange={this.dateTimeFieldHandleChange}
+                  />
+                </Col>
+              </FormGroup>  
               :
               <InputGroup
                 id={param}
