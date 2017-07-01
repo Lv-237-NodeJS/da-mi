@@ -38,7 +38,7 @@ class newEvent extends React.Component {
     };
   }
 
-  getValidationState = name => {
+  getValidationState = () => {
     const newState = this.state;
     if (this.state.name.length < 4) {
       newState.enableButton = false;
@@ -86,7 +86,7 @@ class newEvent extends React.Component {
                 <Col md={3} className='dateEventFormGroupItem'>
                   <label>Choose the date of your event:</label>
                 </Col>
-                <Col md={9} className='dateEventFormGroupItem'>
+                <Col md={9} className='dateEventFormGroupItem' id='dateTimeField'>
                   <DateTimeField
                     key={param}
                     inputProps={{readOnly:true}}
