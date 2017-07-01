@@ -10,7 +10,7 @@ export default class Dashboard extends React.Component {
       <div className='dashboard-menu'>
         <Col sm={3}>
           <h1>Dashboard</h1>
-          <Nav bsStyle='pills' stacked activeKey={1}>
+          <Nav id='dashboard' activeKey={1}>
             <LinkContainer to='/events'>
               <NavItem eventKey={1}>My Events</NavItem>
             </LinkContainer>
