@@ -2,6 +2,7 @@ import request from '../helper/request';
 import { API } from './../helper/constants';
 import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
+
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
 const CREATE_NEW_EVENT_FAILURE = 'CREATE_NEW_EVENT_FAILURE';
 const CREATE_NEW_EVENT_REQUEST = 'CREATE_NEW_EVENT_REQUEST';
