@@ -5,32 +5,32 @@
   left: 15px; 
   top: 15px;
   display: inline;
+  margin-right: 15px;
 }
 
 .col-sm-3 {
   height: 100vh;
   border-right: 2px solid $puerto-rico;
-  margin-right: 15px;
 }
 
 #dashboard {
   li {
     a {
-	  color: $puerto-rico;
-	  font-size: 16px;
-	  background-color: $white;
+	    color: $puerto-rico;
+	    font-size: 16px;
+	    background-color: $white;
 
-	  &:hover {
-	    color: $saffron;
-	    text-decoration: underline;
+	    &:hover {
+	      color: $saffron;
+	      text-decoration: underline;
+	    }
 	  }
-	}
   }
   .active {
     a {
-	  color: $saffron;
-	  background-color: $white;
-	  text-decoration: underline;
-	}   
+	    color: $saffron;
+	    background-color: $white;
+	    text-decoration: underline;
+	  }   
   }
 }
