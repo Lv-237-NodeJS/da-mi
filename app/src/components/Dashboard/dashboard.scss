@@ -16,21 +16,21 @@
 #dashboard {
   li {
     a {
-	    color: $puerto-rico;
-	    font-size: 16px;
-	    background-color: $white;
+	  color: $puerto-rico;
+	  font-size: 16px;
+	  background-color: $white;
 
-	    &:hover {
-	      color: $saffron;
-	      text-decoration: underline;
-	    }
+	  &:hover {
+	    color: $saffron;
+	    text-decoration: underline;
 	  }
+	}
   }
   .active {
     a {
-	    color: $saffron;
-	    background-color: $white;
-	    text-decoration: underline;
-	  }   
+	  color: $saffron;
+	  background-color: $white;
+	  text-decoration: underline;
+	}   
   }
 }
