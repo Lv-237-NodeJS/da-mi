@@ -39,19 +39,13 @@ class newEvent extends React.Component {
 
   getValidationState = fieldName => {
     const newState = this.state;
-
-    console.log(this.state);
-    
-    (this.state.name.length < 4) && (newState.enableButton == false) && (newState.isErrors.name = messages.nameError)
-    || (newState.enableButton = true) && (newState.isErrors.name = null);
-
-     /* if (this.state.name.length < 4) {
+      if (this.state.name.length < 4) {
         newState.enableButton = false;
         newState.isErrors.name = messages['nameError'];     
       } else {
         newState.isErrors.name = null;
         newState.enableButton = true; 
-      }*/
+      }
         this.setState(newState);
   };
 
