@@ -3,7 +3,7 @@ import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Lab
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from '../../redux/newEventReducer';
+import * as showActions from '../../redux/newEventReducers';
 import messages from '../../helper/messages';
 
 let InputGroup = ({id, label, className, isErrors, ...props}) => (
@@ -121,4 +121,4 @@ const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(showActions, dispatch),
 });
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Newevent);
+export default connect(mapStatetoProps, mapDispatchToProps)(newEvent);

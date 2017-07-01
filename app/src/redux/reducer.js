@@ -6,7 +6,7 @@ import event from './eventReducers';
 import profile from './profileReducers';
 import eventsList from './eventsReducers';
 import invite from './invite';
-import newvent from './newEventReducers';
+import newevent from './newEventReducers';
 
 
 export default combineReducers({
