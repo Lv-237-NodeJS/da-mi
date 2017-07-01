@@ -8,7 +8,6 @@ import eventsList from './eventsReducers';
 import invite from './invite';
 import newEvent from './newEventReducers';
 
-
 export default combineReducers({
   login,
   event,
