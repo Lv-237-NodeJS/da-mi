@@ -30,30 +30,14 @@ class newEvent extends React.Component {
       latitude: null,
       description: null,
       isErrors: {
-        name: null,
-        date_event: null
+        name: null
       },
       enableButton: false
     };
   }
 
   getValidationState = fieldName => {
-    const pattern = {
-      name: /^.{4,}$/,
-      date_event:  /^(0?[1-9]|[12][0-9]|3[01])[/](0?[1-9]|1[012])[/]\d{4}$/
-    };
-
-    const newState = this.state;
-    const validateByPattern = name => {
-      newState.isErrors[name] = !newState[name].match(pattern[name]) &&
-      messages[name + 'Error'] || '';
-    };
-
-    validateByPattern(fieldName);
-
-    newState.enableButton = Object.keys(newState.isErrors).map(key =>
-      newState.isErrors[key]).every(element => element === '');
-    this.setState(newState);
+    
   };
 
   handleChange = param => e => {
