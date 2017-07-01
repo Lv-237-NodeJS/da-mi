@@ -9,27 +9,27 @@
 
 .col-sm-3 {
   height: 100vh;
-  border-right: 2px solid #4abdac;
+  border-right: 2px solid $puerto-rico;
   margin-right: 15px;
 }
 
 #dashbord {
   li {
     a {
-	  color: #4abdac;
+	  color: $puerto-rico;
 	  font-size: 16px;
-	  background-color: white;
+	  background-color: $white;
 
 	  &:hover {
-	    color: #f7b733;
+	    color: $saffron;
 	    text-decoration: underline;
 	  }
 	}
   }
   .active {
     a {
-	  color: #f7b733;
-	  background-color: white;
+	  color: $saffron;
+	  background-color: $white;
 	  text-decoration: underline;
 	}   
   }
