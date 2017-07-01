@@ -78,7 +78,7 @@ class newEvent extends React.Component {
     };
     return (
       <Col sm={9}>
-        <Label bsStyle='success'>Here, you can create your own event:</Label>
+        <h2>Here, you can create your own event:</h2>
         <Form onSubmit={this.handleButtonClick}>
           { Object.keys(inputsEventData).map(param =>
             (param == 'date_event') ?
@@ -87,7 +87,7 @@ class newEvent extends React.Component {
                 value={this.state.param}
                 onChange={this.dateTimeFieldHandleChange}
               />     
-             :
+              :
               <InputGroup
                 id={param}
                 key={param}
