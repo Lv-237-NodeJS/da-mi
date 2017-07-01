@@ -14,7 +14,7 @@ const Routes = (
     </Route>
     <Route path='signup' component={Signup}/>
     <Route path='events' component={EventsList}/>
-    <Route  path='newevent' component={Newevent}/>
+    <Route  path='newevent' component={newEvent}/>
     <Route path='events/:id' component={EventDetails}>
       <Route path='gifts' component={Gift}/>
     </Route>

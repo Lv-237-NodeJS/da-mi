@@ -9,4 +9,4 @@ export EventDetails from './Event/EventDetails';
 export Gift from './Gift/sampleGift';
 export Signup from './Signup/Signup';
 export Profile from './Profile/Profile';
-export Newevent from './Newevent/Newevent';
+export newEvent from './Newevent/Newevent';

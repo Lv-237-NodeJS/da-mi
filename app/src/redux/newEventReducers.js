@@ -12,7 +12,7 @@ const initialState = {
   error: false
 };
 
-export default function createNewEventReducer(state = initialState, action) {
+export default function newEventReducers(state = initialState, action) {
   switch (action.type) {
     case CREATE_NEW_EVENT_FAILURE:
       return {

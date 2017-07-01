@@ -3,7 +3,7 @@ import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Lab
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from '../../redux/createNewEventReducer';
+import * as showActions from '../../redux/newEventReducer';
 import messages from '../../helper/messages';
 
 let InputGroup = ({id, label, className, isErrors, ...props}) => (
@@ -19,7 +19,7 @@ let InputGroup = ({id, label, className, isErrors, ...props}) => (
   </FormGroup>
 );
 
-class Newevent extends React.Component {
+class newEvent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
