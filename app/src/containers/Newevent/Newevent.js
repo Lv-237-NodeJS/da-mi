@@ -110,7 +110,7 @@ class newEvent extends React.Component {
           )}
           <FormGroup>
             <Col>
-              <Button type='submit' bsStyle='primary' bsSize='large' disabled = {!this.state.enableButton}>
+              <Button type='submit' bsStyle='primary' bsSize='large' disabled={!this.state.enableButton}>
               Save
               </Button>
             </Col>
