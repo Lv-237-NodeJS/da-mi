@@ -24,7 +24,7 @@ class newEvent extends React.Component {
     super(props);
     this.state = {
       name: null,
-      date_event: null,
+      date_event: new Date(),
       location_name: null,
       longitude: null,
       latitude: null,
@@ -46,6 +46,13 @@ class newEvent extends React.Component {
       () => {this.getValidationState(param);});
   };
 
+  dateTimeFieldHandleChange = e => {
+    const date = new Date(parseInt(e));
+     this.setState({
+      date_event: date
+    });
+  };
+
   handleButtonClick = e => {
    e.preventDefault();
     this.props.actions.createNewEvent(this.state);
@@ -65,6 +72,13 @@ class newEvent extends React.Component {
         <Label bsStyle='success'>Here, you can create your own event:</Label>
         <Form onSubmit={this.handleButtonClick}>
           { Object.keys(inputsEventData).map(param =>
+            (param == 'date_event') ?
+             <DateTimeField
+                key={param}
+                value={this.state.param}
+                onChange={this.dateTimeFieldHandleChange}
+             />     
+            :
             <InputGroup
               id={param}
               key={param}
