@@ -28,14 +28,16 @@ class EventDetails extends React.Component {
   }
 
   sendInvites = () => {
-    const {params: {id}, owner: {firstName, lastName}, guestActions} = this.props;
+    const {params: {id},
+      owner: {first_name: firstName, last_name: lastName},
+      guestActions} = this.props;
     guestActions.sendInvites(id, {firstName, lastName});
   }
 
   deleteGuestEmail = i => () => {
-    const {params: {id}, guests} = this.props;
+    const {params: {id}, guests, guestActions} = this.props;
     const guest = guests[i];
-    this.props.guestActions.deleteGuest(id, guest.id);
+    guestActions.deleteGuest(id, guest.id);
   }
 
   render() {
