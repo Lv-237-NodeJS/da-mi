@@ -44,6 +44,26 @@ class Profile extends React.Component {
     this.props.actions.updateProfile(this.state);
   }
 
+  dateTimeFieldHandleChange = e => {
+    const date = new Date(parseInt(e));
+    this.setState({
+      birth_date: date
+    });
+  };
+
+  handleChangeImage = e => {
+    const self = this;
+    const reader = new FileReader();
+    const file = e.target.files[0];
+
+    reader.onload = upload => {
+      self.setState({
+        avatar: upload.target.result
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
   render() {
     const { profile } = this.props;
 
@@ -68,10 +88,14 @@ class Profile extends React.Component {
               <Form horizontal onSubmit={this.handleSubmit}>
                 <Row>
                   <Col  md={4} className='text-center'>
-                    <div className='no-avatar'></div>
-                    <h6>Upload a different photo</h6>
-                    <input type='file' className='form-control' 
-                      onChange={this.handleFile} />
+                    <FormGroup key='avatar'>
+                      <div className='no-avatar'></div>
+                      {/*<Image src='data:image/jpg;base64,{profile.avatar}' />*/}
+                      <h6>Upload a different photo</h6>
+                      <input type='file' className='form-control' 
+                        onChange={this.handleChangeImage} 
+                        encType='multipart/form-data'/>
+                    </FormGroup>
                   </Col>
                 </Row>
                 <Row>
@@ -82,8 +106,8 @@ class Profile extends React.Component {
                         <DateTimeField 
                           key={param}
                           mode='date'
-                          value={this.state.param}
-                          onChange={this.handleChange}/>
+                          value={this.state.birth_date}
+                          onChange={this.dateTimeFieldHandleChange}/>
                       </FormGroup>
                       : 
                       <FieldGroup 

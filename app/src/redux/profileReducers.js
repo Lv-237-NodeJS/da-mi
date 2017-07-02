@@ -40,7 +40,9 @@ const initialState = {
 };
 
 export const updateProfile = profile => {
+  // sessionStorage.getItem('profile_id');
   const profile_id = 1;
+  
   return dispatch => {
     return request()
       .put(API.HOST + API.PORT + '/api/profile/' + profile_id)
