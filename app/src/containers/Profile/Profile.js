@@ -2,12 +2,16 @@ import React from 'react';
 import { Row, Col, Image, FormGroup, ControlLabel, Form, FormControl, Button, ButtonToolbar,
   Tabs, Tab  } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import DatePicker from 'react-bootstrap-date-picker';
+import { bindActionCreators } from 'redux';
+import * as profileActions from '../../redux/profileReducers';
+import DateTimeField from 'react-bootstrap-datetimepicker';
+import moment from 'moment';
+
 import './profile.scss';
 
-let FieldGroup = ({label, ...props}) => (
+let FieldGroup = ({id, label, ...props}) => (
   <div>
-    <FormGroup controlId='formControlsText'>
+    <FormGroup controlId={id}>
       <ControlLabel>{label}</ControlLabel>
       <FormControl {...props} />
     </FormGroup>
@@ -19,35 +23,41 @@ class Profile extends React.Component {
     super(props);
 
     this.state = {
-      firstName: '',
-      lastName: '',
-      birthdate: '',
-      address: '',
-      city: '',
-      country: ''
+      first_name: this.props.profile.first_name,
+      last_name: this.props.profile.last_name,
+      birth_date: this.props.profile.birth_date,
+      address: this.props.profile.address,
+      city: this.props.profile.city,
+      country: this.props.profile.country,
+      avatar: this.props.profile.avatar
     };
   }
 
   handleChange = stateName => e => {
-    this.setState({[stateName]: e.target.value});
+    this.setState({
+      [stateName]: e.target.value
+    });
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.actions.updateProfile(this.state.param);
+    this.props.actions.updateProfile(this.state);
   }
 
   render() {
     const { profile } = this.props;
 
     const fieldsName = {
-      firstName: 'First Name',
-      lastName: 'Last Name',
-      birthdate: 'Birthdate',
+      first_name: 'First Name',
+      last_name: 'Last Name',
+      birth_date: 'Birthdate',
       address: 'Address',
       city: 'City',
       country: 'Country'
     };
+
+    // const birthdateString = moment(new Date(profile.birth_date)).format('DD/MM/YY');
+    // console.log(birthdateString);
 
     return (
       <div className='profile-details'>
@@ -55,30 +65,33 @@ class Profile extends React.Component {
           <Tabs defaultActiveKey={1} id='uncontrolled-tab-example'>
             <Tab eventKey={1} title='Profile Info'>
               <h1>Edit Profile</h1>
-              <Row>
-                <Col  md={4} className='text-center'>
-                  <div className='no-avatar'></div>
-                  <h6>Upload a different photo</h6>
-                  <input type='file' className='form-control' />
-                </Col>
-              </Row>
-              
               <Form horizontal onSubmit={this.handleSubmit}>
                 <Row>
+                  <Col  md={4} className='text-center'>
+                    <div className='no-avatar'></div>
+                    <h6>Upload a different photo</h6>
+                    <input type='file' className='form-control' 
+                      onChange={this.handleFile} />
+                  </Col>
+                </Row>
+                <Row>
                   { Object.keys(fieldsName, profile).map(param => 
-                    param == 'birthdate'?
-                      <FormGroup  bsSize='medium'>
+                    param == 'birth_date'?
+                      <FormGroup  key={param}>
                         <ControlLabel>Birthdate</ControlLabel>
-                        <DatePicker dateFormat='MM/DD/YYYY' value={profile[param]} onChange={this.handleChange}/>
+                        <DateTimeField 
+                          key={param}
+                          mode='date'
+                          value={this.state.param}
+                          onChange={this.handleChange}/>
                       </FormGroup>
                       : 
                       <FieldGroup 
                         key={param}
+                        id={param}
                         label={fieldsName[param]}
-                        name={param}
-                        type={param == 'birthdate' && 'date' || 'text' }
-                        placeholder={profile[param]}
-                        value={this.state.param}
+                        type={param == 'birth_date' && 'date' || 'text' }
+                        value={this.state[param]}
                         onChange={this.handleChange(param)}
                       /> 
                   )}
@@ -110,4 +123,8 @@ const mapStateToProps = state => ({
   profile: state.profile.data
 });
 
-export default connect(mapStateToProps)(Profile);
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(profileActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
