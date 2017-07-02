@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1499326273750" clover="3.2.0">
+  <project timestamp="1499326273753" name="All files">
+    <metrics statements="45" coveredstatements="44" conditionals="13" coveredconditionals="6" methods="19" coveredmethods="16" elements="77" coveredelements="66" complexity="0" loc="45" ncloc="45" packages="3" files="4" classes="4">
+      <package name="components.Login">
+        <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="7"/>
+        <file name="Login.js" path="/home/vander/Desktop/git_da-mi_FRONT/app/src/components/Login/Login.js">
+          <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="7"/>
+          <line num="10" count="1" type="stmt"/>
+          <line num="11" count="6" type="stmt"/>
+          <line num="23" count="1" type="stmt"/>
+          <line num="25" count="1" type="stmt"/>
+          <line num="31" count="6" type="stmt"/>
+          <line num="32" count="2" type="stmt"/>
+          <line num="36" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="41" count="3" type="stmt"/>
+          <line num="45" count="6" type="stmt"/>
+          <line num="75" count="1" type="stmt"/>
+          <line num="80" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="helper">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="constants.js" path="/home/vander/Desktop/git_da-mi_FRONT/app/src/helper/constants.js">
+          <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+          <line num="1" count="3" type="stmt"/>
+          <line num="6" count="3" type="stmt"/>
+        </file>
+        <file name="request.js" path="/home/vander/Desktop/git_da-mi_FRONT/app/src/helper/request.js">
+          <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="2" count="3" type="stmt"/>
+          <line num="4" count="3" type="stmt"/>
+          <line num="5" count="1" type="stmt"/>
+          <line num="6" count="1" type="stmt"/>
+          <line num="8" count="1" type="stmt"/>
+        </file>
+      </package>
+      <package name="redux">
+        <metrics statements="26" coveredstatements="25" conditionals="11" coveredconditionals="5" methods="9" coveredmethods="8"/>
+        <file name="login.js" path="/home/vander/Desktop/git_da-mi_FRONT/app/src/redux/login.js">
+          <metrics statements="26" coveredstatements="25" conditionals="11" coveredconditionals="5" methods="9" coveredmethods="8"/>
+          <line num="5" count="3" type="stmt"/>
+          <line num="6" count="3" type="stmt"/>
+          <line num="7" count="3" type="stmt"/>
+          <line num="8" count="3" type="stmt"/>
+          <line num="9" count="3" type="stmt"/>
+          <line num="12" count="5" type="cond" truecount="5" falsecount="0"/>
+          <line num="14" count="1" type="stmt"/>
+          <line num="20" count="1" type="stmt"/>
+          <line num="27" count="1" type="stmt"/>
+          <line num="32" count="1" type="stmt"/>
+          <line num="37" count="1" type="stmt"/>
+          <line num="42" count="3" type="stmt"/>
+          <line num="43" count="3" type="stmt"/>
+          <line num="44" count="3" type="stmt"/>
+          <line num="45" count="3" type="stmt"/>
+          <line num="52" count="1" type="stmt"/>
+          <line num="59" count="2" type="stmt"/>
+          <line num="65" count="1" type="stmt"/>
+          <line num="72" count="1" type="stmt"/>
+          <line num="73" count="1" type="stmt"/>
+          <line num="74" count="1" type="stmt"/>
+          <line num="80" count="2" type="stmt"/>
+          <line num="83" count="2" type="stmt"/>
+          <line num="84" count="1" type="stmt"/>
+          <line num="85" count="1" type="stmt"/>
+          <line num="89" count="0" type="cond" truecount="0" falsecount="5"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
