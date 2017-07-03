@@ -10,22 +10,16 @@ const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 
 describe('async action creators', () => {
-
   afterEach(() => {
     nock.cleanAll();
   });
-
   it('creates LOGIN_USER_SUCCESS when user has been logged in', () => {
-
     router.browserHistory = { push: () => {} };
-
     const expectedActions = [
       loginActions.loginUserRequest(),
       loginActions.loginUserSuccess('do something', 777)
     ];
-
     const store = mockStore({ loggedUser: [] });
-
     nock(API.URL)
       .post('/api/auth/login', {
         email: 'ivan.yarymovych@gmail.com',
@@ -37,10 +31,7 @@ describe('async action creators', () => {
         const userId = response.user_id;
         return store.dispatch(loginActions.loginUserSuccess(token, userId));
       });
-
     store.dispatch(loginActions.loginUser('ivan.yarymovych@gmail.com', 'P!assword!1'));
-
     expect(store.getActions()).toEqual(expectedActions);
-
   });
 });
