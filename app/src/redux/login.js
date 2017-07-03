@@ -37,13 +37,15 @@ export default function loginReduser(state = {}, action) {
   }
 }
 
-export function loginUserSuccess(token, userId) {
+export function loginUserSuccess(token, userId, profileId) {
   sessionStorage.setItem('token', token);
   sessionStorage.setItem('userId', userId);
+  sessionStorage.setItem('profileId', profileId);
   browserHistory.push('/events');
   return {
     type: LOGIN_USER_SUCCESS,
-    userId
+    userId: userId,
+    profileId: profileId
   };
 }
 
@@ -86,10 +88,14 @@ export function loginUser(email, password) {
       .post(API.HOST + API.PORT + '/api/auth/login')
       .send(user)
       .end((err, res) => {
-        (err || !res.ok) &&
-          dispatch(loginUserFailure(JSON.parse(res.text).message)) ||
-            ({token, user_id: userId} = JSON.parse(res.text)) &&
-              dispatch(loginUserSuccess(token, userId));
+        if (err || !res.ok) {
+          dispatch(loginUserFailure());
+        } else {
+          const token = JSON.parse(res.text).token;
+          const userId = JSON.parse(res.text).user_id;
+          const profileId = JSON.parse(res.text).profile_id;
+          dispatch(loginUserSuccess(token, userId, profileId));
+        }
       });
   };
 }

@@ -40,12 +40,11 @@ const initialState = {
 };
 
 export const updateProfile = profile => {
-  // sessionStorage.getItem('profile_id');
-  const profile_id = 1;
   
   return dispatch => {
+    const profileId = sessionStorage.getItem('profileId');
     return request()
-      .put(API.HOST + API.PORT + '/api/profile/' + profile_id)
+      .put(API.HOST + API.PORT + '/api/profile/' + profileId)
       .send(profile)
       .type('json')
       .end((error, res) => {

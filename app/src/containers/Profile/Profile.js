@@ -31,25 +31,15 @@ class Profile extends React.Component {
       country: this.props.profile.country,
       avatar: this.props.profile.avatar
     };
-    console.log("constructor");
-    const { profile } = this.props;
-    console.log(profile);
-    console.log(this.state);
   }
   
 
   componentWillMount() {
-    this.props.actions.retrieveProfile(sessionStorage.getItem('userId'));
     const { profile } = this.props;
     this.setState(profile);
-    console.log("componentWillMount");
-    console.log(this.state);
-    console.log(profile);
   }
+
   componentWillReceiveProps(nextProps){
-    console.log("componentWillReceiveProps");
-    console.log(this.state);
-    console.log(nextProps);
     this.setState(nextProps.profile);
   }
 
@@ -85,11 +75,7 @@ class Profile extends React.Component {
   };
 
   render() {
-    console.log("render");
     const { profile } = this.props;
-    console.log(profile);
-    console.log(this.state);
-   
 
     const fieldsName = {
       first_name: 'First Name',
@@ -113,8 +99,8 @@ class Profile extends React.Component {
                 <Row>
                   <Col  md={4} className='text-center'>
                     <FormGroup key='avatar'>
-                      <div className='no-avatar'></div>
-                      <Image src={profile.avatar} circle/>
+                      {/*<div className='no-avatar'></div>*/}
+                      <Image id='img-circle-avatar' src={profile.avatar} circle/>
                       <h6>Upload a different photo</h6>
                       <input type='file' className='form-control' 
                         onChange={this.handleChangeImage} 
