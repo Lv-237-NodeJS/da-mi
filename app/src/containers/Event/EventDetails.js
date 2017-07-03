@@ -13,8 +13,8 @@ const GuestsList = ({guest, ...props}) => (
     <Button
       {...props}
       type='button'
-      className='guests-delete-btn pull-right'
-      bsStyle='danger'>X
+      className='guests-delete-btn pull-right glyphicon glyphicon-trash'
+      bsStyle='danger'>
     </Button>
   </ListGroupItem>
 );
@@ -28,13 +28,16 @@ class EventDetails extends React.Component {
   }
 
   sendInvites = () => {
-    const {params: {id}, owner: {firstName, lastName}, guestActions} = this.props;
+    const {params: {id},
+      owner: {first_name: firstName, last_name: lastName},
+      guestActions} = this.props;
     guestActions.sendInvites(id, {firstName, lastName});
   }
 
   deleteGuestEmail = i => () => {
-    const guest = this.props.guests[i];
-    this.props.guestActions.deleteGuest(guest.user_id);
+    const {params: {id}, guests, guestActions} = this.props;
+    const guest = guests[i];
+    guestActions.deleteGuest(id, guest.id);
   }
 
   render() {
@@ -71,7 +74,7 @@ class EventDetails extends React.Component {
                 {guests.length && guests.map((guest, index) =>
                   <GuestsList
                     key={index}
-                    guest={guest.User.email}
+                    guest={guest.email}
                     onClick={this.deleteGuestEmail(index)}
                   />) ||
                   <p className='text-center'>You have not added guests yet.</p>
@@ -91,7 +94,7 @@ class EventDetails extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  event: state.event,
+  event: state.event.current,
   guests: state.invite.guests,
   owner: state.profile.data
 });

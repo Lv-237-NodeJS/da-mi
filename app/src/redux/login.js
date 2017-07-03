@@ -13,7 +13,8 @@ export default function loginReduser(state = {}, action) {
     case LOGIN_USER_FAILURE:
       return {
         ...state,
-        illegalInput: true
+        illegalInput: true,
+        message: action.message
       };
     case LOGIN_USER_SUCCESS:
       return {
@@ -43,13 +44,14 @@ export function loginUserSuccess(token, userId) {
   browserHistory.push('/events');
   return {
     type: LOGIN_USER_SUCCESS,
-    userId: userId
+    userId
   };
 }
 
-export function loginUserFailure() {
+export function loginUserFailure(message) {
   return {
-    type: LOGIN_USER_FAILURE
+    type: LOGIN_USER_FAILURE,
+    message
   };
 }
 
@@ -75,23 +77,19 @@ export function logout() {
 }
 
 export function loginUser(email, password) {
-  const user = {
-    email: email,
-    password: password
-  };
+  const user = {email, password};
+  let token;
+  let userId;
   return dispatch => {
     dispatch(loginUserRequest());
     request()
       .post(API.HOST + API.PORT + '/api/auth/login')
       .send(user)
       .end((err, res) => {
-        if (err || !res.ok) {
-          dispatch(loginUserFailure());
-        } else {
-          const token = JSON.parse(res.text).token;
-          const userId = JSON.parse(res.text).user_id;
-          dispatch(loginUserSuccess(token, userId));
-        }
+        (err || !res.ok) &&
+          dispatch(loginUserFailure(res.text)) ||
+            ({token, user_id: userId} = JSON.parse(res.text)) &&
+              dispatch(loginUserSuccess(token, userId));
       });
   };
 }

@@ -58,7 +58,7 @@ class Login extends React.Component {
                 Login
               </Button>
               {this.props.badInputs &&
-                <p className='text-danger'>Email or password is not valid!</p>
+                <p className='text-danger'>{this.props.message}</p>
               }
             </Col>
           </FormGroup>
@@ -73,7 +73,8 @@ class Login extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  badInputs: state.login.illegalInput
+  badInputs: state.login.illegalInput,
+  message: state.login.message
 });
 
 const mapDispatchToProps = dispatch => ({
