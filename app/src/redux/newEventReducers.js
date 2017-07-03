@@ -32,7 +32,8 @@ export default function newEventReducers(state = initialState, action) {
 }
 
 export function createNewEventSuccess(res) {
-  browserHistory.push('/events');
+  const eventId = res.body.id;
+  browserHistory.push('/events/' + eventId);
   return {
     type: CREATE_NEW_EVENT_SUCCESS,
     status: res.statusCode
