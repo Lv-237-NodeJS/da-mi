@@ -4,6 +4,7 @@ import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroup
   from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { GuestsModal } from './../../components';
 import * as eventActions from '../../redux/eventReducers';
 import * as inviteActions from '../../redux/invite';
 import './eventDetails.scss';
@@ -70,6 +71,7 @@ class EventDetails extends React.Component {
               <ListGroup>
                 <ListGroupItem className='clearfix'>
                   <h4 className='pull-left'>Guests list</h4>
+                  <GuestsModal eventId={id}/>
                 </ListGroupItem>
                 {guests.length && guests.map((guest, index) =>
                   <GuestsList
