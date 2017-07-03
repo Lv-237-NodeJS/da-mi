@@ -32,11 +32,11 @@ class GuestsModalForm extends React.Component {
   }
   
   add = () => {
-  this.state.email &&
-    this.setState({
-      inputs: [...this.state.inputs, this.state.email],
-      email: ''
-    });
+    this.state.email &&
+      this.setState({
+        inputs: [...this.state.inputs, this.state.email],
+        email: ''
+      });
   };
   
   setEmail = e => {
