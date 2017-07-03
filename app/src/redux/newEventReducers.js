@@ -31,16 +31,18 @@ export default function newEventReducers(state = initialState, action) {
   }
 }
 
-export function createNewEventSuccess() {
+export function createNewEventSuccess(res) {
   browserHistory.push('/events');
   return {
-    type: CREATE_NEW_EVENT_SUCCESS
+    type: CREATE_NEW_EVENT_SUCCESS,
+    status: res.statusCode
   };
 }
 
-export function createNewEventFailure() {
+export function createNewEventFailure(res) {
   return {
-    type: CREATE_NEW_EVENT_FAILURE
+    type: CREATE_NEW_EVENT_FAILURE,
+    status: res.statusCode
   };
 }
 
@@ -58,9 +60,9 @@ export function createNewEvent(event) {
       .send(event)
       .end((err, res) => {
         if (err || !res.ok) {
-          dispatch(createNewEventFailure());
+          dispatch(createNewEventFailure(res));
         } else {
-          dispatch(createNewEventSuccess());
+          dispatch(createNewEventSuccess(res));
         }
       });
   };
