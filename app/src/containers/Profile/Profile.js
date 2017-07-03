@@ -31,6 +31,26 @@ class Profile extends React.Component {
       country: this.props.profile.country,
       avatar: this.props.profile.avatar
     };
+    console.log("constructor");
+    const { profile } = this.props;
+    console.log(profile);
+    console.log(this.state);
+  }
+  
+
+  componentWillMount() {
+    this.props.actions.retrieveProfile(sessionStorage.getItem('userId'));
+    const { profile } = this.props;
+    this.setState(profile);
+    console.log("componentWillMount");
+    console.log(this.state);
+    console.log(profile);
+  }
+  componentWillReceiveProps(nextProps){
+    console.log("componentWillReceiveProps");
+    console.log(this.state);
+    console.log(nextProps);
+    this.setState(nextProps.profile);
   }
 
   handleChange = stateName => e => {
@@ -65,7 +85,11 @@ class Profile extends React.Component {
   };
 
   render() {
+    console.log("render");
     const { profile } = this.props;
+    console.log(profile);
+    console.log(this.state);
+   
 
     const fieldsName = {
       first_name: 'First Name',
@@ -90,7 +114,7 @@ class Profile extends React.Component {
                   <Col  md={4} className='text-center'>
                     <FormGroup key='avatar'>
                       <div className='no-avatar'></div>
-                      {/*<Image src='data:image/jpg;base64,{profile.avatar}' />*/}
+                      <Image src={profile.avatar} circle/>
                       <h6>Upload a different photo</h6>
                       <input type='file' className='form-control' 
                         onChange={this.handleChangeImage} 
@@ -116,6 +140,7 @@ class Profile extends React.Component {
                         label={fieldsName[param]}
                         type={param == 'birth_date' && 'date' || 'text' }
                         value={this.state[param]}
+                        placeholder={this.state[param]}
                         onChange={this.handleChange(param)}
                       /> 
                   )}
