@@ -5,4 +5,3 @@ PULL_REQUEST_TEMPLATE.md
 package-lock.json
 .jscsrc
 coverage
-test/__snapshots__

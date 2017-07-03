@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`React component <Login /> should render a Login with typed data, especially checked out a correct work onChange and onSubmit functions 1`] = `
+<div>
+  <form
+    className="login-form form-horizontal"
+    onSubmit={[Function]}
+    state={
+      Object {
+        "email": "",
+        "password": "",
+      }
+    }
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="col-md-3 col-sm-12 control-label"
+        htmlFor="email"
+      >
+        EMAIL
+      </label>
+      <div
+        className="col-md-9 col-sm-12"
+      >
+        <input
+          className="form-control"
+          id="email"
+          onChange={[Function]}
+          placeholder="EMAIL"
+          required={true}
+          type="email"
+          value={undefined}
+        />
+      </div>
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="col-md-3 col-sm-12 control-label"
+        htmlFor="password"
+      >
+        PASSWORD
+      </label>
+      <div
+        className="col-md-9 col-sm-12"
+      >
+        <input
+          className="form-control"
+          id="password"
+          onChange={[Function]}
+          placeholder="PASSWORD"
+          required={true}
+          type="password"
+          value={undefined}
+        />
+      </div>
+    </div>
+    <div
+      className="form-group"
+    >
+      <div
+        className="col-md-9 col-md-offset-3 col-sm-12 col-sm-offset-0"
+      >
+        <button
+          className="btn btn-lg btn-primary"
+          disabled={false}
+          type="submit"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </form>
+  <p
+    className="text-center"
+  >
+    OR
+  </p>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <button
+      className="btn btn-lg btn-default btn-block"
+      disabled={false}
+      type="button"
+    >
+      SIGN UP
+    </button>
+  </a>
+</div>
+`;
+
+exports[`React component <Login /> should render a Login with typed data, especially checked out a correct work onChange and onSubmit functions 2`] = `
+<div>
+  <form
+    className="login-form form-horizontal"
+    onSubmit={[Function]}
+    state={
+      Object {
+        "email": "ivan.yarymovych@gmail.com",
+        "password": "P!assword!1",
+      }
+    }
+  >
+    <div
+      className="form-group"
+    >
+      <label
+        className="col-md-3 col-sm-12 control-label"
+        htmlFor="email"
+      >
+        EMAIL
+      </label>
+      <div
+        className="col-md-9 col-sm-12"
+      >
+        <input
+          className="form-control"
+          id="email"
+          onChange={[Function]}
+          placeholder="EMAIL"
+          required={true}
+          type="email"
+          value={undefined}
+        />
+      </div>
+    </div>
+    <div
+      className="form-group"
+    >
+      <label
+        className="col-md-3 col-sm-12 control-label"
+        htmlFor="password"
+      >
+        PASSWORD
+      </label>
+      <div
+        className="col-md-9 col-sm-12"
+      >
+        <input
+          className="form-control"
+          id="password"
+          onChange={[Function]}
+          placeholder="PASSWORD"
+          required={true}
+          type="password"
+          value={undefined}
+        />
+      </div>
+    </div>
+    <div
+      className="form-group"
+    >
+      <div
+        className="col-md-9 col-md-offset-3 col-sm-12 col-sm-offset-0"
+      >
+        <button
+          className="btn btn-lg btn-primary"
+          disabled={false}
+          type="submit"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </form>
+  <p
+    className="text-center"
+  >
+    OR
+  </p>
+  <a
+    onClick={[Function]}
+    style={Object {}}
+  >
+    <button
+      className="btn btn-lg btn-default btn-block"
+      disabled={false}
+      type="button"
+    >
+      SIGN UP
+    </button>
+  </a>
+</div>
+`;
