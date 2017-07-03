@@ -99,7 +99,7 @@ class Profile extends React.Component {
                 <Row>
                   <Col  md={4} className='text-center'>
                     <FormGroup key='avatar'>
-                      {/*<div className='no-avatar'></div>*/}
+                      <div className='no-avatar'></div>
                       <Image id='img-circle-avatar' src={profile.avatar} circle/>
                       <h6>Upload a different photo</h6>
                       <input type='file' className='form-control' 
