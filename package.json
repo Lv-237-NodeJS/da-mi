@@ -21,6 +21,15 @@
   "homepage": "https://github.com/Lv-237-NodeJS/da-mi#readme",
   "devDependencies": {
     "redux-logger": "^3.0.6",
+    "babel-jest": "^20.0.3",
+    "expect": "^1.20.2",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4",
+    "mock-local-storage": "^1.0.2",
+    "nock": "^9.0.13",
+    "react-test-renderer": "^15.6.1",
+    "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.2.3",
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {
