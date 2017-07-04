@@ -50,7 +50,6 @@ class Profile extends React.Component {
   };
 
   handleSubmit = (e) => {
-    e.preventDefault();
     this.props.actions.updateProfile(this.state);
   }
 
@@ -72,6 +71,34 @@ class Profile extends React.Component {
       });
     };
     reader.readAsDataURL(file);
+  };
+
+  datePickerFields = (param, birthdateString) => {
+    return (
+      <FormGroup  key={param}>
+        <ControlLabel>Birthdate</ControlLabel>
+        <DateTimeField className='date-picker' key={param} 
+          mode='date' 
+          dateTime={birthdateString}
+          format={'YYYY-MM-DD'}
+          inputFormat={'DD/MM/YY'}
+          onChange={this.dateTimeFieldHandleChange}/>
+      </FormGroup>
+    );
+  };
+
+  textFields = (param, fieldsName) => {
+    return (
+      <FieldGroup 
+        key={param}
+        id={param}
+        label={fieldsName[param]}
+        type={param == 'birth_date' && 'date' || 'text' }
+        value={this.state[param]}
+        placeholder={this.state[param]}
+        onChange={this.handleChange(param)}
+      />
+    );
   };
 
   render() {
@@ -106,26 +133,9 @@ class Profile extends React.Component {
                 </Row>
                 <Row>
                   { Object.keys(fieldsName, profile).map(param => 
-                    param == 'birth_date'?
-                      <FormGroup  key={param}>
-                        <ControlLabel>Birthdate</ControlLabel>
-                        <DateTimeField className='date-picker' key={param} 
-                          mode='date' 
-                          dateTime={birthdateString}
-                          format={'YYYY-MM-DD'}
-                          inputFormat={'DD/MM/YY'}
-                          onChange={this.dateTimeFieldHandleChange}/>
-                      </FormGroup>
-                      : 
-                      <FieldGroup 
-                        key={param}
-                        id={param}
-                        label={fieldsName[param]}
-                        type={param == 'birth_date' && 'date' || 'text' }
-                        value={this.state[param]}
-                        placeholder={this.state[param]}
-                        onChange={this.handleChange(param)}
-                      /> 
+                    (param == 'birth_date') ?
+                      this.datePickerFields(param, birthdateString) :
+                      this.textFields(param, fieldsName)
                   )}
                 </Row>
                 <Row> 

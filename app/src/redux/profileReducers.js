@@ -42,6 +42,7 @@ const initialState = {
 export const updateProfile = profile => {
   
   return dispatch => {
+    dispatch(updateProfilerRequest());
     const profileId = sessionStorage.getItem('profileId');
     return request()
       .put(API.HOST + API.PORT + '/api/profile/' + profileId)
@@ -60,6 +61,12 @@ export const updateProfile = profile => {
           });
         }
       });
+  };
+};
+
+export const updateProfilerRequest = () => {
+  return {
+    type: UPDATE_PROFILE
   };
 };
 
