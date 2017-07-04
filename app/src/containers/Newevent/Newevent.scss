@@ -1,11 +1,9 @@
 @import '../../common.scss';
 
-.dateEventFormGroupItem {
-  padding-top: 20px;
-}
-
-#dateTimeField {
-  .form-control {
-    background-color: $white;
+.col-md-9 {
+  .input-group {
+    .form-control {
+      background-color: $white;
+    }
   }
 }

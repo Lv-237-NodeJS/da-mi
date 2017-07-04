@@ -8,8 +8,8 @@ import messages from '../../helper/messages';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import './Newevent.scss';
 
-const InputGroup = ({id, label, className, isErrors, ...props}) => (
-  <FormGroup controlId={id} className = {className}>
+const InputGroupField = ({id, label, className, isErrors, ...props}) => (
+  <FormGroup controlId={id} className={className}>
     <Col componentClass={ControlLabel} md={3}><br/>
       {label}
     </Col>
@@ -17,6 +17,17 @@ const InputGroup = ({id, label, className, isErrors, ...props}) => (
       <FormControl {...props} />
       {isErrors && <HelpBlock>{isErrors}</HelpBlock>}
       <FormControl.Feedback />
+    </Col>
+  </FormGroup>
+);
+
+const DateTimePickerField = ({label, className, inputProps}) => (
+  <FormGroup className={className}>
+    <Col componentClass={ControlLabel} md={3}><br/>
+      {label}
+    </Col>
+    <Col md={9}><br/>
+      <DateTimeField inputProps={inputProps}/>
     </Col>
   </FormGroup>
 );
@@ -52,7 +63,9 @@ class newEvent extends React.Component {
 
   handleChange = param => e => {
     const value = e.target.value.trim();
-    this.setState({[param]: value}, () => {this.getValidationState();});
+    this.setState({
+      [param]: value}, () => {this.getValidationState();
+    });
   };
 
   dateTimeFieldHandleChange = e => {
@@ -65,6 +78,34 @@ class newEvent extends React.Component {
   handleButtonClick = e => {
     e.preventDefault();
     this.props.actions.createNewEvent(this.state);
+  };
+
+  inputFields = (param, inputsEventData) => {
+    return (
+      <InputGroupField
+        id={param}
+        key={param}
+        type="text"
+        className={!!this.state.isErrors[param] && 'has-error'}
+        label={inputsEventData[param] + ' of your event:'}
+        placeholder={inputsEventData[param]}
+        value={this.state.param}
+        onChange={this.handleChange(param)}
+        isErrors={this.state.isErrors[param]}
+      />
+    )
+  };
+
+  inputDateTimeFields = param => {
+    return (
+      <DateTimePickerField
+        key={param}
+        label={'Date of your event:'}
+        inputProps={{readOnly:true}}
+        value={this.state.param}
+        onChange={this.dateTimeFieldHandleChange}
+      />
+    )
   };
 
   render() {
@@ -80,33 +121,10 @@ class newEvent extends React.Component {
       <Col sm={9}>
         <h2>Here, you can create your own event:</h2>
         <Form onSubmit={this.handleButtonClick}>
-          { Object.keys(inputsEventData).map(param =>
+          {Object.keys(inputsEventData).map(param =>
             (param == 'date_event') ?
-              <FormGroup key={param}>
-                <Col md={3} className='dateEventFormGroupItem'>
-                  <label>Choose the date of your event:</label>
-                </Col>
-                <Col md={9} className='dateEventFormGroupItem' id='dateTimeField'>
-                  <DateTimeField
-                    key={param}
-                    inputProps={{readOnly:true}}
-                    value={this.state.param}
-                    onChange={this.dateTimeFieldHandleChange}
-                  />
-                </Col>
-              </FormGroup>  
-              :
-              <InputGroup
-                id={param}
-                key={param}
-                type="text"
-                className={!!this.state.isErrors[param] && 'has-error'}
-                label={inputsEventData[param] + ' of your event:'}
-                placeholder={inputsEventData[param]}
-                value={this.state.param}
-                onChange={this.handleChange(param)}
-                isErrors={this.state.isErrors[param]}
-              />
+            this.inputDateTimeFields(param) : 
+            this.inputFields(param, inputsEventData)
           )}
           <FormGroup>
             <Col>
@@ -119,7 +137,7 @@ class newEvent extends React.Component {
       </Col>
     );
   }
-}
+};
 
 const mapStatetoProps = state => ({
   newevent: state.newevent
