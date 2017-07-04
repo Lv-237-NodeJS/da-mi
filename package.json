@@ -4,7 +4,7 @@
   "description": "Front End",
   "main": "app.js",
   "scripts": {
-    "test": "",
+    "test": "jest",
     "build:prod": "NODE_ENV=production webpack -p --config ./webpack/webpack.config.prod.js",
     "start:dev": "webpack-dev-server --hot --inline --config ./webpack/webpack.config.dev.js",
     "start:prod": "npm run build:prod && node server.js"
@@ -15,12 +15,27 @@
   },
   "author": "",
   "license": "ISC",
+  "jest": {
+    "moduleFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(scss|css|less)$": "identity-obj-proxy"
+    },
+    "collectCoverage": true,
+    "unmockedModulePathPatterns": [
+      "react"
+    ],
+    "setupTestFrameworkScriptFile": "mock-local-storage"
+  },
   "bugs": {
     "url": "https://github.com/Lv-237-NodeJS/da-mi/issues"
   },
   "homepage": "https://github.com/Lv-237-NodeJS/da-mi#readme",
   "devDependencies": {
-    "redux-logger": "^3.0.6",
     "babel-jest": "^20.0.3",
     "expect": "^1.20.2",
     "identity-obj-proxy": "^3.0.0",
@@ -29,7 +44,7 @@
     "nock": "^9.0.13",
     "react-test-renderer": "^15.6.1",
     "redux-logger": "^3.0.6",
-    "redux-mock-store": "^1.2.3",
+    "redux-mock-store": "^1.2.3", 
     "webpack-dev-server": "^2.4.5"
   },
   "dependencies": {

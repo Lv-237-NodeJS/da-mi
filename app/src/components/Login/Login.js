@@ -18,7 +18,7 @@ const InputGroup = ({id, label, ...props}) => (
   </FormGroup>
 );
 
-class Login extends React.Component {
+export class Login extends React.Component {
   constructor (props) {
     super(props);
 
@@ -30,12 +30,12 @@ class Login extends React.Component {
 
   handleChange = stateName => e => {
     this.setState({[stateName]: e.target.value});
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.actions.loginUser(this.state.email, this.state.password);
-  }
+  };
 
   render () {
     return (

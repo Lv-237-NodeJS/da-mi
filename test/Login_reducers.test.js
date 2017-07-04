@@ -6,9 +6,12 @@ describe('loginReduser execution', () => {
   const state = {};
   describe('LOGIN_USER_FAILURE', () => {
     it('should return the correct state', () => {
-      expect(loginReduser(state, loginActions.loginUserFailure())).toEqual({
+      const action = loginActions.loginUserFailure('message');
+      expect(loginReduser(state, action))
+      .toEqual({
         ...state,
-        illegalInput: true
+        illegalInput: true,
+        message: action.message
       });
     });
   });
