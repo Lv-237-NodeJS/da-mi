@@ -81,21 +81,17 @@ export function loginUser(email, password) {
   const user = {email, password};
   let token;
   let userId;
-  
+  let profileId;
   return dispatch => {
     dispatch(loginUserRequest());
     request()
       .post(API.HOST + API.PORT + '/api/auth/login')
       .send(user)
       .end((err, res) => {
-        if (err || !res.ok) {
-          dispatch(loginUserFailure());
-        } else {
-          const token = JSON.parse(res.text).token;
-          const userId = JSON.parse(res.text).user_id;
-          const profileId = JSON.parse(res.text).profile_id;
+        (err || !res.ok) &&
+          dispatch(loginUserFailure(res.text)) ||
+        ({token, user_id: userId, profile_id: profileId} = JSON.parse(res.text)) &&
           dispatch(loginUserSuccess(token, userId, profileId));
-        }
       });
   };
 }

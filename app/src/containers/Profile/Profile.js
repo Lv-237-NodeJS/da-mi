@@ -76,7 +76,7 @@ class Profile extends React.Component {
 
   render() {
     const { profile } = this.props;
-
+    const birthdateString = moment(new Date(profile.birth_date)).format('YYYY-MM-DD');
     const fieldsName = {
       first_name: 'First Name',
       last_name: 'Last Name',
@@ -85,9 +85,6 @@ class Profile extends React.Component {
       city: 'City',
       country: 'Country'
     };
-
-    // const birthdateString = moment(new Date(profile.birth_date)).format('DD/MM/YY');
-    // console.log(birthdateString);
 
     return (
       <div className='profile-details'>
@@ -99,7 +96,6 @@ class Profile extends React.Component {
                 <Row>
                   <Col  md={4} className='text-center'>
                     <FormGroup key='avatar'>
-                      <div className='no-avatar'></div>
                       <Image id='img-circle-avatar' src={profile.avatar} circle/>
                       <h6>Upload a different photo</h6>
                       <input type='file' className='form-control' 
@@ -113,10 +109,11 @@ class Profile extends React.Component {
                     param == 'birth_date'?
                       <FormGroup  key={param}>
                         <ControlLabel>Birthdate</ControlLabel>
-                        <DateTimeField 
-                          key={param}
-                          mode='date'
-                          value={this.state.birth_date}
+                        <DateTimeField className='date-picker' key={param} 
+                          mode='date' 
+                          dateTime={birthdateString}
+                          format={'YYYY-MM-DD'}
+                          inputFormat={'DD/MM/YY'}
                           onChange={this.dateTimeFieldHandleChange}/>
                       </FormGroup>
                       : 
