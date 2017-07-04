@@ -93,7 +93,7 @@ class newEvent extends React.Component {
         onChange={this.handleChange(param)}
         isErrors={this.state.isErrors[param]}
       />
-    )
+    );
   };
 
   inputDateTimeFields = param => {
@@ -105,7 +105,7 @@ class newEvent extends React.Component {
         value={this.state.param}
         onChange={this.dateTimeFieldHandleChange}
       />
-    )
+    );
   };
 
   render() {
@@ -123,8 +123,8 @@ class newEvent extends React.Component {
         <Form onSubmit={this.handleButtonClick}>
           {Object.keys(inputsEventData).map(param =>
             (param == 'date_event') ?
-            this.inputDateTimeFields(param) : 
-            this.inputFields(param, inputsEventData)
+              this.inputDateTimeFields(param) : 
+              this.inputFields(param, inputsEventData)
           )}
           <FormGroup>
             <Col>
@@ -137,7 +137,7 @@ class newEvent extends React.Component {
       </Col>
     );
   }
-};
+}
 
 const mapStatetoProps = state => ({
   newevent: state.newevent
