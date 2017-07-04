@@ -52,7 +52,7 @@ class newEvent extends React.Component {
 
   handleChange = param => e => {
     const value = e.target.value.trim();
-    this.setState({ [param]: value}, () => {this.getValidationState();});
+    this.setState({[param]: value}, () => {this.getValidationState();});
   };
 
   dateTimeFieldHandleChange = e => {

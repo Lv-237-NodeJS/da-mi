@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GuestsModal } from './../../components';
 import * as eventActions from '../../redux/eventReducers';
-import * as inviteActions from '../../redux/invite';
+import * as inviteActions from '../../redux/inviteReducers';
 import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
