@@ -44,7 +44,7 @@ export function sendInvites(eventId, owner) {
 export function getEmails(eventId) {
   return dispatch => {
     request()
-      .get(API.URL + `/api/event/${eventId}/guest/get`)
+      .get(API.URL + `/api/event/${eventId}/guests`)
       .end((err, res) => {
         const guests = getGuests(err, res.text);
         let id;

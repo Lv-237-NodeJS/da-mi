@@ -31,7 +31,7 @@ class GuestsModalForm extends React.Component {
     };
   }
   
-  add = () => {
+  addEmail = () => {
     this.state.email &&
       this.setState({
         inputs: [...this.state.inputs, this.state.email],
@@ -44,8 +44,8 @@ class GuestsModalForm extends React.Component {
   }
 
   handleChange = index => e => {
-    const newEmails = this.state.inputs.map((email, j) => (
-      (index !== j) && email || e.target.value
+    const newEmails = this.state.inputs.map((email, emailIndex) => (
+      (index !== emailIndex) && email || e.target.value
     ));
     this.setState({inputs: newEmails});
   }
@@ -56,7 +56,7 @@ class GuestsModalForm extends React.Component {
 
   deleteEmail = index => () => {
     this.setState({
-      inputs: this.state.inputs.filter((input, j) => index !== j)
+      inputs: this.state.inputs.filter((email, emailIndex) => index !== emailIndex)
     });
   }
 
@@ -81,7 +81,7 @@ class GuestsModalForm extends React.Component {
             </Col>
             <Col xs={2}>
               <ListButton
-                onClick={this.add}
+                onClick={this.addEmail}
                 className='plus'
               />
             </Col>
@@ -99,7 +99,7 @@ class GuestsModalForm extends React.Component {
                   onChange={this.handleChange(index)}
                 />
               </Col>
-              <Col xs={4}  sm={3} className='listItemBar'>
+              <Col xs={4} sm={3} className='listItemBar'>
                 <ButtonToolbar>
                   {['pencil', 'trash'].map(param =>
                     <ListButton
@@ -116,7 +116,6 @@ class GuestsModalForm extends React.Component {
           <Col xsOffset={4}>
             <Button
               type='submit'
-              className='modal-save-button'
               bsStyle='primary'
               bsSize='large'>Save</Button>
           </Col>

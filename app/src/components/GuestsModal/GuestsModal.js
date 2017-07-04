@@ -26,13 +26,12 @@ export default class GuestsModal extends React.Component {
         <Modal
           show={this.state.showModal}
           onHide={this.toggleModal}
-          dialogClassName='invite-modal'
           backdropClassName='modal-backdrop'>
           <Modal.Header closeButton>
             <Modal.Title>Invite people</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <GuestsModalForm closeModal={this.toggleModal}/>
+            <GuestsModalForm closeModal={this.toggleModal} eventId={this.props.eventId}/>
           </Modal.Body>
         </Modal>
       </div>
