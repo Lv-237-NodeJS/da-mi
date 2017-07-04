@@ -49,7 +49,7 @@ class Profile extends React.Component {
     });
   };
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     this.props.actions.updateProfile(this.state);
   }
 
