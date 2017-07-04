@@ -1,58 +1,16 @@
-@import './../../common.scss';
-
-%modal-position {
-  position: fixed;
-  top:0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
-.modal-header {
-  padding: 15px;
-  background: $puerto-rico;
-  margin-bottom: 15px;
-}
-
-.modal-title {
-  display: inline;
-}
-
-.modal-input {
-  margin: auto;
-}
+@import './../../../styles/common';
+@import './../../../styles/modal';
 
 .modal-list.form-control {
   box-shadow: none;
   border: none;
   border-radius: 0;
   border-bottom: 2px solid $puerto-rico;
-}
 
-.modal-list:focus {
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.invite-modal {
-  @extend %modal-position;
-  background: $white;
-  max-width: 600px;
-  padding: 0;
-  height: 400px;
-  z-index: 2;
-  margin: auto;
-  overflow: auto;
-}
-
-.modal-backdrop {
-  @extend %modal-position;
-  z-index: 1;
-  background: $modal-backdrop-background;
-}
-
-.modal-save-button {
-  background: $saffron;
+  &:focus {
+    border: 1px solid $blue;
+    border-radius: 4px;
+  }
 }
 
 .modal-input.modal-btn {
