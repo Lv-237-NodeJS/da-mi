@@ -27,7 +27,10 @@ class GuestsModalForm extends React.Component {
     super(props);
     this.state = {
       email: '',
-      inputs: []
+      inputs: [],
+      editingMode: false,
+      initialEmail: '',
+      key: null
     };
   }
   
@@ -51,6 +54,11 @@ class GuestsModalForm extends React.Component {
   }
   
   focusInput = index => () => {
+    this.setState({
+      editingMode: true,
+      initialEmail: this.state.inputs[index],
+      key: index
+    })
     this[index].focus();
   }
 
@@ -58,6 +66,21 @@ class GuestsModalForm extends React.Component {
     this.setState({
       inputs: this.state.inputs.filter((email, emailIndex) => index !== emailIndex)
     });
+  }
+  
+  toogleEditingMode = () => {
+    this.setState({editingMode: !this.setState.editingMode})
+  }
+
+  acceptEdition = () => {
+    this.setState({editingMode: false});
+  }
+
+  discardEdition = index => () => {
+    const newState = this.state;
+    newState.inputs[index] = this.state.initialEmail;
+    newState.editingMode = false;
+    this.setState(newState);
   }
 
   handleSubmit = e => {
@@ -69,6 +92,7 @@ class GuestsModalForm extends React.Component {
   }
 
   render () {
+    const editing = this.state.editingMode;
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
         <Col xs={12} xsOffset={0} smOffset={1} sm={11}>
@@ -97,18 +121,19 @@ class GuestsModalForm extends React.Component {
                   className='modal-input modal-list form-control'
                   ref={input => this[index] = input}
                   onChange={this.handleChange(index)}
+                  onClick={this.focusInput(index)}
                 />
               </Col>
               <Col xs={4} sm={3} className='listItemBar'>
                 <ButtonToolbar>
-                  {['pencil', 'trash'].map(param =>
-                    <ListButton
-                      key={param}
-                      onClick={param === 'pencil' && this.focusInput(index) ||
-                        this.deleteEmail(index)}
-                      className={param}
-                    />
-                  )}
+                  <ListButton
+                    onClick={editing && this.acceptEdition || this.focusInput(index)}
+                    className={editing && 'ok' || 'pencil'}
+                  />
+                  <ListButton
+                    onClick={editing && this.discardEdition(index) || this.deleteEmail(index)}
+                    className={editing && 'remove' || 'trash'}
+                  />
                 </ButtonToolbar>
               </Col>
             </FormGroup>
@@ -116,6 +141,7 @@ class GuestsModalForm extends React.Component {
           <Col xsOffset={4}>
             <Button
               type='submit'
+              className='modal-save-button'
               bsStyle='primary'
               bsSize='large'>Save</Button>
           </Col>
