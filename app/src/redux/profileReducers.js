@@ -11,7 +11,7 @@ export const retrieveProfile = userId => {
   return dispatch => {
     dispatch(retrieveProfilerRequest());
     return request()
-      .get(API.HOST + API.PORT + '/api/user/' + userId)
+      .get(API.URL + '/api/user/' + userId)
       .end((error, res) => {
         if (error) {
           dispatch({
@@ -45,7 +45,7 @@ export const updateProfile = profile => {
     dispatch(updateProfilerRequest());
     const profileId = sessionStorage.getItem('profileId');
     return request()
-      .put(API.HOST + API.PORT + '/api/profile/' + profileId)
+      .put(API.URL + '/api/profile/' + profileId)
       .send(profile)
       .type('json')
       .end((error, res) => {

@@ -6,10 +6,9 @@ import { bindActionCreators } from 'redux';
 import * as profileActions from '../../redux/profileReducers';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import moment from 'moment';
-
 import './profile.scss';
 
-let FieldGroup = ({id, label, ...props}) => (
+const FieldGroup = ({id, label, ...props}) => (
   <div>
     <FormGroup controlId={id}>
       <ControlLabel>{label}</ControlLabel>
@@ -22,18 +21,9 @@ class Profile extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      first_name: this.props.profile.first_name,
-      last_name: this.props.profile.last_name,
-      birth_date: this.props.profile.birth_date,
-      address: this.props.profile.address,
-      city: this.props.profile.city,
-      country: this.props.profile.country,
-      avatar: this.props.profile.avatar
-    };
+    this.state = this.props.profile;
   }
   
-
   componentWillMount() {
     const { profile } = this.props;
     this.setState(profile);
@@ -144,7 +134,6 @@ class Profile extends React.Component {
                     <Button type='submit' bsStyle='primary'>
                       Save Changes
                     </Button>
-                    <span> </span>
                     <Button type='reset' bsStyle='default'>
                       Cancel
                     </Button>
