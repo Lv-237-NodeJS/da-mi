@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form, FormGroup, Col, ButtonToolbar } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as inviteActions from '../../redux/invite';
+import * as inviteActions from '../../redux/inviteReducers';
 
 const ListButton = ({...props}) => (
   <Button

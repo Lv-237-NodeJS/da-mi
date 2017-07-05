@@ -3,7 +3,8 @@ const messages = {
   emailExistError: 'That email address is already in use',
   emailError: 'E-mail is not correct',
   passwordError: 'At least 6 characters, one (a-z), one (A-Z), one (0-9), one (#?!@$%^&*-)',
-  confirmationError: 'Passwords do not match'
+  confirmationError: 'Passwords do not match',
+  nameError: 'The name of your event must have minimum 4 letters'
 };
 
 export default messages;

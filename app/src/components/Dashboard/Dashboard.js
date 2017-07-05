@@ -14,7 +14,7 @@ export default class Dashboard extends React.Component {
             <LinkContainer to='/events'>
               <NavItem eventKey={1}>My Events</NavItem>
             </LinkContainer>
-            <LinkContainer to='/newEvent'>
+            <LinkContainer to='/newevent'>
               <NavItem eventKey={2}>Create New Event</NavItem>
             </LinkContainer>
             <LinkContainer to='/invitations'>
