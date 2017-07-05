@@ -65,28 +65,32 @@ class Profile extends React.Component {
   datePickerFields = (param, birthdateString) => {
     return (
       <FormGroup  key={param}>
-        <ControlLabel>Birthdate</ControlLabel>
-        <DateTimeField className='date-picker' key={param} 
-          mode='date' 
-          dateTime={birthdateString}
-          format={'YYYY-MM-DD'}
-          inputFormat={'DD/MM/YY'}
-          onChange={this.dateTimeFieldHandleChange}/>
+        <Col md={12}>
+          <ControlLabel>Birthdate</ControlLabel>
+          <DateTimeField key={param} 
+            mode='date' 
+            dateTime={birthdateString}
+            format={'YYYY-MM-DD'}
+            inputFormat={'DD/MM/YY'}
+            onChange={this.dateTimeFieldHandleChange}/>
+        </Col>
       </FormGroup>
     );
   };
 
   textFields = (param, fieldsName) => {
     return (
-      <FieldGroup 
-        key={param}
-        id={param}
-        label={fieldsName[param]}
-        type={param == 'birth_date' && 'date' || 'text' }
-        value={this.state[param]}
-        placeholder={this.state[param]}
-        onChange={this.handleChange(param)}
-      />
+      <Col md={12}>
+        <FieldGroup 
+          key={param}
+          id={param}
+          label={fieldsName[param]}
+          type='text'
+          value={this.state[param]}
+          placeholder={this.state[param]}
+          onChange={this.handleChange(param)}
+        />
+      </Col>
     );
   };
 
