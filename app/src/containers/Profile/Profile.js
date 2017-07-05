@@ -1,11 +1,11 @@
 import React from 'react';
 import { Row, Col, Image, FormGroup, ControlLabel, Form, FormControl, Button, ButtonToolbar,
   Tabs, Tab  } from 'react-bootstrap';
+import DateTimeField from 'react-bootstrap-datetimepicker';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as profileActions from '../../redux/profileReducers';
-import DateTimeField from 'react-bootstrap-datetimepicker';
-import moment from 'moment';
 import './profile.scss';
 
 const FieldGroup = ({id, label, ...props}) => (
