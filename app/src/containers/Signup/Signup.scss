@@ -1,7 +1,14 @@
 @import '../../../styles/common';
 
 .containerLog {
-  border: $border-white;
+  border: $border-puerto-rico;
   border-radius: $border-radius;
   padding: $padding;
+  max-width: 300px;
+  width: 100%;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 10px auto;
 }

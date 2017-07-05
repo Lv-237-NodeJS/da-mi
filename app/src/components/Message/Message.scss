@@ -1,9 +1,12 @@
 @import '../../../styles/common';
 
 #modal-container {
-  border: $border-green-dark;
-  border-radius: $border-radius;
-  background-color: $mint;
-  padding: $padding;
-  color: $green-dark;
+
+}
+
+.modalText{
+  color: black;
+  font-size: 35px;
+  text-align: center;
+  line-height: 50px;
 }

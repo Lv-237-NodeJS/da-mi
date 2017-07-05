@@ -1,7 +1,6 @@
 import request from 'src/helper/request';
 import { browserHistory } from 'react-router';
-import messages from 'src/helper/messages';
-import { API } from 'src/helper/constants';
+import { API, messages } from 'src/helper';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
@@ -50,18 +49,9 @@ export function signupUser(email, password) {
       .post(API.HOST + API.PORT + '/api/users')
       .send(data)
       .end(function(err, res) {
-        if (res.status == 201) {
-          return (
-            browserHistory.push('/'),
-            dispatch(messageModal(messages.successSignup)),
-            dispatch(showModal(true))
-          );
-        } else {
-          return (
-            dispatch(messageModal(err.response.text)),
-            dispatch(showModal(true))
-          );
-        }
+        (res.status == 201) && (dispatch(messageModal(messages.successSignup)) &&
+        dispatch(showModal(true))) && browserHistory.push('/') ||
+        dispatch(messageModal(err.response.text)) && dispatch(showModal(true))
       });
   };
 }

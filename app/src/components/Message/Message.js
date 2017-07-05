@@ -16,11 +16,10 @@ class Message extends React.Component {
         onHide={this.hide}
         id='modal-container'
         className='modal-backdrop'>
-        <Modal.Header closeButton>
-          <Modal.Title id='contained-modal-title-lg'>
-            <p>{this.props.message}</p>
-          </Modal.Title>
-        </Modal.Header>     
+        <Modal.Header closeButton/>
+        <Modal.Body id='contained-modal-body-lg'>
+          <p className='modalText'>{this.props.message}</p>
+        </Modal.Body>
       </Modal>
     );
   } 
