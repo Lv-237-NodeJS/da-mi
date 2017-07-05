@@ -8,10 +8,7 @@ const Routes = (
   <Route path='/' component={Main}>
     <IndexRoute component={Home} onEnter={checkAuth}/>
     <Route path='about' component={About}/>
-    <Route path='contacts' component={Contacts}>
-      <Route path='address' component={Address}/>
-      <Route path='maps' component={Maps}/>
-    </Route>
+    <Route path='contacts' component={Contacts}/>
     <Route path='signup' component={Signup}/>
     <Route path='events' component={EventsList}/>
     <Route  path='newevent' component={newEvent}/>
