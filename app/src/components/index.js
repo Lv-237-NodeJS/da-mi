@@ -7,3 +7,4 @@ export GuestsModal from './GuestsModal/GuestsModal';
 export EventsModal from './EventsModal/EventsModal';
 export GuestsModalForm from './GuestsModalForm/GuestsModalForm';
 export EventsModalForm from './EventsModalForm/EventsModalForm';
+export Maps from './Maps/Maps';
