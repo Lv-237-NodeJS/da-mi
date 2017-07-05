@@ -3,9 +3,9 @@ import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Lab
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import DateTimeField from 'react-bootstrap-datetimepicker';
 import * as showActions from '../../redux/newEventReducers';
 import messages from '../../helper/messages';
-import DateTimeField from 'react-bootstrap-datetimepicker';
 import './Newevent.scss';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
