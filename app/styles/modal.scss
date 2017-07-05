@@ -1,0 +1,36 @@
+@import './common';
+
+%modal-position {
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal-dialog {
+  @extend %modal-position;
+  background: $white;
+  max-width: 600px;
+  padding: 0;
+  height: 400px;
+  z-index: 2;
+  margin: auto;
+  overflow: auto;
+  
+  .modal-header {
+    padding: 15px;
+    background: $puerto-rico;
+    margin-bottom: 15px;
+
+    .modal-title {
+      display: inline;
+    }
+  }
+}
+
+.modal-backdrop {
+  @extend %modal-position;
+  z-index: 1;
+  background: $modal-backdrop-background;
+}

@@ -1,0 +1,20 @@
+@import './../../../styles/common';
+@import './../../../styles/modal';
+
+.modal-list.form-control {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid $puerto-rico;
+
+  &:focus {
+    border: 1px solid $blue;
+    border-radius: 4px;
+  }
+}
+
+.modal-input.modal-btn {
+  background: $tower-grey;
+  color: $black;
+  border: none;
+}
