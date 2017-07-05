@@ -8,13 +8,13 @@ import './Contacts.scss';
 
 let FieldGroup = ({className, isErrors, id, ...props}) => (
   <Col xs={12} sm={12} md={12}>
-   <div>
-   <FormGroup className = {className} id = {id}>
-      <FormControl {...props} />
-      {isErrors && <HelpBlock>{isErrors}</HelpBlock>}
-      <FormControl.Feedback />
-    </FormGroup>
-   </div>
+    <div>
+      <FormGroup className = {className} id = {id}>
+        <FormControl {...props} />
+        {isErrors && <HelpBlock>{isErrors}</HelpBlock>}
+        <FormControl.Feedback />
+      </FormGroup>
+    </div>
   </Col>
 );
 
@@ -30,7 +30,7 @@ export default class Contacts extends React.Component {
         email: null,
         textarea: null
       },
-       enableButton: false
+      enableButton: false
     };
   }
 
@@ -69,11 +69,11 @@ export default class Contacts extends React.Component {
       textarea: newState.textarea
     };
     request()
-    .post(API.HOST + API.PORT + '/api/support')
-    .send(data)
-    .end(function(err, res) {
-      return (err || !res.ok)&&(messages.noConnection) || (messages.sendMessage);
-    })
+      .post(API.HOST + API.PORT + '/api/support')
+      .send(data)
+      .end(function(err, res) {
+        return (err || !res.ok)&&(messages.noConnection) || (messages.sendMessage);
+      });
   }
 
   render() {
@@ -115,32 +115,32 @@ export default class Contacts extends React.Component {
           </Col>
         </Row>
         <Row>
-        <Col xs={12} sm={6} md={6}>
-        <Form onSubmit={this.handleButtonClick}>
-          { Object.keys(inputsName).map(param =>
-            <FieldGroup
-              id={param}
-              key={param}
-              className={!!this.state.isErrors[param] && 'has-error'}
-              label={inputsName[param]}
-              type={param === 'email' && param || 'text'}
-              name={param}
-              isErrors={this.state.isErrors[param]}
-              onChange={this.handleChange(param)}
-              value={this.state.param}
-              placeholder={inputsName[param]}
-              componentClass={param === 'textarea' && param || 'input'}
-            />
-          )}
-        <Col xs={12} sm={12} md={12} className='text-center'> 
-        <Button 
-          className='btn btn-primary'
-          type='submit'
-          disabled = {!this.state.enableButton}>Send message
-        </Button>
-        </Col>
-        </Form>
-        </Col>
+          <Col xs={12} sm={6} md={6}>
+            <Form onSubmit={this.handleButtonClick}>
+              { Object.keys(inputsName).map(param =>
+                <FieldGroup
+                  id={param}
+                  key={param}
+                  className={!!this.state.isErrors[param] && 'has-error'}
+                  label={inputsName[param]}
+                  type={param === 'email' && param || 'text'}
+                  name={param}
+                  isErrors={this.state.isErrors[param]}
+                  onChange={this.handleChange(param)}
+                  value={this.state.param}
+                  placeholder={inputsName[param]}
+                  componentClass={param === 'textarea' && param || 'input'}
+                />
+              )}
+              <Col xs={12} sm={12} md={12} className='text-center'> 
+                <Button 
+                  className='btn btn-primary'
+                  type='submit'
+                  disabled = {!this.state.enableButton}>Send message
+                </Button>
+              </Col>
+            </Form>
+          </Col>
           <Col xs={12} sm={6} md={6} className='map'>
             <Maps />
           </Col>

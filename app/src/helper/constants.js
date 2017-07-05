@@ -13,7 +13,7 @@ const CONTACTDATA = {
   MANADGER2: 'Taras Petrenenko',
   POST: '79018, Lviv',
   ADDRESS: 'Fedkovycha Str.60A, block C'
-}
+};
 
 const MAPDATA ={
   ZOOM: 17,
@@ -21,7 +21,7 @@ const MAPDATA ={
   LAT: 49.832765,
   LNG: 23.997014,
   HEIGTH: '280px'
-}
+};
 
 API.URL = API.HOST + API.PORT;
 

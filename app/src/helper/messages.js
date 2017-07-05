@@ -9,4 +9,3 @@ module.exports = {
   noConnection: 'No connection with server',
   sendMessage: 'You message is send'
 };
- 
