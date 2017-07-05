@@ -43,8 +43,7 @@ class Profile extends React.Component {
     this.props.actions.updateProfile(this.state);
   }
 
-  dateTimeFieldHandleChange = e => {
-    const date = new Date(parseInt(e));
+  dateTimeFieldHandleChange = date => {
     this.setState({
       birth_date: date
     });
