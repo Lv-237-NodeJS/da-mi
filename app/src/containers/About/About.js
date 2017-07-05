@@ -17,10 +17,10 @@ export default class About extends React.Component {
     return (
       <Grid>
         <Row className='show-grid'>
-          <Col xs={6} sm={6} md={6}>
+          <Col xs={12} sm={12} md={6}>
             <div id='photo-gift'></div>
           </Col>
-          <Col xs={6} sm={6} md={6}>
+          <Col xs={12} sm={12} md={6}>
             <PageHeader className='text-center'>Da-Mi</PageHeader>
             <p className='text'>{texts.descriptionOurProgectPart1}</p> 
             <p className='text'>{texts.descriptionOurProgectPart2}</p>
