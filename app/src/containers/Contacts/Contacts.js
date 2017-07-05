@@ -1,10 +1,12 @@
 import React from 'react';
 import { Grid, Row, Col, PageHeader, FormGroup, FormControl, Button,
   Form, HelpBlock  } from 'react-bootstrap';
-import { Maps } from '../../components';
-import { messages, API, CONTACTDATA } from '../../helper';
-import request from '../../helper/request';
+import { Maps, Message  } from '../../components';
+import { CONTACTDATA, messages } from '../../helper';
 import './Contacts.scss';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as showActions from '../../redux/contactInfo';
 
 let FieldGroup = ({className, isErrors, id, ...props}) => (
   <Col xs={12} sm={12} md={12}>
@@ -18,7 +20,7 @@ let FieldGroup = ({className, isErrors, id, ...props}) => (
   </Col>
 );
 
-export default class Contacts extends React.Component {
+class Contacts extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -58,22 +60,14 @@ export default class Contacts extends React.Component {
     this.setState(newState);
   }  
   
-
   handleButtonClick = e => {
     e.preventDefault();
-    const newState = this.state;
-    let data = {
-      name: newState.name,
-      surname: newState.surname,
-      email: newState.email,
-      textarea: newState.textarea
-    };
-    request()
-      .post(API.HOST + API.PORT + '/api/support')
-      .send(data)
-      .end(function(err, res) {
-        return (err || !res.ok)&&(messages.noConnection) || (messages.sendMessage);
-      });
+    this.props.actions.contactInfo(this.state.name, this.state.surname, 
+      this.state.email, this.state.textarea);
+  }
+
+  clearInput = param => {
+    this.setState({[param]: ''})
   }
 
   render() {
@@ -85,6 +79,7 @@ export default class Contacts extends React.Component {
     };
     return (
       <Grid>
+        <Message />
         <PageHeader className='text-center'>Contacts us</PageHeader>
         <Row className='show-grid'>
           <Col xs={12} sm={12} md={12} className='text-center'>
@@ -116,7 +111,7 @@ export default class Contacts extends React.Component {
         </Row>
         <Row>
           <Col xs={12} sm={6} md={6}>
-            <Form onSubmit={this.handleButtonClick}>
+            <Form onSubmit={this.handleButtonClick} >
               { Object.keys(inputsName).map(param =>
                 <FieldGroup
                   id={param}
@@ -133,7 +128,7 @@ export default class Contacts extends React.Component {
                 />
               )}
               <Col xs={12} sm={12} md={12} className='text-center'> 
-                <Button 
+                <Button
                   className='btn btn-primary'
                   type='submit'
                   disabled = {!this.state.enableButton}>Send message
@@ -149,3 +144,13 @@ export default class Contacts extends React.Component {
     );
   }
 }
+
+const mapStatetoProps = state => ({
+  contactInfo: state.contactInfo
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(showActions, dispatch)
+});
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Contacts);
