@@ -37,7 +37,7 @@ class Profile extends React.Component {
     this.setState({
       [stateName]: e.target.value
     });
-  };
+  }
 
   handleSubmit = e => {
     this.props.actions.updateProfile(this.state);
@@ -47,7 +47,7 @@ class Profile extends React.Component {
     this.setState({
       birth_date: date
     });
-  };
+  }
 
   handleChangeImage = e => {
     const self = this;
@@ -60,7 +60,7 @@ class Profile extends React.Component {
       });
     };
     reader.readAsDataURL(file);
-  };
+  }
 
   datePickerFields = (param, birthdateString) => {
     return (
@@ -76,7 +76,7 @@ class Profile extends React.Component {
         </Col>
       </FormGroup>
     );
-  };
+  }
 
   textFields = (param, fieldsName) => {
     return (
@@ -92,7 +92,7 @@ class Profile extends React.Component {
         />
       </Col>
     );
-  };
+  }
 
   render() {
     const { profile } = this.props;
