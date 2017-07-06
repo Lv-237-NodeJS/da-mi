@@ -28,7 +28,6 @@ class EventDetails extends React.Component {
     const {params: {id}, actions, guestActions, giftsActions} = this.props;
     actions.fetchEventById(id);
     guestActions.getEmails(id);
-    giftsActions.fetchGifts(id);
   }
 
   sendInvites = () => {
@@ -85,9 +84,9 @@ class EventDetails extends React.Component {
               </ListGroup>
             </Tab>
             <Tab eventKey={3} title='Gifts'>
-              <Link className='list-group-item' to={`/events/${id}/gifts`}>
-                Gifts
-              </Link>
+              <h2>Gift list</h2>
+              <AddGift id={params.id}/>
+              <GiftList id={params.id}/>
             </Tab>
           </Tabs>
         </Col>

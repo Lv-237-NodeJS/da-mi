@@ -6,7 +6,6 @@ export EventsList from './Events/EventsList';
 export EventDetails from './Event/EventDetails';
 export GiftList from './GiftList/GiftList';
 export AddGift from './AddGift/AddGift';
-export GiftUpdate from './GiftUpdate/GiftUpdate';
 export Signup from './Signup/Signup';
 export Profile from './Profile/Profile';
 export newEvent from './NewEvent/newEvent';

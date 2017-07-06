@@ -13,7 +13,8 @@
   background: $white;
   max-width: 600px;
   padding: 0;
-  height: 400px;
+  min-height: 400px;
+  max-height: 500px;
   z-index: 2;
   margin: auto;
   overflow: auto;
