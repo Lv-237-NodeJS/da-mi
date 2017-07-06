@@ -29,7 +29,7 @@ class Profile extends React.Component {
     this.setState(profile);
   }
 
-  componentWillReceiveProps(nextProps){
+  componentWillReceiveProps(nextProps) {
     this.setState(nextProps.profile);
   }
 
