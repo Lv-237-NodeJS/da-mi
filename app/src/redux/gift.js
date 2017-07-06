@@ -1,16 +1,11 @@
-const FETCH_GIFT = 'FETCH_GIFT';
 const FETCH_GIFT_SUCCESS = 'FETCH_GIFT_SUCCESS';
 const FETCH_GIFT_FAIL = 'FETCH_GIFT_FAIL';
-const FETCH_GIFTS = 'FETCH_GIFTS';
 const FETCH_GIFTS_SUCCESS = 'FETCH_GIFTS_SUCCESS';
 const FETCH_GIFTS_FAIL = 'FETCH_GIFTS_FAIL';
-const CREATE_GIFT = 'CREATE_GIFT';
 const CREATE_GIFT_SUCCESS = 'CREATE_GIFT_SUCCESS';
 const CREATE_GIFT_FAIL = 'CREATE_GIFT_FAIL';
-const DELETE_GIFT = 'DELETE_GIFT';
 const DELETE_GIFT_SUCCESS = 'DELETE_GIFT_SUCCESS';
 const DELETE_GIFT_FAIL = 'DELETE_GIFT_FAIL';
-const UPDATE_GIFT = 'UPDATE_GIFT';
 const UPDATE_GIFT_SUCCESS = 'UPDATE_GIFT_SUCCESS';
 const UPDATE_GIFT_FAIL = 'UPDATE_GIFT_FAIL';
 
@@ -20,7 +15,7 @@ import request from './../helper/request';
 export const fetchGift = (giftId, eventId) => {
   return dispatch => {
     return request()
-      .get(API.HOST + API.PORT + '/api/event/' + eventId + '/gift/' + giftId)
+      .get(API.URL + `/api/event/${eventId}/gift/${giftId}`)
       .end((err, res) => {
         if (err) {
           dispatch({
@@ -40,7 +35,7 @@ export const fetchGift = (giftId, eventId) => {
 export const fetchGifts = eventId => {
   return dispatch => {
     return request()
-      .get(API.HOST + API.PORT + '/api/events/' + eventId + '/gifts')
+      .get(API.URL + `/api/events/${eventId}/gifts`)
       .end((err, res) => {
         if (err) {
           dispatch({
@@ -57,10 +52,11 @@ export const fetchGifts = eventId => {
   };
 };
 
-export const createGift = eventId => {
+export const createGift = (eventId, gift) => {
   return dispatch => {
     return request()
-      .post(API.HOST + API.PORT + '/api/events' + eventId + '/gifts')
+      .post(API.URL + `/api/events/${eventId}/gifts`)
+      .send(gift)
       .end((err, res) => {
         if (err) {
           dispatch({
@@ -79,15 +75,15 @@ export const createGift = eventId => {
 export const updateGift = (eventId, giftId) => {
   return dispatch => {
     return request()
-      .put(API.HOST + API.PORT + '/api/event' + eventId + '/gifts/' + giftId)
+      .put(API.URL + `/api/event/${eventId}/gifts/${giftId}`)
       .end((err, res) => {
         if (err) {
           dispatch({
-            type: UPDATE_GIFT_SUCCESS
+            type: UPDATE_GIFT_FAIL
           });
         } else {
           dispatch({
-            type: UPDATE_GIFT_FAIL,
+            type: UPDATE_GIFT_SUCCESS,
             payload: res.body,
           });
         }
@@ -98,15 +94,15 @@ export const updateGift = (eventId, giftId) => {
 export const deleteGift = (eventId, giftId) => {
   return dispatch => {
     return request()
-      .delete(API.HOST + API.PORT + '/api/event' + eventId + '/gift/' + giftId)
+      .delete(API.HOST + API.PORT + '/api/event/' + eventId + '/gift/' + giftId)
       .end((err, res) => {
         if (err) {
           dispatch({
-            type: DELETE_GIFT_SUCCESS
+            type: DELETE_GIFT_FAIL
           });
         } else {
           dispatch({
-            type: DELETE_GIFT_FAIL,
+            type: DELETE_GIFT_SUCCESS,
             payload: res.body,
           });
         }
@@ -115,65 +111,49 @@ export const deleteGift = (eventId, giftId) => {
 };
 
 const initialState = {
-  giftsList: {gifts: [], error:null, fetching:false},
-  newGift: {gift:null, error:null, fetching:false},
-  activeGift: {gift:null, error:null, fetching:false},
-  updatedGift: {gift:null, error:null, fetching:false},
-  deletedGift: {gift:null, error:null, fetching:false},
+  giftsList: {gifts: [], error: null},
+  newGift: {gift: null, error: null},
+  activeGift: {gift: null, error: null},
+  updatedGift: {gift: null, error: null},
+  deletedGift: {gift: null, error: null},
 };
 
 const giftReducer = (state = initialState, action) => {
   let error;
   switch (action.type) {
-    case FETCH_GIFT: {
-      return { ...state, activeGift:{...state.activeGift, fetching: true}};
-    }
     case FETCH_GIFT_SUCCESS: {
-      return { ...state, activeGift: {gift: action.payload, error:null, fetching: false}};
+      return {...state, activeGift: {gift: action.payload, error: null}};
     }
     case FETCH_GIFT_FAIL: {
-      error = action.payload || {message: action.payload.message};
-      return { ...state, activeGift: {gift: null, error: error, fetching: false}};
-    }
-    case FETCH_GIFTS: {
-      return { ...state, giftsList:{gifts: [], error:null, fetching: true}};
+      error = action.payload;
+      return {...state, activeGift: {gift: null, error: error}};
     }
     case FETCH_GIFTS_SUCCESS: {
-      return { ...state, giftsList: {gifts: action.payload, error:null, fetching: false}};
+      return {...state, giftsList: {gifts: action.payload, error: null}};
     }
     case FETCH_GIFTS_FAIL: {
-      error = action.payload || {message: action.payload.message};
-      return { ...state, giftsList: {gifts: [], error: error, fetching: false}};
-    }
-    case CREATE_GIFT: {
-      return { ...state, newGift:{...state.newGift, fetching: true}};
+      error = action.payload;
+      return {...state, giftsList: {gifts: [], error: error}};
     }
     case CREATE_GIFT_SUCCESS: {
-      return { ...state, newGift: {gift: action.payload, error:null, fetching: false}};
+      return {...state, newGift: {gift: action.payload, error: null}};
     }
     case CREATE_GIFT_FAIL: {
-      error = action.payload || {message: action.payload.message};
-      return { ...state, newGift: {gift: null, error: error, fetching: false}};
-    }
-    case UPDATE_GIFT: {
-      return { ...state, updatedGift:{...state.updatedGift, fetching: true}};
+      error = action.payload;
+      return {...state, newGift: {gift: null, error: error}};
     }
     case UPDATE_GIFT_SUCCESS: {
-      return { ...state, updatedGift: {gift: action.payload, error:null, fetching: false}};
+      return {...state, updatedGift: {gift: action.payload, error: null}};
     }
     case UPDATE_GIFT_FAIL: {
-      error = action.payload || {message: action.payload.message};
-      return { ...state, updatedGift: {gift: null, error: error, fetching: false}};
-    }
-    case DELETE_GIFT: {
-      return { ...state, deletedGift:{...state.deletedGift, fetching: true}};
+      error = action.payload;
+      return {...state, updatedGift: {gift: null, error: error}};
     }
     case DELETE_GIFT_SUCCESS: {
-      return { ...state, deletedGift: {gift: action.payload, error:null, fetching: false}};
+      return {...state, deletedGift: {gift: action.payload, error: null}};
     }
     case DELETE_GIFT_FAIL: {
-      error = action.payload || {message: action.payload.message};
-      return { ...state, deletedGift: {gift: null, error: error, fetching: false}};
+      return {...state, deletedGift: {gift: null, error: error}};
     }
     default: return state;
   }
