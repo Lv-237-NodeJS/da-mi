@@ -51,7 +51,7 @@ export function signupUser(email, password) {
       .end(function(err, res) {
         (res.status == 201) && (dispatch(messageModal(messages.successSignup)) &&
         dispatch(showModal(true))) && browserHistory.push('/') ||
-        dispatch(messageModal(err.response.text)) && dispatch(showModal(true))
+        dispatch(messageModal(err.response.text)) && dispatch(showModal(true));
       });
   };
 }

@@ -52,7 +52,7 @@ export function contactInfo(name, surname, email, textarea) {
       .end(function(err, res) {
         (res.status == 200) && dispatch(messageModal(messages.sendMessage)) &&
         dispatch(showModal(true)) || dispatch(messageModal(err.response.text))&&
-        dispatch(showModal(true))
+        dispatch(showModal(true));
       });
   };
 }

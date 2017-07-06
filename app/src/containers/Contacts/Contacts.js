@@ -66,10 +66,6 @@ class Contacts extends React.Component {
       this.state.email, this.state.textarea);
   }
 
-  clearInput = param => {
-    this.setState({[param]: ''})
-  }
-
   render() {
     const inputsName = {
       name: 'Name',
