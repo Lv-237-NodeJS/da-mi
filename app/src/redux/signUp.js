@@ -1,6 +1,5 @@
-import request from 'src/helper/request';
 import { browserHistory } from 'react-router';
-import { API, messages } from 'src/helper';
+import { API, messages, request } from 'src/helper';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
@@ -15,34 +14,33 @@ export default function changeReducer(state = {show: false, message: ''}, action
     default:
       return state;
   }
-}
+};
 
 export function showModal(show) {
   return {
     type: SHOW_MODAL,
     show: show
   };
-}
+};
 
 export function messageModal(message) {
   return {
     type: MESSAGE_MODAL,
     message: message
   };
-}
+};
 
 export function signupRequest() {
   return {
     type: SIGNUP_REQUEST
   };
-}
+};
 
 export function signupUser(email, password) {
   let data = {
     email: email,
     password: password
   };
-
   return dispatch => {
     dispatch(signupRequest());
     request()

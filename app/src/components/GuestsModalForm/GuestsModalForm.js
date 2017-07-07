@@ -19,8 +19,7 @@ const ModalInput = ({...props}) => (
     {...props}
     type='email'
     placeholder='Enter Email'
-    className='modal-input form-control'
-  />
+    className='modal-input form-control' />
 );
 
 class GuestsModalForm extends React.Component {
@@ -32,7 +31,7 @@ class GuestsModalForm extends React.Component {
       initialEmail: '',
       key: null
     };
-  }
+  };
   
   handleClickOutside = e => {
     !e.target.className.includes('modal-list') &&
@@ -80,6 +79,7 @@ class GuestsModalForm extends React.Component {
       inputs: this.state.inputs.filter((email, emailIndex) => index !== emailIndex)
     });
   };
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
 
   acceptEdition = () => {
     this.setState({key: null});
@@ -91,6 +91,8 @@ class GuestsModalForm extends React.Component {
     newState.key = null;
     this.setState(newState);
   };
+=======
+>>>>>>> make some change in files
 
   handleSubmit = e => {
     e.preventDefault();
@@ -99,6 +101,7 @@ class GuestsModalForm extends React.Component {
     this.setState({inputs: []});
     closeModal();
   };
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
 
   render() {
     const checkEditingItem = index => this.state.key == index && true || false;
@@ -114,6 +117,8 @@ class GuestsModalForm extends React.Component {
     });
     const selectButtons = index => 
       checkEditingItem(index) && getButtonsSet(index).edit || getButtonsSet(index).default;
+=======
+>>>>>>> make some change in files
 
     return (
       <Form horizontal onSubmit={this.handleSubmit}>
@@ -125,9 +130,15 @@ class GuestsModalForm extends React.Component {
                 onChange={this.setEmail} />
             </Col>
             <Col xs={2}>
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
               <ListItemButton
                 onClick={this.appendEmail}
                 className='ok' />
+=======
+              <ListButton
+                onClick={this.addEmail}
+                className='plus' />
+>>>>>>> make some change in files
             </Col>
           </FormGroup>
           
@@ -140,15 +151,24 @@ class GuestsModalForm extends React.Component {
                   placeholder='Enter Email'
                   className='modal-input modal-list form-control'
                   ref={input => this[index] = input}
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
                   onChange={this.handleChange(index)}
                   onClick={this.focusInput(index)} />
+=======
+                  onChange={this.handleChange(index)} />
+>>>>>>> make some change in files
               </Col>
               <Col xs={4} sm={3} className='listItemBar'>
                 <ButtonToolbar>
                   {Object.keys(selectButtons(index)).map(param =>
                     <ListItemButton
                       key={param}
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
                       onClick={selectButtons(index)[param]}
+=======
+                      onClick={param === 'pencil' && this.focusInput(index) ||
+                        this.deleteEmail(index)}
+>>>>>>> make some change in files
                       className={param} />
                   )}
                 </ButtonToolbar>

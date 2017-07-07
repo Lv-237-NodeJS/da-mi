@@ -1,5 +1,4 @@
-import { API } from 'src/helper/constants';
-import request from 'src/helper/request';
+import { API, request  } from 'src/helper';
 
 const FETCH_EVENT_BY_ID = 'FETCH_EVENT_BY_ID';
 const FETCH_EVENT_BY_ID_FULFILLED = 'FETCH_EVENT_BY_ID_FULFILLED';

@@ -4,8 +4,13 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DateTimeField from 'react-bootstrap-datetimepicker';
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
 import * as showActions from 'src/redux/newEventReducers';
 import messages from 'src/helper/messages';
+=======
+import * as showActions from '../../redux/newEventReducers';
+import messages from '../../helper';
+>>>>>>> make some change in files
 import './Newevent.scss';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
@@ -91,8 +96,7 @@ class newEvent extends React.Component {
         placeholder={inputsEventData[param]}
         value={this.state.param}
         onChange={this.handleChange(param)}
-        isErrors={this.state.isErrors[param]}
-      />
+        isErrors={this.state.isErrors[param]} />
     );
   };
 
@@ -103,8 +107,7 @@ class newEvent extends React.Component {
         label={'Date of your event:'}
         inputProps={{readOnly:true}}
         value={this.state.param}
-        onChange={this.dateTimeFieldHandleChange}
-      />
+        onChange={this.dateTimeFieldHandleChange} />
     );
   };
 

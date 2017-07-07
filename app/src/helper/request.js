@@ -8,4 +8,4 @@ const request = () => {
   return superagent.set(header, token);
 };
 
-export default request;
+export { request };

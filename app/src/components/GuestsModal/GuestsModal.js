@@ -4,18 +4,25 @@ import { GuestsModalForm } from 'src/components';
 import './GuestsModal.scss';
 
 export default class GuestsModal extends React.Component {
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
   constructor(props) {
+=======
+  constructor (props) {
+>>>>>>> make some change in files
     super(props);
     this.state = {
       showModal: false
     };
-  }
+  };
   
   toggleModal = () => {
     this.setState({showModal: !this.state.showModal});
   };
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
 
   render() {
+=======
+>>>>>>> make some change in files
 
     return (
       <div>

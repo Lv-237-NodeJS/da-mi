@@ -1,12 +1,12 @@
 import React from 'react';
 import { Grid, Row, Col, PageHeader, FormGroup, FormControl, Button,
   Form, HelpBlock  } from 'react-bootstrap';
-import { Maps, Message  } from '../../components';
-import { CONTACTDATA, messages } from '../../helper';
-import './Contacts.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as showActions from '../../redux/contactInfo';
+import { Maps, Message  } from '../../components';
+import { CONTACTDATA, messages } from '../../helper';
+import './Contacts.scss';
 
 let FieldGroup = ({className, isErrors, id, ...props}) => (
   <Col xs={12} sm={12} md={12}>
@@ -34,7 +34,7 @@ class Contacts extends React.Component {
       },
       enableButton: false
     };
-  }
+  };
 
   handleChange = param => e => {
     let value = e.target.value;
@@ -42,7 +42,7 @@ class Contacts extends React.Component {
       () => {this.validateField(param);});
   };
 
-  validateField = (param) => {
+  validateField = param => {
     const pattern = {
       email: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
       textarea: /.{4,}/
@@ -58,13 +58,24 @@ class Contacts extends React.Component {
     newState.enableButton = Object.keys(newState.isErrors).map(key => 
       newState.isErrors[key]).every(element => element === '');
     this.setState(newState);
-  }  
+  };
+
+  cleanForm = e => {
+    this.setState({
+      email: '',
+      name: '',
+      surname: '',
+      textarea: ''
+    })
+  };
   
   handleButtonClick = e => {
+    const newState = this.state;
     e.preventDefault();
-    this.props.actions.contactInfo(this.state.name, this.state.surname, 
-      this.state.email, this.state.textarea);
-  }
+    this.cleanForm();
+    this.props.actions.contactInfo(newState.name, newState.surname, 
+      newState.email, newState.textarea);
+  };
 
   render() {
     const inputsName = {
@@ -107,7 +118,7 @@ class Contacts extends React.Component {
         </Row>
         <Row>
           <Col xs={12} sm={6} md={6}>
-            <Form onSubmit={this.handleButtonClick} >
+            <Form onSubmit={this.handleButtonClick}>
               { Object.keys(inputsName).map(param =>
                 <FieldGroup
                   id={param}
@@ -118,10 +129,9 @@ class Contacts extends React.Component {
                   name={param}
                   isErrors={this.state.isErrors[param]}
                   onChange={this.handleChange(param)}
-                  value={this.state.param}
+                  value={this.state[param]}
                   placeholder={inputsName[param]}
-                  componentClass={param === 'textarea' && param || 'input'}
-                />
+                  componentClass={param === 'textarea' && param || 'input'} />
               )}
               <Col xs={12} sm={12} md={12} className='text-center'> 
                 <Button

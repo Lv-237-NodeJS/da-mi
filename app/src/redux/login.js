@@ -1,6 +1,5 @@
-import request from 'src/helper/request';
-import { API } from 'src/helper/constants';
 import { browserHistory } from 'react-router';
+import { API, request } from 'src/helper';
 
 const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';

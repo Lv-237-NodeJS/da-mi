@@ -1,8 +1,8 @@
+import  { API, request }  from 'src/helper';
+
 const RETRIEVE_EVENTS = 'RETRIEVE_EVENTS';
 const RETRIEVE_EVENTS_SUCCESS = 'RETRIEVE_EVENTS_SUCCESS';
 const RETRIEVE_EVENTS_FAILURE = 'RETRIEVE_EVENTS_FAILURE';
-import  { API }  from 'src/helper/constants';
-import request from 'src/helper/request';
 
 export const retrieveEvents = () => {
 
@@ -37,26 +37,22 @@ const initialState = {
 
 export const EventsReducers = (state = initialState, action) => {
   switch (action.type) {
-
     case RETRIEVE_EVENTS: {
       return {
         ...state
       };
-    }
-
+    };
     case RETRIEVE_EVENTS_SUCCESS: {
       return {
         ...state,
         events: action.payload
       };
-    }
-
+    };
     case RETRIEVE_EVENTS_FAILURE: {
       return {
         ...state
       };
-    }
-
+    };
     default: return state;
   }
 };

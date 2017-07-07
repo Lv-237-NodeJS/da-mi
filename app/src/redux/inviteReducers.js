@@ -1,5 +1,4 @@
-import request from 'src/helper/request';
-import { API } from 'src/helper/constants';
+import { API, request } from 'src/helper';
 
 const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';

@@ -1,6 +1,10 @@
 import React from 'react';
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
+<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
 import texts from 'src/helper/texts';
+=======
+import { texts } from '../../helper';
+>>>>>>> make some change in files
 import './About.scss';
 
 export default class About extends React.Component {

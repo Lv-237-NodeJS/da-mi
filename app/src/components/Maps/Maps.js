@@ -1,11 +1,11 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import { API, MAPDATA } from '../../helper';
 import { Image } from 'react-bootstrap';
+import { API, MAPDATA } from '../../helper';
 import './Maps.scss';
 
 const Marker = () => (
-  <Image src={require('../../../img/markerMap.svg')}/>
+  <Image src={require('../../../img/markerMap.svg')} />
 );
 
 const mapConfig = {
@@ -19,7 +19,7 @@ class Maps extends React.Component {
       <Marker
         lat={MAPDATA.LAT}
         lng={MAPDATA.LNG}
-        title={MAPDATA.NAME}/>
+        title={MAPDATA.NAME} />
     );
     return (
       <div className='googleMap'>

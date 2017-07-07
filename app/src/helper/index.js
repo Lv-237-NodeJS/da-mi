@@ -1,7 +1,7 @@
-const request = require('./request');
 const messages = require('./messages');
 const constants = require('./constants');
-const { API, CONTACTDATA, MAPDATA } = require('./constants'); 
+const { API, CONTACTDATA, MAPDATA } = require('./constants');
+const { request } = require('./request');
 const texts = require('./texts');
 
 exports.request = request;
