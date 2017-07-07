@@ -15,10 +15,11 @@ class ProfileDropDown extends React.Component {
 
   render() {
     const { profile, actions } = this.props;
-    return (
+
+    return(
       <div>
         <NavDropdown eventKey={5} id='basic-nav-dropdown'
-          title={profile.first_name + ' ' + profile.last_name}>
+          title={`${profile.first_name} ${profile.last_name}`}>
           <LinkContainer to='/profile'>
             <MenuItem eventKey={5.1}>Edit Profile</MenuItem>
           </LinkContainer>

@@ -18,14 +18,14 @@ const FieldGroup = ({id, label, ...props}) => (
 );
 
 class Profile extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = this.props.profile;
   }
   
   componentWillMount() {
-    const { profile } = this.props;
+    const {profile} = this.props;
     this.setState(profile);
   }
 
@@ -106,10 +106,10 @@ class Profile extends React.Component {
       country: 'Country'
     };
 
-    return (
+    return(
       <div className='profile-details'>
         <Col sm={8} className='container'>
-          <Tabs defaultActiveKey={1} id='uncontrolled-tab-example'>
+          <Tabs defaultActiveKey={1}>
             <Tab eventKey={1} title='Profile Info'>
               <h1>Edit Profile</h1>
               <Form horizontal onSubmit={this.handleSubmit}>

@@ -15,7 +15,7 @@ class EventsList extends React.Component {
   render() {
     const eventNode = this.props.eventsList.map(item => {
       return (
-        <Link to={'/events/' + item.id} className='list-group-item' key={item.id}>
+        <Link to={`/events/${item.id}`} className='list-group-item' key={item.id}>
           <ListGroup>
             <ListGroupItem header={item.name}>{Date(item.date_event)}</ListGroupItem>
           </ListGroup>  
