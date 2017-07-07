@@ -1,7 +1,0 @@
-{
-   "preset": "google",
-   "requireCamelCaseOrUpperCaseIdentifiers": {"ignoreProperties": true },
-   "maximumLineLength": 100,
-   "validateIndentation": 2,
-   "disallowSpacesInsideObjectBrackets": false
-}
