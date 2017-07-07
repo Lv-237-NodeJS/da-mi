@@ -31,7 +31,7 @@ class GuestsModalForm extends React.Component {
       initialEmail: '',
       key: null
     };
-  };
+  }
   
   handleClickOutside = e => {
     !e.target.className.includes('modal-list') &&

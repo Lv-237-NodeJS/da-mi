@@ -32,7 +32,7 @@ class Signup extends React.Component {
       },
       enableButton: false
     };
-  };
+  }
 
   handleChange = param => e => {
     let value = e.target.value;

@@ -37,20 +37,20 @@ export function createNewEventSuccess(res) {
     type: CREATE_NEW_EVENT_SUCCESS,
     status: res.statusCode
   };
-};
+}
 
 export function createNewEventFailure(res) {
   return {
     type: CREATE_NEW_EVENT_FAILURE,
     status: res.statusCode
   };
-};
+}
 
 export function createNewEventRequest() {
   return {
     type: CREATE_NEW_EVENT_REQUEST
   };
-};
+}
 
 export function createNewEvent(event) {
   return dispatch => {

@@ -14,27 +14,27 @@ export default function changeReducer(state = {show: false, message: ''}, action
     default:
       return state;
   }
-};
+}
 
 export function showModal(show) {
   return {
     type: SHOW_MODAL,
     show: show
   };
-};
+}
 
 export function messageModal(message) {
   return {
     type: MESSAGE_MODAL,
     message: message
   };
-};
+}
 
 export function signupRequest() {
   return {
     type: SIGNUP_REQUEST
   };
-};
+}
 
 export function signupUser(email, password) {
   let data = {

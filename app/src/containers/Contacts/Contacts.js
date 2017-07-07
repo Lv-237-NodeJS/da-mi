@@ -34,7 +34,7 @@ class Contacts extends React.Component {
       },
       enableButton: false
     };
-  };
+  }
 
   handleChange = param => e => {
     let value = e.target.value;
@@ -66,7 +66,7 @@ class Contacts extends React.Component {
       name: '',
       surname: '',
       textarea: ''
-    })
+    });
   };
   
   handleButtonClick = e => {

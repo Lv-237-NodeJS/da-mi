@@ -13,27 +13,27 @@ export default function changeReducer(state = {show: false, message: ''}, action
     default:
       return state;
   }
-};
+}
 
 export function showModal(show) {
   return {
     type: SHOW_MODAL,
     show: show
   };
-};
+}
 
 export function messageModal(message) {
   return {
     type: MESSAGE_MODAL,
     message: message
   };
-};
+}
 
 export function contactRequest() {
   return {
     type: CONTACT_REQUEST
   };
-};
+}
 
 export function contactInfo(name, surname, email, textarea) {
   let data = {

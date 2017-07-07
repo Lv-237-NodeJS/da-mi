@@ -41,18 +41,21 @@ export const EventsReducers = (state = initialState, action) => {
       return {
         ...state
       };
-    };
+    }
+
     case RETRIEVE_EVENTS_SUCCESS: {
       return {
         ...state,
         events: action.payload
       };
-    };
+    }
+
     case RETRIEVE_EVENTS_FAILURE: {
       return {
         ...state
       };
-    };
+    }
+    
     default: return state;
   }
 };
