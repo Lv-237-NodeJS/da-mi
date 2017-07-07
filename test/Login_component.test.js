@@ -16,7 +16,6 @@ describe('React component <Login />', () => {
     );
     let tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-
     const form = tree.children.filter(child => child.type === 'form')[0];
     const email = form.children[0].children[1].children.filter(child => child.props.type ===
      'email')[0];
@@ -36,7 +35,7 @@ describe('React component <Login />', () => {
       preventDefault: () => {},
     });
     tree = component.toJSON();
+    
     expect(tree).toMatchSnapshot();
-
   });
 });

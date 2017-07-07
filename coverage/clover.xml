@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< ed70bbae71cc426f81b8bf547f9c715776d55232
-<coverage generated="1499326273750" clover="3.2.0">
-  <project timestamp="1499326273753" name="All files">
-=======
-<coverage generated="1499160611850" clover="3.2.0">
-  <project timestamp="1499160611852" name="All files">
->>>>>>> LVNOD-127  Adjusting test after pushed modified origin files on dev
+<coverage generated="1499418360514" clover="3.2.0">
+  <project timestamp="1499418360516" name="All files">
     <metrics statements="45" coveredstatements="44" conditionals="13" coveredconditionals="6" methods="19" coveredmethods="16" elements="77" coveredelements="66" complexity="0" loc="45" ncloc="45" packages="3" files="4" classes="4">
       <package name="components.Login">
         <metrics statements="12" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="9" coveredmethods="7"/>

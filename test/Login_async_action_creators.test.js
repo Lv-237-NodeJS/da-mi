@@ -32,6 +32,7 @@ describe('async action creators', () => {
         return store.dispatch(loginActions.loginUserSuccess(token, userId));
       });
     store.dispatch(loginActions.loginUser('ivan.yarymovych@gmail.com', 'P!assword!1'));
+
     expect(store.getActions()).toEqual(expectedActions);
   });
 });
