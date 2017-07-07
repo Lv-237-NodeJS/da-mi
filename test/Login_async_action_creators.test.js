@@ -13,6 +13,7 @@ describe('async action creators', () => {
   afterEach(() => {
     nock.cleanAll();
   });
+  
   it('creates LOGIN_USER_SUCCESS when user has been logged in', () => {
     router.browserHistory = { push: () => {} };
     const expectedActions = [
