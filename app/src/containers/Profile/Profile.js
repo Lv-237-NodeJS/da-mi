@@ -37,17 +37,17 @@ class Profile extends React.Component {
     this.setState({
       [stateName]: e.target.value
     });
-  }
+  };
 
   handleSubmit = e => {
     this.props.actions.updateProfile(this.state);
-  }
+  };
 
   dateTimeFieldHandleChange = date => {
     this.setState({
       birth_date: date
     });
-  }
+  };
 
   handleChangeImage = e => {
     const self = this;
@@ -60,7 +60,7 @@ class Profile extends React.Component {
       });
     };
     reader.readAsDataURL(file);
-  }
+  };
 
   datePickerFields = (param, birthdateString) => {
     return (
@@ -76,7 +76,7 @@ class Profile extends React.Component {
         </Col>
       </FormGroup>
     );
-  }
+  };
 
   textFields = (param, fieldsName) => {
     return (
@@ -92,7 +92,7 @@ class Profile extends React.Component {
         />
       </Col>
     );
-  }
+  };
 
   render() {
     const { profile } = this.props;
@@ -136,9 +136,6 @@ class Profile extends React.Component {
                   <ButtonToolbar>
                     <Button type='submit' bsStyle='primary'>
                       Save Changes
-                    </Button>
-                    <Button type='reset' bsStyle='default'>
-                      Cancel
                     </Button>
                   </ButtonToolbar>
                 </Row> 
