@@ -7,6 +7,7 @@ import profile from './profileReducers';
 import eventsList from './eventsReducers';
 import invite from './inviteReducers';
 import newEvent from './newEventReducers';
+import editEvent from './editEventReducers';
 
 export default combineReducers({
   login,
@@ -16,5 +17,6 @@ export default combineReducers({
   signup,
   invite,
   newEvent,
+  editEvent,
   routing: routerReducer
 });
