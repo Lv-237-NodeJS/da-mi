@@ -70,7 +70,6 @@ class Contacts extends React.Component {
   };
   
   handleButtonClick = e => {
-    const {name, surname, email, textarea} = this.state;
     e.preventDefault();
     this.cleanForm();
     this.state.enableButton = false;

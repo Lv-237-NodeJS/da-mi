@@ -31,9 +31,7 @@ export function messageModal(message) {
 }
 
 export function signupRequest() {
-  return {
-    type: SIGNUP_REQUEST
-  };
+  return {type: SIGNUP_REQUEST};
 }
 
 export function signupUser(email, password) {
@@ -41,6 +39,7 @@ export function signupUser(email, password) {
     email: email,
     password: password
   };
+  
   return dispatch => {
     dispatch(signupRequest());
     request()
