@@ -6,23 +6,23 @@ import './dashboard.scss';
 export default class Dashboard extends React.Component {
 
   render() {
-    return (
+    const links = [
+      {route: '/events', label: 'My Events'},
+      {route: '/newevent', label: 'Create New Event'},
+      {route: '/invitations', label: 'My Invitations'},
+      {route: '/profile', label: 'My Profile'}
+    ];
+    
+    return(
       <div className='dashboard-menu'>
         <Col sm={3}>
           <h1>Dashboard</h1>
           <Nav id='dashboard' activeKey={1}>
-            <LinkContainer to='/events'>
-              <NavItem eventKey={1}>My Events</NavItem>
-            </LinkContainer>
-            <LinkContainer to='/newevent'>
-              <NavItem eventKey={2}>Create New Event</NavItem>
-            </LinkContainer>
-            <LinkContainer to='/invitations'>
-              <NavItem eventKey={3}>My Invitations</NavItem>
-            </LinkContainer>
-            <LinkContainer to='/profile'>
-              <NavItem eventKey={4}>My Profile</NavItem>
-            </LinkContainer>
+            {links.map((param, index) => 
+              <LinkContainer key={index} to={param.route}>
+                <NavItem eventKey={index}>{param.label}</NavItem>
+              </LinkContainer>
+            )};
           </Nav>
         </Col>
       </div>
