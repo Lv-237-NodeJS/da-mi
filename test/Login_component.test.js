@@ -4,7 +4,6 @@ import { Login } from './../app/src/components/Login/Login';
 import { loginUser } from './../app/src/redux/login';
 
 describe('React component <Login />', () => {
-
   it('should render a Login with typed data' +
     ', especially checked out a correct work onChange and onSubmit functions', () => {
     const user = {
@@ -16,7 +15,6 @@ describe('React component <Login />', () => {
       <Login {...user} />
     );
     let tree = component.toJSON();
-    
     expect(tree).toMatchSnapshot();
     const form = tree.children.filter(child => child.type === 'form')[0];
     const email = form.children[0].children[1].children.filter(child => child.props.type ===
@@ -37,7 +35,6 @@ describe('React component <Login />', () => {
       preventDefault: () => {},
     });
     tree = component.toJSON();
-    
     expect(tree).toMatchSnapshot();
   });
 });
