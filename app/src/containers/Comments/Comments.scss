@@ -1,0 +1,47 @@
+@import './../../../styles/common';
+
+.comment-head {
+  color: $puerto-rico; 
+}
+
+.content {
+  border-radius: 5px;
+  border: 1px solid #eee;
+  padding: $margin-top-bottom;
+}
+
+a:hover, a:focus {     
+  cursor: pointer;     
+}
+  
+.messageBox {
+  display: inline-block;
+  min-width: 435px;
+}
+
+img.avatar {
+  margin: 0 5px;
+  width: 55px;
+  height: 55px;
+  vertical-align: top;
+}
+
+.reply {
+  border-top: 1px solid #ddedeb;
+  display: flex;
+  background-color: #f3fffd;
+  margin-top: 5px;
+}
+
+.message  {
+  font-size: 15px;
+  margin: 5px;
+  display: inline;
+}
+
+.children {
+  padding: 5px;
+  margin-left: 25px;
+  border-left: $border-puerto-rico;
+}
+   

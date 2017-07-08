@@ -10,6 +10,7 @@ import * as eventActions from './eventActions';
 import * as inviteActions from './inviteActions';
 import { GuestsModal, EventsModal, DeleteEventModal } from 'src/components';
 import './eventDetails.scss';
+import Comments from '../Comments/Comments';
 
 const GuestsList = ({guest, ...props}) => (
   <ListGroupItem>{guest}
