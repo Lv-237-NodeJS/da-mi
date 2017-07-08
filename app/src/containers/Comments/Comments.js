@@ -35,13 +35,13 @@ class Comments extends React.Component{
           <div className="comment-list">
             {
               this.props.comments.map(comment =>
-              <CommentItem
-                key={comment.id}
-                comment={comment}
-                giftId={this.props.giftId}
-                author={this.props.author}
-                getComments={this.getComments}
-                eventId = {this.props.eventId} />
+                <CommentItem
+                  key={comment.id}
+                  comment={comment}
+                  giftId={this.props.giftId}
+                  author={this.props.author}
+                  getComments={this.getComments}
+                  eventId = {this.props.eventId} />
               )
             }
             <hr/>

@@ -39,7 +39,7 @@ export class CommentForm extends React.Component{
 
   render(){
 
-  	const error = this.state.body && !this.inputValid() &&
+  	const error = (this.state.body && !this.inputValid()) &&
       messages.maxTextLength || '';
     const { firstName, lastName } = this.props.author;
 
@@ -67,8 +67,8 @@ export class CommentForm extends React.Component{
           </div>
         </div>
       </div>
-    )
-  };
+    );
+  }
 }
 
 const mapStateToProps = state => ({

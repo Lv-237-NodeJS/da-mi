@@ -10,9 +10,9 @@ import './Comments.scss';
 export class CommentItem extends React.Component{
   constructor(props){
     super(props);
-      this.state= ({
-        showForm: false,
-      });
+    this.state= ({
+      showForm: false,
+    });
   }
 
   delComment = () => {
@@ -40,12 +40,12 @@ export class CommentItem extends React.Component{
             <div className="content">
               <img className="avatar" src="{ this.props.author.avatar }"  />
               <div className="message">{ this.props.comment.body }</div>
-                <div className="reply">
-                  { this.props.user }<p> { commentsDate } | </p>
-                  <a onClick={()=>this.setState({ showForm: !this.state.showForm })}>
+              <div className="reply">
+                { this.props.user }<p> { commentsDate } | </p>
+                <a onClick={()=>this.setState({ showForm: !this.state.showForm })}>
                   <Glyphicon glyph="share-alt" /> Reply </a>
-                  {
-                    this.state.showForm ?
+                {
+                  this.state.showForm ?
                     <CommentForm
                       user={ getAuthor(this.props.comment) }
                       parent_id={ this.props.comment.id }
@@ -55,22 +55,23 @@ export class CommentItem extends React.Component{
                       getComments={ this.props.getComments }
                       hideForm={ () => this.setState({ showForm: false }) }/> :
                     null
-                  }
-                </div>
+                }
               </div>
             </div>
+          </div>
           {
             this.props.comment.children ? (
-            <div className="children">
-              {
-                this.props.comment.children.map(comment =>
-                  <CommentItem
-                    actions = { this.props.actions }
-                    key={ comment.id }
-                    comment={ comment }
-                    getComments={ this.props.getComments }
-                    eventId = { this.props.eventId }
-                    giftId={ this.props.giftId } />
+              <div className="children">
+                {
+                  this.props.comment.children.map(comment =>
+                    <CommentItem
+                      actions = { this.props.actions }
+                      key={ comment.id }
+                      comment={ comment }
+                      author={ this.props.author }
+                      getComments={ this.props.getComments }
+                      eventId = { this.props.eventId }
+                      giftId={ this.props.giftId } />
                   )
                 }
               </div>
