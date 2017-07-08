@@ -1,8 +1,8 @@
 const RETRIEVE_EVENTS = 'RETRIEVE_EVENTS';
 const RETRIEVE_EVENTS_SUCCESS = 'RETRIEVE_EVENTS_SUCCESS';
 const RETRIEVE_EVENTS_FAILURE = 'RETRIEVE_EVENTS_FAILURE';
-import  { API }  from './../helper/constants';
-import request from './../helper/request';
+import  { API }  from 'src/helper/constants';
+import request from 'src/helper/request';
 
 export const retrieveEvents = () => {
 

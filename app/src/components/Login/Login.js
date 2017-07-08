@@ -4,7 +4,7 @@ import { Form, FormGroup, ControlLabel, FormControl, Col, Button }
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/login';
+import * as loginActions from 'src/redux/login';
 import './Login.scss';
 
 const InputGroup = ({id, label, ...props}) => (
@@ -18,8 +18,9 @@ const InputGroup = ({id, label, ...props}) => (
   </FormGroup>
 );
 
-export class Login extends React.Component {
-  constructor (props) {
+
+class Login extends React.Component {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -37,7 +38,8 @@ export class Login extends React.Component {
     this.props.actions.loginUser(this.state.email, this.state.password);
   };
 
-  render () {
+  render() {
+
     return (
       <div>
         <Form className='login-form' horizontal onSubmit={this.handleSubmit} state={this.state}>
@@ -49,8 +51,7 @@ export class Login extends React.Component {
               type={param}
               placeholder={param.toUpperCase()}
               value={this.state.param}
-              onChange={this.handleChange(param)}
-            />
+              onChange={this.handleChange(param)} />
           )}
           <FormGroup>
             <Col smOffset={0} sm={12} mdOffset={3} md={9}>

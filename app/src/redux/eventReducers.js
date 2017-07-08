@@ -1,5 +1,5 @@
-import { API } from './../helper/constants';
-import request from './../helper/request';
+import { API } from 'src/helper/constants';
+import request from 'src/helper/request';
 
 const FETCH_EVENT_BY_ID = 'FETCH_EVENT_BY_ID';
 const FETCH_EVENT_BY_ID_FULFILLED = 'FETCH_EVENT_BY_ID_FULFILLED';
@@ -36,7 +36,7 @@ const initialState = {
 export const eventReducers = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_EVENT_BY_ID: {
-      return { ...state, fetching: true };
+      return {...state, fetching: true};
     }
     case FETCH_EVENT_BY_ID_FULFILLED: {
       return {
@@ -55,7 +55,7 @@ export const eventReducers = (state = initialState, action) => {
     }
     case EDIT_EVENT_SUCCESS:
       return {
-        ...state, 
+        ...state,
         current: action.payload
       };
 

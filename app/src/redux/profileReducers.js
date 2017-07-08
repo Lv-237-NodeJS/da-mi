@@ -1,5 +1,5 @@
-import request from './../helper/request';
-import { API } from './../helper/constants';
+import request from 'src/helper/request';
+import { API } from 'src/helper/constants';
 
 const RETRIEVE_PROFILE = 'RETRIEVE_PROFILE';
 const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';

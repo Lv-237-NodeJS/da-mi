@@ -3,8 +3,8 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Image } from 'react-bootst
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from '../../redux/login';
-import * as profileActions from '../../redux/profileReducers';
+import * as loginActions from 'src/redux/login';
+import * as profileActions from 'src/redux/profileReducers';
 import './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {

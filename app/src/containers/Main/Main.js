@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigation, Dashboard } from './../../components';
+import { Navigation, Dashboard } from 'src/components';
 import { connect } from 'react-redux';
 
 class Main extends React.Component {
