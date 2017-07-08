@@ -2,24 +2,33 @@
 
 .comment-head {
   color: $puerto-rico;
-   margin-top: $margin-top; 
+  margin-top: $margin-top;
 }
 
 .content {
-  border-radius: 5px;
+  border-radius: $border-radius;
   border: 1px solid $light-grey;
- 
 }
 
-a:hover, a:focus {     
-  cursor: pointer;     
+a:hover, a:focus {
+  cursor: pointer;
 }
-  
+
 .messageBox {
   display: inline-block;
   min-width: 435px;
 }
 
+.message  {
+  font-size: $font-size;
+  display: inline;
+}
+
+.children {
+  padding: 5px;
+  margin-left: 25px;
+  border-left: $border-puerto-rico;
+}
 img.avatar {
   margin: 0 5px;
   width: 55px;
@@ -31,16 +40,4 @@ img.avatar {
   border-top: 1px solid #ddedeb;
   display: flex;
   background-color: #f3fffd;
-
 }
-.message  {
-  font-size: $font-size;
-  display: inline;
-}
-
-.children {
-  padding: 5px;
-  margin-left: 25px;
-  border-left: $border-puerto-rico;
-}
-   
