@@ -5,7 +5,6 @@ const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';
 const RETRIEVE_PROFILE_FAILURE = 'RETRIEVE_PROFILE_FAILURE';
 
 export const retrieveProfile = userId => {
-
   return dispatch => {
     dispatch(retrieveProfilerRequest());
     return request()

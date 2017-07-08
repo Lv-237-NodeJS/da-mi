@@ -83,7 +83,18 @@ class Contacts extends React.Component {
       email: 'Email',
       textarea: 'Textarea'
     };
-    
+    const contactData = {
+      phone1: CONTACTDATA.PHONE1,
+      phone2: CONTACTDATA.PHONE2,
+      mail: CONTACTDATA.MAIL
+    };
+    const contactPersonal = {
+      manadger1: CONTACTDATA.MANADGER1,
+      manadger2: CONTACTDATA.MANADGER2,
+      post: CONTACTDATA.POST,
+      address: CONTACTDATA.ADDRESS
+    };
+
     return (
       <Grid>
         <Message />
@@ -96,19 +107,17 @@ class Contacts extends React.Component {
         <Row className='contact'>
           <Col xs={6} sm={6} md={6} className='text-right'>
             <div className='mainText'> 
-              {[CONTACTDATA.MANADGER1, CONTACTDATA.MANADGER2,
-                CONTACTDATA.POST, CONTACTDATA.ADDRESS].map(key =>
-                <p key={key}>{key}</p>
+              {Object.keys(contactPersonal).map(key =>
+                <p key={key}>{contactPersonal[key]}</p>
               )}
             </div>
           </Col>
           <Col xs={6} sm={6} md={6}>
             <div>
-              {[CONTACTDATA.PHONE1, CONTACTDATA.PHONE2,
-                CONTACTDATA.MAIL].map(key =>
-                (key==CONTACTDATA.MAIL) && (<p key={key}>
-                  <span className='glyphicon glyphicon-envelope' />{key}</p>) ||
-              (<p key={key}><span className='glyphicon glyphicon-phone' />{key}</p>)
+              {Object.keys(contactData).map(key =>
+                (key=='mail') && (<p key={key}>
+                  <span className='glyphicon glyphicon-envelope' />{contactData[key]}</p>) ||
+              (<p key={key}><span className='glyphicon glyphicon-phone' />{contactData[key]}</p>)
               )}
             </div>
           </Col>

@@ -53,7 +53,6 @@ export function createNewEventRequest() {
 }
 
 export function createNewEvent(event) {
-  
   return dispatch => {
     dispatch(createNewEventRequest());
     request()

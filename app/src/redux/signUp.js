@@ -39,7 +39,7 @@ export function signupUser(email, password) {
     email: email,
     password: password
   };
-  
+
   return dispatch => {
     dispatch(signupRequest());
     request()

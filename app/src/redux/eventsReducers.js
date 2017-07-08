@@ -5,7 +5,6 @@ const RETRIEVE_EVENTS_SUCCESS = 'RETRIEVE_EVENTS_SUCCESS';
 const RETRIEVE_EVENTS_FAILURE = 'RETRIEVE_EVENTS_FAILURE';
 
 export const retrieveEvents = () => {
-
   return dispatch => {
     dispatch(retrieveEventsRequest());
     return request()

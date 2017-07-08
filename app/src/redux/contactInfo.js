@@ -33,8 +33,7 @@ export function contactRequest() {
   return {type: CONTACT_REQUEST};
 }
 
-export function contactInfo(data) { 
-  
+export function contactInfo(data) {
   return dispatch => {
     dispatch(contactRequest());
     request()
