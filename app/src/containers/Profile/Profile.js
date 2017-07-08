@@ -25,8 +25,7 @@ class Profile extends React.Component {
   }
   
   componentWillMount() {
-    const {profile} = this.props;
-    this.setState(profile);
+    this.setState(this.props.profile);
   }
 
   componentWillReceiveProps(nextProps) {

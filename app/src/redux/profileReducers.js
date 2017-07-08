@@ -13,17 +13,11 @@ export const retrieveProfile = userId => {
     return request()
       .get(`${API.URL}/api/user/${userId}`)
       .end((error, res) => {
-        if (error) {
-          dispatch({
-            type: RETRIEVE_PROFILE_FAILURE,
-            payload: error
-          });
-        } else {
+        !error && 
           dispatch({
             type: RETRIEVE_PROFILE_SUCCESS,
             payload: res.body
           });
-        }
       });
   };
 };
@@ -45,21 +39,15 @@ export const updateProfile = profile => {
     dispatch(updateProfilerRequest());
     const profileId = sessionStorage.getItem('profileId');
     return request()
-      .put(API.URL + `/api/profile/${profileId}`)
+      .put(`${API.URL}/api/profile/${profileId}`)
       .send(profile)
       .type('json')
       .end((error, res) => {
-        if (error) {
-          dispatch({
-            type: UPDATE_PROFILE_FAILURE,
-            payload: error
-          });
-        } else {
+        !error && 
           dispatch({
             type: UPDATE_PROFILE_SUCCESS,
             payload: res.body
           });
-        }
       });
   };
 };
