@@ -13,6 +13,7 @@ describe('async action creators', () => {
   afterEach(() => {
     nock.cleanAll();
   });
+  
   it('creates LOGIN_USER_SUCCESS when user has been logged in', () => {
     router.browserHistory = { push: () => {} };
     const expectedActions = [
@@ -32,6 +33,7 @@ describe('async action creators', () => {
         return store.dispatch(loginActions.loginUserSuccess(token, userId));
       });
     store.dispatch(loginActions.loginUser('ivan.yarymovych@gmail.com', 'P!assword!1'));
+    
     expect(store.getActions()).toEqual(expectedActions);
   });
 });

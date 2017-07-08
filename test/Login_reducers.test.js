@@ -7,6 +7,7 @@ describe('loginReduser execution', () => {
   describe('LOGIN_USER_FAILURE', () => {
     it('should return the correct state', () => {
       const action = loginActions.loginUserFailure('message');
+      
       expect(loginReduser(state, action))
         .toEqual({
           ...state,
@@ -19,6 +20,7 @@ describe('loginReduser execution', () => {
   describe('CHECK_TOKEN', () => {
     it('should return the correct state', () => {
       const action = loginActions.checkToken();
+      
       expect(loginReduser(state, action)).toEqual({
         ...state,
         isAuth: action.isAuth
@@ -29,6 +31,7 @@ describe('loginReduser execution', () => {
   describe('LOGOUT_USER', () => {
     it('should return the correct state', () => {
       router.browserHistory = { push: () => {} };
+      
       expect(loginReduser(state, loginActions.logout())).toEqual({
         ...state,
         isAuth: false
@@ -40,6 +43,7 @@ describe('loginReduser execution', () => {
     it('should return the correct state', () => {
       router.browserHistory = { push: () => {} };
       const action = loginActions.loginUserSuccess('token', 777);
+      
       expect(loginReduser(state, action)).toEqual({
         ...state,
         illegalInput: false,
@@ -51,6 +55,7 @@ describe('loginReduser execution', () => {
 
   describe('default', () => {
     it('should return the correct state', () => {
+      
       expect(loginReduser(state, {})).toEqual(state);
     });
   });
