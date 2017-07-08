@@ -83,30 +83,30 @@ class EventsModalForm extends React.Component {
 
   render() {
     const dateEvent = this.props.event.date_event;
-	  const inputsEventData = {
-	    name: 'Name',
-	    date_event: 'Date',
-	    location_name: 'Place',
-	    longitude: 'Longitude',
+    const inputsEventData = {
+      name: 'Name',
+      date_event: 'Date',
+      location_name: 'Place',
+      longitude: 'Longitude',
       latitude: 'Latitude',
-	    description: 'Descripton'
+      description: 'Descripton'
     };
     return (
-	    <Form onSubmit={this.handleButtonClick}>
-	      {Object.keys(inputsEventData).map(param =>
-	        (param == 'date_event') ?
-	          this.inputDateTimeFields(param, dateEvent) :
-	          this.inputFields(param, inputsEventData)
-	      )}
-	      <FormGroup>
-	        <Col sm={12}>
-	          <Button type='submit' bsStyle='primary' bsSize='large'>
-	            Update
-	          </Button>
-	        </Col>
-	      </FormGroup>
-	    </Form>
-	  );
+      <Form onSubmit={this.handleButtonClick}>
+        {Object.keys(inputsEventData).map(param =>
+          (param == 'date_event') ?
+            this.inputDateTimeFields(param, dateEvent) :
+            this.inputFields(param, inputsEventData)
+        )}
+        <FormGroup>
+          <Col sm={12}>
+            <Button type='submit' bsStyle='primary' bsSize='large'>
+              Update
+            </Button>
+          </Col>
+        </FormGroup>
+      </Form>
+    );
   }
 }
 

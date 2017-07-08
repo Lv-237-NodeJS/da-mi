@@ -51,7 +51,7 @@ class EventDetails extends React.Component {
             <Tab eventKey={1} title='Event Details'>
               <PageHeader className='text-center'> { event.name } </PageHeader>
               <ButtonToolbar>
-                 <EventsModal eventId={event.id} />
+                <EventsModal eventId={event.id} />
                 <Button bsStyle='danger'> Delete </Button>
                 <Button
                   type='button'
