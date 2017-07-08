@@ -80,7 +80,7 @@ class Profile extends React.Component {
 
   textFields = (param, fieldsName) => {
     return (
-      <Col md={12}>
+      <Col md={12} key={param}>
         <FieldGroup 
           key={param}
           id={param}
@@ -109,7 +109,7 @@ class Profile extends React.Component {
     return(
       <div className='profile-details'>
         <Col sm={8} className='container'>
-          <Tabs defaultActiveKey={1}>
+          <Tabs defaultActiveKey={1} id='uncontrolled-tab'>
             <Tab eventKey={1} title='Profile Info'>
               <h1>Edit Profile</h1>
               <Form horizontal onSubmit={this.handleSubmit}>
@@ -119,8 +119,7 @@ class Profile extends React.Component {
                       <Image id='img-circle-avatar' src={profile.avatar} circle/>
                       <h6>Upload a different photo</h6>
                       <input type='file' className='form-control' 
-                        onChange={this.handleChangeImage} 
-                        encType='multipart/form-data'/>
+                        onChange={this.handleChangeImage} />
                     </FormGroup>
                   </Col>
                 </Row>
