@@ -9,10 +9,10 @@ import './Comments.scss';
 
 export class CommentItem extends React.Component{
   constructor(props){
-  super(props);
-    this.state= ({
-      showForm: false,
-    });
+    super(props);
+      this.state= ({
+        showForm: false,
+      });
   }
 
   delComment = () => {
@@ -30,40 +30,40 @@ export class CommentItem extends React.Component{
       <div className="comment-wrapper">
         <div className="parent">
           <div><a className="pull-right"
-              label="Delete"
-              onClick={ this.delComment }>
-              <Glyphicon glyph="remove" /></a>
-            <div>
-              <div className = "comment-head">
-                { getAuthor(this.props.comment) }
-              </div>
-              <div className="content">
-                <img className="avatar" src="{ this.props.author.avatar }"  />
-                <div className="message">{ this.props.comment.body }</div>
-                  <div className="reply">
-                    { this.props.user }<p> { commentsDate } | </p>
-                    <a onClick={()=>this.setState({ showForm: !this.state.showForm })}>
-                    <Glyphicon glyph="share-alt" /> Reply </a>
-                    {
-                      this.state.showForm ?
-                      <CommentForm
-                        user={ getAuthor(this.props.comment) }
-                        parent_id={ this.props.comment.id }
-                        author={ this.props.author }
-                        eventId={ this.props.eventId }
-                        giftId={ this.props.giftId }
-                        getComments={ this.props.getComments }
-                        hideForm={ () => this.setState({ showForm: false }) }/> :
-                      null
-                    }
-                  </div>
+            label="Delete"
+            onClick={ this.delComment }>
+            <Glyphicon glyph="remove" /></a>
+          <div>
+            <div className = "comment-head">
+              { getAuthor(this.props.comment) }
+            </div>
+            <div className="content">
+              <img className="avatar" src="{ this.props.author.avatar }"  />
+              <div className="message">{ this.props.comment.body }</div>
+                <div className="reply">
+                  { this.props.user }<p> { commentsDate } | </p>
+                  <a onClick={()=>this.setState({ showForm: !this.state.showForm })}>
+                  <Glyphicon glyph="share-alt" /> Reply </a>
+                  {
+                    this.state.showForm ?
+                    <CommentForm
+                      user={ getAuthor(this.props.comment) }
+                      parent_id={ this.props.comment.id }
+                      author={ this.props.author }
+                      eventId={ this.props.eventId }
+                      giftId={ this.props.giftId }
+                      getComments={ this.props.getComments }
+                      hideForm={ () => this.setState({ showForm: false }) }/> :
+                    null
+                  }
                 </div>
               </div>
-            {
-              this.props.comment.children ? (
-              <div className="children">
-                {
-                  this.props.comment.children.map(comment =>
+            </div>
+          {
+            this.props.comment.children ? (
+            <div className="children">
+              {
+                this.props.comment.children.map(comment =>
                   <CommentItem
                     actions = { this.props.actions }
                     key={ comment.id }
@@ -79,7 +79,7 @@ export class CommentItem extends React.Component{
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 
