@@ -1,5 +1,3 @@
-import { push } from 'react-router-redux';
-import { browserHistory } from 'react-router';
 import { API } from './../helper/constants';
 import request from '../helper/request';
 
