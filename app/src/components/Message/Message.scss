@@ -1,11 +1,7 @@
 @import '../../../styles/common';
 
-#modal-container {
-
-}
-
-.modalText{
-  color: black;
+.modalText {
+  color: $black;
   font-size: 35px;
   text-align: center;
   line-height: 50px;

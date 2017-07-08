@@ -79,6 +79,7 @@ export function loginUser(email, password) {
   const user = {email, password};
   let token;
   let userId;
+  
   return dispatch => {
     dispatch(loginUserRequest());
     request()

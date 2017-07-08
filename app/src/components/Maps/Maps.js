@@ -21,6 +21,7 @@ class Maps extends React.Component {
         lng={MAPDATA.LNG}
         title={MAPDATA.NAME} />
     );
+    
     return (
       <div className='googleMap'>
         <GoogleMapReact       

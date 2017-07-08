@@ -6,8 +6,8 @@ const API = {
 };
 
 const CONTACTDATA = {
-  PHONE1: '+38-097-782-33-55',
-  PHONE2: '+38-063-346-32-47',
+  PHONE1: ' +38-097-782-33-55',
+  PHONE2: ' +38-063-346-32-47',
   MAIL: ' dami.suppor@gmail.com',
   MANADGER1: 'Khrystyna Ivanchenko',
   MANADGER2: 'Taras Petrenenko',

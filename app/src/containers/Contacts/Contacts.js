@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as showActions from '../../redux/contactInfo';
 import { Maps, Message  } from '../../components';
-import { CONTACTDATA, messages } from '../../helper';
+import { CONTACTDATA, messages }  from '../../helper';
 import './Contacts.scss';
 
-let FieldGroup = ({className, isErrors, id, ...props}) => (
+const FieldGroup = ({className, isErrors, id, ...props}) => (
   <Col xs={12} sm={12} md={12}>
     <div>
       <FormGroup className = {className} id = {id}>
@@ -21,7 +21,7 @@ let FieldGroup = ({className, isErrors, id, ...props}) => (
 );
 
 class Contacts extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       email: '',
@@ -56,7 +56,7 @@ class Contacts extends React.Component {
     validateByPattern(param) && newState.isErrors[param] !== null;
 
     newState.enableButton = Object.keys(newState.isErrors).map(key => 
-      newState.isErrors[key]).every(element => element === '');
+      newState.isErrors[key]).every(element => element === '' );
     this.setState(newState);
   };
 
@@ -70,11 +70,11 @@ class Contacts extends React.Component {
   };
   
   handleButtonClick = e => {
-    const newState = this.state;
+    const {name, surname, email, textarea} = this.state;
     e.preventDefault();
     this.cleanForm();
-    this.props.actions.contactInfo(newState.name, newState.surname, 
-      newState.email, newState.textarea);
+    this.state.enableButton = false;
+    this.props.actions.contactInfo(this.state);
   };
 
   render() {
@@ -84,6 +84,7 @@ class Contacts extends React.Component {
       email: 'Email',
       textarea: 'Textarea'
     };
+    
     return (
       <Grid>
         <Message />
@@ -96,23 +97,20 @@ class Contacts extends React.Component {
         <Row className='contact'>
           <Col xs={6} sm={6} md={6} className='text-right'>
             <div className='mainText'> 
-              <p>{CONTACTDATA.MANADGER1}</p>
-              <p>{CONTACTDATA.MANADGER2}</p>
-              <p>{CONTACTDATA.POST}</p>
-              <p>{CONTACTDATA.ADDRESS}</p>
+              {[CONTACTDATA.MANADGER1, CONTACTDATA.MANADGER2,
+                CONTACTDATA.POST, CONTACTDATA.ADDRESS].map(key =>
+              <p key={key}>{key}</p>
+              )}
             </div>
           </Col>
           <Col xs={6} sm={6} md={6}>
-            <div> 
-              <p>
-                <span className='glyphicon glyphicon-phone'/>{CONTACTDATA.PHONE1}
-              </p>
-              <p>
-                <span className='glyphicon glyphicon-phone'/>{CONTACTDATA.PHONE2}
-              </p>
-              <p>
-                <span className='glyphicon glyphicon-envelope'/>{CONTACTDATA.MAIL}
-              </p>
+            <div>
+              {[CONTACTDATA.PHONE1, CONTACTDATA.PHONE2,
+                CONTACTDATA.MAIL].map(key =>
+              (key==CONTACTDATA.MAIL) && (<p key={key}>
+              <span className='glyphicon glyphicon-envelope' />{key}</p>) ||
+              (<p key={key}><span className='glyphicon glyphicon-phone' />{key}</p>)
+              )}
             </div>
           </Col>
         </Row>

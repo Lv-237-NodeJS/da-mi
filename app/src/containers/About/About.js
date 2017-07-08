@@ -1,10 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
-<<<<<<< 7bcdd5eaf77486d22f08dae063d0ccced2c7df36
-import texts from 'src/helper/texts';
-=======
-import { texts } from '../../helper';
->>>>>>> make some change in files
+import { texts } from 'src/helper';
 import './About.scss';
 
 export default class About extends React.Component {
@@ -18,11 +14,12 @@ export default class About extends React.Component {
       'Ivan Shyika': 'photo-Ivan',
       'Yuriy Kokhalevych': 'photo-Yura'
     };
+    
     return (
       <Grid>
-        <Row className='show-grid' id='gift'>
+        <Row className='gift' id='gift'>
           <Col xs={12} sm={12} md={6}>
-            <div id='photo-gift'></div>
+            <div id='photo-gift' className='photo-gift'></div>
           </Col>
           <Col xs={12} sm={12} md={6}>
             <PageHeader className='text-center'>Da-Mi</PageHeader>

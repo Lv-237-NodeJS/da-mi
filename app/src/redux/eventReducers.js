@@ -6,6 +6,7 @@ const FETCH_EVENT_BY_ID_REJECTED = 'FETCH_EVENT_BY_ID_REJECTED';
 const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
 
 export const fetchEventById = eventId => {
+  
   return dispatch => {
     return request()
       .get(`${API.URL}/api/event/${eventId}`)

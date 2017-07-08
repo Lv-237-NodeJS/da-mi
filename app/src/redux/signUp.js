@@ -44,9 +44,9 @@ export function signupUser(email, password) {
   return dispatch => {
     dispatch(signupRequest());
     request()
-      .post(API.HOST + API.PORT + '/api/users')
+      .post(`${API.URL}/api/users`)
       .send(data)
-      .end(function(err, res) {
+      .end((err, res) => {
         (res.status == 201) && (dispatch(messageModal(messages.successSignup)) &&
         dispatch(showModal(true))) && browserHistory.push('/') ||
         dispatch(messageModal(err.response.text)) && dispatch(showModal(true));

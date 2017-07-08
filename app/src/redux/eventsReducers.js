@@ -55,7 +55,7 @@ export const EventsReducers = (state = initialState, action) => {
         ...state
       };
     }
-    
+
     default: return state;
   }
 };

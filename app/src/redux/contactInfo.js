@@ -30,24 +30,18 @@ export function messageModal(message) {
 }
 
 export function contactRequest() {
-  return {
-    type: CONTACT_REQUEST
-  };
+  return {type: CONTACT_REQUEST};
 }
 
-export function contactInfo(name, surname, email, textarea) {
-  let data = {
-    name: name,
-    surname: surname,
-    email: email,
-    textarea: textarea
-  };
+export function contactInfo({name, surname, email, textarea}) {
+  let data = {name, surname, email, textarea};
+  
   return dispatch => {
     dispatch(contactRequest());
     request()
-      .post(API.HOST + API.PORT + '/api/support')
+      .post(`${API.URL}/api/support`)
       .send(data)
-      .end(function(err, res) {
+      .end((err, res) => {
         (res.status == 200) && dispatch(messageModal(res.text)) &&
         dispatch(showModal(true)) || dispatch(messageModal(err.response.text)) &&
         dispatch(showModal(true));
