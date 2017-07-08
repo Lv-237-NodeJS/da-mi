@@ -19,7 +19,7 @@ const InputGroupField = ({id, label, className, isErrors, ...props}) => (
 );
 
 class EventsModalForm extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = this.props.event;
   }

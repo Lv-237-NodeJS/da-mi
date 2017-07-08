@@ -54,14 +54,12 @@ export function editEvent(event) {
   return dispatch => {
     dispatch(editEventRequest());
     request()
-      .put(API.URL + '/api/event/' + event.id)
+      .put(`${API.URL}/api/event/${event.id}`)
       .send(event)
       .end((err, res) => {
-        if (err || !res.ok) {
-          dispatch(editEventFailure(res));
-        } else {
-          dispatch(editEventSuccess(res));
-        }
+        (err || !res.ok) &&
+          dispatch(editEventFailure(res)) ||
+          dispatch(editEventSuccess(res))
       });
   };
 }

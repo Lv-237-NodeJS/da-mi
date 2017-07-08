@@ -4,7 +4,7 @@ import { EventsModalForm } from './../';
 import './EventsModal.scss';
 
 export default class EventsModal extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       showModal: false
@@ -15,7 +15,7 @@ export default class EventsModal extends React.Component {
     this.setState({showModal: !this.state.showModal});
   };
 
-  render () {
+  render() {
     return (
       <div>
         <Button bsStyle='primary' onClick={this.toggleModal}>
