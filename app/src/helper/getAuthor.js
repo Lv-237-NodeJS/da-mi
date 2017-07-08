@@ -1,6 +1,5 @@
 const getAuthor = comment => {
-  const firstName = comment.User.Profile.first_name;
-  const lastName = comment.User.Profile.last_name;
+  const { first_name: firstName, last_name: lastName } = comment.User.Profile;
   return firstName + ' ' + lastName;
 };
 
