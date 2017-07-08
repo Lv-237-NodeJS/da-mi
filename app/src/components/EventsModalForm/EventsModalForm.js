@@ -42,8 +42,10 @@ class EventsModalForm extends React.Component {
   };
 
   handleButtonClick = e => {
+    const { closeModal } = this.props;
     e.preventDefault();
     this.props.editEventActions.editEvent(this.state);
+    closeModal();
   };
 
   inputFields = (param, inputsEventData) => {

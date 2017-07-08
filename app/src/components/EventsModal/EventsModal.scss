@@ -2,11 +2,9 @@
 @import './../../../styles/modal';
 
 .modal-dialog {
-  height: 440px !important;
-  border: 4px solid green;
-  
+  height: 440px;
 }
 
 .modal-title {
-  text: $white !important;
+  color: $white;
 }

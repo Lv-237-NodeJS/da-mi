@@ -29,7 +29,7 @@ export default class EventsModal extends React.Component {
             <Modal.Title>Here, you can update your own event:</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <EventsModalForm/>
+            <EventsModalForm closeModal={this.toggleModal} />
           </Modal.Body>
         </Modal>
       </div>
