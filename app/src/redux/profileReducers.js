@@ -11,7 +11,7 @@ export const retrieveProfile = userId => {
   return dispatch => {
     dispatch(retrieveProfilerRequest());
     return request()
-      .get(API.URL + `/api/user/${userId}`)
+      .get(`${API.URL}/api/user/${userId}`)
       .end((error, res) => {
         if (error) {
           dispatch({

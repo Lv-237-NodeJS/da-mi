@@ -8,7 +8,7 @@ export const retrieveEvents = () => {
   return dispatch => {
     dispatch(retrieveEventsRequest());
     return request()
-      .get(API.HOST + API.PORT + '/api/events')
+      .get(`${API.URL}/api/events`)
       .end((err, res) => {
         if (err) {
           dispatch({
