@@ -59,7 +59,7 @@ export function editEvent(event) {
       .end((err, res) => {
         (err || !res.ok) &&
           dispatch(editEventFailure(res)) ||
-          dispatch(editEventSuccess(res))
+          dispatch(editEventSuccess(res));
       });
   };
 }
