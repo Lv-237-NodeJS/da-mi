@@ -9,17 +9,12 @@ export const retrieveEvents = () => {
     dispatch(retrieveEventsRequest());
     return request()
       .get(`${API.URL}/api/events`)
-      .end((err, res) => {
-        if (err) {
-          dispatch({
-            type: RETRIEVE_EVENTS_FAILURE
-          });
-        } else {
+      .end((error, res) => {
+        !error &&
           dispatch({
             type: RETRIEVE_EVENTS_SUCCESS,
             payload: res.body,
           });
-        }
       });
   };
 };
