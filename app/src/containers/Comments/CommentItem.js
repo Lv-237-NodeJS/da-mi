@@ -75,8 +75,8 @@ export class CommentItem extends React.Component{
                   )
                 }
               </div>
-              ) : null
-            }
+            ) : null
+          }
           </div>
         </div>
       </div>

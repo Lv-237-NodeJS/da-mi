@@ -3,10 +3,10 @@ const DELETE_COMMENT_FAILURE = 'DELETE_COMMENT_FAILURE';
 import  { API }  from './../helper/constants';
 import request from './../helper/request';
 
-export const deleteComment = (eventId, giftId, comment_id) => {  
+export const deleteComment = (eventId, giftId, comment_id) => {
   return dispatch => {
     request()
-      .delete(API.URL + `/api/event/${eventId}/gift/${giftId}/comment/${comment_id}`)      
+      .delete(API.URL + `/api/event/${eventId}/gift/${giftId}/comment/${comment_id}`)
       .end((err, res) => {
         if (err) {
           dispatch({
@@ -23,20 +23,22 @@ export const deleteComment = (eventId, giftId, comment_id) => {
   };
 };
 
-export const deleteCommentReducer = (state = {commentDeleted: {}}, action) => {
-  switch (action.type) {    
-    case COMMENT_DELETED: {      
+export const deleteCommentReducer = (state = { commentDeleted: {} }, action) => {
+  switch (action.type) {
+    case COMMENT_DELETED: {
       return {
         ...state,
         commentDeleted: action.payload,
       };
     }
+
     case DELETE_COMMENT_FAILURE: {
       return {
         ...state,
         error: action.payload,
       };
     }
+
     default: return state;
   }
 };

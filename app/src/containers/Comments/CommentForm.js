@@ -39,8 +39,7 @@ export class CommentForm extends React.Component{
 
   render(){
 
-  	const error = (this.state.body && !this.inputValid()) &&
-      messages.maxTextLength || '';
+    const error = this.state.body && !this.inputValid() && messages.maxTextLength || '';
     const { firstName, lastName } = this.props.author;
 
     return (

@@ -11,7 +11,7 @@ export const retrieveComments = (eventId, giftId) => {
       .end((err, res) => {
         if (err) {
           dispatch({
-            type: RETRIEVE_COMMENTS_FAILURE
+            type: RETRIEVE_COMMENTS_FAILURE,
           });
         } else {
           dispatch({
@@ -23,24 +23,27 @@ export const retrieveComments = (eventId, giftId) => {
   };
 };
 
-export const CommentsReducers = (state = {comments: []}, action) => {
+export const CommentsReducers = (state = { comments: [] }, action) => {
   switch (action.type) {
     case RETRIEVE_COMMENTS: {
       return {
-        ...state
+        ...state,
       };
     }
+
     case RETRIEVE_COMMENTS_SUCCESS: {
       return {
         ...state,
-        comments: action.payload
+        comments: action.payload,
       };
     }
+
     case RETRIEVE_COMMENTS_FAILURE: {
       return {
-        ...state
+        ...state,
       };
     }
+
     default: return state;
   }
 };
