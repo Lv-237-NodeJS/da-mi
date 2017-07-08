@@ -5,6 +5,7 @@ import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroup
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GuestsModal } from './../../components';
+import { EventsModal } from './../../components';
 import * as eventActions from '../../redux/eventReducers';
 import * as inviteActions from '../../redux/inviteReducers';
 import * as editEventActions from '../../redux/editEventReducers';
