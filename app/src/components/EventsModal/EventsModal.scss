@@ -8,3 +8,11 @@
 .modal-title {
   color: $white;
 }
+
+.col-md-7 {
+  .input-group {
+    .form-control {
+      background-color: $white;
+    }
+  }
+}
