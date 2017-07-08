@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button, FormGroup, FormControl, ControlLabel,
 } from 'react-bootstrap';
-import './addGift.scss';
+import './editGift.scss';
 
 const FieldGroup = ({ id, label, ...props }) => (
   <FormGroup controlId={id}>
@@ -10,17 +10,11 @@ const FieldGroup = ({ id, label, ...props }) => (
   </FormGroup>
 );
 
-export default class AddGift extends React.Component {
+export default class EditGift extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = {
-      name: '',
-      description: null,
-      link: null,
-      image: null,
-      showModal: false
-    };
+    this.state = {...this.props.gift, showModal: false};
   }
 
   inputs = {
@@ -41,6 +35,7 @@ export default class AddGift extends React.Component {
       id={param}
       label={this.inputs[param]}
       type='text'
+      value={this.state[param] || ''}
       placeholder={this.inputs[param]}
       onChange={this.handleChange(param)}
       required={(param === 'name') && true || false}
@@ -53,7 +48,7 @@ export default class AddGift extends React.Component {
 
   handleButtonClick = e => {
     e.preventDefault();
-    this.props.actions.createGift(this.props.id, this.state);
+    this.props.actions.updateGift(this.props.id, this.props.gift.id, this.state);
     this.toggleModal();
   };
 
@@ -71,6 +66,7 @@ export default class AddGift extends React.Component {
   };
 
   render () {
+
     const inputForm = (
       <div className='gift-input'>
         {Object.keys(this.inputs).map(param =>
@@ -84,17 +80,17 @@ export default class AddGift extends React.Component {
           encType='multipart/form-data'
         />
         <Button type="submit" bsSize="large" block>
-          Submit
+          Save changes
         </Button>
       </div>
     );
 
     return (
-      <div className='add-gift-button'>
-        <Button bsSize="large" block onClick={this.toggleModal}>Add gift</Button>
+      <div>
+        <Button bsSize='small' bsStyle='info' onClick={this.toggleModal}>Edit</Button>
         <Modal className='modal-dialog' show={this.state.showModal} onHide={this.toggleModal}>
           <Modal.Header closeButton>
-            <Modal.Title>Add gift</Modal.Title>
+            <Modal.Title>Edit {this.props.gift.name}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={this.handleButtonClick}>
