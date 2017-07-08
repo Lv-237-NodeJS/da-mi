@@ -36,7 +36,7 @@ class GuestsModalForm extends React.Component {
   
   handleClickOutside = e => {
     !e.target.className.includes('modal-list') &&
-    e.target.parentNode.className !== 'btn-toolbar' && this.setState({key: null})
+    e.target.parentNode.className !== 'btn-toolbar' && this.setState({key: null});
   };
 
   componentWillMount() {
@@ -71,7 +71,7 @@ class GuestsModalForm extends React.Component {
     this.setState({
       initialEmail: this.state.inputs[index],
       key: index
-    })
+    });
     this[index].focus();
   };
 
@@ -145,12 +145,12 @@ class GuestsModalForm extends React.Component {
               </Col>
               <Col xs={4} sm={3} className='listItemBar'>
                 <ButtonToolbar>
-                {Object.keys(selectButtons(index)).map(param =>
-                  <ListItemButton
-                    key={param}
-                    onClick={selectButtons(index)[param]}
-                    className={param} />
-                )}
+                  {Object.keys(selectButtons(index)).map(param =>
+                    <ListItemButton
+                      key={param}
+                      onClick={selectButtons(index)[param]}
+                      className={param} />
+                  )}
                 </ButtonToolbar>
               </Col>
             </FormGroup>
