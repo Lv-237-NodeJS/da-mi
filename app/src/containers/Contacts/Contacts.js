@@ -99,7 +99,7 @@ class Contacts extends React.Component {
             <div className='mainText'> 
               {[CONTACTDATA.MANADGER1, CONTACTDATA.MANADGER2,
                 CONTACTDATA.POST, CONTACTDATA.ADDRESS].map(key =>
-              <p key={key}>{key}</p>
+                <p key={key}>{key}</p>
               )}
             </div>
           </Col>
@@ -107,8 +107,8 @@ class Contacts extends React.Component {
             <div>
               {[CONTACTDATA.PHONE1, CONTACTDATA.PHONE2,
                 CONTACTDATA.MAIL].map(key =>
-              (key==CONTACTDATA.MAIL) && (<p key={key}>
-              <span className='glyphicon glyphicon-envelope' />{key}</p>) ||
+                (key==CONTACTDATA.MAIL) && (<p key={key}>
+                  <span className='glyphicon glyphicon-envelope' />{key}</p>) ||
               (<p key={key}><span className='glyphicon glyphicon-phone' />{key}</p>)
               )}
             </div>
