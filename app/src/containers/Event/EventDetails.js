@@ -105,7 +105,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(eventActions, dispatch),
   guestActions: bindActionCreators(inviteActions, dispatch),
-  editEventActions: bindActionCreators(editEventActions, dispatch),
   editEventActions: bindActionCreators(editEventActions, dispatch)
 });
 

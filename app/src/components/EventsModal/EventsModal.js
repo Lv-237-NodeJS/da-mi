@@ -9,7 +9,7 @@ export default class EventsModal extends React.Component {
     this.state = {
       showModal: false
     };
-  };
+  }
   
   toggleModal = () => {
     this.setState({showModal: !this.state.showModal});

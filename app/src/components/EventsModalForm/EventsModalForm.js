@@ -22,12 +22,12 @@ class EventsModalForm extends React.Component {
   constructor (props) {
     super(props);
     this.state = this.props.event;
-  };
+  }
 
   componentWillMount() {
-  	const { event } = this.props;
+    const { event } = this.props;
     this.setState(event);
-  };
+  }
 
   handleChange = stateName => e => {
     this.setState({
@@ -88,10 +88,10 @@ class EventsModalForm extends React.Component {
 	    date_event: 'Date',
 	    location_name: 'Place',
 	    longitude: 'Longitude',
-	    latitude: 'Latitude',
+      latitude: 'Latitude',
 	    description: 'Descripton'
-	  };
-	  return (
+    };
+    return (
 	    <Form onSubmit={this.handleButtonClick}>
 	      {Object.keys(inputsEventData).map(param =>
 	        (param == 'date_event') ?
