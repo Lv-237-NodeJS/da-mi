@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Col, Button, Checkbox, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem }
+import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem }
   from 'react-bootstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -10,7 +10,7 @@ import * as eventActions from 'src/redux/eventReducers';
 import * as inviteActions from 'src/redux/inviteReducers';
 import * as editEventActions from 'src/redux/editEventReducers';
 import './eventDetails.scss';
-import { GiftList, AddGift } from '../';
+import { Gift } from '../';
 
 const GuestsList = ({guest, ...props}) => (
   <ListGroupItem>{guest}
@@ -25,7 +25,7 @@ const GuestsList = ({guest, ...props}) => (
 
 class EventDetails extends React.Component {
   componentWillMount() {
-    const {params: {id}, actions, guestActions, giftsActions} = this.props;
+    const {params: {id}, actions, guestActions} = this.props;
     actions.fetchEventById(id);
     guestActions.getEmails(id);
   }
@@ -85,8 +85,7 @@ class EventDetails extends React.Component {
             </Tab>
             <Tab eventKey={3} title='Gifts'>
               <h2>Gift list</h2>
-              <AddGift id={params.id}/>
-              <GiftList id={params.id}/>
+              <Gift id={params.id}/>
             </Tab>
           </Tabs>
         </Col>
