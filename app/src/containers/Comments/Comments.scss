@@ -1,13 +1,14 @@
 @import './../../../styles/common';
 
 .comment-head {
-  color: $puerto-rico; 
+  color: $puerto-rico;
+   margin-top: $margin-top; 
 }
 
 .content {
   border-radius: 5px;
-  border: 1px solid #eee;
-  padding: $margin-top-bottom;
+  border: 1px solid $light-grey;
+ 
 }
 
 a:hover, a:focus {     
@@ -30,12 +31,10 @@ img.avatar {
   border-top: 1px solid #ddedeb;
   display: flex;
   background-color: #f3fffd;
-  margin-top: 5px;
-}
 
+}
 .message  {
-  font-size: 15px;
-  margin: 5px;
+  font-size: $font-size;
   display: inline;
 }
 
