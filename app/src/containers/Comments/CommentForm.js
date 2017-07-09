@@ -30,7 +30,6 @@ export class CommentForm extends React.Component{
     this.props.actions.createComment(eventId, giftId, commentData);
     this.props.getComments();
     this.props.hideForm && this.props.hideForm() || null;
-
     this.setState({
       body: '',
       parent_id: null
@@ -40,7 +39,7 @@ export class CommentForm extends React.Component{
   render(){
 
     const error = this.state.body && !this.inputValid() && messages.maxTextLength || '';
-    const { firstName, lastName } = this.props.author;
+    const { first_name: firstName, last_name: lastName } = this.props.author;
 
     return (
       <div className="comment-wrapper">
