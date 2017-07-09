@@ -1,6 +1,6 @@
+import { API, request } from 'src/helper';
 import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
-import { API, request } from 'src/helper';
 
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
 const CREATE_NEW_EVENT_FAILURE = 'CREATE_NEW_EVENT_FAILURE';
@@ -32,7 +32,7 @@ export default function newEventReducers(state = initialState, action) {
 
 export function createNewEventSuccess(res) {
   const eventId = res.body.id;
-  browserHistory.push('/events/' + eventId);
+  browserHistory.push(`/events/${eventId}`);
   return {
     type: CREATE_NEW_EVENT_SUCCESS,
     status: res.statusCode
@@ -56,12 +56,11 @@ export function createNewEvent(event) {
   return dispatch => {
     dispatch(createNewEventRequest());
     request()
-      .post(API.HOST + API.PORT + '/api/events')
+      .post(`${API.URL}/api/events`)
       .send(event)
       .end((err, res) => {
-        if (err || !res.ok) {
-          dispatch(createNewEventFailure(res));
-        } else {
+        (err || !res.ok) &&
+          dispatch(createNewEventFailure(res)) ||
           dispatch(createNewEventSuccess(res));
         }
       });
