@@ -48,7 +48,7 @@ export function signupUser(email, password) {
       .end((err, res) => {
         (res.status == 201) && (dispatch(messageModal(JSON.parse(res.text).message)) &&
         dispatch(showModal(true))) && browserHistory.push('/') ||
-        dispatch(messageModal(JSON.parse(err.response.text).message)) && dispatch(showModal(true));
+        dispatch(messageModal(JSON.parse(res.text).message)) && dispatch(showModal(true));
       });
   };
 }
