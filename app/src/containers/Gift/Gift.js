@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as giftActions from '../../redux/gift';
-import { GiftList, AddGift } from '../';
+import { GiftList, AddGift } from 'src/containers';
 
 class Gift extends React.Component {
   componentWillMount() {

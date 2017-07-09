@@ -10,7 +10,7 @@ import * as eventActions from 'src/redux/eventReducers';
 import * as inviteActions from 'src/redux/inviteReducers';
 import * as editEventActions from 'src/redux/editEventReducers';
 import './eventDetails.scss';
-import { Gift } from '../';
+import { Gift } from 'src/containers';
 
 const GuestsList = ({guest, ...props}) => (
   <ListGroupItem>{guest}
@@ -85,7 +85,7 @@ class EventDetails extends React.Component {
             </Tab>
             <Tab eventKey={3} title='Gifts'>
               <h2>Gift list</h2>
-              <Gift id={params.id}/>
+              <Gift id={id}/>
             </Tab>
           </Tabs>
         </Col>
