@@ -62,7 +62,6 @@ export function createNewEvent(event) {
         (err || !res.ok) &&
           dispatch(createNewEventFailure(res)) ||
           dispatch(createNewEventSuccess(res));
-        }
       });
   };
 }
