@@ -2,7 +2,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const rootPath = path.resolve('./');
 const buildPath = path.resolve('build');
-const devConfig = require('./webpack.config.dev.js');
+let devConfig = require('./webpack.config.dev.js');
 
 devConfig.output.path = path.resolve('./build');
 
