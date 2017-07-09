@@ -18,7 +18,7 @@ const InputGroup = ({id, label, ...props}) => (
   </FormGroup>
 );
 
-class Login extends React.Component {
+export class Login extends React.Component {
   constructor (props) {
     super(props);
 
@@ -30,17 +30,17 @@ class Login extends React.Component {
 
   handleChange = stateName => e => {
     this.setState({[stateName]: e.target.value});
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
     this.props.actions.loginUser(this.state.email, this.state.password);
-  }
+  };
 
   render () {
     return (
       <div>
-        <Form className='login-form' horizontal onSubmit={this.handleSubmit}>
+        <Form className='login-form' horizontal onSubmit={this.handleSubmit} state={this.state}>
           {['email', 'password'].map(param =>
             <InputGroup
               key={param}

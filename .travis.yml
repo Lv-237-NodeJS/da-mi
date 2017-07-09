@@ -8,7 +8,9 @@ before_script:
   - npm install -g eslint
   - npm install -g babel-eslint
   - npm install -g eslint-plugin-react@latest
+  - npm install
 
 script:
   - sass-lint -v -q 'app/**/*.scss'
   - eslint ./app/src ./test
+  - npm test 
