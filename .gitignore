@@ -6,4 +6,3 @@ package-lock.json
 .jscsrc
 coverage
 test/__snapshots__
-
