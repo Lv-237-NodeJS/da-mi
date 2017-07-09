@@ -83,17 +83,6 @@ class Contacts extends React.Component {
       email: 'Email',
       textarea: 'Textarea'
     };
-    const contactData = {
-      phone1: CONTACTDATA.PHONE1,
-      phone2: CONTACTDATA.PHONE2,
-      mail: CONTACTDATA.MAIL
-    };
-    const contactPersonal = {
-      manadger1: CONTACTDATA.MANADGER1,
-      manadger2: CONTACTDATA.MANADGER2,
-      post: CONTACTDATA.POST,
-      address: CONTACTDATA.ADDRESS
-    };
 
     return (
       <Grid>
@@ -107,17 +96,18 @@ class Contacts extends React.Component {
         <Row className='contact'>
           <Col xs={6} sm={6} md={6} className='text-right'>
             <div className='mainText'> 
-              {Object.keys(contactPersonal).map(key =>
-                <p key={key}>{contactPersonal[key]}</p>
+              {Object.keys(CONTACTDATA).map(key =>
+                <p key={key}>{key}</p>
               )}
             </div>
           </Col>
           <Col xs={6} sm={6} md={6}>
             <div>
-              {Object.keys(contactData).map(key =>
-                (key=='mail') && (<p key={key}>
-                  <span className='glyphicon glyphicon-envelope' />{contactData[key]}</p>) ||
-              (<p key={key}><span className='glyphicon glyphicon-phone' />{contactData[key]}</p>)
+              {Object.keys(CONTACTDATA).map(key =>
+                (key=='79018, Lviv') && <p key={CONTACTDATA[key]}>
+                  <span className='glyphicon glyphicon-envelope' />{CONTACTDATA[key]}</p> ||
+              (key=='Fedkovycha Str.60A, block C') && <p key={CONTACTDATA[key]}></p> ||
+              <p key={CONTACTDATA[key]}><span className='glyphicon glyphicon-phone' />{CONTACTDATA[key]}</p>
               )}
             </div>
           </Col>

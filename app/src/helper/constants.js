@@ -6,13 +6,10 @@ const API = {
 };
 
 const CONTACTDATA = {
-  PHONE1: ' +38-097-782-33-55',
-  PHONE2: ' +38-063-346-32-47',
-  MAIL: ' dami.suppor@gmail.com',
-  MANADGER1: 'Khrystyna Ivanchenko',
-  MANADGER2: 'Taras Petrenenko',
-  POST: '79018, Lviv',
-  ADDRESS: 'Fedkovycha Str.60A, block C'
+  'Khrystyna Ivanchenko': ' +38-097-782-33-55',
+  'Taras Petrenenko': ' +38-063-346-32-47',
+  '79018, Lviv': ' dami.suppor@gmail.com',
+  'Fedkovycha Str.60A, block C' : ''
 };
 
 const MAPDATA ={

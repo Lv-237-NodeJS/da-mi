@@ -46,9 +46,9 @@ export function signupUser(email, password) {
       .post(`${API.URL}/api/users`)
       .send(data)
       .end((err, res) => {
-        (res.status == 201) && (dispatch(messageModal(messages.successSignup)) &&
+        (res.status == 201) && (dispatch(messageModal(JSON.parse(res.text).message)) &&
         dispatch(showModal(true))) && browserHistory.push('/') ||
-        dispatch(messageModal(err.response.text)) && dispatch(showModal(true));
+        dispatch(messageModal(JSON.parse(err.response.text).message)) && dispatch(showModal(true));
       });
   };
 }

@@ -40,8 +40,8 @@ export function contactInfo(data) {
       .post(`${API.URL}/api/support`)
       .send(data)
       .end((err, res) => {
-        (res.status == 200) && dispatch(messageModal(res.text)) &&
-        dispatch(showModal(true)) || dispatch(messageModal(err.response.text)) &&
+        (res.status == 200) && dispatch(messageModal(JSON.parse(res.text).message)) &&
+        dispatch(showModal(true)) || dispatch(messageModal(JSON.parse(err.response.text).message)) &&
         dispatch(showModal(true));
       });
   };
