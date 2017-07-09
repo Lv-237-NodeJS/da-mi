@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem }
   from 'react-bootstrap';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GuestsModal, EventsModal } from 'src/components';
@@ -43,6 +44,7 @@ class EventDetails extends React.Component {
 
   render() {
     const {params: {id}, event, guests} = this.props;
+    const formattedDate = moment(event.date_event, 'x').format('DD MMM YYYY hh:mm a');
     return (
       <div className='eventDetails'>
         <Col sm={6}>
@@ -60,7 +62,7 @@ class EventDetails extends React.Component {
               </ButtonToolbar>
               <div>
                 <h3>Details:</h3>
-                <p><span className='event-caption'>Date:</span>{Date(event.date_event)}</p>
+                <p><span className='event-caption'>Date:</span>{formattedDate}</p>
                 <p><span className='event-caption'>Place:</span>{event.location_name}</p>
                 <p><span className='event-caption'>Description:</span>{event.description}</p>
               </div>

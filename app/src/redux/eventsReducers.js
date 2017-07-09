@@ -8,18 +8,13 @@ export const retrieveEvents = () => {
   return dispatch => {
     dispatch(retrieveEventsRequest());
     return request()
-      .get(API.HOST + API.PORT + '/api/events')
-      .end((err, res) => {
-        if (err) {
-          dispatch({
-            type: RETRIEVE_EVENTS_FAILURE
-          });
-        } else {
+      .get(`${API.URL}/api/events`)
+      .end((error, res) => {
+        !error &&
           dispatch({
             type: RETRIEVE_EVENTS_SUCCESS,
             payload: res.body,
           });
-        }
       });
   };
 };
