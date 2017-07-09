@@ -20,6 +20,18 @@ const FieldGroup = ({className, isErrors, id, ...props}) => (
   </Col>
 );
 
+const ContactsRows = () => (
+  <Row className='contact'> {['text-right', 'text-left'].map(param =>
+    <Col xs={6} sm={6} md={6} className={param} key={param}>
+      <div> {Object.keys(CONTACTDATA).map((key, index) =>
+        <p key={key}> {param === 'text-left' &&
+        <span className={`glyphicon ${index === 2 && 'glyphicon-envelope' || 
+        'glyphicon-phone'}`} />} {param === 'text-right' && key || CONTACTDATA[key]}</p>)}
+      </div> 
+    </Col> )} 
+  </Row>
+);
+
 class Contacts extends React.Component {
   constructor(props) {
     super(props);
@@ -93,25 +105,7 @@ class Contacts extends React.Component {
             <h2>Da-Mi</h2>
           </Col>
         </Row>
-        <Row className='contact'>
-          <Col xs={6} sm={6} md={6} className='text-right'>
-            <div className='mainText'> 
-              {Object.keys(CONTACTDATA).map(key =>
-                <p key={key}>{key}</p>
-              )}
-            </div>
-          </Col>
-          <Col xs={6} sm={6} md={6}>
-            <div>
-              {Object.keys(CONTACTDATA).map(key =>
-                (key=='79018, Lviv') && <p key={CONTACTDATA[key]}>
-                  <span className='glyphicon glyphicon-envelope' />{CONTACTDATA[key]}</p> ||
-              (key=='Fedkovycha Str.60A, block C') && <p key={CONTACTDATA[key]}></p> ||
-              <p key={CONTACTDATA[key]}><span className='glyphicon glyphicon-phone' />{CONTACTDATA[key]}</p>
-              )}
-            </div>
-          </Col>
-        </Row>
+        <ContactsRows />
         <Row>
           <Col xs={12} sm={6} md={6}>
             <Form onSubmit={this.handleButtonClick}>
