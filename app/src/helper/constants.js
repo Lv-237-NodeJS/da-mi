@@ -8,8 +8,7 @@ const API = {
 const CONTACTDATA = {
   'Khrystyna Ivanchenko': ' +38-097-782-33-55',
   'Taras Petrenenko': ' +38-063-346-32-47',
-  '79018, Lviv': ' dami.suppor@gmail.com',
-  'Fedkovycha Str.60A, block C' : ''
+  '79018, Lviv, Fedkovycha Str.60A, block C': ' dami.suppor@gmail.com'
 };
 
 const MAPDATA ={
