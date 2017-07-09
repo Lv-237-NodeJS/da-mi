@@ -66,7 +66,7 @@ export class CommentItem extends React.Component{
             </div>
           </div>
           {
-             comment.children ? (
+            comment.children ? (
               <div className="children">
                 {
                   this.props.comment.children.map(comment =>
