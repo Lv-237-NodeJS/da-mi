@@ -16,7 +16,7 @@ a:hover, a:focus {
 
 .messageBox {
   display: inline-block;
-  min-width: 435px;
+  min-width: 400px;
 }
 
 .message  {
@@ -37,7 +37,8 @@ img.avatar {
 }
 
 .reply {
-  border-top: 1px solid #ddedeb;
+  border-top: 1px solid $tranquil;
   display: flex;
-  background-color: #f3fffd;
+  color: $green-dark;
+  background-color: $mint-cream;
 }

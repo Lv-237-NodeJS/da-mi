@@ -1,7 +1,7 @@
+import  { API, request }  from './../helper';
+
 const COMMENT_DELETED = 'COMMENT_DELETED';
 const DELETE_COMMENT_FAILURE = 'DELETE_COMMENT_FAILURE';
-import  { API }  from './../helper/constants';
-import request from './../helper/request';
 
 export const deleteComment = (eventId, giftId, comment_id) => {
   return dispatch => {

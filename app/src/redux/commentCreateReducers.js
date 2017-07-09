@@ -1,7 +1,7 @@
+import  { API, request }  from './../helper';
+
 const COMMENT_CREATED = 'COMMENT_CREATED';
 const CREATE_COMMENT_FAILURE = 'CREATE_COMMENT_FAILURE';
-import  { API }  from './../helper/constants';
-import request from './../helper/request';
 
 export const createComment = (eventId, giftId, commentData) => {
   return dispatch => {

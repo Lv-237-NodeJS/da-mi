@@ -1,8 +1,8 @@
+import  { API, request }  from './../helper';
+
 const RETRIEVE_COMMENTS = 'RETRIEVE_COMMENTS';
 const RETRIEVE_COMMENTS_SUCCESS = 'RETRIEVE_COMMENTS_SUCCESS';
 const RETRIEVE_COMMENTS_FAILURE = 'RETRIEVE_COMMENTS_FAILURE';
-import  { API }  from './../helper/constants';
-import request from './../helper/request';
 
 export const retrieveComments = (eventId, giftId) => {
   return dispatch => {
