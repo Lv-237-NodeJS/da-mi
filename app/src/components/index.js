@@ -4,4 +4,6 @@ export ProfileDropDown from './ProfileDropDown/ProfileDropDown';
 export Message from './Message/Message';
 export Dashboard from './Dashboard/Dashboard';
 export GuestsModal from './GuestsModal/GuestsModal';
+export EventsModal from './EventsModal/EventsModal';
 export GuestsModalForm from './GuestsModalForm/GuestsModalForm';
+export EventsModalForm from './EventsModalForm/EventsModalForm';
