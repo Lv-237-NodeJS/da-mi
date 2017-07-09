@@ -104,8 +104,7 @@ class Profile extends React.Component {
       city: 'City',
       country: 'Country'
     };
-
-    return(
+    return (
       <div className='profile-details'>
         <Col sm={8} className='container'>
           <Tabs defaultActiveKey={1} id='uncontrolled-tab'>
