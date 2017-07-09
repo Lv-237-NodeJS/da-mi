@@ -1,4 +1,4 @@
-import { messages, request, API } from 'src/helper';
+import { request, API } from 'src/helper';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const CONTACT_REQUEST = 'CONTACT_REQUEST';

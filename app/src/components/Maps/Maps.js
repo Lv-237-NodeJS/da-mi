@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { Image } from 'react-bootstrap';
-import { API, MAPDATA } from '../../helper';
+import { API, MAPDATA } from 'src/helper';
 import './Maps.scss';
 
 const Marker = () => (

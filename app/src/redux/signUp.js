@@ -1,5 +1,5 @@
 import { browserHistory } from 'react-router';
-import { API, messages, request } from 'src/helper';
+import { API, request } from 'src/helper';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
