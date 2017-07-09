@@ -1,5 +1,4 @@
-import request from 'src/helper/request';
-import { API } from 'src/helper/constants';
+import { API, request } from 'src/helper';
 
 const FETCH_GIFTS_SUCCESS = 'FETCH_GIFTS_SUCCESS';
 const FETCH_GIFTS_FAIL = 'FETCH_GIFTS_FAIL';
