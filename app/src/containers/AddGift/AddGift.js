@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, FormGroup, FormControl, ControlLabel,
+import { Modal, Button, FormGroup, FormControl, ControlLabel
 } from 'react-bootstrap';
 import './addGift.scss';
 
@@ -11,7 +11,7 @@ const FieldGroup = ({ id, label, ...props }) => (
 );
 
 export default class AddGift extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -70,7 +70,7 @@ export default class AddGift extends React.Component {
     reader.readAsDataURL(file);
   };
 
-  render () {
+  render() {
     const inputForm = (
       <div className='gift-input'>
         {Object.keys(this.inputs).map(param =>
