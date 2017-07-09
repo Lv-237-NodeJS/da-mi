@@ -1,11 +1,10 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { GuestsModalForm } from './../';
+import { GuestsModalForm } from 'src/components';
 import './GuestsModal.scss';
 
 export default class GuestsModal extends React.Component {
-  
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {
       showModal: false
@@ -14,9 +13,10 @@ export default class GuestsModal extends React.Component {
   
   toggleModal = () => {
     this.setState({showModal: !this.state.showModal});
-  }
+  };
 
-  render () {
+  render() {
+
     return (
       <div>
         <Button
@@ -31,7 +31,7 @@ export default class GuestsModal extends React.Component {
             <Modal.Title>Invite people</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <GuestsModalForm closeModal={this.toggleModal} eventId={this.props.eventId}/>
+            <GuestsModalForm closeModal={this.toggleModal} eventId={this.props.eventId} />
           </Modal.Body>
         </Modal>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Row, Col, PageHeader } from 'react-bootstrap';
-import { Login, Message } from '../../components';
+import { Login, Message } from 'src/components';
 
 export default class Home extends React.Component {
 

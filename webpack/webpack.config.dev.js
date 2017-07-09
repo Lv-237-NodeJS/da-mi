@@ -1,17 +1,24 @@
 const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
-const extractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const entryPath = './app/src/app.js';
+const rootPath = path.resolve('./');
+const srcPath = path.resolve('./', 'app/src');
 
 module.exports = {
   entry: {
     app: ['bootstrap-loader', entryPath]
   },
   output: {
-    path: path.resolve('./'),
+    path: rootPath,
     filename: 'bundle.js',
     publicPath: '/'
+  },
+  resolve: {
+    alias: {
+      src: srcPath
+    }
   },
   devServer: {
     contentBase: 'build',
@@ -26,7 +33,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        use: extractTextPlugin.extract({
+        use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: ['css-loader', 'sass-loader']
         })
@@ -36,28 +43,28 @@ module.exports = {
         use: 'url-loader?limit=10000&mimetype=application/font-woff'
       },
       {
-        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, 
+        test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
         use: 'url-loader?limit=10000&mimetype=application/octet-stream'
       },
       {
-        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, 
+        test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
         use: 'file-loader'
       },
       {
-        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
         use: 'url-loader?limit=10000&mimetype=image/svg+xml'
       }
     ]
   },
   plugins: [
-    new htmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       title: 'DA-MI',
       filename: 'index.html',
       inject: false,
       template: require('html-webpack-template'),
       appMountId: 'root'
     }),
-    new extractTextPlugin('bundle.css'),
+    new ExtractTextPlugin('bundle.css'),
     new webpack.EnvironmentPlugin({'NODE_ENV': 'development'})
   ]
 };

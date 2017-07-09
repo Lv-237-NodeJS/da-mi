@@ -1,7 +1,7 @@
-import request from '../helper/request';
+import request from 'src/helper/request';
 import { browserHistory } from 'react-router';
-import messages from '../helper/messages';
-import { API } from '../helper/constants';
+import messages from 'src/helper/messages';
+import { API } from 'src/helper/constants';
 
 const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';

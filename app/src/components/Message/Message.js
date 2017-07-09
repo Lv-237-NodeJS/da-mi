@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from '../../redux/signUp';
+import * as showActions from 'src/redux/signUp';
 import './Message.scss';
 
 class Message extends React.Component {
