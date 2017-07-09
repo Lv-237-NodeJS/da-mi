@@ -1,4 +1,4 @@
-const texts = {
+module.exports = {
   descriptionOurProgectPart1: 'Do you plan to celebrate your birthday, ' +
     'wedding or other event and do not want to get 3 identical electric ' +
     'kettles as a gift? Then it\'s up to!',
@@ -13,5 +13,3 @@ const texts = {
     'easier for you to plan events and make them more memorable and ' +
     'impressive. We look forward to your comments and wishes.'
 };
-
-export default texts;

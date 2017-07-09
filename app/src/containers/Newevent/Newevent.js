@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import * as showActions from 'src/redux/newEventReducers';
-import messages from 'src/helper/messages';
+import { messages } from 'src/helper';
 import './Newevent.scss';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
@@ -91,8 +91,7 @@ class newEvent extends React.Component {
         placeholder={inputsEventData[param]}
         value={this.state.param}
         onChange={this.handleChange(param)}
-        isErrors={this.state.isErrors[param]}
-      />
+        isErrors={this.state.isErrors[param]} />
     );
   };
 
@@ -103,8 +102,7 @@ class newEvent extends React.Component {
         label={'Date of your event:'}
         inputProps={{readOnly:true}}
         value={this.state.param}
-        onChange={this.dateTimeFieldHandleChange}
-      />
+        onChange={this.dateTimeFieldHandleChange} />
     );
   };
 

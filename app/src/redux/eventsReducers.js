@@ -1,11 +1,10 @@
+import  { API, request }  from 'src/helper';
+
 const RETRIEVE_EVENTS = 'RETRIEVE_EVENTS';
 const RETRIEVE_EVENTS_SUCCESS = 'RETRIEVE_EVENTS_SUCCESS';
 const RETRIEVE_EVENTS_FAILURE = 'RETRIEVE_EVENTS_FAILURE';
-import  { API }  from 'src/helper/constants';
-import request from 'src/helper/request';
 
 export const retrieveEvents = () => {
-
   return dispatch => {
     dispatch(retrieveEventsRequest());
     return request()
@@ -37,7 +36,6 @@ const initialState = {
 
 export const EventsReducers = (state = initialState, action) => {
   switch (action.type) {
-
     case RETRIEVE_EVENTS: {
       return {
         ...state

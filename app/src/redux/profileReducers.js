@@ -1,12 +1,10 @@
-import request from 'src/helper/request';
-import { API } from 'src/helper/constants';
+import { API, request } from 'src/helper';
 
 const RETRIEVE_PROFILE = 'RETRIEVE_PROFILE';
 const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';
 const RETRIEVE_PROFILE_FAILURE = 'RETRIEVE_PROFILE_FAILURE';
 
 export const retrieveProfile = userId => {
-
   return dispatch => {
     dispatch(retrieveProfilerRequest());
     return request()

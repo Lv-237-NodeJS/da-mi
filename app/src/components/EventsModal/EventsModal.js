@@ -1,6 +1,6 @@
 import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
-import { EventsModalForm } from './../';
+import { EventsModalForm } from 'src/components';
 import './EventsModal.scss';
 
 export default class EventsModal extends React.Component {

@@ -9,11 +9,16 @@ $list: gift, Maryana, Denis, Ivan, Vanja, Yulya, Yura, Andriy;
   }
 }
 
-#photo-gift {
-  height: 450px;
-  max-width: 450px;
+.photo-gift {
+  height: 350px;
+  max-width: 350px;
+  margin: 0 auto;
 }
 
+ .gift {
+  padding: 15px;
+ }
+ 
 .team {
   height: 170px;
   max-width: 170px;

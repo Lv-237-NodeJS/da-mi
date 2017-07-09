@@ -1,13 +1,13 @@
 import React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button, Form, HelpBlock } from 'react-bootstrap';
-import { Message } from '../../components';
-import messages from '../../helper/messages';
-import './Signup.scss';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from '../../redux/signUp';
+import * as showActions from 'src/redux/signUp';
+import { Message } from 'src/components';
+import { messages } from 'src/helper';
+import './Signup.scss';
 
-let FieldGroup = ({className, label, isErrors, ...props}) => (
+const FieldGroup = ({className, label, isErrors, ...props}) => (
   <div>
     <FormGroup className = {className}>
       <ControlLabel>{label}</ControlLabel>
@@ -61,18 +61,18 @@ class Signup extends React.Component {
     newState.enableButton = Object.keys(newState.isErrors).map(key => 
       newState.isErrors[key]).every(element => element === '');
     this.setState(newState);
-  }
+  };
   
   handleButtonClick = e => {
     e.preventDefault();
     this.props.actions.signupUser(this.state.email, this.state.password);
-  }
+  };
 
   render() {
     const inputsName = {
       email: 'Email',
       password: 'Password',
-      confirmation: 'Confirmation password',
+      confirmation: 'Confirmation password'
     };
     return (
       <div className='containerLog'>
@@ -89,8 +89,7 @@ class Signup extends React.Component {
               placeholder={inputsName[param]}
               value={this.state.param}
               onChange={this.handleChange(param)}
-              required
-            />
+              required />
           )}
           <Button 
             className='btn btn-primary'

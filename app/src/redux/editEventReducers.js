@@ -1,5 +1,4 @@
-import { API } from './../helper/constants';
-import request from '../helper/request';
+import { API, request } from 'src/helper';
 
 const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
 const EDIT_EVENT_FAILURE = 'EDIT_EVENT_FAILURE';

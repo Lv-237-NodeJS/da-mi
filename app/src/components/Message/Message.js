@@ -9,18 +9,17 @@ class Message extends React.Component {
   hide = () => {
     this.props.actions.showModal(false);
   };
+  
   render() {
     return (
       <Modal
         show={this.props.show}
         onHide={this.hide}
-        id='modal-container'
-        className='modal-backdrop'>
-        <Modal.Header closeButton>
-          <Modal.Title id='contained-modal-title-lg'>
-            <p>{this.props.message}</p>
-          </Modal.Title>
-        </Modal.Header>     
+        id='modal-container'>
+        <Modal.Header closeButton />
+        <Modal.Body id='contained-modal-body-lg'>
+          <p className='modalText'>{this.props.message}</p>
+        </Modal.Body>
       </Modal>
     );
   } 
