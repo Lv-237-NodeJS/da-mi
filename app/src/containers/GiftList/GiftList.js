@@ -18,7 +18,7 @@ export default class GiftList extends React.Component {
           <p>Link:&nbsp;<a href={'http://' + gift.link}>{gift.link}</a></p>
           <ButtonToolbar>
             <EditGift id={this.props.id} gift={gift} actions={this.props.actions}/>
-            <Button bsStyle='danger'sSize='small' onClick={handleDelete}>
+            <Button bsStyle='danger' bsSize='small' onClick={handleDelete}>
               Delete
             </Button>
             {gift.is_available === true &&
