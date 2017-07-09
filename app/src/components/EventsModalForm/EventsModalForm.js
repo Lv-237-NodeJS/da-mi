@@ -49,7 +49,7 @@ class EventsModalForm extends React.Component {
         key={param}
         type="text"
         label={inputsEventData[param] + ' of your event:'}
-        value={this.state[param]}
+        value={this.state[param] || ''}
         onChange={this.handleChange(param)}
         required={(param === 'name') && true}
       />
