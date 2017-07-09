@@ -24,11 +24,6 @@ class EventsModalForm extends React.Component {
     this.state = this.props.event;
   }
 
-  componentWillMount() {
-    const { event } = this.props;
-    this.setState(event);
-  }
-
   handleChange = stateName => e => {
     this.setState({
       [stateName]: e.target.value
@@ -42,9 +37,9 @@ class EventsModalForm extends React.Component {
   };
 
   handleButtonClick = e => {
+    this.props.editEventActions.editEvent(this.state);
     const { closeModal } = this.props;
     e.preventDefault();
-    this.props.editEventActions.editEvent(this.state);
     closeModal();
   };
 
