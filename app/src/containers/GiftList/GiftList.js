@@ -1,6 +1,6 @@
 import React from 'react';
 import { Accordion, Panel, Button, ButtonToolbar, Image } from 'react-bootstrap';
-import { EditGift } from './../';
+import { EditGift } from 'src/containers';
 
 export default class GiftList extends React.Component {
   render() {
@@ -18,7 +18,7 @@ export default class GiftList extends React.Component {
           <p>Link:&nbsp;<a href={'http://' + gift.link}>{gift.link}</a></p>
           <ButtonToolbar>
             <EditGift id={this.props.id} gift={gift} actions={this.props.actions}/>
-            <Button bsStyle='danger' bsSize='small' onClick={handleDelete}>
+            <Button bsStyle='danger'sSize='small' onClick={handleDelete}>
               Delete
             </Button>
             {gift.is_available === true &&
