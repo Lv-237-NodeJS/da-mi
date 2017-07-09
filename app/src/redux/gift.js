@@ -115,7 +115,8 @@ const giftReducer = (state = initialState, action) => {
       };
     }
     case UPDATE_GIFT_SUCCESS: {
-      return {...state,
+      return {
+        ...state,
         gifts: [action.payload, ...state.gifts.filter(gift => gift.id !== action.payload.id)],
         error: null
       };

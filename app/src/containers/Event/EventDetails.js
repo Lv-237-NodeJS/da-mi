@@ -6,11 +6,11 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GuestsModal, EventsModal } from 'src/components';
+import { Gift } from 'src/containers';
 import * as eventActions from 'src/redux/eventReducers';
 import * as inviteActions from 'src/redux/inviteReducers';
 import * as editEventActions from 'src/redux/editEventReducers';
 import './eventDetails.scss';
-import { Gift } from 'src/containers';
 
 const GuestsList = ({guest, ...props}) => (
   <ListGroupItem>{guest}
