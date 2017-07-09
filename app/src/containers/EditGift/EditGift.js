@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, FormGroup, FormControl, ControlLabel,
+import { Modal, Button, FormGroup, FormControl, ControlLabel
 } from 'react-bootstrap';
 import './editGift.scss';
 
@@ -11,7 +11,7 @@ const FieldGroup = ({ id, label, ...props }) => (
 );
 
 export default class EditGift extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
 
     this.state = {...this.props.gift, showModal: false};
@@ -65,8 +65,7 @@ export default class EditGift extends React.Component {
     reader.readAsDataURL(file);
   };
 
-  render () {
-
+  render() {
     const inputForm = (
       <div className='gift-input'>
         {Object.keys(this.inputs).map(param =>

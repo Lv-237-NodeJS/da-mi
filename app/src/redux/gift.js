@@ -1,3 +1,6 @@
+import { API } from './../helper/constants';
+import request from './../helper/request';
+
 const FETCH_GIFTS_SUCCESS = 'FETCH_GIFTS_SUCCESS';
 const FETCH_GIFTS_FAIL = 'FETCH_GIFTS_FAIL';
 const CREATE_GIFT_SUCCESS = 'CREATE_GIFT_SUCCESS';
@@ -7,13 +10,10 @@ const DELETE_GIFT_FAIL = 'DELETE_GIFT_FAIL';
 const UPDATE_GIFT_SUCCESS = 'UPDATE_GIFT_SUCCESS';
 const UPDATE_GIFT_FAIL = 'UPDATE_GIFT_FAIL';
 
-import { API } from './../helper/constants';
-import request from './../helper/request';
-
 export const fetchGifts = eventId => {
   return dispatch => {
     return request()
-      .get(API.URL + `/api/events/${eventId}/gifts`)
+      .get(`${API.URL}/api/events/${eventId}/gifts`)
       .end((err, res) => err &&
           dispatch({
             type: FETCH_GIFTS_FAIL,
@@ -30,7 +30,7 @@ export const fetchGifts = eventId => {
 export const createGift = (eventId, gift) => {
   return dispatch => {
     return request()
-      .post(API.URL + `/api/events/${eventId}/gifts`)
+      .post(`${API.URL}/api/events/${eventId}/gifts`)
       .send(gift)
       .end((err, res) => err &&
           dispatch({
@@ -48,7 +48,7 @@ export const createGift = (eventId, gift) => {
 export const updateGift = (eventId, giftId, gift) => {
   return dispatch => {
     return request()
-      .put(API.URL + `/api/event/${eventId}/gift/${giftId}`)
+      .put(`${API.URL}/api/event/${eventId}/gift/${giftId}`)
       .send(gift)
       .end((err, res) => err &&
           dispatch({
@@ -66,7 +66,7 @@ export const updateGift = (eventId, giftId, gift) => {
 export const deleteGift = (eventId, giftId) => {
   return dispatch => {
     return request()
-      .delete(API.URL + `/api/event/${eventId}/gift/${giftId}`)
+      .delete(`${API.URL}/api/event/${eventId}/gift/${giftId}`)
       .end((err, res) => err &&
           dispatch({
             type: DELETE_GIFT_FAIL,

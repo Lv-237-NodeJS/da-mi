@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Panel, Button, ButtonToolbar } from 'react-bootstrap';
+import { Accordion, Panel, Button, ButtonToolbar, Image } from 'react-bootstrap';
 import { EditGift } from './../';
 
 export default class GiftList extends React.Component {
@@ -13,6 +13,7 @@ export default class GiftList extends React.Component {
 
       return (
         <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
+          {!!gift.image && <Image src={gift.image} responsive/>}
           <p>Description:&nbsp;{gift.description}</p>
           <p>Link:&nbsp;<a href={'http://' + gift.link}>{gift.link}</a></p>
           <ButtonToolbar>
