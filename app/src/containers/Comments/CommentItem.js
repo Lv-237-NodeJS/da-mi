@@ -11,6 +11,7 @@ export class CommentItem extends React.Component{
     super(props);
     this.state= ({
       showForm: false,
+      hovered: false
     });
   }
 
@@ -26,16 +27,53 @@ export class CommentItem extends React.Component{
     return `${firstName} ${lastName}`;
   };
 
+  showButton = (comment, author) =>
+    comment.User.email == author.email &&
+      this.state.hovered;
+
+  onMouseOver = () =>
+    this.setState({ hovered:true });
+
+  onMouseOut = () =>
+    this.setState({ hovered:false  });
+
+  subComments = (comment) => {
+    const {author, eventId, giftId, actions,
+      toUser, getComments} = this.props;
+    return comment.children ? (
+      <div className="children">
+        {
+          comment.children.map(comment =>
+            <CommentItem
+              actions = {actions}
+              key={comment.id}
+              comment={comment}
+              author={author}
+              toUser={this.getAuthor(this.props.comment)}
+              getComments={getComments}
+              eventId = {eventId}
+              giftId={giftId}
+            />
+          )
+        }
+      </div>
+    ) : null
+  }
+
   render() {
-    const date = new Date(parseInt(this.props.comment.updatedAt));
+    const {comment, author, eventId, giftId, actions,
+      toUser, getComments} = this.props;
+    const date = new Date(parseInt(comment.updatedAt));
     const commentsDate = `${date.toDateString()}`;
-    const {comment, author, eventId, giftId, actions, getComments} = this.props;
 
     return (
       <div className="comment-wrapper">
-        <div className="parent">
+        <div className="parent"
+          onMouseOver={this.onMouseOver}
+          onMouseOut={this.onMouseOut} >
           <div><a className="pull-right"
             label="Delete"
+            hidden={!this.showButton(comment, author)}
             onClick={this.delComment}>
             <Glyphicon glyph="remove" /></a>
           <div>
@@ -47,43 +85,25 @@ export class CommentItem extends React.Component{
               <div className="message">{this.props.comment.body}</div>
               <div className="reply">
                 <p> {commentsDate} | </p>
-                { this.props.user ? <p> - answered to {this.props.user}. </p> : null }
+                {toUser ? <p> - answered to {toUser}. </p> : null }
                 <a onClick={()=>this.setState({showForm: !this.state.showForm})}>
                   <Glyphicon glyph="share-alt" /> Reply </a>
                 {
                   this.state.showForm ?
                     <CommentForm
-                      user={this.getAuthor(comment)}
+                      toUser={this.getAuthor(comment)}
                       parent_id={comment.id}
                       author={author}
                       eventId={eventId}
                       giftId={giftId}
                       getComments={getComments}
-                      hideForm={() => this.setState({showForm: false})} /> :
-                    null
+                      hideForm={() => this.setState({showForm: false})}
+                    /> : null
                 }
               </div>
             </div>
           </div>
-          {
-            comment.children ? (
-              <div className="children">
-                {
-                  this.props.comment.children.map(comment =>
-                    <CommentItem
-                      actions = {actions}
-                      key={comment.id}
-                      comment={comment}
-                      author={author}
-                      user={this.getAuthor(this.props.comment)}
-                      getComments={getComments}
-                      eventId = {eventId}
-                      giftId={giftId} />
-                  )
-                }
-              </div>
-            ) : null
-          }
+          {this.subComments(comment)}
           </div>
         </div>
       </div>

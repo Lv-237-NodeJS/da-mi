@@ -7,7 +7,6 @@ import CommentItem from './CommentItem';
 import './Comments.scss';
 
 class Comments extends React.Component{
-
   componentDidMount() {
     this.getComments();
   }
@@ -18,7 +17,6 @@ class Comments extends React.Component{
   };
 
   render() {
-
     if (this.props.comments) {
       return (
         <div>
