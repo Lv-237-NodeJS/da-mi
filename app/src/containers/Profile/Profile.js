@@ -20,7 +20,6 @@ const FieldGroup = ({id, label, ...props}) => (
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = this.props.profile;
   }
   
@@ -63,7 +62,7 @@ class Profile extends React.Component {
 
   datePickerFields = (param, birthdateString) => {
     return (
-      <FormGroup  key={param}>
+      <FormGroup key={param}>
         <Col md={12}>
           <ControlLabel>Birthdate</ControlLabel>
           <DateTimeField key={param} 
@@ -71,7 +70,8 @@ class Profile extends React.Component {
             dateTime={birthdateString}
             format={'YYYY-MM-DD'}
             inputFormat={'DD/MM/YY'}
-            onChange={this.dateTimeFieldHandleChange}/>
+            onChange={this.dateTimeFieldHandleChange}
+          />
         </Col>
       </FormGroup>
     );
@@ -113,9 +113,9 @@ class Profile extends React.Component {
               <h1>Edit Profile</h1>
               <Form horizontal onSubmit={this.handleSubmit}>
                 <Row>
-                  <Col  md={4} className='text-center'>
+                  <Col md={4} className='text-center'>
                     <FormGroup key='avatar'>
-                      <Image id='img-circle-avatar' src={profile.avatar} circle/>
+                      <Image id='img-circle-avatar' src={profile.avatar} />
                       <h6>Upload a different photo</h6>
                       <input type='file' className='form-control' 
                         onChange={this.handleChangeImage} />
