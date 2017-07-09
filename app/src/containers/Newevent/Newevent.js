@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import * as showActions from 'src/redux/newEventReducers';
-import { messages } from 'src/helper';
-import './Newevent.scss';
+import messages from 'src/helper/messages';
+import './newEvent.scss';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
   <FormGroup controlId={id} className={className}>
