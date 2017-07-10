@@ -18,12 +18,6 @@ export const retrieveComments = (eventId, giftId) => dispatch =>
 
 export const CommentsReducers = (state = { comments: [] }, action) => {
   switch (action.type) {
-    case RETRIEVE_COMMENTS: {
-      return {
-        ...state,
-      };
-    }
-
     case RETRIEVE_COMMENTS_SUCCESS: {
       return {
         ...state,
