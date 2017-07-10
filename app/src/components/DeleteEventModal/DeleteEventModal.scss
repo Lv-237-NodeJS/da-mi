@@ -1,21 +1,19 @@
 @import './../../../styles/common';
 @import './../../../styles/modal';
 
-  
-.modal-dialog {
-  .deleteEventModalHeader {
+.deleteEventModalYes, .deleteEventModalNo {
+  width: 120px;
+  margin: 20px 50px;
+}
 
-    background-color: red;
+.deleteEventModal {
+  .modal-dialog {
+    height: 160px;
+    width: 440px;
   }
 }
 
-
-.deleteEventModalYes {
-	.btn {
-	  .btn-danger {
-	    width: 100px;
-	    height: 100px;
-	    background-color: blue;
-	  }
-	}
+.deleteEventModalBodyHeader {
+  text-align: center;
+  color: #D9534F;
 }
