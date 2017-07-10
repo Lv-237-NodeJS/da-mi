@@ -1,5 +1,4 @@
 import { API, request } from 'src/helper';
-import { push } from 'react-router-redux';
 import { browserHistory } from 'react-router';
 
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
