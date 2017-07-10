@@ -5,10 +5,10 @@ import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroup
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { GuestsModal, EventsModal } from 'src/components';
 import { Gift } from 'src/containers';
 import * as eventActions from './eventActions';
 import * as inviteActions from './inviteActions';
+import { GuestsModal, EventsModal, DeleteEventModal } from 'src/components';
 import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
@@ -53,7 +53,7 @@ class EventDetails extends React.Component {
               <PageHeader className='text-center'>{event.name}</PageHeader>
               <ButtonToolbar>
                 <EventsModal eventId={event.id} />
-                <Button bsStyle='danger'> Delete </Button>
+                <DeleteEventModal eventId={event.id} />
                 <Button
                   type='button'
                   bsStyle='primary'

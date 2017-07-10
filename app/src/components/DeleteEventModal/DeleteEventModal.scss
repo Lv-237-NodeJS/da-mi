@@ -1,0 +1,21 @@
+@import './../../../styles/common';
+@import './../../../styles/modal';
+
+  
+.modal-dialog {
+  .deleteEventModalHeader {
+
+    background-color: red;
+  }
+}
+
+
+.deleteEventModalYes {
+	.btn {
+	  .btn-danger {
+	    width: 100px;
+	    height: 100px;
+	    background-color: blue;
+	  }
+	}
+}
