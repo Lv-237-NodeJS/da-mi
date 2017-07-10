@@ -12,17 +12,12 @@ export default class GiftList extends React.Component {
         this.props.actions.deleteGift(this.props.id, gift.id);
       };
 
-      const linkCheck = link => {
-        let protocol = link.slice(0, 4);
-        return ((protocol !== 'http') && 'http://') || '';
-      };
-
       return (
         <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
-          {!!gift.image && <Image src={gift.image} responsive/>}
+          {!!gift.image && <Image className="gift-image" src={gift.image} responsive/>}
           <p><span className='gift-caption'>Description:</span>{gift.description}</p>
           {!!gift.link && <p><span className='gift-caption'>Link:</span>
-            <a href={`${linkCheck(gift.link)}${gift.link}`}>{gift.link}</a>
+            <a href={gift.link}>{gift.link}</a>
           </p>}
           <ButtonToolbar>
             <EditGift id={this.props.id} gift={gift} actions={this.props.actions}/>
