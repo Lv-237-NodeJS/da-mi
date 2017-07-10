@@ -10,7 +10,7 @@ class Main extends React.Component {
     return (
       <div>
         <Navigation />
-        {this.props.isAuth && currentPath === '/events' &&
+        {this.props.isAuth && currentPath.match(/events/) &&
           <Dashboard />
         }
         {this.props.children}
