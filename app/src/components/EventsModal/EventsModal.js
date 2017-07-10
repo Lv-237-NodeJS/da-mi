@@ -22,6 +22,7 @@ export default class EventsModal extends React.Component {
           Edit
         </Button>
         <Modal
+          className='editEventModal'
           show={this.state.showModal}
           onHide={this.toggleModal}
           backdropClassName='modal-backdrop'>

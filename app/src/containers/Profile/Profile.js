@@ -110,7 +110,7 @@ class Profile extends React.Component {
           <Tabs defaultActiveKey={1} id='uncontrolled-tab'>
             <Tab eventKey={1} title='Profile Info'>
               <h1>Edit Profile</h1>
-              <Form horizontal onSubmit={this.handleSubmit}>
+              <Form horizontal onSubmit={this.handleSubmit} className='profileForm'>
                 <Row>
                   <Col md={4} className='text-center'>
                     <FormGroup key='avatar'>
