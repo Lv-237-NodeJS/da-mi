@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router';
 
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
 const CREATE_NEW_EVENT_FAILURE = 'CREATE_NEW_EVENT_FAILURE';
-const CREATE_NEW_EVENT_REQUEST = 'CREATE_NEW_EVENT_REQUEST';
 
 const initialState = {
   isCreated: false,
@@ -45,15 +44,8 @@ export function createNewEventFailure(res) {
   };
 }
 
-export function createNewEventRequest() {
-  return {
-    type: CREATE_NEW_EVENT_REQUEST
-  };
-}
-
 export function createNewEvent(event) {
   return dispatch => {
-    dispatch(createNewEventRequest());
     request()
       .post(`${API.URL}/api/events`)
       .send(event)
