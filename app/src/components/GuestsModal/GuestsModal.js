@@ -20,8 +20,7 @@ export default class GuestsModal extends React.Component {
     return (
       <div>
         <Button
-          bsStyle='primary'
-          className='pull-right'
+          className='pull-right main-button'
           onClick={this.toggleModal}>Add Guests</Button>
         <Modal
           show={this.state.showModal}

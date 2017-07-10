@@ -56,7 +56,7 @@ export class Login extends React.Component {
           )}
           <FormGroup>
             <Col smOffset={0} sm={12} mdOffset={3} md={9}>
-              <Button type='submit' bsStyle='primary' bsSize='large'>
+              <Button type='submit' bsSize='large' className='main-button'>
                 Login
               </Button>
               {this.props.badInputs &&
@@ -66,7 +66,7 @@ export class Login extends React.Component {
           </FormGroup>
         </Form>
         <p className='text-center'>OR</p>
-        <Link to='/signup'>
+        <Link to='/signup' className='signup-button' >
           <Button bsSize='large' block>SIGN UP</Button>
         </Link>
       </div>

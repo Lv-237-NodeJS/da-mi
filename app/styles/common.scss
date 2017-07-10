@@ -18,3 +18,28 @@ $font-size: 1.3em;
 $line-height: 1.5;
 $modal-backdrop-background: rgba(0, 0, 0, 0.5);
 $blue: #66afe9;
+
+.btn.main-button {
+  background-color: $puerto-rico;
+  color: $white;
+
+  &:hover {
+    color: $puerto-rico;
+    background-color: $white;
+  }
+}
+
+.signup-button {
+  &:hover {
+    text-decoration: none;
+  }
+  .btn {
+    background-color: $white;
+    color: $puerto-rico;
+
+    &:hover {
+      color: $white;
+      background-color: $puerto-rico;
+    }
+  }
+}

@@ -157,8 +157,8 @@ class GuestsModalForm extends React.Component {
           )}
           <Col xsOffset={4}>
             <Button
+              className='main-button'
               type='submit'
-              bsStyle='primary'
               bsSize='large'>Save</Button>
           </Col>
         </Col>

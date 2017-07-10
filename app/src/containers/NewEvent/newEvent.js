@@ -6,7 +6,6 @@ import { bindActionCreators } from 'redux';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import * as showActions from 'src/redux/newEventReducers';
 import { messages } from 'src/helper';
-import './newEvent.scss';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
   <FormGroup controlId={id} className={className}>
@@ -98,6 +97,7 @@ class newEvent extends React.Component {
   inputDateTimeFields = param => {
     return (
       <DateTimePickerField
+        className='dateTimePickerField'
         key={param}
         label={'Date of your event:'}
         inputProps={{readOnly:true}}
@@ -126,7 +126,7 @@ class newEvent extends React.Component {
           )}
           <FormGroup>
             <Col>
-              <Button type='submit' bsStyle='primary' bsSize='large' disabled={!this.state.enableButton}>
+              <Button type='submit' className='main-button' bsSize='large' disabled={!this.state.enableButton}>
               Save
               </Button>
             </Col>

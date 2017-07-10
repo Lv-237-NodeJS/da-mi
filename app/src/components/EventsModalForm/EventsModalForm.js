@@ -62,7 +62,7 @@ class EventsModalForm extends React.Component {
         <Col md={5}><br/>
           <ControlLabel >Date of your event:</ControlLabel>
         </Col>
-        <Col md={7}><br/>
+        <Col md={7} className='dateTimePickerField'><br/>
           <DateTimeField 
             key={param}
             dateTime={dateEvent}
@@ -94,7 +94,7 @@ class EventsModalForm extends React.Component {
         )}
         <FormGroup>
           <Col sm={12}>
-            <Button type='submit' bsStyle='primary' bsSize='large'>
+            <Button type='submit' className='main-button' bsSize='large'>
               Update
             </Button>
           </Col>

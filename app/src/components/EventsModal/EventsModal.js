@@ -18,10 +18,11 @@ export default class EventsModal extends React.Component {
   render() {
     return (
       <div>
-        <Button bsStyle='primary' onClick={this.toggleModal}>
+        <Button className='main-button' onClick={this.toggleModal}>
           Edit
         </Button>
         <Modal
+          className='editEventModal'
           show={this.state.showModal}
           onHide={this.toggleModal}
           backdropClassName='modal-backdrop'>

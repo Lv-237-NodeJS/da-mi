@@ -125,7 +125,7 @@ class Contacts extends React.Component {
               )}
               <Col xs={12} sm={12} md={12} className='text-center'> 
                 <Button
-                  className='btn btn-primary'
+                  className='btn contacts-btn main-button'
                   type='submit'
                   disabled = {!this.state.enableButton}>Send message
                 </Button>

@@ -65,7 +65,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
         className="col-md-9 col-md-offset-3 col-sm-12 col-sm-offset-0"
       >
         <button
-          className="btn btn-lg btn-primary"
+          className="main-button btn btn-lg btn-default"
           disabled={false}
           type="submit"
         >
@@ -80,6 +80,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
     OR
   </p>
   <a
+    className="signup-button"
     onClick={[Function]}
     style={Object {}}
   >
@@ -159,7 +160,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
         className="col-md-9 col-md-offset-3 col-sm-12 col-sm-offset-0"
       >
         <button
-          className="btn btn-lg btn-primary"
+          className="main-button btn btn-lg btn-default"
           disabled={false}
           type="submit"
         >
@@ -174,6 +175,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
     OR
   </p>
   <a
+    className="signup-button"
     onClick={[Function]}
     style={Object {}}
   >

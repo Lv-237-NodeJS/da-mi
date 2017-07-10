@@ -1,15 +1,17 @@
 @import './../../../styles/common';
 @import './../../../styles/modal';
 
-.modal-dialog {
-  height: 440px;
+.editEventModal {
+  .modal-dialog {
+    height: 440px;
+  }
 }
 
 .modal-title {
   color: $white;
 }
 
-.col-md-7 {
+.dateTimePickerField {
   .input-group {
     .form-control {
       background-color: $white;
