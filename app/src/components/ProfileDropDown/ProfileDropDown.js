@@ -19,7 +19,10 @@ class ProfileDropDown extends React.Component {
     return(
       <div>
         <NavDropdown eventKey={5} id='basic-nav-dropdown'
-          title={`${profile.first_name} ${profile.last_name}`}>
+          title={
+            (profile.first_name && profile.last_name) ?
+              `${profile.first_name} ${profile.last_name}` : profile.email
+          }>
           <LinkContainer to='/profile'>
             <MenuItem eventKey={5.1}>Profile</MenuItem>
           </LinkContainer>
