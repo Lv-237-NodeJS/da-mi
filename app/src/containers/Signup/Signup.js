@@ -92,7 +92,7 @@ class Signup extends React.Component {
               required />
           )}
           <Button 
-            className='btn btn-primary'
+            className='btn btn-primary main-button'
             type='submit'
             disabled = {!this.state.enableButton}>Regist
           </Button>

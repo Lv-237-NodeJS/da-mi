@@ -28,18 +28,3 @@ $blue: #66afe9;
     background-color: $white;
   }
 }
-
-.signup-button {
-  &:hover {
-    text-decoration: none;
-  }
-  .btn {
-    background-color: $white;
-    color: $puerto-rico;
-
-    &:hover {
-      color: $white;
-      background-color: $puerto-rico;
-    }
-  }
-}

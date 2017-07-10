@@ -12,3 +12,19 @@
   right: 0;
   margin: 10px auto;
 }
+
+.signup-button {
+  &:hover {
+    text-decoration: none;
+  }
+  .btn {
+    background-color: $white;
+    color: $puerto-rico;
+    border-color: $puerto-rico;
+
+    &:hover {
+      color: $white;
+      background-color: $puerto-rico;
+    }
+  }
+}

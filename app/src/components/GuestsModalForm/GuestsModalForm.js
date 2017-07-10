@@ -34,7 +34,8 @@ class GuestsModalForm extends React.Component {
       inputs: [],
       initialEmail: '',
       key: null,
-      error: null
+      error: null,
+      disabledBtn: true
     };
   }
   
@@ -55,7 +56,10 @@ class GuestsModalForm extends React.Component {
     const pattern = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
     const validEmail = email.match(pattern);
     const error = !validEmail && messages.emailError || null;
-    this.setState({error});
+    this.setState({
+      error,
+      disabledBtn: !!error
+    });
   }
 
   appendEmail = () => {
@@ -140,7 +144,8 @@ class GuestsModalForm extends React.Component {
             <Col xs={2}>
               <ListItemButton
                 onClick={this.appendEmail}
-                className='ok' />
+                className='ok'
+                disabled={this.state.disabledBtn} />
             </Col>
           </FormGroup>
           
