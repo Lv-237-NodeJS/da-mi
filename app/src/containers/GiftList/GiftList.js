@@ -20,8 +20,8 @@ export default class GiftList extends React.Component {
       return (
         <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
           {!!gift.image && <Image src={gift.image} responsive/>}
-          <p><span className='event-caption'>Description:</span>{gift.description}</p>
-          {!!gift.link && <p><span className='event-caption'>Link:</span>
+          <p><span className='gift-caption'>Description:</span>{gift.description}</p>
+          {!!gift.link && <p><span className='gift-caption'>Link:</span>
             <a href={`${linkCheck(gift.link)}${gift.link}`}>{gift.link}</a>
           </p>}
           <ButtonToolbar>
