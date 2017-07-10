@@ -65,6 +65,7 @@ export class CommentItem extends React.Component{
       toUser, getComments} = this.props;
     const date = new Date(parseInt(comment.updatedAt));
     const commentsDate = `${date.toDateString()}`;
+    const avatarData = Profile.avatar ? Profile.avatar : "";
 
     return (
       <div className="comment-wrapper">
@@ -81,7 +82,7 @@ export class CommentItem extends React.Component{
               {this.getAuthor(comment)}
             </div>
             <div className="content">
-              <img className="avatar" src={Profile.avatar} />
+              <img className="avatar" src={avatarData} />
               <div className="message">{comment.body}</div>
               <div className="reply">
                 <p> {commentsDate} | </p>
