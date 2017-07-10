@@ -4,13 +4,13 @@ exports[`React component <Login /> should render a Login with typed data, especi
 <div>
   <form
     className="login-form form-horizontal"
-    onSubmit={[Function]}
-    state={
+    data-state={
       Object {
         "email": "",
         "password": "",
       }
     }
+    onSubmit={[Function]}
   >
     <div
       className="form-group"
@@ -98,13 +98,13 @@ exports[`React component <Login /> should render a Login with typed data, especi
 <div>
   <form
     className="login-form form-horizontal"
-    onSubmit={[Function]}
-    state={
+    data-state={
       Object {
         "email": "ivan.yarymovych@gmail.com",
         "password": "P!assword!1",
       }
     }
+    onSubmit={[Function]}
   >
     <div
       className="form-group"
