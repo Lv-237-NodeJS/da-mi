@@ -16,7 +16,7 @@ const ListItemButton = ({...props}) => (
 );
 
 const ModalInput = ({...props}) => (
-  <div>
+  <div className='modal-input-container'>
     <input
       {...props}
       type='email'
