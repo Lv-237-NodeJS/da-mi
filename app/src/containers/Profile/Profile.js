@@ -38,6 +38,7 @@ class Profile extends React.Component {
   };
 
   handleSubmit = e => {
+    e.preventDefault();
     this.props.actions.updateProfile(this.state);
   };
 
@@ -109,8 +110,8 @@ class Profile extends React.Component {
         <Col sm={8} className='container'>
           <Tabs defaultActiveKey={1} id='uncontrolled-tab'>
             <Tab eventKey={1} title='Profile Info'>
-              <h1>Edit Profile</h1>
-              <Form horizontal onSubmit={this.handleSubmit} className='profileForm'>
+              <h1>Profile</h1>
+              <Form horizontal onSubmit={this.handleSubmit}>
                 <Row>
                   <Col md={4} className='text-center'>
                     <FormGroup key='avatar'>
