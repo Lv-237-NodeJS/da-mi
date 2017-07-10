@@ -19,11 +19,11 @@ export class CommentForm extends React.Component{
 
   formSubmit = e => {
     e.preventDefault();
+    const {eventId, giftId, parent_id, getComments, hideForm, actions} = this.props;
     const commentData = {
       body: this.state.body,
-      parent_id: this.props.parent_id
-    };
-    const {eventId, giftId, getComments, hideForm, actions} = this.props;
+      parent_id: parent_id
+    };    
     actions.createComment(eventId, giftId, commentData);
     getComments();
     hideForm && hideForm() || null;

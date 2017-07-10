@@ -4,38 +4,31 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as deleteCommentActions from 'src/redux/commentDeleteReducers';
 import CommentForm from './CommentForm';
+import moment from 'moment';
 import './Comments.scss';
 
 export class CommentItem extends React.Component{
   constructor(props) {
     super(props);
     this.state= ({
-      showForm: false,
-      hovered: false
+      showForm: false,      
     });
   }
+  
+  delButton = (comment, author) =>
+    comment.User.email == author.email;
 
   delComment = () => {
-    const {eventId, giftId, comment} = this.props;
+    const {eventId, giftId, actions, comment, getComments} = this.props;
     const comment_id = comment.id;
-    this.props.actions.deleteComment(eventId, giftId, comment_id);
-    this.props.getComments();
+    actions.deleteComment(eventId, giftId, comment_id);
+    getComments();
   };
 
   getAuthor = comment => {
     const {first_name: firstName, last_name: lastName} = comment.User.Profile;
     return `${firstName} ${lastName}`;
   };
-
-  showButton = (comment, author) =>
-    comment.User.email == author.email &&
-      this.state.hovered;
-
-  onMouseOver = () =>
-    this.setState({ hovered:true });
-
-  onMouseOut = () =>
-    this.setState({ hovered:false  });
 
   subComments = (comment) => {
     const {author, eventId, giftId, actions,
@@ -63,30 +56,27 @@ export class CommentItem extends React.Component{
   render() {
     const {comment, comment:{User:{Profile}}, author, eventId, giftId, actions,
       toUser, getComments} = this.props;
-    const date = new Date(parseInt(comment.updatedAt));
-    const commentsDate = `${date.toDateString()}`;
-    const avatarData = Profile.avatar ? Profile.avatar : '';
+    const commentsDate = moment(comment.updatedAt, 'x').format('DD MMM YYYY hh:mm a');
+    const avatarData = Profile.avatar || '';
 
     return (
       <div className="comment-wrapper">
-        <div className="parent"
-          onMouseOver={this.onMouseOver}
-          onMouseOut={this.onMouseOut} >
+        <div className="parent">
           <div><a className="pull-right"
             label="Delete"
-            hidden={!this.showButton(comment, author)}
+            hidden={!this.delButton(comment, author)}
             onClick={this.delComment}>
             <Glyphicon glyph="remove" /></a>
           <div>
-            <div className = "comment-head">
+            <div className ="comment-head">
               {this.getAuthor(comment)}
             </div>
             <div className="content">
               <img className="avatar" src={avatarData} />
               <div className="message">{comment.body}</div>
               <div className="reply">
-                <p> {commentsDate} | </p>
-                {toUser ? <p> - answered to {toUser}. </p> : null }
+                <span className="padding">{commentsDate}|</span>
+                {toUser ? <span className="padding">answered to {toUser}.</span> : null }
                 <a onClick={()=>this.setState({showForm: !this.state.showForm})}>
                   <Glyphicon glyph="share-alt" /> Reply </a>
                 {

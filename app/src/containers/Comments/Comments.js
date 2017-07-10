@@ -12,12 +12,13 @@ class Comments extends React.Component{
   }
 
   getComments = () => {
-    const { eventId, giftId } = this.props;
+    const {eventId, giftId} = this.props;
     this.props.actions.retrieveComments(eventId, giftId);
   };
 
   render() {
-    if (this.props.comments) {
+    const {author, eventId, giftId, comments} = this.props;    
+    if (comments) {
       return (
         <div>
           <h2>Comments</h2>
@@ -25,9 +26,9 @@ class Comments extends React.Component{
           <div>
             <CommentForm
               getComments={this.getComments}
-              author={this.props.author}
-              giftId={this.props.giftId}
-              eventId={this.props.eventId} />
+              author={author}
+              giftId={giftId}
+              eventId={eventId} />
             <hr/>
           </div>
           <div className="comment-list">
@@ -36,10 +37,10 @@ class Comments extends React.Component{
                 <CommentItem
                   key={comment.id}
                   comment={comment}
-                  giftId={this.props.giftId}
-                  author={this.props.author}
+                  giftId={giftId}
+                  author={author}
                   getComments={this.getComments}
-                  eventId = {this.props.eventId}
+                  eventId = {eventId}
                 />
               )
             }
