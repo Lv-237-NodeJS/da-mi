@@ -65,7 +65,7 @@ export class CommentItem extends React.Component{
       toUser, getComments} = this.props;
     const date = new Date(parseInt(comment.updatedAt));
     const commentsDate = `${date.toDateString()}`;
-    const avatarData = Profile.avatar ? Profile.avatar : "";
+    const avatarData = Profile.avatar ? Profile.avatar : '';
 
     return (
       <div className="comment-wrapper">
