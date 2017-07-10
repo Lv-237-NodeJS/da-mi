@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavItem } from 'react-bootstrap';
-import { LinkContainer } from 'react-router-bootstrap';
+import { IndexLinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as loginActions from 'src/redux/login';
@@ -21,22 +21,23 @@ class Navigation extends React.Component {
 
   handleSelect = selectedKey => {
     this.setState({activeKey: selectedKey});
-  }
+  };
   
   render() {
+
     return (
       <div>
         <Navbar>
-          <Nav className="test" activeKey={this.state.activeKey} onSelect={this.handleSelect}>
-            <LinkContainer to='/events'>
+          <Nav className='test' activeKey={this.state.activeKey} onSelect={this.handleSelect}>
+            <IndexLinkContainer to={this.props.isAuth && '/events' || '/'}>
               <NavItem eventKey={1}>Home</NavItem>
-            </LinkContainer>
-            <LinkContainer to='/about'>
+            </IndexLinkContainer>
+            <IndexLinkContainer to='/about'>
               <NavItem eventKey={2}>About</NavItem>
-            </LinkContainer>
-            <LinkContainer to='/contacts'>
+            </IndexLinkContainer>
+            <IndexLinkContainer to='/contacts'>
               <NavItem eventKey={3}>Contacts</NavItem>
-            </LinkContainer>
+            </IndexLinkContainer>
           </Nav>
           {this.props.isAuth &&
             <Nav className='pull-right'>

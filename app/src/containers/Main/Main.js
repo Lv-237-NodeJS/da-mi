@@ -5,10 +5,12 @@ import { connect } from 'react-redux';
 class Main extends React.Component {
 
   render() {
+    const currentPath = window.location.pathname;
+
     return (
       <div>
         <Navigation />
-        {this.props.isAuth &&
+        {this.props.isAuth && currentPath === '/events' &&
           <Dashboard />
         }
         {this.props.children}
