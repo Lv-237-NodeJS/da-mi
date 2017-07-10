@@ -52,8 +52,9 @@ export default class AddGift extends React.Component {
   };
 
   handleButtonClick = e => {
+    const {actions, id} = this.props;
     e.preventDefault();
-    this.props.actions.createGift(this.props.id, this.state);
+    actions.createGift(id, this.state);
     this.toggleModal();
   };
 

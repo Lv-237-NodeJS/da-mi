@@ -47,8 +47,9 @@ export default class EditGift extends React.Component {
   };
 
   handleButtonClick = e => {
+    const {actions, id, gift} = this.props;
     e.preventDefault();
-    this.props.actions.updateGift(this.props.id, this.props.gift.id, this.state);
+    actions.updateGift(id, gift.id, this.state);
     this.toggleModal();
   };
 
