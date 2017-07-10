@@ -20,17 +20,6 @@ const InputGroupField = ({id, label, className, isErrors, ...props}) => (
   </FormGroup>
 );
 
-const DateTimePickerField = ({label, className, inputProps}) => (
-  <FormGroup className={className}>
-    <Col componentClass={ControlLabel} md={3}><br/>
-      {label}
-    </Col>
-    <Col md={9}><br/>
-      <DateTimeField inputProps={inputProps}/>
-    </Col>
-  </FormGroup>
-);
-
 class newEvent extends React.Component {
   constructor(props) {
     super(props);
@@ -67,10 +56,10 @@ class newEvent extends React.Component {
     });
   };
 
-  dateTimeFieldHandleChange = e => {
-    const date = new Date(parseInt(e));
+  dateTimeFieldHandleChange = date => {
+    const parsedDate = new Date(parseInt(date));
     this.setState({
-      date_event: date
+      date_event: parsedDate
     });
   };
 
@@ -96,13 +85,18 @@ class newEvent extends React.Component {
 
   inputDateTimeFields = param => {
     return (
-      <DateTimePickerField
-        className='dateTimePickerField'
-        key={param}
-        label={'Date of your event:'}
-        inputProps={{readOnly:true}}
-        value={this.state.param}
-        onChange={this.dateTimeFieldHandleChange} />
+      <FormGroup key={param}>
+        <Col md={3}><br/>
+          <ControlLabel>Date of your event:</ControlLabel>
+        </Col>
+        <Col md={9} className='dateTimePickerField'><br/>
+          <DateTimeField
+            key={param}
+            dateTime={this.state.param}
+            inputProps={{readOnly:true}}
+            onChange={this.dateTimeFieldHandleChange} />
+        </Col>
+      </FormGroup>
     );
   };
 
