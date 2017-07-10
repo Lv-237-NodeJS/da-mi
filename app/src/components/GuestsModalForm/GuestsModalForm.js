@@ -1,7 +1,8 @@
 import React from 'react';
-import { Button, Form, FormGroup, Col, ButtonToolbar } from 'react-bootstrap';
+import { Button, Form, FormGroup, Col, ButtonToolbar, HelpBlock } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { messages } from 'src/helper';
 import * as inviteActions from 'src/redux/inviteReducers';
 
 const ListItemButton = ({...props}) => (
@@ -15,12 +16,14 @@ const ListItemButton = ({...props}) => (
 );
 
 const ModalInput = ({...props}) => (
-  <input
-    {...props}
-    type='email'
-    placeholder='Enter Email'
-    className='modal-input form-control'
-  />
+  <div className='modal-input-container'>
+    <input
+      {...props}
+      type='email'
+      placeholder='Enter Email'
+      className='modal-input form-control' />
+    {props['data-error'] && <HelpBlock>{props['data-error']}</HelpBlock>}
+  </div>
 );
 
 class GuestsModalForm extends React.Component {
@@ -30,7 +33,8 @@ class GuestsModalForm extends React.Component {
       email: '',
       inputs: [],
       initialEmail: '',
-      key: null
+      key: null,
+      error: null
     };
   }
   
@@ -47,6 +51,13 @@ class GuestsModalForm extends React.Component {
     document.removeEventListener('click', this.handleClickOutside);
   }
   
+  validateEmail = email => {
+    const pattern = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
+    const validEmail = email.match(pattern);
+    const error = !validEmail && messages.emailError || null;
+    this.setState({error});
+  }
+
   appendEmail = () => {
     this.state.email &&
       this.setState({
@@ -56,7 +67,8 @@ class GuestsModalForm extends React.Component {
   };
   
   setEmail = e => {
-    this.setState({email: e.target.value});
+    const email = e.target.value;
+    this.setState({email}, this.validateEmail(email));
   };
 
   handleChange = index => e => {
@@ -122,7 +134,8 @@ class GuestsModalForm extends React.Component {
             <Col xs={10}>
               <ModalInput
                 value={this.state.email}
-                onChange={this.setEmail} />
+                onChange={this.setEmail}
+                data-error={this.state.error} />
             </Col>
             <Col xs={2}>
               <ListItemButton

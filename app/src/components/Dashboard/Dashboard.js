@@ -12,17 +12,17 @@ export default class Dashboard extends React.Component {
       {route: '/invitations', label: 'My Invitations'},
       {route: '/profile', label: 'My Profile'}
     ];
-    
-    return(
+
+    return (
       <div className='dashboard-menu'>
         <Col sm={3}>
           <h1>Dashboard</h1>
           <Nav id='dashboard' activeKey={1}>
-            {links.map((param, index) => 
+            {links.map((param, index) =>
               <LinkContainer key={index} to={param.route}>
                 <NavItem eventKey={index}>{param.label}</NavItem>
               </LinkContainer>
-            )};
+            )}
           </Nav>
         </Col>
       </div>

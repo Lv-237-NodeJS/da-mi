@@ -89,9 +89,9 @@ export function loginUser(email, password) {
       .send(user)
       .end((err, res) => {
         (err || !res.ok) &&
-          dispatch(loginUserFailure(res.text)) ||
+        dispatch(loginUserFailure(JSON.parse(res.text).message)) ||
         ({token, user_id: userId, profile_id: profileId} = JSON.parse(res.text)) &&
-          dispatch(loginUserSuccess(token, userId, profileId));
+        dispatch(loginUserSuccess(token, userId, profileId));
       });
   };
 }
