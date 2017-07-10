@@ -42,7 +42,8 @@ export class Login extends React.Component {
 
     return (
       <div>
-        <Form className='login-form' horizontal onSubmit={this.handleSubmit} state={this.state}>
+        <Form className='login-form' horizontal onSubmit={this.handleSubmit} data-state=
+        {this.state}>
           {['email', 'password'].map(param =>
             <InputGroup
               key={param}
