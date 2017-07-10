@@ -88,7 +88,8 @@ export const profileReducers = (state = initialState, action) => {
     
     case UPDATE_PROFILE_SUCCESS: {
       return {
-        ...state
+        ...state,
+        data: action.payload
       };
     }
 
