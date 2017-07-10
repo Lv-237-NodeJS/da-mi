@@ -61,7 +61,7 @@ export class CommentItem extends React.Component{
   }
 
   render() {
-    const {comment, author, eventId, giftId, actions,
+    const {comment, comment:{User:{Profile}}, author, eventId, giftId, actions,
       toUser, getComments} = this.props;
     const date = new Date(parseInt(comment.updatedAt));
     const commentsDate = `${date.toDateString()}`;
@@ -78,11 +78,11 @@ export class CommentItem extends React.Component{
             <Glyphicon glyph="remove" /></a>
           <div>
             <div className = "comment-head">
-              {this.getAuthor(this.props.comment)}
+              {this.getAuthor(comment)}
             </div>
             <div className="content">
-              <img className="avatar" src="{this.props.author.avatar}"  />
-              <div className="message">{this.props.comment.body}</div>
+              <img className="avatar" src={Profile.avatar} />
+              <div className="message">{comment.body}</div>
               <div className="reply">
                 <p> {commentsDate} | </p>
                 {toUser ? <p> - answered to {toUser}. </p> : null }

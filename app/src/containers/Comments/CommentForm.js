@@ -2,8 +2,8 @@ import React from 'react';
 import { FormGroup, FormControl, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as createCommentActions from '../../redux/commentCreateReducers';
-import { messages } from '../../helper';
+import * as createCommentActions from 'src/redux/commentCreateReducers';
+import { messages } from 'src/helper';
 import './Comments.scss';
 
 export class CommentForm extends React.Component{
@@ -35,13 +35,13 @@ export class CommentForm extends React.Component{
 
   render() {
     const error = this.state.body && !this.inputValid() && messages.maxTextLength || '';
-    const {first_name: firstName, last_name: lastName} = this.props.author;
+    const {first_name: firstName, avatar, last_name: lastName} = this.props.author;
 
     return (
       <div className="comment-wrapper">
         <div className = "comment-head">{`${firstName} ${lastName}`}</div>
         <div className="content">
-          <img className="avatar" src={this.props.author.avatar} />
+          <img className="avatar" src={avatar} />
           <div className="message">
             <FormGroup className="messageBox" controlId="formControlsTextarea">
               <FormControl
