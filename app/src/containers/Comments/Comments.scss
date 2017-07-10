@@ -29,6 +29,7 @@ a:hover, a:focus {
   margin-left: 25px;
   border-left: $border-puerto-rico;
 }
+
 img.avatar {
   margin: 0 5px;
   width: 55px;
@@ -36,9 +37,16 @@ img.avatar {
   vertical-align: top;
 }
 
+.details {
+  margin: 0 5px;  
+}
+
+.dateComment {
+  color: $green-dark;
+}
+
 .reply {
   border-top: 1px solid $tranquil;
-  display: flex;
-  color: $green-dark;
-  background-color: $mint-cream;
+  display: flex;  
+  background-color: $mint-cream;  
 }

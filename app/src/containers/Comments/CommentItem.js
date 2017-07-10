@@ -75,9 +75,9 @@ export class CommentItem extends React.Component{
               <img className="avatar" src={avatarData} />
               <div className="message">{comment.body}</div>
               <div className="reply">
-                <span className="padding">{commentsDate}|</span>
-                {toUser ? <span className="padding">answered to {toUser}.</span> : null }
-                <a onClick={()=>this.setState({showForm: !this.state.showForm})}>
+                <span className="dateComment">{commentsDate}</span>
+                {toUser ? <span className="details">| answered to {toUser}.</span> : null }
+                <a className="details" onClick={()=>this.setState({showForm: !this.state.showForm})}>
                   <Glyphicon glyph="share-alt" /> Reply </a>
                 {
                   this.state.showForm ?
