@@ -14,10 +14,13 @@ export default class GiftList extends React.Component {
 
       return (
         <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
-          {!!gift.image && <Image className="gift-image" src={gift.image} responsive/>}
+        {!!gift.image &&
+          <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}}>
+        </div>}
+        <div className='desc-block'> 
           <p><span className='gift-caption'>Description:</span>{gift.description}</p>
           {!!gift.link && <p><span className='gift-caption'>Link:</span>
-            <a href={gift.link}>{gift.link}</a>
+            <a href={gift.link} target='_blank'>link to present</a>
           </p>}
           <ButtonToolbar>
             <EditGift id={this.props.id} gift={gift} actions={this.props.actions}/>
@@ -27,6 +30,7 @@ export default class GiftList extends React.Component {
             {gift.is_available === true &&
             <Button bsStyle='success' bsSize='small'>Choose</Button>}
           </ButtonToolbar>
+        </div>
         </Panel>
       );
     });
