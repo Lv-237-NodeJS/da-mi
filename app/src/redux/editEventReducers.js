@@ -2,7 +2,6 @@ import { API, request } from 'src/helper';
 
 const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
 const EDIT_EVENT_FAILURE = 'EDIT_EVENT_FAILURE';
-const EDIT_EVENT_REQUEST = 'EDIT_EVENT_REQUEST';
 
 const initialState = {
   updatedEvent: {},
@@ -43,15 +42,8 @@ export function editEventFailure(res) {
   };
 }
 
-export function editEventRequest() {
-  return {
-    type: EDIT_EVENT_REQUEST
-  };
-}
-
 export function editEvent(event) {
   return dispatch => {
-    dispatch(editEventRequest());
     request()
       .put(`${API.URL}/api/event/${event.id}`)
       .send(event)
