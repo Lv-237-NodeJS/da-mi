@@ -7,4 +7,4 @@ export EventDetails from './Event/EventDetails';
 export Gift from './Gift/sampleGift';
 export Signup from './Signup/Signup';
 export Profile from './Profile/Profile';
-export newEvent from './Newevent/Newevent';
+export newEvent from './NewEvent/newEvent';
