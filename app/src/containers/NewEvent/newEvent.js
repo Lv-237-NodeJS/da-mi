@@ -87,15 +87,14 @@ class newEvent extends React.Component {
     return (
       <FormGroup key={param}>
         <Col md={3}><br/>
-          <ControlLabel >Date of your event:</ControlLabel>
+          <ControlLabel>Date of your event:</ControlLabel>
         </Col>
         <Col md={9} className='dateTimePickerField'><br/>
           <DateTimeField
             key={param}
             dateTime={this.state.param}
             inputProps={{readOnly:true}}
-            onChange={this.dateTimeFieldHandleChange}
-          />
+            onChange={this.dateTimeFieldHandleChange} />
         </Col>
       </FormGroup>
     );
