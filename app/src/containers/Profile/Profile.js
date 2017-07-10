@@ -131,7 +131,7 @@ class Profile extends React.Component {
                 <Row> 
                   <hr/> 
                   <ButtonToolbar>
-                    <Button type='submit' bsStyle='primary'>
+                    <Button type='submit' className='main-button'>
                       Save Changes
                     </Button>
                   </ButtonToolbar>
