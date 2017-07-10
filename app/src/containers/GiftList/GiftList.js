@@ -16,10 +16,10 @@ export default class GiftList extends React.Component {
         <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
           {!!gift.image &&
             <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}}>
-          </div>}
+            </div>}
           <div className='desc-block'> 
             <p><span className='gift-caption'>Description:</span>{gift.description}</p>
-              {!!gift.link && <p><span className='gift-caption'>Link:</span>
+            {!!gift.link && <p><span className='gift-caption'>Link:</span>
               <a href={gift.link} target='_blank'>link to present</a>
             </p>}
             <ButtonToolbar>
