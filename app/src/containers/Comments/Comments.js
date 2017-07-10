@@ -39,7 +39,8 @@ class Comments extends React.Component{
                   giftId={this.props.giftId}
                   author={this.props.author}
                   getComments={this.getComments}
-                  eventId = {this.props.eventId} />
+                  eventId = {this.props.eventId}
+                />
               )
             }
             <hr/>
