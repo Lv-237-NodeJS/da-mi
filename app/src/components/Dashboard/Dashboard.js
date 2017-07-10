@@ -9,8 +9,7 @@ export default class Dashboard extends React.Component {
     const links = [
       {route: '/events', label: 'My Events'},
       {route: '/newevent', label: 'Create New Event'},
-      {route: '/invitations', label: 'My Invitations'},
-      {route: '/profile', label: 'My Profile'}
+      {route: '/invitations', label: 'My Invitations'}
     ];
     
     return(
@@ -22,7 +21,7 @@ export default class Dashboard extends React.Component {
               <LinkContainer key={index} to={param.route}>
                 <NavItem eventKey={index}>{param.label}</NavItem>
               </LinkContainer>
-            )};
+            )}
           </Nav>
         </Col>
       </div>
