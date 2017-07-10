@@ -1,4 +1,4 @@
-import  { API, request }  from './../helper';
+import  { API, request }  from 'src/helper';
 
 const COMMENT_DELETED = 'COMMENT_DELETED';
 const DELETE_COMMENT_FAILURE = 'DELETE_COMMENT_FAILURE';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as commentsActions from '../../redux/commentsFetchReducers';
+import * as commentsActions from 'src/redux/commentsFetchReducers';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
 import './Comments.scss';

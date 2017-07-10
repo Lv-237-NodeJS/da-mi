@@ -1,4 +1,4 @@
-import  { API, request }  from './../helper';
+import  { API, request }  from 'src/helper';
 
 const COMMENT_CREATED = 'COMMENT_CREATED';
 const CREATE_COMMENT_FAILURE = 'CREATE_COMMENT_FAILURE';

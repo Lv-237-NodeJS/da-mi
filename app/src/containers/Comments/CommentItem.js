@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as deleteCommentActions from '../../redux/commentDeleteReducers';
+import * as deleteCommentActions from 'src/redux/commentDeleteReducers';
 import CommentForm from './CommentForm';
 import './Comments.scss';
 

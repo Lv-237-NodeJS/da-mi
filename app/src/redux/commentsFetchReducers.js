@@ -1,4 +1,4 @@
-import  { API, request }  from './../helper';
+import  { API, request }  from 'src/helper';
 
 const RETRIEVE_COMMENTS = 'RETRIEVE_COMMENTS';
 const RETRIEVE_COMMENTS_SUCCESS = 'RETRIEVE_COMMENTS_SUCCESS';
