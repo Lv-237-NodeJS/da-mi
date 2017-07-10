@@ -15,8 +15,7 @@ export default class GiftList extends React.Component {
       return (
         <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
           {!!gift.image &&
-            <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}}>
-            </div>}
+            <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}} />}
           <div className='desc-block'> 
             <p><span className='gift-caption'>Description:</span>{gift.description}</p>
             {!!gift.link && <p><span className='gift-caption'>Link:</span>

@@ -11,10 +11,11 @@ class Gift extends React.Component {
   }
 
   render() {
+    const {id, actions, gifts} = this.props;
     return (
       <div>
-        <AddGift id={this.props.id} actions={this.props.actions} gifts={this.props.gifts}/>
-        <GiftList id={this.props.id} actions={this.props.actions} gifts={this.props.gifts}/>
+        <AddGift id={id} actions={actions} gifts={gifts}/>
+        <GiftList id={id} actions={actions} gifts={gifts}/>
       </div>
     );
   }
