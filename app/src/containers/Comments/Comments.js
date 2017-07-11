@@ -42,7 +42,7 @@ class Comments extends React.Component{
                     author={author}
                     getComments={this.getComments}
                     eventId = {eventId}
-                  /> ): null
+                  /> ): null;
               })
             }
             <hr/>            
