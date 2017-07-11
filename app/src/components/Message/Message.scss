@@ -6,3 +6,10 @@
   text-align: center;
   line-height: 50px;
 }
+
+.messageModal {
+  .modal-dialog { 
+    max-height: 220px;
+    min-height: 150px;
+  }
+}
