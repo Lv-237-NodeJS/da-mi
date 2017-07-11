@@ -15,7 +15,7 @@ class Gift extends React.Component {
     return (
       <div>
         {showButtons && <AddGift id={id} actions={actions} gifts={gifts} />}
-        <GiftList id={id} actions={actions} gifts={gifts} showButtons={showButtons} />
+        <GiftList id={id} actions={actions} gifts={gifts} showButtons={showButtons} author={this.props.author} />
       </div>
     );
   }

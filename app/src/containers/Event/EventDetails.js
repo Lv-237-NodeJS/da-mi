@@ -128,7 +128,7 @@ class EventDetails extends React.Component {
             </Tab>
             <Tab eventKey={3} title='Gifts'>
               <h2>Gift list</h2>
-              <Gift id={id} showButtons={showButtons} />
+              <Gift id={id} showButtons={showButtons} author={this.props.owner} />
             </Tab>
           </Tabs>
         </Col>
