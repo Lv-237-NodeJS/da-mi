@@ -28,23 +28,24 @@ class Comments extends React.Component{
               getComments={this.getComments}
               author={author}
               giftId={giftId}
-              eventId={eventId} />
-            <hr/>
+              eventId={eventId}
+            />            
           </div>
-          <div className="comment-list">
+          <div className="comment-list">            
             {
-              this.props.comments.map(comment =>
-                <CommentItem
-                  key={comment.id}
-                  comment={comment}
-                  giftId={giftId}
-                  author={author}
-                  getComments={this.getComments}
-                  eventId = {eventId}
-                />
-              )
+              this.props.comments.map(comment => {
+                return giftId == comment.gift_id ? (
+                  <CommentItem
+                    key={comment.id}
+                    comment={comment}
+                    giftId={giftId}
+                    author={author}
+                    getComments={this.getComments}
+                    eventId = {eventId}
+                  /> ): null
+              })
             }
-            <hr/>
+            <hr/>            
           </div>
         </div>
       );

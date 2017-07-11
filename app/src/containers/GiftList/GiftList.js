@@ -12,7 +12,7 @@ export default class GiftList extends React.Component {
         e.preventDefault();
         this.props.actions.deleteGift(this.props.id, gift.id);
       };
-
+      console.log('this.props',this.props);
       return (
         <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
           {!!gift.image &&
