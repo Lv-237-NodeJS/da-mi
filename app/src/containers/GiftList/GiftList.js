@@ -18,7 +18,7 @@ export default class GiftList extends React.Component {
           {!!gift.image &&
             <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}} />}
           <div className='desc-block'> 
-            <p><span className='gift-caption'>Description:</span>{gift.description}</p>            
+            <p><span className='gift-caption'>Description:</span>{gift.description}</p>
             {!!gift.link && <p><span className='gift-caption'>Link:</span>
               <a href={gift.link} target='_blank'>link to present</a>
             </p>}
