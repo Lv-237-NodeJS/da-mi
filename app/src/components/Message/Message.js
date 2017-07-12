@@ -13,7 +13,6 @@ class Message extends React.Component {
   render() {
     return (
       <Modal
-        className='messageModal'
         show={this.props.show}
         onHide={this.hide}
         id='modal-container'>
