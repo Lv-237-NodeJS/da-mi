@@ -1,15 +1,10 @@
 @import './../../../styles/common';
 @import './../../../styles/modal';
 
-.deleteEventModalYes, .deleteEventModalNo {
-  width: 120px;
-  margin: 20px 50px;
-}
-
 .deleteEventModal {
   .modal-dialog {
-    height: 160px;
-    width: 440px;
+    height: 260px;
+    width: 460px;
   }
 }
 

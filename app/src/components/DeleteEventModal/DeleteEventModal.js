@@ -37,13 +37,15 @@ class DeleteEventModal extends React.Component {
             <Modal.Title>Delete event</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <h4 className='deleteEventModalBodyHeader'>Are you sure that you want to delete this event?</h4>
-            <Button bsStyle='danger' className='pull-left deleteEventModalYes' onClick={this.handleButtonClick}>
-              Yes
-            </Button>
-            <Button bsStyle='success' className='pull-right deleteEventModalNo' onClick={this.toggleModal}>
-              No
-            </Button>
+            <div className="well">
+              <h4 className='deleteEventModalBodyHeader'>Are you sure that you want to delete this event?</h4>
+              <Button bsStyle='danger' bsSize="large" onClick={this.handleButtonClick} block>
+                Yes
+              </Button>
+              <Button bsStyle='success' bsSize="large" onClick={this.toggleModal} block>
+                No
+              </Button>
+            </div>
           </Modal.Body>
         </Modal>
       </div>
