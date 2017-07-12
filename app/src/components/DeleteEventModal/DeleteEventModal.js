@@ -19,7 +19,6 @@ class DeleteEventModal extends React.Component {
 
   handleButtonClick = e => {
     this.props.deleteEventActions.deleteEvent(this.props.eventId);
-    console.log("This.props: ", this.props);
   };
 
   render() {
@@ -37,7 +36,7 @@ class DeleteEventModal extends React.Component {
             <Modal.Title>Delete event</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <div className="well">
+            <div className='well'>
               <h4 className='deleteEventModalBodyHeader'>Are you sure that you want to delete this event?</h4>
               <Button bsStyle='danger' bsSize="large" onClick={this.handleButtonClick} block>
                 Yes
