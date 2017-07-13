@@ -5,7 +5,7 @@ const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
 const DELETE_EVENT_FAILURE = 'DELETE_EVENT_FAILURE';
 
 const initialState = {
-  isDelete: false,
+  isDeleted: false,
   error: false
 };
 
