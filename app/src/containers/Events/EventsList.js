@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Jumbotron } from 'react-bootstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -24,11 +24,18 @@ class EventsList extends React.Component {
         </Link>
       );
     });
-    
+
+    const noEvent = (
+      <Jumbotron className='no-events-block'>
+        <h4 className='no-events-message'>You have no events scheduled</h4>
+      </Jumbotron>
+    );
+
     return (
+
       <div className='eventsList'>
         <h2>Events</h2>
-        {eventNode}
+        {!this.props.eventsList.length && noEvent || eventNode}
       </div>
     );
   }
