@@ -41,7 +41,6 @@ export function contactInfo(data) {
       .send(data)
       .end((err, res) => {
         (res.status == 200) && dispatch(messageModal(JSON.parse(res.text).message)) &&
-        dispatch(showModal(true)) || dispatch(messageModal(JSON.parse(res.text).message)) &&
         dispatch(showModal(true));
       });
   };

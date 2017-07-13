@@ -13,9 +13,10 @@ class Message extends React.Component {
   render() {
     return (
       <Modal
+        className='messageModal'
         show={this.props.show}
         onHide={this.hide}
-        id='modal-container'>
+        backdropClassName='modal-backdrop'>
         <Modal.Header closeButton />
         <Modal.Body id='contained-modal-body-lg'>
           <p className='modalText'>{this.props.message}</p>
