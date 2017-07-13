@@ -26,7 +26,7 @@ class EventsList extends React.Component {
     });
 
     const noEvent = (
-      <Jumbotron className='no-events-block'>
+      <Jumbotron className='no-content-block'>
         <h4 className='no-events-message'>You have no events scheduled</h4>
       </Jumbotron>
     );
