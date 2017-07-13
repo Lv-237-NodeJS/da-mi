@@ -1,12 +1,21 @@
 import React from 'react';
 import { Accordion, Panel, Button, ButtonToolbar } from 'react-bootstrap';
 import { EditGift } from 'src/containers';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as commentsActions from 'src/redux/commentsFetchReducers';
 import Comments from '../Comments/Comments';
 import './giftList.scss';
 
-export default class GiftList extends React.Component {
+export  class GiftList extends React.Component {
+
   render() {
     const giftNode = this.props.gifts.map((gift, id) => {
+
+      const commentList = (e) => {
+        e.preventDefault();
+        this.props.actionsComment.retrieveComments(this.props.id, gift.id);
+      };
 
       const handleDelete = e => {
         e.preventDefault();
@@ -14,7 +23,7 @@ export default class GiftList extends React.Component {
       };
 
       return (
-        <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
+        <Panel header={gift.name} eventKey={gift.id} key={gift.id}  onClick={commentList}>
           {!!gift.image &&
             <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}} />}
           <div className='desc-block'> 
@@ -44,3 +53,11 @@ export default class GiftList extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  comments: state.commentsList.comments
+});
+const mapDispatchToProps = dispatch => ({
+  actionsComment: bindActionCreators(commentsActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GiftList);

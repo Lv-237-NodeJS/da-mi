@@ -62,11 +62,6 @@ export class CommentItem extends React.Component{
     return (
       <div className="comment-wrapper">
         <div className="parent">
-          <div><a className="pull-right"
-            label="Delete"
-            hidden={!this.delButton(comment, author)}
-            onClick={this.delComment}>
-            <Glyphicon glyph="remove" /></a>
           <div>
             <div className ="comment-head">
               {this.getAuthor(comment)}
@@ -74,6 +69,14 @@ export class CommentItem extends React.Component{
             <div className="content">
               <img className="avatar" src={avatarData} />
               <div className="message">{comment.body}</div>
+              <div className="pull-right">
+                <a
+                  label="Delete"
+                  hidden={!this.delButton(comment, author)}
+                  onClick={this.delComment}>
+                  <Glyphicon glyph="remove" />
+                </a>
+              </div>
               <div className="reply">
                 <span className="dateComment">{commentsDate}</span>
                 {toUser ? <span className="details">| answered to {toUser}.</span> : null }
@@ -93,8 +96,7 @@ export class CommentItem extends React.Component{
                 }
               </div>
             </div>
-          </div>
-          {this.subComments(comment)}
+            {this.subComments(comment)}
           </div>
         </div>
       </div>
