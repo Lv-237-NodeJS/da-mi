@@ -12,16 +12,24 @@
 
 a:hover, a:focus {
   cursor: pointer;
+  text-decoration: none;
+}
+
+postButton {
+  float: right;
 }
 
 .messageBox {
   display: inline-block;
-  min-width: 400px;
+  width: 88%; 
 }
 
 .message  {
   font-size: $font-size;
   display: inline;
+  resize: none;
+  width: 100%;
+  margin: 5px;
 }
 
 .children {
@@ -31,7 +39,7 @@ a:hover, a:focus {
 }
 
 img.avatar {
-  margin: 0 5px;
+  margin: 5px;
   width: 55px;
   height: 55px;
   vertical-align: top;
@@ -46,7 +54,11 @@ img.avatar {
 }
 
 .reply {
-  border-top: 1px solid $tranquil;
-  display: flex;  
+  border-top: 1px solid $tranquil; 
   background-color: $mint-cream;  
+}
+
+.error-message {
+  float: right;
+  color: red;
 }

@@ -82,20 +82,20 @@ export class CommentItem extends React.Component{
                 {toUser ? <span className="details">| answered to {toUser}.</span> : null }
                 <a className="details" onClick={()=>this.setState({showForm: !this.state.showForm})}>
                   <Glyphicon glyph="share-alt" /> Reply </a>
-                {
-                  this.state.showForm ?
-                    <CommentForm
-                      toUser={this.getAuthor(comment)}
-                      parent_id={comment.id}
-                      author={author}
-                      eventId={eventId}
-                      giftId={giftId}
-                      getComments={getComments}
-                      hideForm={() => this.setState({showForm: false})}
-                    /> : null
-                }
               </div>
             </div>
+            {
+              this.state.showForm ?
+                <CommentForm
+                  toUser={this.getAuthor(comment)}
+                  parent_id={comment.id}
+                  author={author}
+                  eventId={eventId}
+                  giftId={giftId}
+                  getComments={getComments}
+                  hideForm={() => this.setState({showForm: false})}
+                /> : null
+            }
             {this.subComments(comment)}
           </div>
         </div>

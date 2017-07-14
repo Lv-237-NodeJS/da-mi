@@ -17,12 +17,11 @@ class Comments extends React.Component{
   };
 
   render() {
-    const {author, eventId, giftId, comments} = this.props;    
+    const {author, eventId, giftId, comments} = this.props;
     if (comments) {
       return (
         <div>
-          <h2>Comments</h2>
-          <hr/>
+          <h4>Comments</h4>          
           <div>
             <CommentForm
               getComments={this.getComments}
@@ -31,7 +30,7 @@ class Comments extends React.Component{
               eventId={eventId}
             />            
           </div>
-          <div className="comment-list">            
+          <div className="comment-list">
             {
               this.props.comments.map(comment => {
                 return giftId == comment.gift_id ? (
@@ -45,7 +44,7 @@ class Comments extends React.Component{
                   /> ): null;
               })
             }
-            <hr/>            
+            <hr/>
           </div>
         </div>
       );

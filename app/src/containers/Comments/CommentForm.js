@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, FormControl, Button, Form } from 'react-bootstrap';
+import { FormGroup, FormControl, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as createCommentActions from 'src/redux/commentCreateReducers';
@@ -39,26 +39,30 @@ export class CommentForm extends React.Component{
 
     return (
       <div className="comment-wrapper">
-        <div className = "comment-head">{`${firstName} ${lastName}`}</div>
+        <div className = "comment-head">
+          <span>{`${firstName} ${lastName}`}</span>
+          <span className="error-message">{error}</span>
+        </div>  
         <div className="content">
           <img className="avatar" src={avatar} />
-          <div className="message">
-            <FormGroup className="messageBox" controlId="formControlsTextarea">
-              <FormControl
+          <div className="messageBox">
+            <FormGroup controlId="formControlsTextarea">
+              <FormControl className="message"
                 componentClass="textarea"
                 placeholder="Comment something..."
                 value={this.state.body}
                 onInput={(e) => this.setState({body: e.target.value})} />
             </FormGroup>
-            <span className="error-message">{error}</span>
-            <Button
-              label="Comment"
-              type='button'
-              disabled={!this.state.body || !this.inputValid()}
-              style={{float: 'right'}}
-              onClick={this.formSubmit}>Send
-            </Button>
+            <div>
+              <a 
+                label="Comment"
+                hidden={!this.state.body || !this.inputValid()}
+                className="pull-right"
+                onClick={this.formSubmit}>COMMENT
+              </a>
+            </div>
           </div>
+            
         </div>
       </div>
     );

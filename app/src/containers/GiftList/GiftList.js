@@ -40,8 +40,9 @@ export  class GiftList extends React.Component {
               {gift.is_available === true &&
               <Button bsStyle='success' bsSize='small'>Choose</Button>}
             </ButtonToolbar>}
-            <Comments giftId={gift.id} eventId={this.props.id} author={this.props.author} />
           </div>
+          <hr />
+          <Comments giftId={gift.id} eventId={this.props.id} author={this.props.author} />
         </Panel>
       );
     });
