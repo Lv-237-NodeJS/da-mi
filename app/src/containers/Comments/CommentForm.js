@@ -61,8 +61,7 @@ export class CommentForm extends React.Component{
                 onClick={this.formSubmit}>COMMENT
               </a>
             </div>
-          </div>
-            
+          </div>            
         </div>
       </div>
     );
