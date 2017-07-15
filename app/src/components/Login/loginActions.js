@@ -7,7 +7,7 @@ const LOGOUT_USER = 'LOGOUT_USER';
 const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 const CHECK_TOKEN = 'CHECK_TOKEN';
 
-export function loginUserSuccess(token, userId, profileId) {
+export const loginUserSuccess = (token, userId, profileId) => {
   sessionStorage.setItem('token', token);
   sessionStorage.setItem('userId', userId);
   sessionStorage.setItem('profileId', profileId);
@@ -17,37 +17,37 @@ export function loginUserSuccess(token, userId, profileId) {
     userId: userId,
     profileId: profileId
   };
-}
+};
 
-export function loginUserFailure(message) {
+export const loginUserFailure = message => {
   return {
     type: LOGIN_USER_FAILURE,
     message
   };
-}
+};
 
-export function loginUserRequest() {
+export const loginUserRequest = () => {
   return {
     type: LOGIN_USER_REQUEST
   };
-}
+};
 
-export function checkToken() {
+export const checkToken = () => {
   return {
     type: CHECK_TOKEN,
     isAuth: !!sessionStorage.getItem('token')
   };
-}
+};
 
-export function logout() {
+export const logout = () => {
   sessionStorage.clear();
   browserHistory.push('/');
   return {
     type: LOGOUT_USER
   };
-}
+};
 
-export function loginUser(email, password) {
+export const loginUser = (email, password) => {
   const user = {email, password};
   let token;
   let userId;
@@ -64,4 +64,4 @@ export function loginUser(email, password) {
         dispatch(loginUserSuccess(token, userId, profileId));
       });
   };
-}
+};

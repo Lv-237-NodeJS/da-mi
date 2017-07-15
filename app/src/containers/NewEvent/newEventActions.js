@@ -4,23 +4,23 @@ import { API, request } from 'src/helper';
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
 const CREATE_NEW_EVENT_FAILURE = 'CREATE_NEW_EVENT_FAILURE';
 
-export function createNewEventSuccess(res) {
+export const createNewEventSuccess = res => {
   const eventId = res.body.id;
   browserHistory.push(`/events/${eventId}`);
   return {
     type: CREATE_NEW_EVENT_SUCCESS,
     status: res.statusCode
   };
-}
+};
 
-export function createNewEventFailure(res) {
+export const createNewEventFailure = res => {
   return {
     type: CREATE_NEW_EVENT_FAILURE,
     status: res.statusCode
   };
-}
+};
 
-export function createNewEvent(event) {
+export const createNewEvent = event => {
   return dispatch => {
     request()
       .post(`${API.URL}/api/events`)
@@ -31,4 +31,4 @@ export function createNewEvent(event) {
           dispatch(createNewEventSuccess(res));
       });
   };
-}
+};
