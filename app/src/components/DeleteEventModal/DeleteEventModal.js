@@ -41,9 +41,6 @@ class DeleteEventModal extends React.Component {
               <Button bsStyle='danger' bsSize="large" onClick={this.handleButtonClick} block>
                 Yes
               </Button>
-              <Button bsStyle='success' bsSize="large" onClick={this.toggleModal} block>
-                No
-              </Button>
             </div>
           </Modal.Body>
         </Modal>
