@@ -18,10 +18,10 @@ export const editEventFailure = res => {
 
 export const editEvent = event => dispatch =>
   request()
-  .put(`${API.URL}/api/event/${event.id}`)
-  .send(event)
-  .end((err, res) => {
-    (err || !res.ok) &&
+    .put(`${API.URL}/api/event/${event.id}`)
+    .send(event)
+    .end((err, res) => {
+      (err || !res.ok) &&
       dispatch(editEventFailure(res)) ||
       dispatch(editEventSuccess(res));
-  });
+    });
