@@ -1,4 +1,4 @@
-import * as loginActions from './../app/src/components/Login/loginReducer';
+import * as loginActions from './../app/src/components/Login/loginActions';
 import { API } from './../app/src/helper/constants';
 import * as router from 'react-router';
 import configureMockStore from 'redux-mock-store';
