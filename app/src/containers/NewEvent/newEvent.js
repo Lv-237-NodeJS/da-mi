@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DateTimeField from 'react-bootstrap-datetimepicker';
-import * as showActions from 'src/redux/newEventReducers';
+import * as showActions from './newEventActions';
 import { messages } from 'src/helper';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (

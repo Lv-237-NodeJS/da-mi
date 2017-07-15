@@ -1,5 +1,5 @@
 import React from 'react';
-import { Accordion, Panel, Button, ButtonToolbar, Image } from 'react-bootstrap';
+import { Accordion, Panel, Button, ButtonToolbar } from 'react-bootstrap';
 import { EditGift } from 'src/containers';
 import './giftList.scss';
 

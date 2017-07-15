@@ -3,7 +3,7 @@ import { Button, Form, FormGroup, Col, ButtonToolbar, HelpBlock } from 'react-bo
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { messages } from 'src/helper';
-import * as inviteActions from 'src/redux/inviteReducers';
+import * as inviteActions from 'src/containers/Event/inviteActions';
 
 const ListItemButton = ({...props}) => (
   <Button

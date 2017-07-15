@@ -4,7 +4,7 @@ import { ListGroup, ListGroupItem, Jumbotron } from 'react-bootstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as eventsActions from 'src/redux/eventsReducers';
+import * as eventsActions from './eventsListActions';
 import './eventsList.scss';
 
 class EventsList extends React.Component {
@@ -32,7 +32,6 @@ class EventsList extends React.Component {
     );
 
     return (
-
       <div className='eventsList'>
         <h2>Events</h2>
         {!this.props.eventsList.length && noEvent || eventNode}

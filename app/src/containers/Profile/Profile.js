@@ -5,7 +5,7 @@ import DateTimeField from 'react-bootstrap-datetimepicker';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as profileActions from 'src/redux/profileReducers';
+import * as profileActions from './profileActions';
 import './profile.scss';
 
 const FieldGroup = ({id, label, ...props}) => (

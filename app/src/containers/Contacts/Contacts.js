@@ -3,8 +3,8 @@ import { Grid, Row, Col, PageHeader, FormGroup, FormControl, Button,
   Form, HelpBlock  } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from 'src/redux/contactInfo';
-import { Maps, Message  } from 'src/components';
+import * as showActions from './contactActions';
+import { Maps, Message } from 'src/components';
 import { CONTACTDATA, messages }  from 'src/helper';
 import './Contacts.scss';
 

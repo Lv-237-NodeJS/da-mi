@@ -4,27 +4,8 @@ const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
 const DELETE_GUEST = 'DELETE_GUEST';
 const SAVE_EMAILS = 'SAVE_EMAILS';
-const getGuests = (err, text) => (!err && JSON.parse(text).guests);
 
-export default function inviteReducer(state = {guests: []}, action) {
-  switch (action.type) {
-    case GET_EMAILS:
-      return {
-        guests: [...action.guests]
-      };
-    case DELETE_GUEST:
-      return {
-        guests: state.guests.filter(guest => guest.id !== action.id)
-      };
-    case SAVE_EMAILS:
-      return {
-        ...state,
-        guests: [...state.guests, ...action.guests]
-      };
-    default:
-      return state;
-  }
-}
+const getGuests = (err, text) => (!err && JSON.parse(text).guests);
 
 export function sendInvites(eventId, owner) {
   return dispatch => {

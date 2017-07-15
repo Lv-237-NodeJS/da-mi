@@ -1,32 +1,8 @@
-import { API, request } from 'src/helper';
 import { browserHistory } from 'react-router';
+import { API, request } from 'src/helper';
 
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
 const CREATE_NEW_EVENT_FAILURE = 'CREATE_NEW_EVENT_FAILURE';
-
-const initialState = {
-  isCreated: false,
-  illegalInput: true,
-  error: false
-};
-
-export default function newEventReducers(state = initialState, action) {
-  switch (action.type) {
-    case CREATE_NEW_EVENT_FAILURE:
-      return {
-        ...state,
-        error: true
-      };
-    case CREATE_NEW_EVENT_SUCCESS:
-      return {
-        ...state,
-        illegalInput: false,
-        isCreated: true
-      };
-    default:
-      return state;
-  }
-}
 
 export function createNewEventSuccess(res) {
   const eventId = res.body.id;
