@@ -3,8 +3,8 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Image } from 'react-bootst
 import { LinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from 'src/redux/login';
-import * as profileActions from 'src/redux/profileReducers';
+import * as loginActions from 'src/components/Login/loginActions';
+import * as profileActions from 'src/containers/Profile/profileActions';
 import './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {
@@ -14,7 +14,7 @@ class ProfileDropDown extends React.Component {
   }
 
   render() {
-    const { profile, actions } = this.props;
+    const {profile, actions} = this.props;
     const userName = () => {
       return (
         (profile.first_name && profile.last_name) ?
@@ -22,7 +22,7 @@ class ProfileDropDown extends React.Component {
       );
     };
 
-    return(
+    return (
       <div>
         <NavDropdown eventKey={5} id='basic-nav-dropdown'
           title={userName()}>
@@ -44,7 +44,7 @@ const mapStatetoProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions:{
+  actions: {
     loginActions: bindActionCreators(loginActions, dispatch),
     profileActions: bindActionCreators(profileActions, dispatch)
   }

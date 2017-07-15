@@ -1,10 +1,11 @@
 import  React from 'react';
-import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Label } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Label 
+} from 'react-bootstrap';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as editEventActions from 'src/redux/editEventReducers';
+import * as editEventActions from './editEventActions';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
   <FormGroup controlId={id} className={className}>

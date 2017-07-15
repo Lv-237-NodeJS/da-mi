@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button, Form, HelpBlock } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from 'src/redux/signUp';
+import * as showActions from './signupActions';
 import { Message } from 'src/components';
 import { messages } from 'src/helper';
 import './Signup.scss';

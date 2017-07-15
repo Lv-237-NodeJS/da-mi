@@ -7,36 +7,6 @@ const LOGOUT_USER = 'LOGOUT_USER';
 const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 const CHECK_TOKEN = 'CHECK_TOKEN';
 
-export default function loginReduser(state = {}, action) {
-  switch (action.type) {
-    case LOGIN_USER_FAILURE:
-      return {
-        ...state,
-        illegalInput: true,
-        message: action.message
-      };
-    case LOGIN_USER_SUCCESS:
-      return {
-        ...state,
-        illegalInput: false,
-        isAuth: true,
-        userId: action.userId
-      };
-    case LOGOUT_USER:
-      return {
-        ...state,
-        isAuth: false
-      };
-    case CHECK_TOKEN:
-      return {
-        ...state,
-        isAuth: action.isAuth
-      };
-    default:
-      return state;
-  }
-}
-
 export function loginUserSuccess(token, userId, profileId) {
   sessionStorage.setItem('token', token);
   sessionStorage.setItem('userId', userId);

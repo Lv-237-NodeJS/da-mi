@@ -3,7 +3,7 @@ import { Navbar, Nav, NavItem } from 'react-bootstrap';
 import { IndexLinkContainer } from 'react-router-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as loginActions from 'src/redux/login';
+import * as loginActions from 'src/components/Login/loginActions';
 import { ProfileDropDown } from 'src/components';
 import './Navigation.scss';
 

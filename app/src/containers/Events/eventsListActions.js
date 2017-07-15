@@ -24,34 +24,3 @@ export const retrieveEventsRequest = () => {
     type: RETRIEVE_EVENTS
   };
 };
-
-const initialState = {
-  events: []
-};
-
-export const EventsReducers = (state = initialState, action) => {
-  switch (action.type) {
-    case RETRIEVE_EVENTS: {
-      return {
-        ...state
-      };
-    }
-
-    case RETRIEVE_EVENTS_SUCCESS: {
-      return {
-        ...state,
-        events: action.payload
-      };
-    }
-
-    case RETRIEVE_EVENTS_FAILURE: {
-      return {
-        ...state
-      };
-    }
-
-    default: return state;
-  }
-};
-
-export default EventsReducers;

@@ -7,9 +7,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { GuestsModal, EventsModal } from 'src/components';
 import { Gift } from 'src/containers';
-import * as eventActions from 'src/redux/eventReducers';
-import * as inviteActions from 'src/redux/inviteReducers';
-import * as editEventActions from 'src/redux/editEventReducers';
+import * as eventActions from './eventActions';
+import * as inviteActions from './inviteActions';
 import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
@@ -98,13 +97,11 @@ const mapStateToProps = state => ({
   event: state.event.current,
   guests: state.invite.guests,
   owner: state.profile.data,
-  updatedEvent: state.editEvent.updatedEvent
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(eventActions, dispatch),
   guestActions: bindActionCreators(inviteActions, dispatch),
-  editEventActions: bindActionCreators(editEventActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);
