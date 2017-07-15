@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { Login } from 'src/components/Login/Login';
-import { loginUser } from 'src/redux/login';
+import { loginUser } from 'src/components/Login/loginReducer';
 
 describe('React component <Login />', () => {
   it('should render a Login with typed data' +

@@ -1,5 +1,5 @@
-import loginReduser from './../app/src/redux/login';
-import * as loginActions from './../app/src/redux/login';
+import loginReduser from './../app/src/components/Login/loginReducer';
+import * as loginActions from './../app/src/components/Login/loginActions';
 import * as router from 'react-router';
 
 describe('loginReduser execution', () => {
