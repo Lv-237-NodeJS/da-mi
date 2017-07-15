@@ -7,7 +7,7 @@ const SAVE_EMAILS = 'SAVE_EMAILS';
 
 const getGuests = (err, text) => (!err && JSON.parse(text).guests);
 
-export function sendInvites(eventId, owner) {
+export const sendInvites = (eventId, owner) => {
   return dispatch => {
     request()
       .post(API.URL + `/api/event/${eventId}/guest/invite`)
@@ -19,9 +19,9 @@ export function sendInvites(eventId, owner) {
           });
       });
   };
-}
+};
 
-export function getEmails(eventId) {
+export const getEmails = eventId => {
   return dispatch => {
     request()
       .get(API.URL + `/api/event/${eventId}/guests`)
@@ -36,9 +36,9 @@ export function getEmails(eventId) {
           });
       });
   };
-}
+};
 
-export function deleteGuest(eventId, userId) {
+export const deleteGuest = (eventId, userId) => {
   return dispatch => {
     request()
       .delete(API.URL + `/api/event/${eventId}/guest/${userId}`)
@@ -50,9 +50,9 @@ export function deleteGuest(eventId, userId) {
           });
       });
   };
-}
+};
 
-export function saveEmails(emails, eventId) {
+export const saveEmails = (emails, eventId) => {
   const data = {emails, eventId};
   return dispatch => {
     request()
@@ -67,4 +67,4 @@ export function saveEmails(emails, eventId) {
           });
       });
   };
-}
+};

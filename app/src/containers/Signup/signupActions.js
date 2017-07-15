@@ -5,25 +5,25 @@ const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 const MESSAGE_MODAL = 'MESSAGE_MODAL';
 
-export function showModal(show) {
+export const showModal = show => {
   return {
     type: SHOW_MODAL,
     show: show
   };
-}
+};
 
-export function messageModal(message) {
+export const messageModal = message => {
   return {
     type: MESSAGE_MODAL,
     message: message
   };
-}
+};
 
-export function signupRequest() {
+export const signupRequest = () => {
   return {type: SIGNUP_REQUEST};
-}
+};
 
-export function signupUser(email, password) {
+export const signupUser = (email, password) => {
   let data = {
     email: email,
     password: password
@@ -40,4 +40,4 @@ export function signupUser(email, password) {
         dispatch(messageModal(JSON.parse(res.text).message)) && dispatch(showModal(true));
       });
   };
-}
+};
