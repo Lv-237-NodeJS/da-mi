@@ -3,7 +3,7 @@
 
 .deleteEventModal {
   .modal-dialog {
-    height: 260px;
+    height: 210px;
     width: 460px;
   }
 }
@@ -11,4 +11,9 @@
 .deleteEventModalBodyHeader {
   text-align: center;
   color: $soft-red;
+}
+
+.deleteEventYesButton.btn {
+  width: 200px;
+  margin: 0 auto;
 }
