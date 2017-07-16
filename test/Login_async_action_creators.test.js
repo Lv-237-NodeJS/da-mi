@@ -17,7 +17,6 @@ describe('async action creators', () => {
   it('creates LOGIN_USER_SUCCESS when user has been logged in', () => {
     router.browserHistory = { push: () => {} };
     const expectedActions = [
-      loginActions.loginUserRequest(),
       loginActions.loginUserSuccess('do something', 777)
     ];
     const store = mockStore({ loggedUser: [] });
