@@ -4,7 +4,6 @@ import { API, request } from 'src/helper';
 const LOGIN_USER_SUCCESS = 'LOGIN_USER_SUCCESS';
 const LOGIN_USER_FAILURE = 'LOGIN_USER_FAILURE';
 const LOGOUT_USER = 'LOGOUT_USER';
-const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 const CHECK_TOKEN = 'CHECK_TOKEN';
 
 export const loginUserSuccess = (token, userId, profileId) => {
@@ -22,10 +21,6 @@ export const loginUserSuccess = (token, userId, profileId) => {
 export const loginUserFailure = message => ({
   type: LOGIN_USER_FAILURE,
   message
-});
-
-export const loginUserRequest = () => ({
-  type: LOGIN_USER_REQUEST
 });
 
 export const checkToken = () => ({
@@ -46,9 +41,7 @@ export const loginUser = (email, password) => {
   let token;
   let userId;
   let profileId;
-  return dispatch => {
-    dispatch(loginUserRequest());
-    request()
+  return dispatch => request()
       .post(`${API.URL}/api/auth/login`)
       .send(user)
       .end((err, res) => {
@@ -57,5 +50,4 @@ export const loginUser = (email, password) => {
         ({token, user_id: userId, profile_id: profileId} = JSON.parse(res.text)) &&
         dispatch(loginUserSuccess(token, userId, profileId));
       });
-  };
 };

@@ -2,7 +2,6 @@ import { browserHistory } from 'react-router';
 import { API, request } from 'src/helper';
 
 const SHOW_MODAL = 'SHOW_MODAL';
-const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 const MESSAGE_MODAL = 'MESSAGE_MODAL';
 
 const showModal = show => ({
@@ -15,16 +14,13 @@ const messageModal = message => ({
   message: message
 });
 
-const signupRequest = () => ({type: SIGNUP_REQUEST});
-
 export const signupUser = (email, password) => {
   let data = {
     email: email,
     password: password
   };
 
-  return dispatch => {
-    dispatch(signupRequest());
+  return dispatch =>
     request()
       .post(`${API.URL}/api/users`)
       .send(data)
@@ -33,5 +29,4 @@ export const signupUser = (email, password) => {
         dispatch(showModal(true))) && browserHistory.push('/') ||
         dispatch(messageModal(JSON.parse(res.text).message)) && dispatch(showModal(true));
       });
-  };
 };
