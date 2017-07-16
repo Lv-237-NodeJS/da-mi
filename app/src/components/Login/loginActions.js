@@ -42,12 +42,12 @@ export const loginUser = (email, password) => {
   let userId;
   let profileId;
   return dispatch => request()
-      .post(`${API.URL}/api/auth/login`)
-      .send(user)
-      .end((err, res) => {
-        (err || !res.ok) &&
-        dispatch(loginUserFailure(JSON.parse(res.text).message)) ||
-        ({token, user_id: userId, profile_id: profileId} = JSON.parse(res.text)) &&
-        dispatch(loginUserSuccess(token, userId, profileId));
-      });
+    .post(`${API.URL}/api/auth/login`)
+    .send(user)
+    .end((err, res) => {
+      (err || !res.ok) &&
+      dispatch(loginUserFailure(JSON.parse(res.text).message)) ||
+      ({token, user_id: userId, profile_id: profileId} = JSON.parse(res.text)) &&
+      dispatch(loginUserSuccess(token, userId, profileId));
+    });
 };
