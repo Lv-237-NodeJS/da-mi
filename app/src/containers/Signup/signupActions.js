@@ -5,23 +5,17 @@ const SHOW_MODAL = 'SHOW_MODAL';
 const SIGNUP_REQUEST = 'SIGNUP_REQUEST';
 const MESSAGE_MODAL = 'MESSAGE_MODAL';
 
-export const showModal = show => {
-  return {
-    type: SHOW_MODAL,
-    show: show
-  };
-};
+const showModal = show => ({
+  type: SHOW_MODAL,
+  show: show
+});
 
-export const messageModal = message => {
-  return {
-    type: MESSAGE_MODAL,
-    message: message
-  };
-};
+const messageModal = message => ({
+  type: MESSAGE_MODAL,
+  message: message
+});
 
-export const signupRequest = () => {
-  return {type: SIGNUP_REQUEST};
-};
+const signupRequest = () => ({type: SIGNUP_REQUEST});
 
 export const signupUser = (email, password) => {
   let data = {
