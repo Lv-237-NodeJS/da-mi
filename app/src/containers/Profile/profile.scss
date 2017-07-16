@@ -1,12 +1,33 @@
+@import '../../../styles/common';
+
 #img-circle-avatar {
   border-radius: 50%;
   width: 250px;
   height: 250px;
   background-size: 100%;
   background-image: url(../../../img/profile.svg);
+  margin: 15px;
 }
 
 .profileForm {
   display: block;
-  padding: 35px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.profile-display-info {
+  margin-top: 15px;
+  margin-left: 45px;
+}
+
+.btn-toggle {
+  background-color: $puerto-rico;
+  position: relative;
+  margin-top: 100px;
+}
+
+.profile-panel {
+  margin: 20px;
 }

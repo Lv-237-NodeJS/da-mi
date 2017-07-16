@@ -1,4 +1,11 @@
+@import '../../../styles/common';
+
 .eventsList {
   display: inline-block;
   width: 900px;
 } 
+
+.no-events-message {
+  text-align: center;
+  margin-top: 130px;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Image, FormGroup, ControlLabel, Form, FormControl, Button, ButtonToolbar,
-  Tabs, Tab  } from 'react-bootstrap';
+  Tabs, Tab, Panel } from 'react-bootstrap';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -20,7 +20,9 @@ const FieldGroup = ({id, label, ...props}) => (
 class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.profile;
+    this.state = this.props.profile, {
+      open: true
+    };
   }
   
   componentWillMount() {
@@ -40,6 +42,9 @@ class Profile extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.actions.updateProfile(this.state);
+    this.setState({
+      open: false
+    });
   };
 
   dateTimeFieldHandleChange = date => {
@@ -47,6 +52,11 @@ class Profile extends React.Component {
       birth_date: date
     });
   };
+
+  handleToggle = () => 
+    this.setState({
+      open: !this.state.open 
+    });
 
   handleChangeImage = e => {
     const self = this;
@@ -116,27 +126,49 @@ class Profile extends React.Component {
                   <Col md={4} className='text-center'>
                     <FormGroup key='avatar'>
                       <Image id='img-circle-avatar' src={profile.avatar} />
-                      <h6>Upload a different photo</h6>
-                      <input type='file' className='form-control' 
-                        onChange={this.handleChangeImage} />
                     </FormGroup>
                   </Col>
+                  <Col md={6}>
+                    <div className='profile-display-info'>
+                      <div>
+                        <h4>Name: <span className='text-bold'>{`${profile.first_name || ''} ${profile.last_name || ''}`}</span></h4>
+                        <h4>Birthdate: <span className='text-bold'>{birthdateString}</span></h4>
+                        <h4>Address: <span className='text-bold'>{`${profile.address || ''} ${profile.city || ''} ${profile.country || ''}`}</span></h4>
+                      </div>
+                      <div>
+                        <Button className='btn-toggle' onClick={this.handleToggle}>
+                          Edit Profile
+                        </Button>
+                      </div>
+                    </div>
+                  </Col>
                 </Row>
-                <Row>
-                  { Object.keys(fieldsName, profile).map(param => 
-                    (param == 'birth_date') ?
-                      this.datePickerFields(param, birthdateString) :
-                      this.textFields(param, fieldsName)
-                  )}
-                </Row>
-                <Row> 
-                  <hr/> 
-                  <ButtonToolbar>
-                    <Button type='submit' className='main-button'>
-                      Save Changes
-                    </Button>
-                  </ButtonToolbar>
-                </Row> 
+                <Panel collapsible expanded={this.state.open}>
+                  <div className='profile-panel'>
+                    <Row>
+                      <Col md={5}>
+                        <h6>Upload a different photo</h6>
+                        <input type='file' className='form-control' 
+                          onChange={this.handleChangeImage} />
+                      </Col>
+                    </Row>  
+                    <Row>
+                      { Object.keys(fieldsName, profile).map(param => 
+                        (param == 'birth_date') ?
+                          this.datePickerFields(param, birthdateString) :
+                          this.textFields(param, fieldsName)
+                      )}
+                    </Row>
+                    <Row> 
+                      <hr/> 
+                      <ButtonToolbar>
+                        <Button type='submit' className='main-button'>
+                          Save Changes
+                        </Button>
+                      </ButtonToolbar>
+                    </Row>
+                  </div>
+                </Panel> 
               </Form>
             </Tab>
             <Tab eventKey={2} title='Security Settings'>
