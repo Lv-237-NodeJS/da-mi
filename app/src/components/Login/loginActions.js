@@ -7,7 +7,7 @@ const LOGOUT_USER = 'LOGOUT_USER';
 const LOGIN_USER_REQUEST = 'LOGIN_USER_REQUEST';
 const CHECK_TOKEN = 'CHECK_TOKEN';
 
-export const loginUserSuccess = (token, userId, profileId) => {
+const loginUserSuccess = (token, userId, profileId) => {
   sessionStorage.setItem('token', token);
   sessionStorage.setItem('userId', userId);
   sessionStorage.setItem('profileId', profileId);
@@ -19,12 +19,12 @@ export const loginUserSuccess = (token, userId, profileId) => {
   };
 };
 
-export const loginUserFailure = message => ({
+const loginUserFailure = message => ({
   type: LOGIN_USER_FAILURE,
   message
 });
 
-export const loginUserRequest = () => ({
+const loginUserRequest = () => ({
   type: LOGIN_USER_REQUEST
 });
 
