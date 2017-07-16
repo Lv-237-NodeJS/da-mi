@@ -19,25 +19,19 @@ export const loginUserSuccess = (token, userId, profileId) => {
   };
 };
 
-export const loginUserFailure = message => {
-  return {
-    type: LOGIN_USER_FAILURE,
-    message
-  };
-};
+export const loginUserFailure = message => ({
+  type: LOGIN_USER_FAILURE,
+  message
+});
 
-export const loginUserRequest = () => {
-  return {
-    type: LOGIN_USER_REQUEST
-  };
-};
+export const loginUserRequest = () => ({
+  type: LOGIN_USER_REQUEST
+});
 
-export const checkToken = () => {
-  return {
-    type: CHECK_TOKEN,
-    isAuth: !!sessionStorage.getItem('token')
-  };
-};
+export const checkToken = () => ({
+  type: CHECK_TOKEN,
+  isAuth: !!sessionStorage.getItem('token')
+});
 
 export const logout = () => {
   sessionStorage.clear();
@@ -55,7 +49,7 @@ export const loginUser = (email, password) => {
   return dispatch => {
     dispatch(loginUserRequest());
     request()
-      .post(API.HOST + API.PORT + '/api/auth/login')
+      .post(`${API.URL}/api/auth/login`)
       .send(user)
       .end((err, res) => {
         (err || !res.ok) &&

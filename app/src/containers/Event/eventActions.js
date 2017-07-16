@@ -3,20 +3,21 @@ import { API, request  } from 'src/helper';
 const FETCH_EVENT_BY_ID_FULFILLED = 'FETCH_EVENT_BY_ID_FULFILLED';
 const FETCH_EVENT_BY_ID_REJECTED = 'FETCH_EVENT_BY_ID_REJECTED';
 
-export const fetchEventById = eventId => dispatch => {
-  return request()
+const fetchEventFullfilled = res => ({
+  type: FETCH_EVENT_BY_ID_FULFILLED,
+  payload: res.body,
+});
+
+const fetchEventRejected = err => ({
+  type: FETCH_EVENT_BY_ID_REJECTED,
+  payload: err,
+});
+
+export const fetchEventById = eventId => dispatch =>
+  request()
     .get(`${API.URL}/api/event/${eventId}`)
     .end((err, res) => {
-      if (err) {
-        dispatch({
-          type: FETCH_EVENT_BY_ID_REJECTED,
-          payload: err,
-        });
-      } else {
-        dispatch({
-          type: FETCH_EVENT_BY_ID_FULFILLED,
-          payload: res.body,
-        });
-      }
+      err &&
+      dispatch(fetchEventRejected(err)) ||
+      dispatch(fetchEventFullfilled(res));
     });
-};
