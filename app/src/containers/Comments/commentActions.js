@@ -27,7 +27,7 @@ const retrieveCommentsFail = err => ({
   payload: err
 });
 
-const deleteCommentSuccess = res=> ({
+const deleteCommentSuccess = res => ({
   type: DELETE_COMMENT_SUCCESS,
   payload: res.body.message
 });
