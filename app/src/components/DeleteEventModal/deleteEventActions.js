@@ -12,9 +12,10 @@ const deleteEventSuccess = res => {
   };
 };
 
-const deleteEventFailure = res => {
-  type: DELETE_EVENT_FAILURE
-};
+const deleteEventFailure = res => ({
+  type: DELETE_EVENT_FAILURE,
+  status: res.statusCode
+});
 
 export const deleteEvent = eventId => dispatch =>
   request()
