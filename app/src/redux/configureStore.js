@@ -9,11 +9,10 @@ const middleware = [routerMiddleware(browserHistory), thunk];
 
 (process.env.NODE_ENV !== 'production') && middleware.push(createLogger());
 
-const configureStore = initialState => {
-  return createStore(
-    rootReducer,
-    initialState,
-    applyMiddleware(...middleware));
-};
+const configureStore = initialState => createStore(
+  rootReducer,
+  initialState,
+  applyMiddleware(...middleware)
+);
 
 export default configureStore;
