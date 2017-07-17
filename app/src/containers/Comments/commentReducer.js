@@ -4,8 +4,8 @@ const commentReducer = {
     comment: action.payload,
   }),
   CREATE_COMMENT_FAILURE: (state, action) => ({
-      ...state,
-      error: action.payload
+    ...state,
+    error: action.payload
   }),
   RETRIEVE_COMMENTS_SUCCESS: (state, action) => ({
     ...state,
@@ -19,8 +19,8 @@ const commentReducer = {
     commentDeleted: action.payload,
   }),
   DELETE_COMMENT_FAILURE: (state, action) => ({
-      ...state,
-      error: action.payload,
+    ...state,
+    error: action.payload,
   })
 };
 
