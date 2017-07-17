@@ -1,8 +1,3 @@
-const initialState = {
-  isDeleted: false,
-  error: false
-};
-
 const deleteEventReducer = {
   DELETE_EVENT_FAILURE: (state, action) => ({
     ...state,

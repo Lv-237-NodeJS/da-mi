@@ -10,6 +10,7 @@ import contactInfo from 'src/containers/Contacts/contactReducer';
 import gift from 'src/containers/Gift/giftReducer';
 import login from 'src/components/Login/loginReducer';
 import editEvent from 'src/components/EventsModalForm/editEventReducer';
+import deleteEvent from 'src/components/DeleteEventModal/deleteEventReducer';
 
 const initialState = {
   gifts: [],
@@ -23,6 +24,7 @@ const initialState = {
   show: false,
   isUpdated: false,
   isCreated: false,
+  isDeleted: false,
   error: null,
 };
 
@@ -42,5 +44,6 @@ export default combineReducers({
   editEvent: resolve(editEvent),
   contactInfo: resolve(contactInfo),
   gift: resolve(gift),
+  deleteEvent: resolve(deleteEvent),
   routing: routerReducer
 });
