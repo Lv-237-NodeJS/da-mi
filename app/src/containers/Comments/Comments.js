@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as commentsActions from 'src/redux/commentsFetchReducers';
+import * as commentActions from './commentActions';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem';
 import './Comments.scss';
@@ -52,10 +52,10 @@ class Comments extends React.Component{
   }
 }
 const mapStateToProps = state => ({
-  comments: state.commentsList.comments
+  comments: state.comments.comments
 });
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(commentsActions, dispatch)
+  actions: bindActionCreators(commentActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Comments);

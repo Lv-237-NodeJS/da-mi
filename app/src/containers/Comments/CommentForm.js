@@ -2,7 +2,7 @@ import React from 'react';
 import { FormGroup, FormControl, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as createCommentActions from 'src/redux/commentCreateReducers';
+import * as commentActions from './commentActions';
 import { messages } from 'src/helper';
 import './Comments.scss';
 
@@ -72,7 +72,7 @@ const mapStateToProps = state => ({
   comment: state.comment
 });
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(createCommentActions, dispatch)
+  actions: bindActionCreators(commentActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

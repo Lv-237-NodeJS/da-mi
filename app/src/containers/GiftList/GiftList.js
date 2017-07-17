@@ -3,8 +3,8 @@ import { Accordion, Panel, Button, ButtonToolbar } from 'react-bootstrap';
 import { EditGift } from 'src/containers';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as commentsActions from 'src/redux/commentsFetchReducers';
-import Comments from '../Comments/Comments';
+import * as commentActions from 'src/containers/Comments/commentActions';
+import { Comments } from 'src/containers';
 import './giftList.scss';
 
 export  class GiftList extends React.Component {
@@ -55,10 +55,10 @@ export  class GiftList extends React.Component {
   }
 }
 const mapStateToProps = state => ({
-  comments: state.commentsList.comments
+  comments: state.comments.comments
 });
 const mapDispatchToProps = dispatch => ({
-  actionsComment: bindActionCreators(commentsActions, dispatch)
+  actionsComment: bindActionCreators(commentActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GiftList);

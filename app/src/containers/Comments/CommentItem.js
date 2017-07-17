@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Glyphicon } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as deleteCommentActions from 'src/redux/commentDeleteReducers';
+import * as commentActions from './commentActions';
 import CommentForm from './CommentForm';
 import moment from 'moment';
 import './Comments.scss';
@@ -105,10 +105,10 @@ export class CommentItem extends React.Component{
 }
 
 const mapStateToProps = state => ({
-  deletedComment: state.deletedComment
+  commentDeleted: state.commentDeleted
 });
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(deleteCommentActions, dispatch)
+  actions: bindActionCreators(commentActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentItem);
