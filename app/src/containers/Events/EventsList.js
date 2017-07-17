@@ -14,7 +14,9 @@ class EventsList extends React.Component {
   }
 
   render() {
-    const eventNode = this.props.eventsList.map(item => {
+    const {location, eventsList, invitations} = this.props;
+    const events = location === '/events' && eventsList || invitations;
+    const eventNode = events.map(item => {
       const formattedDate = moment(item.date_event, 'x').format('DD MMM YYYY hh:mm a');
       return (
         <Link to={`/events/${item.id}`} className='list-group-item' key={item.id}>
@@ -40,8 +42,10 @@ class EventsList extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  eventsList: state.eventsList.events
+const mapStateToProps = (state, ownProps) => ({
+  eventsList: state.eventsList.events,
+  invitations: state.eventsList.myInvitations,
+  location: ownProps.location.pathname
 });
 
 const mapDispatchToProps = dispatch => ({

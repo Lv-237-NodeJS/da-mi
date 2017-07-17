@@ -15,6 +15,7 @@ import deleteEvent from 'src/components/DeleteEventModal/deleteEventReducer';
 const initialState = {
   gifts: [],
   events: [],
+  myInvitations: [],
   guests: [],
   data: {},
   current: {},
