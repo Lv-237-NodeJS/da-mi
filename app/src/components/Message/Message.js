@@ -12,15 +12,15 @@ class Message extends React.Component {
   
   render() {
     if (this.props.show) {
-    setTimeout(this.hide, 4000);
-    return (
-      <Alert bsStyle={this.props.view} onDismiss={this.hide} className='alertContainer' >
-        <p className='alertText'>{this.props.message}</p>
-      </Alert>
-    );
-  }
+      setTimeout(this.hide, 4000);
+      return (
+        <Alert bsStyle={this.props.view} onDismiss={this.hide} className='alertContainer' >
+          <p className='alertText'>{this.props.message}</p>
+        </Alert>
+      );
+    }
     return null; 
-}
+  }
 }
 
 const mapStatetoProps = state => ({
