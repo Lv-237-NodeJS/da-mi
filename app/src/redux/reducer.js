@@ -14,6 +14,7 @@ import editEvent from 'src/components/EventsModalForm/editEventReducer';
 const initialState = {
   gifts: [],
   events: [],
+  myInvitations: [],
   guests: [],
   data: {},
   current: {},
