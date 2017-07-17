@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as deleteEventActions from 'src/redux/deleteEventReducers';
+import * as deleteEventActions from './deleteEventActions';
 import './DeleteEventModal.scss';
 
 class DeleteEventModal extends React.Component {
