@@ -3,6 +3,7 @@ import { Row, Col, Image, FormGroup, ControlLabel, Form, FormControl, Button, Bu
   Tabs, Tab, Panel } from 'react-bootstrap';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import moment from 'moment';
+import { FileUploader } from 'src/components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as profileActions from './profileActions';
@@ -126,6 +127,10 @@ class Profile extends React.Component {
                   <Col md={4} className='text-center'>
                     <FormGroup key='avatar'>
                       <Image id='img-circle-avatar' src={profile.avatar} />
+                      <h6>Upload a different photo</h6>
+                      <input type='file' className='form-control' 
+                        onChange={this.handleChangeImage} />
+                      <FileUploader />
                     </FormGroup>
                   </Col>
                   <Col md={6}>
