@@ -1,16 +1,22 @@
 import { request, API } from 'src/helper';
 
-const SHOW_MODAL = 'SHOW_MODAL';
-const MESSAGE_MODAL = 'MESSAGE_MODAL';
+const SHOW_ALERT = 'SHOW_ALERT';
+const MESSAGE_ALERT = 'MESSAGE_ALERT';
+const VIEW_ALERT = 'VIEW_ALERT'
 
-const showModal = show => ({
-  type: SHOW_MODAL,
+export const showAlert = show => ({
+  type: SHOW_ALERT,
   show: show
 });
 
-const messageModal = message => ({
-  type: MESSAGE_MODAL,
+const messageAlert = message => ({
+  type: MESSAGE_ALERT,
   message: message
+});
+
+const messageView = view => ({
+  type: VIEW_ALERT,
+  view: view
 });
 
 export const contactInfo = data => dispatch =>
@@ -18,7 +24,8 @@ export const contactInfo = data => dispatch =>
     .post(`${API.URL}/api/support`)
     .send(data)
     .end((err, res) => {
-      (res.status == 200) && dispatch(messageModal(JSON.parse(res.text).message)) &&
-      dispatch(showModal(true)) || dispatch(messageModal(JSON.parse(res.text).message)) &&
-      dispatch(showModal(true));
+      (res.status == 200) && dispatch(messageAlert(JSON.parse(res.text).message)) &&
+      dispatch(messageView(JSON.parse(res.text).view)) && dispatch(showAlert(true)) ||
+      dispatch(messageAlert(JSON.parse(res.text).message)) && 
+      dispatch(messageView(JSON.parse(res.text).view)) && dispatch(showAlert(true));
     });

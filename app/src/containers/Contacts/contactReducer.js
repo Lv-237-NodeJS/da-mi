@@ -1,8 +1,10 @@
 const changeReducer = {
-  SHOW_MODAL: (action, state) =>
+  SHOW_ALERT: (state, action) =>
     Object.assign({}, state, {show: action.show}),
-  MESSAGE_MODAL: (action, state) =>
-    Object.assign({}, state, {message: action.message})
+  MESSAGE_ALERT: (state, action) =>
+    Object.assign({}, state, {message: action.message, time: action.time}),
+  VIEW_ALERT: (state, action) =>
+    Object.assign({}, state, {view: action.view})
 };
 
 export default changeReducer;

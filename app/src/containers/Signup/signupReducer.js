@@ -1,8 +1,10 @@
 const signupReducer = {
-  SHOW_MODAL: (state, action) =>
+  SHOW_ALERT: (state, action) =>
     Object.assign({}, state, {show: action.show}),
-  MESSAGE_MODAL: (state, action) =>
-    Object.assign({}, state, {message: action.message})
+  MESSAGE_ALERT: (state, action) =>
+    Object.assign({}, state, {message: action.message, time: action.time}),
+  VIEW_ALERT: (state, action) =>
+    Object.assign({}, state, {view: action.view})
 };
 
 export default signupReducer;
