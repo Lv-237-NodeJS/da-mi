@@ -7,6 +7,7 @@ import { FileUploader } from 'src/components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as profileActions from './profileActions';
+import * as fileUploaderAcions from 'src/components/FileUploader/fileUploaderActions';
 import './profile.scss';
 
 const FieldGroup = ({id, label, ...props}) => (
@@ -42,7 +43,7 @@ class Profile extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.actions.updateProfile(this.state);
+    this.props.actions.updateProfile(...this.state, {avatar: this.props.fileUrl});
     this.setState({
       open: false
     });
@@ -58,19 +59,6 @@ class Profile extends React.Component {
     this.setState({
       open: !this.state.open 
     });
-
-  handleChangeImage = e => {
-    const self = this;
-    const reader = new FileReader();
-    const file = e.target.files[0];
-
-    reader.onload = upload => {
-      self.setState({
-        avatar: upload.target.result
-      });
-    };
-    reader.readAsDataURL(file);
-  };
 
   datePickerFields = (param, birthdateString) => {
     return (
@@ -127,10 +115,6 @@ class Profile extends React.Component {
                   <Col md={4} className='text-center'>
                     <FormGroup key='avatar'>
                       <Image id='img-circle-avatar' src={profile.avatar} />
-                      <h6>Upload a different photo</h6>
-                      <input type='file' className='form-control' 
-                        onChange={this.handleChangeImage} />
-                      <FileUploader />
                     </FormGroup>
                   </Col>
                   <Col md={6}>
@@ -151,11 +135,7 @@ class Profile extends React.Component {
                 <Panel collapsible expanded={this.state.open}>
                   <div className='profile-panel'>
                     <Row>
-                      <Col md={5}>
-                        <h6>Upload a different photo</h6>
-                        <input type='file' className='form-control' 
-                          onChange={this.handleChangeImage} />
-                      </Col>
+                      <FileUploader />
                     </Row>  
                     <Row>
                       { Object.keys(fieldsName, profile).map(param => 
@@ -186,7 +166,8 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  profile: state.profile.data
+  profile: state.profile.data,
+  fileUrl: state.fileUploader.fileUrl.url
 });
 
 const mapDispatchToProps = dispatch => ({

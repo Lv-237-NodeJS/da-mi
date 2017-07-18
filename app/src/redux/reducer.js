@@ -11,6 +11,7 @@ import gift from 'src/containers/Gift/giftReducer';
 import login from 'src/components/Login/loginReducer';
 import editEvent from 'src/components/EventsModalForm/editEventReducer';
 import deleteEvent from 'src/components/DeleteEventModal/deleteEventReducer';
+import fileUploader from 'src/components/FileUploader/fileUploaderReducer';
 
 const initialState = {
   gifts: [],
@@ -27,6 +28,7 @@ const initialState = {
   isCreated: false,
   isDeleted: false,
   error: null,
+  fileUrl: ''
 };
 
 const resolve = reducerFunctions => (state = initialState, action) => {
@@ -46,5 +48,6 @@ export default combineReducers({
   contactInfo: resolve(contactInfo),
   gift: resolve(gift),
   deleteEvent: resolve(deleteEvent),
+  fileUploader: resolve(fileUploader),
   routing: routerReducer
 });

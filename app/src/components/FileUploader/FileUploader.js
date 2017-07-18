@@ -1,22 +1,31 @@
 const React = require('react');
 const Dropzone = require('react-dropzone');
-import  { API, request }  from 'src/helper';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as fileUploaderActions from './fileUploaderActions';
+import './fileUploader.scss';
 
 class FileUploader extends React.Component{
-  onDrop = 
-  (files, signedRequest, url) => {    
-    request()
-      .post(`${API.URL}/api/upload`)
-      .attach('fileToUpload', files[0])
-      .end((err, res) =>  
-        err && (err) ||
-        res.send('File uploaded!')) ;
+  constructor(props) {
+    super(props);
+    this.state = {
+      fileUrl: ''
+    };
+  }
+
+
+  
+  onDrop = (files) => {
+    this.props.actions.uploadFile(files);
+    this.setState({
+      fileUrl: this.props.fileName
+    });
   }
   
   render(){
     return (
       <div>
-        <Dropzone onDrop={this.onDrop} multiple={false}>
+        <Dropzone className='file-uploader' onDrop={this.onDrop} multiple={false}>
           <div>Try dropping a file here, or click to select a file to upload.</div>
         </Dropzone>
       </div>
@@ -24,4 +33,12 @@ class FileUploader extends React.Component{
   }
 }
 
-export default FileUploader;
+const mapStateToProps = state => ({
+  fileUrl: state.fileUrl
+});
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators(fileUploaderActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FileUploader);
