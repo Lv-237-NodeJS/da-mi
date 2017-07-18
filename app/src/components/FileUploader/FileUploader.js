@@ -20,7 +20,7 @@ class FileUploader extends React.Component{
     });
   }
   
-  render(){
+  render() {
     return (
       <div>
         <Dropzone className='file-uploader' onDrop={this.onDrop} multiple={false}>
