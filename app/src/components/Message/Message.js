@@ -2,6 +2,7 @@ import React from 'react';
 import { Alert, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { ALERTS } from 'src/helper';
 import * as showActions from 'src/containers/Signup/signupActions';
 import './Message.scss';
 
@@ -11,15 +12,14 @@ class Message extends React.Component {
   };
   
   render() {
-    if (this.props.show) {
-      setTimeout(this.hide, 4000);
-      return (
-        <Alert bsStyle={this.props.view} onDismiss={this.hide} className='alertContainer' >
+    return (
+      <div>
+        {this.props.show && setTimeout(this.hide, ALERTS.TIME) &&
+        <Alert bsStyle={this.props.view} onDismiss={this.hide} className='alertContainer'>
           <p className='alertText'>{this.props.message}</p>
-        </Alert>
-      );
-    }
-    return null; 
+        </Alert>}
+      </div>
+    );
   }
 }
 
