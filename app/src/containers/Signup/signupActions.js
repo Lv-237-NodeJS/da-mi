@@ -32,9 +32,9 @@ export const signupUser = (email, password) => {
       .post(`${API.URL}/api/users`)
       .send(data)
       .end((err, res) => {
-        (res.status == 201) && (dispatch(messageAlert(JSON.parse(res.text).message, 5000)) &&
-        dispatch(messageView(JSON.parse(res.text).view)) && dispatch(showAlert(true))) &&
-        browserHistory.push('/') || dispatch(messageAlert(JSON.parse(res.text).message, 5000)) &&
-        dispatch(messageView(JSON.parse(res.text).view)) && dispatch(showAlert(true));
+        dispatch(messageAlert(JSON.parse(res.text).message)) &&
+        dispatch(messageView(JSON.parse(res.text).view)) &&
+        dispatch(showAlert(true)),
+        (res.status == 201) && browserHistory.push('/');
       });
 };
