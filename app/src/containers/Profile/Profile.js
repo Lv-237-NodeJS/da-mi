@@ -43,7 +43,7 @@ class Profile extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.actions.updateProfile(...this.state, {avatar: this.props.fileUrl});
+    this.props.actions.updateProfile({...this.state, avatar: this.props.fileUrl});
     this.setState({
       open: false
     });
