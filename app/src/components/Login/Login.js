@@ -7,12 +7,9 @@ import { bindActionCreators } from 'redux';
 import * as loginActions from './loginActions';
 import './Login.scss';
 
-const InputGroup = ({id, label, ...props}) => (
+const InputGroup = ({id,  ...props}) => (
   <FormGroup controlId={id}>
-    <Col componentClass={ControlLabel} sm={12} md={3}>
-      {label}
-    </Col>
-    <Col sm={12} md={9}>
+    <Col sm={12} md={12}>
       <FormControl {...props} required/>
     </Col>
   </FormGroup>
@@ -47,14 +44,13 @@ export class Login extends React.Component {
             <InputGroup
               key={param}
               id={param}
-              label={param.toUpperCase()}
               type={param}
               placeholder={param.toUpperCase()}
               value={this.state.param}
               onChange={this.handleChange(param)} />
           )}
           <FormGroup>
-            <Col smOffset={0} sm={12} mdOffset={3} md={9}>
+            <Col  sm={12} md={12} className='login-button'>
               <Button type='submit' bsSize='large' className='main-button'>
                 Login
               </Button>
@@ -64,9 +60,9 @@ export class Login extends React.Component {
             </Col>
           </FormGroup>
         </Form>
-        <p className='text-center'>OR</p>
-        <Link to='/signup' className='signup-button' >
-          <Button bsSize='large' block>SIGN UP</Button>
+        <p className='text-center text-or'>OR</p>
+        <Link to='/signup' className='signup-button'>
+          <Button bsSize='large' className='signup' block>SIGN UP</Button>
         </Link>
       </div>
     );

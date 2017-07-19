@@ -1,4 +1,12 @@
 .login-form {
   height: 200px;
-  margin: 10px 0 50px;
+}
+
+.login-form, .signup, .text-or {
+  max-width: 240px;
+  margin: 10px auto;
+}
+
+.login-button {
+  text-align:center;
 }
