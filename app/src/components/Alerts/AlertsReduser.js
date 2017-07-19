@@ -1,4 +1,4 @@
-const changeReducer = {
+const Alert = {
   SHOW_ALERT: (state, action) =>
     Object.assign({}, state, {show: action.show}),
   MESSAGE_ALERT: (state, action) =>
@@ -7,4 +7,4 @@ const changeReducer = {
     Object.assign({}, state, {view: action.view})
 };
 
-export default changeReducer;
+export default Alert;

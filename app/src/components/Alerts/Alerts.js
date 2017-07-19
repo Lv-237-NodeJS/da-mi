@@ -3,10 +3,10 @@ import { Alert, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ALERTS } from 'src/helper';
-import * as showActions from 'src/containers/Signup/signupActions';
-import './Message.scss';
+import * as showActions from './AlertsActions';
+import './Alerts.scss';
 
-class Message extends React.Component {
+class Alerts extends React.Component {
   hide = () => {
     this.props.actions.showAlert(false);
   };
@@ -24,13 +24,13 @@ class Message extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  message: state.signup.message,
-  show: state.signup.show,
-  view: state.signup.view
+  message: state.alerts.message,
+  show: state.alerts.show,
+  view: state.alerts.view
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(showActions, dispatch)
 });
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Message);
+export default connect(mapStatetoProps, mapDispatchToProps)(Alerts);

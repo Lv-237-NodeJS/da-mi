@@ -1,18 +1,17 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import signup from 'src/containers/Signup/signupReducer';
 import event from 'src/containers/Event/eventReducer';
 import profile from 'src/containers/Profile/profileReducer';
 import eventsList from 'src/containers/Events/eventsListReducer';
 import invite from 'src/containers/Event/inviteReducer';
 import newEvent from 'src/containers/NewEvent/newEventReducer';
-import contactInfo from 'src/containers/Contacts/contactReducer';
 import gift from 'src/containers/Gift/giftReducer';
 import login from 'src/components/Login/loginReducer';
 import editEvent from 'src/components/EventsModalForm/editEventReducer';
 import deleteEvent from 'src/components/DeleteEventModal/deleteEventReducer';
 import fileUploader from 'src/components/FileUploader/fileUploaderReducer';
 import comments from 'src/containers/Comments/commentReducer';
+import alerts from 'src/components/Alerts/AlertsReduser';
 
 const initialState = {
   gifts: [],
@@ -44,14 +43,13 @@ export default combineReducers({
   event: resolve(event),
   profile: resolve(profile),
   eventsList: resolve(eventsList),
-  signup: resolve(signup),
   invite: resolve(invite),
   newEvent: resolve(newEvent),
   editEvent: resolve(editEvent),
-  contactInfo: resolve(contactInfo),
   gift: resolve(gift),
   deleteEvent: resolve(deleteEvent),
   fileUploader: resolve(fileUploader),
   comments: resolve(comments),
+  alerts: resolve(alerts),
   routing: routerReducer
 });

@@ -2,8 +2,8 @@ import React from 'react';
 import { FormGroup, ControlLabel, FormControl, Button, Form, HelpBlock } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from './signupActions';
-import { Message } from 'src/components';
+import * as showActions from 'src/components/Alerts/AlertsActions';
+import { Alerts } from 'src/components';
 import { messages } from 'src/helper';
 import './Signup.scss';
 
@@ -76,7 +76,7 @@ class Signup extends React.Component {
     };
     return (
       <div className='containerLog'>
-        <Message />
+        <Alerts />
         <Form className='Signup' onSubmit={this.handleButtonClick}>
           { Object.keys(inputsName).map(param =>
             <FieldGroup
@@ -103,7 +103,7 @@ class Signup extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  signup: state.signup
+  alerts: state.alerts
 });
 
 const mapDispatchToProps = dispatch => ({
