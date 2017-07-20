@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal, Button, FormGroup, FormControl, ControlLabel
+import { Modal, Button, FormGroup, FormControl, ControlLabel, Checkbox
 } from 'react-bootstrap';
 import './editGift.scss';
 
@@ -14,7 +14,10 @@ export default class EditGift extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {...this.props.gift, showModal: false};
+    this.state = {...this.props.gift, 
+      showModal: false, 
+      checked: this.props.gift.status === 'hasOneDonor'
+    };
   }
 
   inputs = {
@@ -27,6 +30,16 @@ export default class EditGift extends React.Component {
     this.setState({
       [stateName]: e.target.value
     });
+  };
+
+  handleCheck = () => {
+    this.setState({checked: !this.state.checked});
+  };
+
+  handleCheckbox = e => {
+    this.setState(!this.state.checked && {status: 'hasOneDonor'} || 
+      {status: 'hasMultipleDonors'});
+    this.handleCheck();
   };
 
   textFields = (param, inputs) => (
@@ -72,6 +85,14 @@ export default class EditGift extends React.Component {
         {Object.keys(this.inputs).map(param =>
           this.textFields(param, this.inputs)
         )}
+        <div className='gift-checkbox'>
+          <Checkbox 
+            checked={this.state.checked}
+            inline 
+            onChange={this.handleCheckbox}>
+              Only one person can check this gift
+          </Checkbox>
+        </div>
         <FieldGroup
           id="image"
           type="file"
