@@ -13,20 +13,34 @@ import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
   <ListGroupItem>{guest}
-    <Button
-      {...props}
-      type='button'
-      className='guests-delete-btn pull-right glyphicon glyphicon-trash'
-      bsStyle='danger'>
-    </Button>
+    {props['data-show'] &&
+      <Button
+        {...props}
+        type='button'
+        className='guests-delete-btn pull-right glyphicon glyphicon-trash'
+        bsStyle='danger'>
+      </Button>
+    }
   </ListGroupItem>
 );
 
 class EventDetails extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      status: null
+    };
+  }
+
   componentWillMount() {
     const {params: {id}, actions, guestActions} = this.props;
     actions.fetchEventById(id);
     guestActions.getEmails(id);
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    this.setState({status: nextProps.status});
   }
 
   sendInvites = () => {
@@ -41,24 +55,53 @@ class EventDetails extends React.Component {
     const guest = guests[i];
     guestActions.deleteGuest(id, guest.id);
   };
+  
+  changeGuestStatus = status => () => {
+    const {guestActions, params: {id}} = this.props;
+    guestActions.changeGuestStatus(status, id);
+    this.setState({status});
+  };
 
   render() {
-    const {params: {id}, event, guests} = this.props;
+    const guestStatus = {
+      going: 'Going',
+      notgoing: 'Not Going'
+    };
+    const {params: {id}, event, guests, location} = this.props;
+    const showButtons = location.pathname.includes('/events/');
     const formattedDate = moment(event.date_event, 'x').format('DD MMM YYYY hh:mm a');
+    const isCurrentStatus = status => this.state.status === status;
+
     return (
       <div className='eventDetails'>
         <Col sm={6}>
-          <Tabs defaultActiveKey={1} id='uncontrolled-tab-example'>
+          <Tabs defaultActiveKey={1} id='event-tab'>
             <Tab eventKey={1} title='Event Details'>
               <PageHeader className='text-center'>{event.name}</PageHeader>
               <ButtonToolbar>
-                <EventsModal eventId={event.id} />
-                <DeleteEventModal eventId={event.id} />
-                <Button
-                  type='button'
-                  bsStyle='primary'
-                  onClick={this.sendInvites}>
-                  Send Invites</Button>
+                {showButtons &&
+                <div>
+                  <EventsModal eventId={event.id} />
+                  <DeleteEventModal eventId={event.id} />
+                  <Button
+                    type='button'
+                    bsStyle='primary'
+                    onClick={this.sendInvites}>
+                    Send Invites</Button>
+                </div> ||
+                <div>
+                  {Object.keys(guestStatus).map(param =>
+                    <Button 
+                      key={param}
+                      className={`guest-status-btn ${isCurrentStatus(param) && 'current-guest-status-btn'}`}
+                      onClick={this.changeGuestStatus(param)}>
+                      {isCurrentStatus(param) &&
+                      <span className='glyphicon glyphicon-ok'></span>}
+                      {guestStatus[param]}
+                    </Button>
+                  )}
+                </div>
+                }
               </ButtonToolbar>
               <div>
                 <h3>Details:</h3>
@@ -71,10 +114,11 @@ class EventDetails extends React.Component {
               <ListGroup>
                 <ListGroupItem className='clearfix'>
                   <h4 className='pull-left'>Guests list</h4>
-                  <GuestsModal eventId={id} />
+                  {showButtons && <GuestsModal eventId={id} />}
                 </ListGroupItem>
                 {guests.length && guests.map((guest, index) =>
                   <GuestsList
+                    data-show={showButtons}
                     key={index}
                     guest={guest.email}
                     onClick={this.deleteGuestEmail(index)} />) ||
@@ -84,7 +128,7 @@ class EventDetails extends React.Component {
             </Tab>
             <Tab eventKey={3} title='Gifts'>
               <h2>Gift list</h2>
-              <Gift id={id}/>
+              <Gift id={id} showButtons={showButtons} />
             </Tab>
           </Tabs>
         </Col>
@@ -97,6 +141,7 @@ const mapStateToProps = state => ({
   event: state.event.current,
   guests: state.invite.guests,
   owner: state.profile.data,
+  status: state.event.guestStatus
 });
 
 const mapDispatchToProps = dispatch => ({
