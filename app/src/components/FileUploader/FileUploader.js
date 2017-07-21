@@ -13,7 +13,7 @@ class FileUploader extends React.Component{
     };
   }
   
-  onDrop = (files) => {
+  onDrop = files => {
     this.props.actions.uploadFile(files);
     this.setState({
       fileUrl: this.props.fileName
