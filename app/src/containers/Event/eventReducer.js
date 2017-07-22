@@ -9,6 +9,7 @@ const eventReducer = {
   FETCH_EVENT_BY_ID_FULFILLED: (state, action) => ({
     ...state,
     current: action.payload,
+    guestStatus: action.guestStatus
   }),
   FETCH_EVENT_BY_ID_REJECTED: (state, action) => ({
     ...state,

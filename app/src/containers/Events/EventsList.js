@@ -19,7 +19,7 @@ class EventsList extends React.Component {
     const eventNode = events.map(item => {
       const formattedDate = moment(item.date_event, 'x').format('DD MMM YYYY hh:mm a');
       return (
-        <Link to={`/events/${item.id}`} className='list-group-item' key={item.id}>
+        <Link to={`${location}/${item.id}`} className='list-group-item' key={item.id}>
           <ListGroup>
             <ListGroupItem header={item.name}>{formattedDate}</ListGroupItem>
           </ListGroup>  

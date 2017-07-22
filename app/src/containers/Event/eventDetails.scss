@@ -18,3 +18,16 @@
   font-weight: bold;
   margin-right: 10px;
 }
+
+.btn.current-guest-status-btn,
+.btn.current-guest-status-btn:focus {
+  background: $puerto-rico;
+}
+
+.btn.guest-status-btn {
+  width: 120px;
+
+  .glyphicon {
+    margin-right: 5px;
+  }
+}

@@ -21,14 +21,15 @@ export default class GiftList extends React.Component {
             {!!gift.link && <p><span className='gift-caption'>Link:</span>
               <a href={gift.link} target='_blank'>link to present</a>
             </p>}
+            {this.props.showButtons &&
             <ButtonToolbar>
-              <EditGift id={this.props.id} gift={gift} actions={this.props.actions}/>
+              <EditGift id={this.props.id} gift={gift} actions={this.props.actions} />
               <Button bsStyle='danger' bsSize='small' onClick={handleDelete}>
                 Delete
               </Button>
               {gift.is_available === true &&
               <Button bsStyle='success' bsSize='small'>Choose</Button>}
-            </ButtonToolbar>
+            </ButtonToolbar>}
           </div>
         </Panel>
       );

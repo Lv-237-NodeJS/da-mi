@@ -4,6 +4,7 @@ const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
 const DELETE_GUEST = 'DELETE_GUEST';
 const SAVE_EMAILS = 'SAVE_EMAILS';
+const CHANGE_GUEST_STATUS = 'CHANGE_GUEST_STATUS';
 
 const getGuests = (err, text) => (!err && JSON.parse(text).guests);
 
@@ -63,3 +64,9 @@ export const saveEmails = (emails, eventId) => {
       });
   };
 };
+
+export const changeGuestStatus = (status, eventId) => dispatch =>
+  request()
+    .put(`${API.URL}/api/event/${eventId}/guest/status`)
+    .send({status})
+    .end();

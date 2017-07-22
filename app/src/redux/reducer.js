@@ -28,7 +28,8 @@ const initialState = {
   isCreated: false,
   isDeleted: false,
   error: null,
-  fileUrl: ''
+  fileUrl: '',
+  guestStatus: null
 };
 
 const resolve = reducerFunctions => (state = initialState, action) => {
