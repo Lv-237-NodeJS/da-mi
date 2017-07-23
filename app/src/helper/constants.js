@@ -20,7 +20,7 @@ const MAPDATA = {
 };
 
 const ALERTS = {
-  TIME: 4000
+  TIME: 3000
 };
 
 API.URL = API.HOST + API.PORT;

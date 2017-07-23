@@ -9,6 +9,7 @@ import { Gift } from 'src/containers';
 import * as eventActions from './eventActions';
 import * as inviteActions from './inviteActions';
 import { GuestsModal, EventsModal, DeleteEventModal } from 'src/components';
+import { Alerts } from 'src/components';
 import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
@@ -74,6 +75,7 @@ class EventDetails extends React.Component {
 
     return (
       <div className='eventDetails'>
+        <Alerts />
         <Col sm={6}>
           <Tabs defaultActiveKey={1} id='event-tab'>
             <Tab eventKey={1} title='Event Details'>
@@ -146,7 +148,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(eventActions, dispatch),
-  guestActions: bindActionCreators(inviteActions, dispatch),
+  guestActions: bindActionCreators(inviteActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);

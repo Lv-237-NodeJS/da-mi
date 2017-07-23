@@ -8,5 +8,8 @@ module.exports = {
   textareaError: 'Must be at least 4 characters',
   noConnection: 'No connection with server',
   sendMessage: 'Your message is sent',
-  maxTextLength: 'Maximum 150 characters are allowed'
+  maxTextLength: 'Maximum 150 characters are allowed',
+  deleteGuest: 'Guest is delete',
+  success: 'success',
+  danger: 'danger'
 };

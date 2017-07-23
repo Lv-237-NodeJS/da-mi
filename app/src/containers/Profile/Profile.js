@@ -9,6 +9,7 @@ import { bindActionCreators } from 'redux';
 import * as profileActions from './profileActions';
 import * as fileUploaderAcions from 'src/components/FileUploader/fileUploaderActions';
 import './profile.scss';
+import { Alerts } from 'src/components';
 
 const FieldGroup = ({id, label, ...props}) => (
   <div>
@@ -106,6 +107,7 @@ class Profile extends React.Component {
     };
     return (
       <div className='profile-details'>
+        <Alerts />
         <Col sm={8} className='container'>
           <Tabs defaultActiveKey={1} id='uncontrolled-tab'>
             <Tab eventKey={1} title='Profile Info'>

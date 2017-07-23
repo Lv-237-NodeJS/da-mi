@@ -10,10 +10,9 @@ export const showAlert = show => ({
   show: show
 });
 
-const messageAlert = (message, time) => ({
+const messageAlert = message => ({
   type: MESSAGE_ALERT,
   message: message,
-  time: time
 });
 
 const messageView = view => ({

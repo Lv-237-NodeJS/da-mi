@@ -46,7 +46,7 @@ export class Login extends React.Component {
               id={param}
               type={param}
               placeholder={param.toUpperCase()}
-              value={this.state.param}
+              value={this.state[param]}
               onChange={this.handleChange(param)} />
           )}
           <FormGroup>
