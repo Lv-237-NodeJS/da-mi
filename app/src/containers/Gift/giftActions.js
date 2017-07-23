@@ -44,7 +44,7 @@ const createGiftSuccess = res => ({
 
 const createGiftFail = err => ({
   type: CREATE_GIFT_FAIL,
-  payload: res
+  payload: err
 });
 
 const updateGiftSuccess = res => ({
@@ -54,7 +54,7 @@ const updateGiftSuccess = res => ({
 
 const updateGiftFail = err => ({
   type: UPDATE_GIFT_FAIL,
-  payload: res
+  payload: err
 });
 
 const deleteGiftSuccess = giftId => ({

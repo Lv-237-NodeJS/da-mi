@@ -15,11 +15,8 @@ class ProfileDropDown extends React.Component {
 
   render() {
     const {profile, actions} = this.props;
-        console.log('-----profile-------', profile);
-        console.log('-----action-------', actions);
     const userName = () => {
       return (
-        console.log('---------name---', profile.first_name),
         (profile.first_name && profile.last_name) ?
           `${profile.first_name} ${profile.last_name}` : profile.email
       );
