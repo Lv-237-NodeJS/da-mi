@@ -11,3 +11,4 @@ export EditGift from './EditGift/EditGift';
 export Signup from './Signup/Signup';
 export Profile from './Profile/Profile';
 export newEvent from './NewEvent/newEvent';
+export Comments from './Comments/Comments';

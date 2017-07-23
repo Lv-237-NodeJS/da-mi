@@ -7,5 +7,6 @@ module.exports = {
   nameError: 'The name of your event must have minimum 4 letters',
   textareaError: 'Must be at least 4 characters',
   noConnection: 'No connection with server',
-  sendMessage: 'Your message is sent'
+  sendMessage: 'Your message is sent',
+  maxTextLength: 'Maximum 150 characters are allowed'
 };

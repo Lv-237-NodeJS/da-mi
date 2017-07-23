@@ -67,7 +67,7 @@ class EventDetails extends React.Component {
       going: 'Going',
       notgoing: 'Not Going'
     };
-    const {params: {id}, event, guests, location} = this.props;
+    const {params: {id}, event, guests, location, owner} = this.props;
     const showButtons = location.pathname.includes('/events/');
     const formattedDate = moment(event.date_event, 'x').format('DD MMM YYYY hh:mm a');
     const isCurrentStatus = status => this.state.status === status;
@@ -128,7 +128,7 @@ class EventDetails extends React.Component {
             </Tab>
             <Tab eventKey={3} title='Gifts'>
               <h2>Gift list</h2>
-              <Gift id={id} showButtons={showButtons} />
+              <Gift id={id} showButtons={showButtons} author={owner} />
             </Tab>
           </Tabs>
         </Col>

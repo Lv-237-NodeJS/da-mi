@@ -1,11 +1,21 @@
 import React from 'react';
 import { Accordion, Panel, Button, ButtonToolbar } from 'react-bootstrap';
 import { EditGift } from 'src/containers';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as commentActions from 'src/containers/Comments/commentActions';
+import { Comments } from 'src/containers';
 import './giftList.scss';
 
-export default class GiftList extends React.Component {
+export  class GiftList extends React.Component {
+
   render() {
     const giftNode = this.props.gifts.map((gift, id) => {
+
+      const commentList = (e) => {
+        e.preventDefault();
+        this.props.actionsComment.retrieveComments(this.props.id, gift.id);
+      };
 
       const handleDelete = e => {
         e.preventDefault();
@@ -13,7 +23,7 @@ export default class GiftList extends React.Component {
       };
 
       return (
-        <Panel header={gift.name} eventKey={gift.id} key={gift.id}>
+        <Panel header={gift.name} eventKey={gift.id} key={gift.id}  onClick={commentList}>
           {!!gift.image &&
             <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}} />}
           <div className='desc-block'> 
@@ -31,6 +41,8 @@ export default class GiftList extends React.Component {
               <Button bsStyle='success' bsSize='small'>Choose</Button>}
             </ButtonToolbar>}
           </div>
+          <hr />
+          <Comments giftId={gift.id} eventId={this.props.id} author={this.props.author} />
         </Panel>
       );
     });
@@ -42,3 +54,11 @@ export default class GiftList extends React.Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  comments: state.comments.comments
+});
+const mapDispatchToProps = dispatch => ({
+  actionsComment: bindActionCreators(commentActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GiftList);

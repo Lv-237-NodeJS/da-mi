@@ -12,6 +12,7 @@ import login from 'src/components/Login/loginReducer';
 import editEvent from 'src/components/EventsModalForm/editEventReducer';
 import deleteEvent from 'src/components/DeleteEventModal/deleteEventReducer';
 import fileUploader from 'src/components/FileUploader/fileUploaderReducer';
+import comments from 'src/containers/Comments/commentReducer';
 
 const initialState = {
   gifts: [],
@@ -27,6 +28,7 @@ const initialState = {
   isUpdated: false,
   isCreated: false,
   isDeleted: false,
+  comments: [],
   error: null,
   fileUrl: '',
   guestStatus: null
@@ -50,5 +52,6 @@ export default combineReducers({
   gift: resolve(gift),
   deleteEvent: resolve(deleteEvent),
   fileUploader: resolve(fileUploader),
+  comments: resolve(comments),
   routing: routerReducer
 });
