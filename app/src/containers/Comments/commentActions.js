@@ -62,5 +62,5 @@ export const deleteComment = (eventId, giftId, comment_id) =>
       dispatch(messageView(JSON.parse(res.text).view));
       dispatch(showAlert(true));
       err && dispatch(deleteCommentFail(err)) ||
-      dispatch(deleteCommentSuccess(res))
+      dispatch(deleteCommentSuccess(res));
     });
