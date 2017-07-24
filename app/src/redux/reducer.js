@@ -11,7 +11,7 @@ import editEvent from 'src/components/EventsModalForm/editEventReducer';
 import deleteEvent from 'src/components/DeleteEventModal/deleteEventReducer';
 import fileUploader from 'src/components/FileUploader/fileUploaderReducer';
 import comments from 'src/containers/Comments/commentReducer';
-import alerts from 'src/components/Alerts/AlertsReduser';
+import alerts from 'src/components/Alerts/AlertsReducer';
 
 const initialState = {
   gifts: [],

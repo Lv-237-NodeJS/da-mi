@@ -1,26 +1,10 @@
 import { browserHistory } from 'react-router';
 import { API, request } from 'src/helper';
+import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
+ showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
 
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
 const CREATE_NEW_EVENT_FAILURE = 'CREATE_NEW_EVENT_FAILURE';
-const SHOW_ALERT = 'SHOW_ALERT';
-const MESSAGE_ALERT = 'MESSAGE_ALERT';
-const VIEW_ALERT = 'VIEW_ALERT';
-
-export const showAlert = show => ({
-  type: SHOW_ALERT,
-  show: show
-});
-
-const messageAlert = message => ({
-  type: MESSAGE_ALERT,
-  message: message
-});
-
-const messageView = view => ({
-  type: VIEW_ALERT,
-  view: view
-});
 
 const createNewEventSuccess = res => {
   const eventId = res.id;
@@ -45,6 +29,6 @@ export const createNewEvent = event => dispatch =>
       dispatch(messageView(JSON.parse(res.text).view));
       dispatch(showAlert(true));
       (err || !res.ok) &&
-      dispatch(createNewEventFailure(JSON.parse(res.text).eror)) ||
+      dispatch(createNewEventFailure(JSON.parse(res.text).error)) ||
       dispatch(createNewEventSuccess(JSON.parse(res.text).event));
     });

@@ -10,12 +10,12 @@ export const showAlert = show => ({
   show: show
 });
 
-const messageAlert = message => ({
+export const messageAlert = message => ({
   type: MESSAGE_ALERT,
   message: message,
 });
 
-const messageView = view => ({
+export const messageView = view => ({
   type: VIEW_ALERT,
   view: view
 });

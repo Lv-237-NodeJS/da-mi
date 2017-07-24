@@ -1,30 +1,14 @@
 import { API, request, messages } from 'src/helper';
+import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
+ showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
 
 const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
 const DELETE_GUEST = 'DELETE_GUEST';
 const SAVE_EMAILS = 'SAVE_EMAILS';
 const CHANGE_GUEST_STATUS = 'CHANGE_GUEST_STATUS';
-const SHOW_ALERT = 'SHOW_ALERT';
-const MESSAGE_ALERT = 'MESSAGE_ALERT';
-const VIEW_ALERT = 'VIEW_ALERT';
 
 const getGuests = (err, text) => (!err && JSON.parse(text).guests);
-
-export const showAlert = show => ({
-  type: SHOW_ALERT,
-  show: show
-});
-
-const messageAlert = message => ({
-  type: MESSAGE_ALERT,
-  message: message
-});
-
-const messageView = view => ({
-  type: VIEW_ALERT,
-  view: view
-});
 
 const invites = () => ({
   type: SEND_INVITES

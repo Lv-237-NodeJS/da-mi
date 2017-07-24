@@ -1,4 +1,6 @@
 import { API, request, messages } from 'src/helper';
+import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
+ showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
 
 const FETCH_GIFTS_SUCCESS = 'FETCH_GIFTS_SUCCESS';
 const FETCH_GIFTS_FAIL = 'FETCH_GIFTS_FAIL';
@@ -8,24 +10,6 @@ const DELETE_GIFT_SUCCESS = 'DELETE_GIFT_SUCCESS';
 const DELETE_GIFT_FAIL = 'DELETE_GIFT_FAIL';
 const UPDATE_GIFT_SUCCESS = 'UPDATE_GIFT_SUCCESS';
 const UPDATE_GIFT_FAIL = 'UPDATE_GIFT_FAIL';
-const SHOW_ALERT = 'SHOW_ALERT';
-const MESSAGE_ALERT = 'MESSAGE_ALERT';
-const VIEW_ALERT = 'VIEW_ALERT';
-
-export const showAlert = show => ({
-  type: SHOW_ALERT,
-  show: show
-});
-
-const messageAlert = message => ({
-  type: MESSAGE_ALERT,
-  message: message
-});
-
-const messageView = view => ({
-  type: VIEW_ALERT,
-  view: view
-});
 
 const fetchGiftsSuccess = res => ({
   type: FETCH_GIFTS_SUCCESS,

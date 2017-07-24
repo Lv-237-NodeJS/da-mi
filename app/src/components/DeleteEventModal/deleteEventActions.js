@@ -1,26 +1,10 @@
 import { API, request } from 'src/helper';
 import { browserHistory } from 'react-router';
+import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
+ showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
 
 const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
 const DELETE_EVENT_FAILURE = 'DELETE_EVENT_FAILURE';
-const SHOW_ALERT = 'SHOW_ALERT';
-const MESSAGE_ALERT = 'MESSAGE_ALERT';
-const VIEW_ALERT = 'VIEW_ALERT';
-
-export const showAlert = show => ({
-  type: SHOW_ALERT,
-  show: show
-});
-
-const messageAlert = message => ({
-  type: MESSAGE_ALERT,
-  message: message
-});
-
-const messageView = view => ({
-  type: VIEW_ALERT,
-  view: view
-});
 
 const deleteEventSuccess = res => {
   browserHistory.push('/events');
@@ -44,6 +28,6 @@ export const deleteEvent = eventId => dispatch =>
       dispatch(messageView(JSON.parse(res.text).view));
       dispatch(showAlert(true));
       (err || !res.ok) &&
-      dispatch(deleteEventFailure(JSON.parse(res.text).eror)) ||
+      dispatch(deleteEventFailure(JSON.parse(res.text).error)) ||
       dispatch(deleteEventSuccess(res));
     });
