@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventsActions from './eventsListActions';
 import './eventsList.scss';
+import { Alerts } from 'src/components';
 
 class EventsList extends React.Component {
 
@@ -36,6 +37,7 @@ class EventsList extends React.Component {
     return (
       <div className='eventsList'>
         <h2>Events</h2>
+        <Alerts />
         {!this.props.eventsList.length && noEvent || eventNode}
       </div>
     );

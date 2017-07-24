@@ -18,14 +18,14 @@ describe('React component <Login />', () => {
 
     expect(tree).toMatchSnapshot();
     const form = tree.children.filter(child => child.type === 'form')[0];
-    const email = form.children[0].children[1].children.filter(child => child.props.type ===
+    const email = form.children[0].children[0].children.filter(child => child.props.type ===
      'email')[0];
     email.props.onChange({
       target: {
         value: 'ivan.yarymovych@gmail.com'
       }
     });
-    const password = form.children[1].children[1].children.filter(child => child.props.type ===
+    const password = form.children[1].children[0].children.filter(child => child.props.type ===
      'password')[0];
     password.props.onChange({
       target: {

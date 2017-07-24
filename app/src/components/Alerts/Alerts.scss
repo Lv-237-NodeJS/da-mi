@@ -1,0 +1,16 @@
+@import '../../../styles/common';
+
+.alertText {
+  color: $black;
+  font-size: 12px;
+  text-align: center;
+  line-height: 12px;
+}
+
+.alertContainer {
+  width:270px;
+  z-index: 1;
+  position: absolute; 
+  top: 80px;
+  right: 20px;
+}

@@ -11,7 +11,7 @@ const CONTACTDATA = {
   '79018, Lviv, Fedkovycha Str.60A, block C': ' dami.suppor@gmail.com'
 };
 
-const MAPDATA ={
+const MAPDATA = {
   ZOOM: 17,
   NAME: 'Soft Serve',
   LAT: 49.832765,
@@ -19,6 +19,10 @@ const MAPDATA ={
   HEIGTH: '280px'
 };
 
+const ALERTS = {
+  TIME: 3000
+};
+
 API.URL = API.HOST + API.PORT;
 
-export { API, CONTACTDATA, MAPDATA };
+export { API, CONTACTDATA, MAPDATA, ALERTS };

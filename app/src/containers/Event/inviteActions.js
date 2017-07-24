@@ -1,4 +1,6 @@
-import { API, request } from 'src/helper';
+import { API, request, messages } from 'src/helper';
+import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
+  showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
 
 const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
@@ -32,6 +34,9 @@ export const sendInvites = (eventId, owner) => dispatch =>
     .post(`${API.URL}/api/event/${eventId}/guest/invite`)
     .send({owner})
     .end((err, res) => {
+      dispatch(messageAlert(JSON.parse(res.text).message));
+      dispatch(messageView(JSON.parse(res.text).view));
+      dispatch(showAlert(true));
       !err && dispatch(invites());
     });
 
@@ -49,6 +54,9 @@ export const deleteGuest = (eventId, userId) => dispatch =>
   request()
     .delete(`${API.URL}/api/event/${eventId}/guest/${userId}`)
     .end((err, res) => {
+      dispatch(messageAlert(messages.deleteGuest));
+      dispatch(messageView(messages.success));
+      dispatch(showAlert(true));
       !err && dispatch(guestDelete(userId));
     });
 
@@ -60,7 +68,10 @@ export const saveEmails = (emails, eventId) => {
       .send(data)
       .end((err, res) => {
         const guests = getGuests(err, res.text);
-        guests && dispatch(emailsSave(guests));
+        guests && dispatch(emailsSave(JSON.parse(res.text).guests));
+        dispatch(messageAlert(JSON.parse(res.text).message));
+        dispatch(messageView(JSON.parse(res.text).view));
+        dispatch(showAlert(true));
       });
   };
 };

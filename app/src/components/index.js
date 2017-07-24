@@ -1,7 +1,6 @@
 export Navigation from './Navigation/Navigation';
 export Login from './Login/Login';
 export ProfileDropDown from './ProfileDropDown/ProfileDropDown';
-export Message from './Message/Message';
 export Dashboard from './Dashboard/Dashboard';
 export GuestsModal from './GuestsModal/GuestsModal';
 export EventsModal from './EventsModal/EventsModal';
@@ -10,3 +9,4 @@ export EventsModalForm from './EventsModalForm/EventsModalForm';
 export DeleteEventModal from './DeleteEventModal/DeleteEventModal';
 export FileUploader from './FileUploader/FileUploader';
 export Maps from './Maps/Maps';
+export Alerts from './Alerts/Alerts';

@@ -15,14 +15,8 @@ exports[`React component <Login /> should render a Login with typed data, especi
     <div
       className="form-group"
     >
-      <label
-        className="col-md-3 col-sm-12 control-label"
-        htmlFor="email"
-      >
-        EMAIL
-      </label>
       <div
-        className="col-md-9 col-sm-12"
+        className="col-md-12 col-sm-12"
       >
         <input
           className="form-control"
@@ -31,21 +25,15 @@ exports[`React component <Login /> should render a Login with typed data, especi
           placeholder="EMAIL"
           required={true}
           type="email"
-          value={undefined}
+          value=""
         />
       </div>
     </div>
     <div
       className="form-group"
     >
-      <label
-        className="col-md-3 col-sm-12 control-label"
-        htmlFor="password"
-      >
-        PASSWORD
-      </label>
       <div
-        className="col-md-9 col-sm-12"
+        className="col-md-12 col-sm-12"
       >
         <input
           className="form-control"
@@ -54,7 +42,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
           placeholder="PASSWORD"
           required={true}
           type="password"
-          value={undefined}
+          value=""
         />
       </div>
     </div>
@@ -62,7 +50,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
       className="form-group"
     >
       <div
-        className="col-md-9 col-md-offset-3 col-sm-12 col-sm-offset-0"
+        className="login-button col-md-12 col-sm-12"
       >
         <button
           className="main-button btn btn-lg btn-default"
@@ -75,7 +63,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
     </div>
   </form>
   <p
-    className="text-center"
+    className="text-center text-or"
   >
     OR
   </p>
@@ -85,7 +73,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
     style={Object {}}
   >
     <button
-      className="btn btn-lg btn-default btn-block"
+      className="signup btn btn-lg btn-default btn-block"
       disabled={false}
       type="button"
     >
@@ -110,14 +98,8 @@ exports[`React component <Login /> should render a Login with typed data, especi
     <div
       className="form-group"
     >
-      <label
-        className="col-md-3 col-sm-12 control-label"
-        htmlFor="email"
-      >
-        EMAIL
-      </label>
       <div
-        className="col-md-9 col-sm-12"
+        className="col-md-12 col-sm-12"
       >
         <input
           className="form-control"
@@ -126,21 +108,15 @@ exports[`React component <Login /> should render a Login with typed data, especi
           placeholder="EMAIL"
           required={true}
           type="email"
-          value={undefined}
+          value="ivan.yarymovych@gmail.com"
         />
       </div>
     </div>
     <div
       className="form-group"
     >
-      <label
-        className="col-md-3 col-sm-12 control-label"
-        htmlFor="password"
-      >
-        PASSWORD
-      </label>
       <div
-        className="col-md-9 col-sm-12"
+        className="col-md-12 col-sm-12"
       >
         <input
           className="form-control"
@@ -149,7 +125,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
           placeholder="PASSWORD"
           required={true}
           type="password"
-          value={undefined}
+          value="P!assword!1"
         />
       </div>
     </div>
@@ -157,7 +133,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
       className="form-group"
     >
       <div
-        className="col-md-9 col-md-offset-3 col-sm-12 col-sm-offset-0"
+        className="login-button col-md-12 col-sm-12"
       >
         <button
           className="main-button btn btn-lg btn-default"
@@ -170,7 +146,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
     </div>
   </form>
   <p
-    className="text-center"
+    className="text-center text-or"
   >
     OR
   </p>
@@ -180,7 +156,7 @@ exports[`React component <Login /> should render a Login with typed data, especi
     style={Object {}}
   >
     <button
-      className="btn btn-lg btn-default btn-block"
+      className="signup btn btn-lg btn-default btn-block"
       disabled={false}
       type="button"
     >

@@ -3,8 +3,8 @@ import { Grid, Row, Col, PageHeader, FormGroup, FormControl, Button,
   Form, HelpBlock  } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as showActions from './contactActions';
-import { Maps, Message } from 'src/components';
+import * as showActions from 'src/components/Alerts/AlertsActions';
+import { Maps, Alerts  } from 'src/components';
 import { CONTACTDATA, messages }  from 'src/helper';
 import './Contacts.scss';
 
@@ -98,7 +98,7 @@ class Contacts extends React.Component {
 
     return (
       <Grid>
-        <Message />
+        <Alerts />
         <PageHeader className='text-center'>Contacts us</PageHeader>
         <Row className='show-grid'>
           <Col xs={12} sm={12} md={12} className='text-center'>
@@ -142,7 +142,7 @@ class Contacts extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  contactInfo: state.contactInfo
+  alerts: state.alerts
 });
 
 const mapDispatchToProps = dispatch => ({
