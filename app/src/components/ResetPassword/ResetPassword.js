@@ -26,9 +26,8 @@ class ResetPassword extends React.Component {
       newPassword: '',
       confirmation: '',
       isErrors: {
-        oldPassword: null,
         newPassword: null,
-        confirmation: null,
+        confirmation: null
       },
       enableButton: false
     };
