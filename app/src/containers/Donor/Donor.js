@@ -17,7 +17,7 @@ export class Donor extends React.Component {
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = state => ({
   donor: state.donor.donor
