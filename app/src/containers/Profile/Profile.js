@@ -9,7 +9,7 @@ import { bindActionCreators } from 'redux';
 import * as profileActions from './profileActions';
 import * as fileUploaderAcions from 'src/components/FileUploader/fileUploaderActions';
 import './profile.scss';
-import { Alerts } from 'src/components';
+import { Alerts, ResetPassword } from 'src/components';
 
 const FieldGroup = ({id, label, ...props}) => (
   <div>
@@ -159,6 +159,7 @@ class Profile extends React.Component {
               </Form>
             </Tab>
             <Tab eventKey={2} title='Security Settings'>
+              <ResetPassword />
             </Tab>
           </Tabs>
         </Col>
