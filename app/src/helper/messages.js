@@ -9,7 +9,7 @@ module.exports = {
   noConnection: 'No connection with server',
   sendMessage: 'Your message is sent',
   maxTextLength: 'Maximum 150 characters are allowed',
-  deleteGuest: 'Guest is delete',
+  deleteGuest: 'Guest is deleted',
   success: 'success',
   danger: 'danger'
 };
