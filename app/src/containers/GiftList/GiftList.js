@@ -20,8 +20,13 @@ export  class GiftList extends React.Component {
       const handleNodeCommentDonor = e => {
         e.preventDefault();
         this.props.actionsDonor.getDonor(this.props.id, gift.id);
-        this.props.actionsDonor.createDonor(this.props.id, gift.id);
         this.props.actionsComment.retrieveComments(this.props.id, gift.id);
+      };
+
+      const handleDonorCreate = e => {
+        e.preventDefault();
+        this.props.actionsDonor.createDonor(this.props.id, gift.id);
+        this.props.actionsDonor.getDonor(this.props.id, gift.id);
       };
 
       return (
@@ -43,7 +48,7 @@ export  class GiftList extends React.Component {
               </Button>
               {gift.is_available === true &&
               <Button bsStyle='success' bsSize='small'
-                onClick={handleNodeCommentDonor}>Choose</Button>}
+                onClick={handleDonorCreate}>Choose</Button>}
             </ButtonToolbar>}
           </div>
           <hr />
