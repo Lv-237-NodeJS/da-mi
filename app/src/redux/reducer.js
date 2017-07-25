@@ -12,6 +12,7 @@ import deleteEvent from 'src/components/DeleteEventModal/deleteEventReducer';
 import fileUploader from 'src/components/FileUploader/fileUploaderReducer';
 import comments from 'src/containers/Comments/commentReducer';
 import alerts from 'src/components/Alerts/AlertsReducer';
+import donor from 'src/containers/Donor/donorReducer';
 
 const initialState = {
   gifts: [],
@@ -30,7 +31,8 @@ const initialState = {
   comments: [],
   error: null,
   fileUrl: '',
-  guestStatus: null
+  guestStatus: null,
+  donor: {}
 };
 
 const resolve = reducerFunctions => (state = initialState, action) => {
@@ -51,5 +53,6 @@ export default combineReducers({
   fileUploader: resolve(fileUploader),
   comments: resolve(comments),
   alerts: resolve(alerts),
-  routing: routerReducer
+  routing: routerReducer,
+  donor: resolve(donor)
 });
