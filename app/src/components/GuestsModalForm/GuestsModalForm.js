@@ -35,7 +35,8 @@ class GuestsModalForm extends React.Component {
       initialEmail: '',
       key: null,
       error: null,
-      disabledBtn: true
+      disabledBtn: true,
+      disabledSave: true
     };
   }
   
@@ -66,7 +67,8 @@ class GuestsModalForm extends React.Component {
     this.state.email &&
       this.setState({
         inputs: [...this.state.inputs, this.state.email],
-        email: ''
+        email: '',
+        disabledSave: false
       });
   };
   
@@ -93,7 +95,8 @@ class GuestsModalForm extends React.Component {
 
   deleteEmail = index => () => {
     this.setState({
-      inputs: this.state.inputs.filter((email, emailIndex) => index !== emailIndex)
+      inputs: this.state.inputs.filter((email, emailIndex) => index !== emailIndex),
+      disabledSave: true
     });
   };
 
@@ -177,7 +180,8 @@ class GuestsModalForm extends React.Component {
             <Button
               className='main-button'
               type='submit'
-              bsSize='large'>Save</Button>
+              bsSize='large'
+              disabled={this.state.disabledSave}>Save</Button>
           </Col>
         </Col>
       </Form>

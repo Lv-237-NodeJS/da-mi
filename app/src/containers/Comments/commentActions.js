@@ -1,4 +1,6 @@
 import  { API, request }  from 'src/helper';
+import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
+  showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
 
 const CREATE_COMMENT_SUCCESS = 'CREATE_COMMENT_SUCCESS';
 const CREATE_COMMENT_FAILURE = 'CREATE_COMMENT_FAILURE';
@@ -55,6 +57,10 @@ export const createComment = (eventId, giftId, commentData) =>
 export const deleteComment = (eventId, giftId, comment_id) =>
   dispatch => request()
     .delete(`${API.URL}/api/event/${eventId}/gift/${giftId}/comment/${comment_id}`)
-    .end((err, res) => err &&
-      dispatch(deleteCommentFail(err)) ||
-      dispatch(deleteCommentSuccess(res)));
+    .end((err, res) => {
+      dispatch(messageAlert(JSON.parse(res.text).message));
+      dispatch(messageView(JSON.parse(res.text).view));
+      dispatch(showAlert(true));
+      err && dispatch(deleteCommentFail(err)) ||
+      dispatch(deleteCommentSuccess(res));
+    });

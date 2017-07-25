@@ -29,6 +29,23 @@ export const contactInfo = data => dispatch =>
       dispatch(messageView(JSON.parse(res.text).view)) && dispatch(showAlert(true));
     });
 
+export const resetPassword = (oldPassword, newPassword) => {
+  let data = {
+    oldPassword: oldPassword,
+    newPassword: newPassword
+  };
+
+  return dispatch =>
+    request()
+      .post(`${API.URL}/api/user/changepassword`)
+      .send(data)
+      .end((err, res) => {
+        dispatch(messageAlert(JSON.parse(res.text).message));
+        dispatch(messageView(JSON.parse(res.text).view));
+        dispatch(showAlert(true));
+      });
+};
+
 export const signupUser = (email, password) => {
   let data = {
     email: email,

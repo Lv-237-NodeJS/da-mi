@@ -10,3 +10,4 @@ export DeleteEventModal from './DeleteEventModal/DeleteEventModal';
 export FileUploader from './FileUploader/FileUploader';
 export Maps from './Maps/Maps';
 export Alerts from './Alerts/Alerts';
+export ResetPassword from './ResetPassword/ResetPassword';
