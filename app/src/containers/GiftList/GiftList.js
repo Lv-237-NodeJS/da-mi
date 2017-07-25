@@ -12,29 +12,21 @@ export  class GiftList extends React.Component {
   render() {
     const giftNode = this.props.gifts.map((gift, id) => {
 
-      const commentList = (e) => {
-        e.preventDefault();
-        this.props.actionsComment.retrieveComments(this.props.id, gift.id);
-      };
-
       const handleDelete = e => {
         e.preventDefault();
         this.props.actions.deleteGift(this.props.id, gift.id);
       };
 
-      const handleDonorList = e => {
+      const handleNodeCommentDonor = e => {
         e.preventDefault();
         this.props.actionsDonor.getDonor(this.props.id, gift.id);
-      };
-
-      const handleDonorCreate = e => {
-        e.preventDefault();
         this.props.actionsDonor.createDonor(this.props.id, gift.id);
-        handleDonorList();
+        this.props.actionsComment.retrieveComments(this.props.id, gift.id);
       };
 
       return (
-        <Panel header={gift.name} eventKey={gift.id} key={gift.id}  onClick={commentList, handleDonorList}>
+        <Panel header={gift.name} eventKey={gift.id} key={gift.id}
+          onClick={handleNodeCommentDonor}>
           {!!gift.image &&
             <div className='gift-image' style={{backgroundImage: `url(${gift.image})`}} />}
           <div className='desc-block'> 
@@ -50,7 +42,8 @@ export  class GiftList extends React.Component {
                 Delete
               </Button>
               {gift.is_available === true &&
-              <Button bsStyle='success' bsSize='small' onClick={handleDonorCreate}>Choose</Button>}
+              <Button bsStyle='success' bsSize='small'
+                onClick={handleNodeCommentDonor}>Choose</Button>}
             </ButtonToolbar>}
           </div>
           <hr />
