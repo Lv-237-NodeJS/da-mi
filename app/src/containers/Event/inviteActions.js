@@ -56,9 +56,8 @@ export const deleteGuest = (eventId, userId) => dispatch =>
     .end((err, res) => {
       dispatch(messageAlert(JSON.parse(res.text).message));
       dispatch(messageView(JSON.parse(res.text).view));
-      dispatch(showAlert(true))
+      dispatch(showAlert(true));
       !err && dispatch(guestDelete(userId));
-      console.log("RES:", res.body);
     });
 
 export const saveEmails = (emails, eventId) => {
