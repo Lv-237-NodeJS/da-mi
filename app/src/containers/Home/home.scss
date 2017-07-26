@@ -1,0 +1,39 @@
+@import '../../../styles/common';
+
+@media screen and (min-width: 991px) {
+  .login {
+    top: 100px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .login {
+    top: 0;
+  }
+}
+
+.home-image-block {
+  margin: 10px;
+  width: 810px;
+  height: 550px;
+  float: left;
+  background-size: cover;
+  position: relative;
+  background: 
+  linear-gradient(
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.1)
+  ),
+  url(../../../img/birthday-gifts.jpg)
+}
+
+.about-text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background: rgba(255, 255, 255, 0.75);
+  color: $black;
+  padding: 4px 8px;
+  margin: 0;
+  font: 14px Sans-Serif;
+}
