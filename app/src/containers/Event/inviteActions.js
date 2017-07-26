@@ -54,10 +54,11 @@ export const deleteGuest = (eventId, userId) => dispatch =>
   request()
     .delete(`${API.URL}/api/event/${eventId}/guest/${userId}`)
     .end((err, res) => {
-      dispatch(messageAlert(messages.deleteGuest));
-      dispatch(messageView(messages.success));
-      dispatch(showAlert(true));
+      dispatch(messageAlert(JSON.parse(res.text).message));
+      dispatch(messageView(JSON.parse(res.text).view));
+      dispatch(showAlert(true))
       !err && dispatch(guestDelete(userId));
+      console.log("RES:", res.body);
     });
 
 export const saveEmails = (emails, eventId) => {
