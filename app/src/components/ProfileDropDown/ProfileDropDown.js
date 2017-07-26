@@ -8,6 +8,12 @@ import * as profileActions from 'src/containers/Profile/profileActions';
 import './profileDropDown.scss';
 
 class ProfileDropDown extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: ''
+    };
+  }
 
   componentWillMount() {
     this.props.actions.profileActions.retrieveProfile(sessionStorage.getItem('userId'));
