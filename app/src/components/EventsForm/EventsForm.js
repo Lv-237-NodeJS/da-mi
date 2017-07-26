@@ -78,7 +78,7 @@ class EventsForm extends React.Component {
           <ControlLabel >Date of your event:</ControlLabel>
         </Col>
         <Col md={7} className='dateTimePickerField'><br/>
-          <DateTimeField 
+          <DateTimeField
             key={param}
             dateTime={dateEvent}
             inputFormat={'MM/DD/YY h:mm A'}
@@ -90,7 +90,7 @@ class EventsForm extends React.Component {
     );
   };
 
-  render() {    
+  render() {
     const dateEvent = this.props.event.date_event;
     const inputsEventData = {
       name: 'Name',
@@ -108,13 +108,13 @@ class EventsForm extends React.Component {
             this.inputDateTimeFields(param, dateEvent) :
             this.inputFields(param, inputsEventData)
         )}
-        <div>           
-        <ButtonToolbar>
-          <hr/> 
-          <Button type='submit' className='main-button'>
-            Update
-          </Button>
-        </ButtonToolbar>
+        <div>
+          <ButtonToolbar>
+            <hr/>
+            <Button type='submit' className='main-button'>
+              Update
+            </Button>
+          </ButtonToolbar>
         </div>
       </Form>
     );
@@ -125,17 +125,16 @@ class EventsForm extends React.Component {
         buttonName={'Edit'}
         bsStyle = {'info'}
         styleName = {'editEventModal'}
-        body = {formInputs}        
+        body = {formInputs}
         toggleModal = {this.toggleModal} showModal = {this.state.showModal}
       />
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps);
-  return {event: state.event.current}
-};
+const mapStateToProps = (state, ownProps) => ({
+  event: state.event.current
+});
 
 const mapDispatchToProps = dispatch => ({
   editEventActions: bindActionCreators(editEventActions, dispatch)

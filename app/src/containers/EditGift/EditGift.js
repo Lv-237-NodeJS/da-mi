@@ -114,7 +114,7 @@ export default class EditGift extends React.Component {
         toggleModal = {this.toggleModal} showModal = {this.state.showModal}
         body = {
           <form onSubmit={this.handleButtonClick}>
-              {inputForm}
+            {inputForm}
           </form>
         }
       />

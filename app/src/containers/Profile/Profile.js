@@ -24,11 +24,11 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profile: this.props.profile,     
-      showModal: false,      
-    };    
+      profile: this.props.profile,
+      showModal: false,
+    };
   }
-  
+
   componentWillMount() {
     this.setState({profile: this.props.profile});
   }
@@ -40,7 +40,7 @@ class Profile extends React.Component {
   handleChange = stateName => e => {
     this.setState({
       profile: {[stateName]: e.target.value}
-    });    
+    });
   };
 
   toggleModal = () => {
@@ -60,33 +60,31 @@ class Profile extends React.Component {
     this.setState({
       profile: {birth_date: date}
     });
-  };  
+  };
 
   datePickerFields = (param, birthdateString) => {
     return (
-      
-        <Col md={12}>
+      <Col md={12}>
         <FormGroup key={param}>
           <ControlLabel>Birthdate</ControlLabel>
           <div class='dateInput'>
-            <DateTimeField key={param} 
-              mode='date' 
+            <DateTimeField key={param}
+              mode='date'
               dateTime={birthdateString}
               format={'YYYY-MM-DD'}
               inputFormat={'DD/MM/YY'}
               onChange={this.dateTimeFieldHandleChange}
             />
-          </div> 
-          </FormGroup> 
-        </Col>
-      
+          </div>
+        </FormGroup>
+      </Col>
     );
   };
 
   textFields = (param, fieldsName) => {
     return (
       <Col md={12} key={param}>
-        <FieldGroup 
+        <FieldGroup
           key={param}
           id={param}
           label={fieldsName[param]}
@@ -100,7 +98,7 @@ class Profile extends React.Component {
   };
 
   render() {
-    const { profile } = this.props;  
+    const { profile } = this.props;
     const birthdateString = moment(profile.birth_date).format('YYYY-MM-DD');
     const fieldsName = {
       first_name: 'First Name',
@@ -116,15 +114,15 @@ class Profile extends React.Component {
         <div className='profile-panel'>
           <Row>
             <FileUploader avatar={profile.avatar} />
-          </Row>  
+          </Row>
           <Row>
-            { Object.keys(fieldsName, profile).map(param => 
+            { Object.keys(fieldsName, profile).map(param =>
               (param == 'birth_date') ?
                 this.datePickerFields(param, birthdateString) :
                 this.textFields(param, fieldsName)
             )}
-          </Row>           
-          <hr/>         
+          </Row>
+          <hr/>
         </div>
         <Row>
           <ButtonToolbar>
@@ -132,7 +130,7 @@ class Profile extends React.Component {
               Save Changes
             </Button>
           </ButtonToolbar>
-        </Row> 
+        </Row>
       </Form>
     );
 
@@ -142,7 +140,7 @@ class Profile extends React.Component {
         <Col sm={8} className='container'>
           <Tabs defaultActiveKey={1} id='uncontrolled-tab'>
             <Tab eventKey={1} title='Profile Info'>
-              <h1>Profile</h1>              
+              <h1>Profile</h1>
               <Row>
                 <Col md={4} className='text-center'>
                   <FormGroup key='avatar'>
@@ -162,13 +160,13 @@ class Profile extends React.Component {
                         bsStyle = {'info'}
                         buttonName = {'Edit Profile'}
                         styleName = {'profileModal'}
-                        toggleModal = {this.toggleModal} showModal = {this.state.showModal} 
-                        body = {formInputs}                          
+                        toggleModal = {this.toggleModal} showModal = {this.state.showModal}
+                        body = {formInputs}
                       />
                     </div>
                   </div>
                 </Col>
-              </Row>              
+              </Row>
             </Tab>
             <Tab eventKey={2} title='Security Settings'>
               <ResetPassword />

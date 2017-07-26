@@ -16,9 +16,9 @@ export default class ModalWindow extends React.Component {
     );
     const headerButton = (
       bsSize ? giftButton :
-      <Button bsStyle={bsStyle} className={buttonClassName || ''} onClick={toggleModal}>
-        {buttonName}
-      </Button>
+        <Button bsStyle={bsStyle} className={buttonClassName || ''} onClick={toggleModal}>
+          {buttonName}
+        </Button>
     );
 
     return (
