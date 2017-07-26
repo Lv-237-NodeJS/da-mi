@@ -1,6 +1,6 @@
 import { API, request } from 'src/helper';
-import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
-  showAlert, messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
+import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT, showAlert,
+  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
