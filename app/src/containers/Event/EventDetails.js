@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem }
+import { Col, Button, ButtonToolbar, PageHeader, Tabs, Tab, ListGroup, ListGroupItem, Label }
   from 'react-bootstrap';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -13,15 +13,19 @@ import { Alerts } from 'src/components';
 import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
-  <ListGroupItem>{guest}
+  <ListGroupItem>{guest.email}
     {props['data-show'] &&
-      <Button
-        {...props}
-        type='button'
-        className='guests-delete-btn pull-right glyphicon glyphicon-trash'
-        bsStyle='danger'>
-      </Button>
+    <Button
+      {...props}
+      type='button'
+      className='guests-delete-btn pull-right glyphicon glyphicon-trash'
+      bsStyle='danger'>
+    </Button>
     }
+    <Label 
+      className={`pull-right guest-status-label ${guest.status}`}>
+      {guest.status}
+    </Label>
   </ListGroupItem>
 );
 
@@ -37,7 +41,7 @@ class EventDetails extends React.Component {
   componentWillMount() {
     const {params: {id}, actions, guestActions} = this.props;
     actions.fetchEventById(id);
-    guestActions.getEmails(id);
+    guestActions.getGuestsList(id);
   }
   
   componentWillReceiveProps(nextProps) {
@@ -122,7 +126,7 @@ class EventDetails extends React.Component {
                   <GuestsList
                     data-show={showButtons}
                     key={index}
-                    guest={guest.email}
+                    guest={guest}
                     onClick={this.deleteGuestEmail(index)} />) ||
                   <p className='text-center'>You have not added guests yet.</p>
                 }

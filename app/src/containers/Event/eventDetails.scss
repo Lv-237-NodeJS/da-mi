@@ -31,3 +31,21 @@
     margin-right: 5px;
   }
 }
+
+.label.guest-status-label {
+  padding: 6px 10px;
+  font-size: 13px;
+  margin-right: 10px;
+
+  &.going {
+    background: $puerto-rico;
+  }
+
+  &.notgoing {
+    background: $saffron;
+  }
+
+  &.undecided {
+    background: $tower-grey;
+  }
+}
