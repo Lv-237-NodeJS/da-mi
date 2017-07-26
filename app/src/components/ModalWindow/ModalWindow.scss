@@ -1,0 +1,142 @@
+@import './../../../styles/common';
+
+%modal-position {
+  position: fixed;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal-dialog {
+  @extend %modal-position;
+  background: $white;
+  max-width: 600px;
+  padding: 0;
+  
+  z-index: 2;
+  margin: auto;
+  overflow: auto;
+  
+  .modal-header {
+    padding: 15px;
+    background: $puerto-rico;
+    margin-bottom: 15px;
+    min-height: 50px;
+
+    .modal-title {
+      display: inline;
+    }
+  }
+}
+
+.modal-backdrop {
+  @extend %modal-position;
+  z-index: 1;
+  background: $modal-backdrop-background;
+}
+
+.modal-title {
+  color: $white;
+}
+
+.modal-dialog {
+  height: 460px;       
+}
+
+.dateTimePickerField {
+  .input-group {
+    .form-control {
+      background-color: $white;     
+    }
+  }
+}
+
+.deleteEventModal {
+  .modal-dialog {
+    height: 210px;      
+  }    
+}
+
+.editEventModal {
+  .modal-dialog {           
+  }
+  .btn-toolbar {
+    margin: 10px;
+  }
+}
+
+.createEventModal {
+  .modal-dialog {
+    height: 500px; 
+    width: 600px;              
+  }
+  .col-md-3 {
+    width: 35%;
+  }
+  .col-md-9 {
+    width: 65%;
+  }
+}
+
+.profileModal {
+  .modal-dialog {
+    height: 630px; 
+  }
+  .form-horizontal .form-group {
+    margin: auto 0px;
+    padding: 10px;
+    display: flex;
+  }
+  label.control-label {
+    text-align: left;    
+    width: 20%;
+  }
+  .form-control {
+    width: 70%;
+  }
+  .input-group .dateInput {
+    width: 70%;
+  }
+  .col-md-12 {   
+    display: inherit;
+  }
+}
+
+.deleteEventModalBodyHeader {
+  text-align: center;
+  color: $soft-red;
+}
+
+.deleteEventYesButton.btn {
+  width: 200px;
+  margin: 0 auto;
+}
+
+.modal-list.form-control {
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid $puerto-rico;
+
+  &:focus {
+    border: 1px solid $blue;
+    border-radius: 4px;
+  }
+}
+
+.modal-input.modal-btn {
+  background: $tower-grey;
+  color: $black;
+  border: none;
+}
+
+div.modalFooter {
+  display: inline-flex;
+  padding: 0 5px;
+}
+
+.modal-input-container {
+  height: 60px;
+  padding: 0 5px;
+}
