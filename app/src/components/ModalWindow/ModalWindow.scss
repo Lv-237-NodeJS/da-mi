@@ -13,11 +13,11 @@
   background: $white;
   max-width: 600px;
   padding: 0;
-  
+
   z-index: 2;
   margin: auto;
   overflow: auto;
-  
+
   .modal-header {
     padding: 15px;
     background: $puerto-rico;
@@ -41,25 +41,25 @@
 }
 
 .modal-dialog {
-  height: 460px;       
+  height: 460px;
 }
 
 .dateTimePickerField {
   .input-group {
     .form-control {
-      background-color: $white;     
+      background-color: $white;
     }
   }
 }
 
 .deleteEventModal {
   .modal-dialog {
-    height: 210px;      
-  }    
+    height: 210px;
+  }
 }
 
 .editEventModal {
-  .modal-dialog {           
+  .modal-dialog {
   }
   .btn-toolbar {
     margin: 10px;
@@ -68,8 +68,8 @@
 
 .createEventModal {
   .modal-dialog {
-    height: 500px; 
-    width: 600px;              
+    height: 500px;
+    width: 600px;
   }
   .col-md-3 {
     width: 35%;
@@ -81,7 +81,7 @@
 
 .profileModal {
   .modal-dialog {
-    height: 630px; 
+    height: 630px;
   }
   .form-horizontal .form-group {
     margin: auto 0px;
@@ -89,13 +89,10 @@
     display: flex;
   }
   label.control-label {
-    text-align: left;    
+    text-align: left;
     width: 20%;
   }
-  .form-control {
-    width: 70%;
-  }
-  .input-group .dateInput {
+  .form-control .input-group .dateInput {
     width: 70%;
   }
   .col-md-12 {   

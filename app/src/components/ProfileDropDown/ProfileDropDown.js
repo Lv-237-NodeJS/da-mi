@@ -14,7 +14,7 @@ class ProfileDropDown extends React.Component {
   }
 
   render() {
-    const {profile, actions} = this.props;
+    const { profile, actions } = this.props;
     const userName = () => {
       return (
         (profile.first_name && profile.last_name) ?
@@ -40,14 +40,14 @@ class ProfileDropDown extends React.Component {
 }
 
 const mapStatetoProps = state => ({
-  profile: state.profile.data
+  profile: state.profile.data,
 });
 
 const mapDispatchToProps = dispatch => ({
   actions: {
     loginActions: bindActionCreators(loginActions, dispatch),
-    profileActions: bindActionCreators(profileActions, dispatch)
-  }
+    profileActions: bindActionCreators(profileActions, dispatch),
+  },
 });
 
 export default connect(mapStatetoProps, mapDispatchToProps)(ProfileDropDown);

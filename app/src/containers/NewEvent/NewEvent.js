@@ -1,10 +1,12 @@
 import  React from 'react';
-import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Label } from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, Button, Form,
+  Col, HelpBlock, Label } from 'react-bootstrap';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import * as showActions from './newEventActions';
+import { ModalWindow } from 'src/components';
 import { messages } from 'src/helper';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
@@ -33,7 +35,8 @@ class newEvent extends React.Component {
       isErrors: {
         name: null
       },
-      enableButton: false
+      enableButton: false,
+      showModal: false,
     };
   }
 
@@ -63,9 +66,14 @@ class newEvent extends React.Component {
     });
   };
 
+  toggleModal = () => {
+    this.setState({showModal: !this.state.showModal});
+  };
+
   handleButtonClick = e => {
     e.preventDefault();
     this.props.actions.createNewEvent(this.state);
+    this.toggleModal();
   };
 
   inputFields = (param, inputsEventData) => {
@@ -109,24 +117,34 @@ class newEvent extends React.Component {
       latitude: 'Latitude',
       description: 'Descripton'
     };
-    return (
-      <Col sm={9}>
-        <h2>Here, you can create your own event:</h2>
-        <Form onSubmit={this.handleButtonClick}>
-          {Object.keys(inputsEventData).map(param =>
-            (param == 'date_event') ?
-              this.inputDateTimeFields(param) : 
-              this.inputFields(param, inputsEventData)
-          )}
-          <FormGroup>
-            <Col>
-              <Button type='submit' className='main-button' bsSize='large' disabled={!this.state.enableButton}>
+
+    const formInputs = (
+      <Form onSubmit={this.handleButtonClick}>
+        {Object.keys(inputsEventData).map(param =>
+          (param == 'date_event') ?
+            this.inputDateTimeFields(param) : 
+            this.inputFields(param, inputsEventData)
+        )}
+        <FormGroup>
+          <Col md={12}>
+            <hr/>
+            <Button type='submit' className='main-button' disabled={!this.state.enableButton}>
               Save
-              </Button>
-            </Col>
-          </FormGroup>
-        </Form>
-      </Col>
+            </Button>            
+          </Col>
+        </FormGroup>              
+      </Form>
+    );
+
+    return (
+      <ModalWindow
+        title = {'Create your own event:'}
+        bsStyle = {'info'}
+        buttonName = {'Create New Event'}
+        styleName = {'createEventModal'}
+        body = {formInputs}
+        toggleModal = {this.toggleModal} showModal = {this.state.showModal}
+      />      
     );
   }
 }

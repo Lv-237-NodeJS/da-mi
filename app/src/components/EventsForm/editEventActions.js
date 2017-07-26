@@ -14,9 +14,9 @@ export const editEventFailure = res => ({
   type: EDIT_EVENT_FAILURE
 });
 
-export const editEvent = event => dispatch =>
+export const editEvent = (eventId, event) => dispatch =>
   request()
-    .put(`${API.URL}/api/event/${event.id}`)
+    .put(`${API.URL}/api/event/${eventId}`)
     .send(event)
     .end((err, res) => {
       dispatch(messageAlert(JSON.parse(res.text).message));

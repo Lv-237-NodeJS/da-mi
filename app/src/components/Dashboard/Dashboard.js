@@ -7,9 +7,8 @@ export default class Dashboard extends React.Component {
 
   render() {
     const links = [
-      {route: '/events', label: 'My Events'},
-      {route: '/newevent', label: 'Create New Event'},
-      {route: '/invitations', label: 'My Invitations'}
+      { route: '/events', label: 'My Events' },
+      { route: '/invitations', label: 'My Invitations' },
     ];
 
     return (

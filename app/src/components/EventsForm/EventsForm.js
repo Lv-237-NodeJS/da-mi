@@ -1,11 +1,12 @@
 import  React from 'react';
-import { FormGroup, ControlLabel, FormControl, Button, Form, Col, HelpBlock, Label 
-} from 'react-bootstrap';
+import { FormGroup, ControlLabel, FormControl, ButtonToolbar, Button,
+  Form, Col, HelpBlock, Label } from 'react-bootstrap';
 import DateTimeField from 'react-bootstrap-datetimepicker';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as editEventActions from './editEventActions';
+import { ModalWindow } from 'src/components';
 
 const InputGroupField = ({id, label, className, isErrors, ...props}) => (
   <FormGroup controlId={id} className={className}>
@@ -18,29 +19,41 @@ const InputGroupField = ({id, label, className, isErrors, ...props}) => (
   </FormGroup>
 );
 
-class EventsModalForm extends React.Component {
+class EventsForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.event;
+    this.state = {
+      event: this.props.event,
+      showModal: false,
+    };
   }
 
   handleChange = stateName => e => {
     this.setState({
-      [stateName]: e.target.value
+      event: {
+        [stateName]: e.target.value
+      }
     });
   };
 
   dateTimeFieldHandleChange = date => {
     this.setState({
-      date_event: date
+      event: {
+        date_event: date
+      }
     });
   };
 
+  toggleModal = () => {
+    this.setState({showModal: !this.state.showModal});
+  };
+
   handleButtonClick = e => {
-    this.props.editEventActions.editEvent(this.state);
-    const { closeModal } = this.props;
+    const eventId = this.props.event.id;
+    const event = this.state.event;
+    this.props.editEventActions.editEvent(eventId, event);
+    this.toggleModal();
     e.preventDefault();
-    closeModal();
   };
 
   inputFields = (param, inputsEventData) => {
@@ -49,8 +62,9 @@ class EventsModalForm extends React.Component {
         id={param}
         key={param}
         type="text"
+        placeholder = {this.props.event[param]}
         label={inputsEventData[param] + ' of your event:'}
-        value={this.state[param] || ''}
+        value={this.state.event[param] || ''}
         onChange={this.handleChange(param)}
         required={(param === 'name') && true}
       />
@@ -76,7 +90,7 @@ class EventsModalForm extends React.Component {
     );
   };
 
-  render() {
+  render() {    
     const dateEvent = this.props.event.date_event;
     const inputsEventData = {
       name: 'Name',
@@ -86,31 +100,45 @@ class EventsModalForm extends React.Component {
       latitude: 'Latitude',
       description: 'Descripton'
     };
-    return (
+
+    const formInputs = (
       <Form onSubmit={this.handleButtonClick}>
         {Object.keys(inputsEventData).map(param =>
           (param == 'date_event') ?
             this.inputDateTimeFields(param, dateEvent) :
             this.inputFields(param, inputsEventData)
         )}
-        <FormGroup>
-          <Col sm={12}>
-            <Button type='submit' className='main-button' bsSize='large'>
-              Update
-            </Button>
-          </Col>
-        </FormGroup>
+        <div>           
+        <ButtonToolbar>
+          <hr/> 
+          <Button type='submit' className='main-button'>
+            Update
+          </Button>
+        </ButtonToolbar>
+        </div>
       </Form>
+    );
+
+    return (
+      <ModalWindow
+        title = {'Here, you can update your own event:'}
+        buttonName={'Edit'}
+        bsStyle = {'info'}
+        styleName = {'editEventModal'}
+        body = {formInputs}        
+        toggleModal = {this.toggleModal} showModal = {this.state.showModal}
+      />
     );
   }
 }
 
-const mapStateToProps = state => ({
-  event: state.event.current
-});
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps);
+  return {event: state.event.current}
+};
 
 const mapDispatchToProps = dispatch => ({
   editEventActions: bindActionCreators(editEventActions, dispatch)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EventsModalForm);
+export default connect(mapStateToProps, mapDispatchToProps)(EventsForm);
