@@ -1,6 +1,6 @@
 import { API, request, messages } from 'src/helper';
-import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
-  showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
+import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
+  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const FETCH_GIFTS_SUCCESS = 'FETCH_GIFTS_SUCCESS';
 const FETCH_GIFTS_FAIL = 'FETCH_GIFTS_FAIL';
@@ -61,9 +61,7 @@ export const createGift = (eventId, gift) => dispatch => request()
   .post(`${API.URL}/api/events/${eventId}/gifts`)
   .send(gift)
   .end((err, res) => {
-    dispatch(messageAlert(JSON.parse(res.text).message));
-    dispatch(messageView(JSON.parse(res.text).view));
-    dispatch(showAlert(true));
+    showResponseMessage(dispatch, res);
     err && dispatch(createGiftFail(err)) ||
     dispatch(createGiftSuccess(JSON.parse(res.text).gift));
   });
@@ -72,9 +70,7 @@ export const updateGift = (eventId, giftId, gift) => dispatch => request()
   .put(`${API.URL}/api/event/${eventId}/gift/${giftId}`)
   .send(gift)
   .end((err, res) => {
-    dispatch(messageAlert(JSON.parse(res.text).message));
-    dispatch(messageView(JSON.parse(res.text).view));
-    dispatch(showAlert(true));
+    showResponseMessage(dispatch, res);
     err && dispatch(updateGiftFail(err)) ||
     dispatch(updateGiftSuccess(JSON.parse(res.text).gift));
   });
@@ -82,9 +78,7 @@ export const updateGift = (eventId, giftId, gift) => dispatch => request()
 export const deleteGift = (eventId, giftId) => dispatch => request()
   .delete(`${API.URL}/api/event/${eventId}/gift/${giftId}`)
   .end((err, res) => {
-    dispatch(messageAlert(JSON.parse(res.text).message));
-    dispatch(messageView(JSON.parse(res.text).view));
-    dispatch(showAlert(true));
+    showResponseMessage(dispatch, res);
     err && dispatch(deleteGiftFail(err)) ||
     dispatch(deleteGiftSuccess(giftId));
   });
