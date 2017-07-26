@@ -44,7 +44,6 @@ class Profile extends React.Component {
   };
 
   toggleModal = () => {
-
     this.setState({showModal: !this.state.showModal});
   };
 
@@ -64,10 +63,10 @@ class Profile extends React.Component {
 
   datePickerFields = (param, birthdateString) => {
     return (
-      <Col md={12}>
-        <FormGroup key={param}>
+      <FormGroup key={param}>
+        <Col md={12} >
           <ControlLabel>Birthdate</ControlLabel>
-          <div class='dateInput'>
+          <div className='dateInput'>
             <DateTimeField key={param}
               mode='date'
               dateTime={birthdateString}
@@ -76,8 +75,8 @@ class Profile extends React.Component {
               onChange={this.dateTimeFieldHandleChange}
             />
           </div>
-        </FormGroup>
-      </Col>
+        </Col>
+      </FormGroup>
     );
   };
 
@@ -158,6 +157,7 @@ class Profile extends React.Component {
                       <ModalWindow
                         title = {'Update your profile:'}
                         bsStyle = {'info'}
+                        buttonClassName = {'main-button'}
                         buttonName = {'Edit Profile'}
                         styleName = {'profileModal'}
                         toggleModal = {this.toggleModal} showModal = {this.state.showModal}

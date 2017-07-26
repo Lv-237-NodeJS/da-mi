@@ -83,19 +83,29 @@
   .modal-dialog {
     height: 630px;
   }
+  .btn-toolbar {
+    margin-left: 15px;
+  }
   .form-horizontal .form-group {
     margin: auto 0px;
     padding: 10px;
     display: flex;
   }
+  .row {
+     margin: 0px;
+  }
   label.control-label {
     text-align: left;
     width: 20%;
   }
-  .form-control .input-group .dateInput {
+  .form-control .input-group {
     width: 70%;
   }
-  .col-md-12 {   
+  .dateInput {
+    width: 100%;
+  }
+  .col-md-12 {
+    width: 100%;
     display: inherit;
   }
 }

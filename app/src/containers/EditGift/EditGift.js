@@ -111,6 +111,7 @@ export default class EditGift extends React.Component {
       <ModalWindow
         title = {`Edit ${this.props.gift.name}`} bsStyle = {'info'}
         buttonName = {'Edit'} styleName = {'modal-dialog'}
+        buttonClassName = {'btn-sm'}
         toggleModal = {this.toggleModal} showModal = {this.state.showModal}
         body = {
           <form onSubmit={this.handleButtonClick}>

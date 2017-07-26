@@ -44,10 +44,10 @@ class newEvent extends React.Component {
     const newState = this.state;
     if (this.state.name.length < 4) {
       newState.enableButton = false;
-      newState.isErrors.name = messages['nameError'];     
+      newState.isErrors.name = messages['nameError'];
     } else {
       newState.isErrors.name = null;
-      newState.enableButton = true; 
+      newState.enableButton = true;
     }
     this.setState(newState);
   };
@@ -122,7 +122,7 @@ class newEvent extends React.Component {
       <Form onSubmit={this.handleButtonClick}>
         {Object.keys(inputsEventData).map(param =>
           (param == 'date_event') ?
-            this.inputDateTimeFields(param) : 
+            this.inputDateTimeFields(param) :
             this.inputFields(param, inputsEventData)
         )}
         <FormGroup>
@@ -130,9 +130,9 @@ class newEvent extends React.Component {
             <hr/>
             <Button type='submit' className='main-button' disabled={!this.state.enableButton}>
               Save
-            </Button>            
+            </Button>
           </Col>
-        </FormGroup>              
+        </FormGroup>
       </Form>
     );
 
@@ -141,10 +141,11 @@ class newEvent extends React.Component {
         title = {'Create your own event:'}
         bsStyle = {'info'}
         buttonName = {'Create New Event'}
+        buttonClassName = {'main-button'}
         styleName = {'createEventModal'}
         body = {formInputs}
         toggleModal = {this.toggleModal} showModal = {this.state.showModal}
-      />      
+      />
     );
   }
 }
