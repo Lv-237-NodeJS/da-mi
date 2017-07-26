@@ -54,8 +54,8 @@ export const deleteGuest = (eventId, userId) => dispatch =>
   request()
     .delete(`${API.URL}/api/event/${eventId}/guest/${userId}`)
     .end((err, res) => {
-      dispatch(messageAlert(messages.deleteGuest));
-      dispatch(messageView(messages.success));
+      dispatch(messageAlert(JSON.parse(res.text).message));
+      dispatch(messageView(JSON.parse(res.text).view));
       dispatch(showAlert(true));
       !err && dispatch(guestDelete(userId));
     });
