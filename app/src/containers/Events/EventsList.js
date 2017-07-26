@@ -38,7 +38,7 @@ class EventsList extends React.Component {
       <div className='eventsList'>
         <h2>Events</h2>
         <Alerts />
-        {!this.props.eventsList.length && noEvent || eventNode}
+        {!eventNode.length && noEvent || eventNode}
       </div>
     );
   }
