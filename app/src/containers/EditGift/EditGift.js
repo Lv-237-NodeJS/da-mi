@@ -1,6 +1,7 @@
 import React from 'react';
-import { Modal, Button, FormGroup, FormControl, ControlLabel, Checkbox
+import { Button, FormGroup, FormControl, ControlLabel, Checkbox
 } from 'react-bootstrap';
+import { ModalWindow } from 'src/components';
 import './editGift.scss';
 
 const FieldGroup = ({ id, label, ...props }) => (
@@ -14,8 +15,8 @@ export default class EditGift extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {...this.props.gift, 
-      showModal: false, 
+    this.state = {...this.props.gift,
+      showModal: false,
       checked: this.props.gift.status === 'hasOneDonor'
     };
   }
@@ -37,13 +38,13 @@ export default class EditGift extends React.Component {
   };
 
   handleCheckbox = e => {
-    this.setState(!this.state.checked && {status: 'hasOneDonor'} || 
+    this.setState(!this.state.checked && {status: 'hasOneDonor'} ||
       {status: 'hasMultipleDonors'});
     this.handleCheck();
   };
 
   textFields = (param, inputs) => (
-    <FieldGroup 
+    <FieldGroup
       key={param}
       id={param}
       label={this.inputs[param]}
@@ -86,9 +87,9 @@ export default class EditGift extends React.Component {
           this.textFields(param, this.inputs)
         )}
         <div className='gift-checkbox'>
-          <Checkbox 
+          <Checkbox
             checked={this.state.checked}
-            inline 
+            inline
             onChange={this.handleCheckbox}>
               Only one person can check this gift
           </Checkbox>
@@ -97,7 +98,7 @@ export default class EditGift extends React.Component {
           id="image"
           type="file"
           label="Image"
-          onChange={this.handleChangeImage} 
+          onChange={this.handleChangeImage}
           encType='multipart/form-data'
         />
         <Button type="submit" bsSize="large" block>
@@ -107,19 +108,17 @@ export default class EditGift extends React.Component {
     );
 
     return (
-      <div>
-        <Button bsSize='small' bsStyle='info' onClick={this.toggleModal}>Edit</Button>
-        <Modal className='modal-dialog' show={this.state.showModal} onHide={this.toggleModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Edit {this.props.gift.name}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form onSubmit={this.handleButtonClick}>
-              {inputForm}
-            </form>
-          </Modal.Body>
-        </Modal>
-      </div>
+      <ModalWindow
+        title = {`Edit ${this.props.gift.name}`} bsStyle = {'info'}
+        buttonName = {'Edit'} styleName = {'modal-dialog'}
+        buttonClassName = {'btn-sm'}
+        toggleModal = {this.toggleModal} showModal = {this.state.showModal}
+        body = {
+          <form onSubmit={this.handleButtonClick}>
+            {inputForm}
+          </form>
+        }
+      />
     );
   }
 }

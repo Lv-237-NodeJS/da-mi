@@ -5,6 +5,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as eventsActions from './eventsListActions';
+import { NewEvent } from 'src/containers';
 import './eventsList.scss';
 import { Alerts } from 'src/components';
 
@@ -15,7 +16,7 @@ class EventsList extends React.Component {
   }
 
   render() {
-    const {location, eventsList, invitations} = this.props;
+    const { location, eventsList, invitations } = this.props;
     const events = location === '/events' && eventsList || invitations;
     const eventNode = events.map(item => {
       const formattedDate = moment(item.date_event, 'x').format('DD MMM YYYY hh:mm a');
@@ -23,7 +24,7 @@ class EventsList extends React.Component {
         <Link to={`${location}/${item.id}`} className='list-group-item' key={item.id}>
           <ListGroup>
             <ListGroupItem header={item.name}>{formattedDate}</ListGroupItem>
-          </ListGroup>  
+          </ListGroup>
         </Link>
       );
     });
@@ -38,6 +39,9 @@ class EventsList extends React.Component {
       <div className='eventsList'>
         <h2>Events</h2>
         <Alerts />
+        <hr />
+        <NewEvent />
+        <hr />
         {!eventNode.length && noEvent || eventNode}
       </div>
     );
@@ -47,11 +51,11 @@ class EventsList extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
   eventsList: state.eventsList.events,
   invitations: state.eventsList.myInvitations,
-  location: ownProps.location.pathname
+  location: ownProps.location.pathname,
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(eventsActions, dispatch)
+  actions: bindActionCreators(eventsActions, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventsList);

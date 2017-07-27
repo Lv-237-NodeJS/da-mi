@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { messages } from 'src/helper';
 import * as inviteActions from 'src/containers/Event/inviteActions';
+import { ModalWindow } from 'src/components';
 
 const ListItemButton = ({...props}) => (
   <Button
@@ -36,10 +37,11 @@ class GuestsModalForm extends React.Component {
       key: null,
       error: null,
       disabledBtn: true,
-      disabledSave: true
+      disabledSave: true,
+      showModal: false
     };
   }
-  
+
   handleClickOutside = e => {
     !e.target.className.includes('modal-list') &&
     e.target.parentNode.className !== 'btn-toolbar' && this.setState({key: null});
@@ -52,7 +54,7 @@ class GuestsModalForm extends React.Component {
   componentWillUnmount() {
     document.removeEventListener('click', this.handleClickOutside);
   }
-  
+
   validateEmail = email => {
     const pattern = /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i;
     const validEmail = email.match(pattern);
@@ -71,7 +73,7 @@ class GuestsModalForm extends React.Component {
         disabledSave: false
       });
   };
-  
+
   setEmail = e => {
     const email = e.target.value;
     this.setState({email}, this.validateEmail(email));
@@ -81,10 +83,10 @@ class GuestsModalForm extends React.Component {
     const newEmails = this.state.inputs.map((email, emailIndex) => (
       index !== emailIndex ? email: e.target.value
     ));
-    
+
     this.setState({inputs: newEmails});
   };
-  
+
   focusInput = index => () => {
     this.setState({
       initialEmail: this.state.inputs[index],
@@ -111,12 +113,16 @@ class GuestsModalForm extends React.Component {
     this.setState(newState);
   };
 
+  toggleModal = () => {
+    this.setState({showModal: !this.state.showModal});
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const {actions, eventId, closeModal} = this.props;
     actions.saveEmails(this.state.inputs, eventId);
     this.setState({inputs: []});
-    closeModal();
+    this.toggleModal();
   };
 
   render() {
@@ -131,60 +137,66 @@ class GuestsModalForm extends React.Component {
         remove: this.discardEdition(index)
       }
     });
-    const selectButtons = index => 
+    const selectButtons = index =>
       checkEditingItem(index) && getButtonsSet(index).edit || getButtonsSet(index).default;
 
     return (
-      <Form horizontal onSubmit={this.handleSubmit}>
-        <Col xs={12} xsOffset={0} smOffset={1} sm={11}>
-          <FormGroup>
-            <Col xs={10}>
-              <ModalInput
-                value={this.state.email}
-                onChange={this.setEmail}
-                data-error={this.state.error} />
-            </Col>
-            <Col xs={2}>
-              <ListItemButton
-                onClick={this.appendEmail}
-                className='ok'
-                disabled={this.state.disabledBtn} />
-            </Col>
-          </FormGroup>
-          
-          {this.state.inputs.map((email, index) =>
-            <FormGroup key={index}>
-              <Col xs={8} sm={9}>
-                <input
-                  type='email'
-                  value={email}
-                  placeholder='Enter Email'
-                  className='modal-input modal-list form-control'
-                  ref={input => this[index] = input}
-                  onChange={this.handleChange(index)}
-                  onClick={this.focusInput(index)} />
+      <ModalWindow
+        toggleModal = {this.toggleModal} showModal = {this.state.showModal}
+        title = {'Invite people'}
+        buttonName={'Add Guests'}
+        buttonClassName = {'pull-right main-button'}
+        body = {
+          <Form horizontal onSubmit={this.handleSubmit}>
+            <Col xs={12} xsOffset={0} smOffset={1} sm={11}>
+              <FormGroup>
+                <Col xs={10}>
+                  <ModalInput
+                    value={this.state.email}
+                    onChange={this.setEmail}
+                    data-error={this.state.error} />
+                </Col>
+                <Col xs={2}>
+                  <ListItemButton
+                    onClick={this.appendEmail}
+                    className='ok'
+                    disabled={this.state.disabledBtn} />
+                </Col>
+              </FormGroup>
+
+              {this.state.inputs.map((email, index) =>
+                <FormGroup key={index}>
+                  <Col xs={8} sm={9}>
+                    <input
+                      type='email'
+                      value={email}
+                      placeholder='Enter Email'
+                      className='modal-input modal-list form-control'
+                      ref={input => this[index] = input}
+                      onChange={this.handleChange(index)}
+                      onClick={this.focusInput(index)} />
+                  </Col>
+                  <Col xs={4} sm={3} className='listItemBar'>
+                    <ButtonToolbar>
+                      {Object.keys(selectButtons(index)).map(param =>
+                        <ListItemButton
+                          key={param}
+                          onClick={selectButtons(index)[param]}
+                          className={param} />
+                      )}
+                    </ButtonToolbar>
+                  </Col>
+                </FormGroup>
+              )}
+              <Col xsOffset={4}>
+                <Button
+                  className='main-button'
+                  type='submit'
+                  bsSize='large'
+                  disabled={this.state.disabledSave}>Save</Button>
               </Col>
-              <Col xs={4} sm={3} className='listItemBar'>
-                <ButtonToolbar>
-                  {Object.keys(selectButtons(index)).map(param =>
-                    <ListItemButton
-                      key={param}
-                      onClick={selectButtons(index)[param]}
-                      className={param} />
-                  )}
-                </ButtonToolbar>
-              </Col>
-            </FormGroup>
-          )}
-          <Col xsOffset={4}>
-            <Button
-              className='main-button'
-              type='submit'
-              bsSize='large'
-              disabled={this.state.disabledSave}>Save</Button>
-          </Col>
-        </Col>
-      </Form>
+            </Col>
+          </Form>} />
     );
   }
 }

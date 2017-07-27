@@ -8,8 +8,7 @@ import { bindActionCreators } from 'redux';
 import { Gift } from 'src/containers';
 import * as eventActions from './eventActions';
 import * as inviteActions from './inviteActions';
-import { GuestsModal, EventsModal, DeleteEventModal } from 'src/components';
-import { Alerts } from 'src/components';
+import { GuestsForm, DeleteEvent, EventsForm, Alerts } from 'src/components';
 import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
@@ -43,7 +42,7 @@ class EventDetails extends React.Component {
     actions.fetchEventById(id);
     guestActions.getGuestsList(id);
   }
-  
+
   componentWillReceiveProps(nextProps) {
     this.setState({status: nextProps.status});
   }
@@ -60,7 +59,7 @@ class EventDetails extends React.Component {
     const guest = guests[i];
     guestActions.deleteGuest(id, guest.id);
   };
-  
+
   changeGuestStatus = status => () => {
     const {guestActions, params: {id}} = this.props;
     guestActions.changeGuestStatus(status, id);
@@ -87,8 +86,8 @@ class EventDetails extends React.Component {
               <ButtonToolbar>
                 {showButtons &&
                 <div>
-                  <EventsModal eventId={event.id} />
-                  <DeleteEventModal eventId={event.id} />
+                  <EventsForm eventId={event.id} />
+                  <DeleteEvent eventId={event.id} />
                   <Button
                     type='button'
                     bsStyle='primary'
@@ -97,7 +96,7 @@ class EventDetails extends React.Component {
                 </div> ||
                 <div>
                   {Object.keys(guestStatus).map(param =>
-                    <Button 
+                    <Button
                       key={param}
                       className={`guest-status-btn ${isCurrentStatus(param) && 'current-guest-status-btn'}`}
                       onClick={this.changeGuestStatus(param)}>
@@ -120,7 +119,7 @@ class EventDetails extends React.Component {
               <ListGroup>
                 <ListGroupItem className='clearfix'>
                   <h4 className='pull-left'>Guests list</h4>
-                  {showButtons && <GuestsModal eventId={id} />}
+                  {showButtons && <GuestsForm eventId={id} />}
                 </ListGroupItem>
                 {guests.length && guests.map((guest, index) =>
                   <GuestsList

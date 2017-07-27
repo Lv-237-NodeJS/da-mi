@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal, Button, FormGroup, FormControl, ControlLabel, Checkbox
 } from 'react-bootstrap';
+import { ModalWindow } from 'src/components';
 import './addGift.scss';
 
 const FieldGroup = ({ id, label, ...props }) => (
@@ -42,13 +43,13 @@ export default class AddGift extends React.Component {
   };
 
   handleCheckbox = e => {
-    this.setState(!this.state.checked && {status: 'hasOneDonor'} || 
+    this.setState(!this.state.checked && {status: 'hasOneDonor'} ||
       {status: 'hasMultipleDonors'});
     this.handleCheck();
   };
 
   textFields = (param, inputs) => (
-    <FieldGroup 
+    <FieldGroup
       key={param}
       id={param}
       label={this.inputs[param]}
@@ -90,9 +91,9 @@ export default class AddGift extends React.Component {
           this.textFields(param, this.inputs)
         )}
         <div className='gift-checkbox'>
-          <Checkbox 
-            checked={this.state.checked} 
-            inline 
+          <Checkbox
+            checked={this.state.checked}
+            inline
             onChange={this.handleCheckbox}>
               Only one person can check this gift
           </Checkbox>
@@ -101,7 +102,7 @@ export default class AddGift extends React.Component {
           id="image"
           type="file"
           label="Image"
-          onChange={this.handleChangeImage} 
+          onChange={this.handleChangeImage}
           encType='multipart/form-data'
         />
         <Button type="submit" bsSize="large" block>
@@ -111,19 +112,17 @@ export default class AddGift extends React.Component {
     );
 
     return (
-      <div className='add-gift-button'>
-        <Button bsSize="large" block onClick={this.toggleModal}>Add gift</Button>
-        <Modal className='modal-dialog' show={this.state.showModal} onHide={this.toggleModal}>
-          <Modal.Header closeButton>
-            <Modal.Title>Add gift</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <form onSubmit={this.handleButtonClick}>
-              {inputForm}
-            </form>
-          </Modal.Body>
-        </Modal>
-      </div>
+      <ModalWindow
+        title = {'Add gift'} bsStyle = {'info'}
+        buttonClassName = {'add-gift-button'}
+        buttonName = {'Add gift'} styleName = {'modal-dialog'}
+        toggleModal = {this.toggleModal} showModal = {this.state.showModal}
+        body = {
+          <form onSubmit={this.handleButtonClick}>
+            {inputForm}
+          </form>
+        }
+      />
     );
   }
 }

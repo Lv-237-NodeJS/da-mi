@@ -9,17 +9,17 @@ class FileUploader extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      fileUrl: ''
+      fileUrl: null,
     };
   }
-  
+
   onDrop = files => {
     this.props.actions.uploadFile(files);
     this.setState({
       fileUrl: this.props.fileName
     });
-  }
-  
+  };
+
   render() {
     return (
       <div>
