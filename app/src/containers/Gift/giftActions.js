@@ -63,7 +63,7 @@ export const createGift = (eventId, gift) => dispatch => request()
   .end((err, res) => {
     showResponseMessage(dispatch, res);
     err && dispatch(createGiftFail(err)) ||
-    dispatch(createGiftSuccess(JSON.parse(res.text).gift));
+    dispatch(createGiftSuccess(res.body.gift));
   });
 
 export const updateGift = (eventId, giftId, gift) => dispatch => request()
@@ -72,7 +72,7 @@ export const updateGift = (eventId, giftId, gift) => dispatch => request()
   .end((err, res) => {
     showResponseMessage(dispatch, res);
     err && dispatch(updateGiftFail(err)) ||
-    dispatch(updateGiftSuccess(JSON.parse(res.text).gift));
+    dispatch(updateGiftSuccess(res.body.gift));
   });
 
 export const deleteGift = (eventId, giftId) => dispatch => request()
