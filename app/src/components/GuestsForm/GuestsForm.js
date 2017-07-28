@@ -121,7 +121,7 @@ class GuestsModalForm extends React.Component {
     e.preventDefault();
     const {actions, eventId, closeModal} = this.props;
     actions.saveEmails(this.state.inputs, eventId);
-    this.setState({inputs: []});
+    this.setState({inputs: [], disabledSave: true});
     this.toggleModal();
   };
 

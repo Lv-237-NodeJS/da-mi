@@ -1,6 +1,5 @@
 import { API, request } from 'src/helper';
-import {SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
-  showAlert, messageAlert, messageView } from 'src/components/Alerts/AlertsActions';
+import { showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const SEND_INVITES = 'SEND_INVITES';
 const GET_EMAILS = 'GET_EMAILS';
@@ -9,12 +8,6 @@ const SAVE_EMAILS = 'SAVE_EMAILS';
 const CHANGE_GUEST_STATUS = 'CHANGE_GUEST_STATUS';
 
 const getGuests = (err, res) => (!err && res.body.guests);
-
-const showResponseMessage = (dispatch, res) => {
-  dispatch(messageAlert(res.body.message));
-  dispatch(messageView(res.body.view));
-  dispatch(showAlert(true));
-};
 
 const invites = () => ({
   type: SEND_INVITES

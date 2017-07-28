@@ -20,13 +20,18 @@ export const messageView = view => ({
   view: view
 });
 
+export const showResponseMessage = (dispatch, res) => {
+  dispatch(messageAlert(res.body.message));
+  dispatch(messageView(res.body.view));
+  dispatch(showAlert(true));
+};
+
 export const contactInfo = data => dispatch =>
   request()
     .post(`${API.URL}/api/support`)
     .send(data)
     .end((err, res) => {
-      dispatch(messageAlert(JSON.parse(res.text).message)) &&
-      dispatch(messageView(JSON.parse(res.text).view)) && dispatch(showAlert(true));
+      showResponseMessage(dispatch, res);
     });
 
 export const resetPassword = (oldPassword, newPassword) => {
@@ -40,9 +45,7 @@ export const resetPassword = (oldPassword, newPassword) => {
       .post(`${API.URL}/api/user/changepassword`)
       .send(data)
       .end((err, res) => {
-        dispatch(messageAlert(JSON.parse(res.text).message));
-        dispatch(messageView(JSON.parse(res.text).view));
-        dispatch(showAlert(true));
+        showResponseMessage(dispatch, res);
       });
 };
 
@@ -57,9 +60,7 @@ export const signupUser = (email, password) => {
       .post(`${API.URL}/api/users`)
       .send(data)
       .end((err, res) => {
-        dispatch(messageAlert(JSON.parse(res.text).message));
-        dispatch(messageView(JSON.parse(res.text).view));
-        dispatch(showAlert(true));
+        showResponseMessage(dispatch, res);
         (res.status == 201) && browserHistory.push('/');
       });
 };
