@@ -23,25 +23,26 @@ class EventsForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      event: this.props.event,
+      ...this.props.event,
       showModal: false,
     };
   }
+  
+  inputsEventData = {
+    name: 'Name',
+    date_event: 'Date',
+    location_name: 'Place',
+    longitude: 'Longitude',
+    latitude: 'Latitude',
+    description: 'Descripton'
+  };
 
   handleChange = stateName => e => {
-    this.setState({
-      event: {
-        [stateName]: e.target.value
-      }
-    });
+    this.setState({[stateName]: e.target.value});
   };
 
   dateTimeFieldHandleChange = date => {
-    this.setState({
-      event: {
-        date_event: date
-      }
-    });
+    this.setState({date_event: date});
   };
 
   toggleModal = () => {
@@ -49,22 +50,23 @@ class EventsForm extends React.Component {
   };
 
   handleButtonClick = e => {
-    const eventId = this.props.event.id;
-    const event = this.state.event;
-    this.props.editEventActions.editEvent(eventId, event);
+    const {event: {id}} = this.props;
+    const event = this.state;
+    this.props.editEventActions.editEvent(id, event);
     this.toggleModal();
     e.preventDefault();
   };
 
   inputFields = (param, inputsEventData) => {
+    const {event} = this.props;
     return (
       <InputGroupField
         id={param}
         key={param}
         type="text"
-        placeholder = {this.props.event[param]}
-        label={inputsEventData[param] + ' of your event:'}
-        value={this.state.event[param] || ''}
+        placeholder = {this.inputsEventData[param]}
+        label={this.inputsEventData[param] + ' of your event:'}
+        value={this.state[param] || event[param] || ''}
         onChange={this.handleChange(param)}
         required={(param === 'name') && true}
       />
@@ -92,21 +94,12 @@ class EventsForm extends React.Component {
 
   render() {
     const dateEvent = this.props.event.date_event;
-    const inputsEventData = {
-      name: 'Name',
-      date_event: 'Date',
-      location_name: 'Place',
-      longitude: 'Longitude',
-      latitude: 'Latitude',
-      description: 'Descripton'
-    };
-
     const formInputs = (
       <Form onSubmit={this.handleButtonClick}>
-        {Object.keys(inputsEventData).map(param =>
+        {Object.keys(this.inputsEventData).map(param =>
           (param == 'date_event') ?
             this.inputDateTimeFields(param, dateEvent) :
-            this.inputFields(param, inputsEventData)
+            this.inputFields(param, this.inputsEventData)
         )}
         <div>
           <ButtonToolbar>
@@ -132,7 +125,7 @@ class EventsForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   event: state.event.current
 });
 

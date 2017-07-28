@@ -86,7 +86,7 @@ class EventDetails extends React.Component {
               <ButtonToolbar>
                 {showButtons &&
                 <div>
-                  <EventsForm eventId={event.id} />
+                  <EventsForm event={event} />
                   <DeleteEvent eventId={event.id} />
                   <Button
                     type='button'
