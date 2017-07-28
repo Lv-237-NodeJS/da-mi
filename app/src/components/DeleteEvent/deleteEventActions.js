@@ -1,7 +1,6 @@
 import { API, request } from 'src/helper';
 import { browserHistory } from 'react-router';
-import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT, showAlert, 
-  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
+import { showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const DELETE_EVENT_SUCCESS = 'DELETE_EVENT_SUCCESS';
 const DELETE_EVENT_FAILURE = 'DELETE_EVENT_FAILURE';

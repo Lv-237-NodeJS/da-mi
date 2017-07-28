@@ -1,6 +1,5 @@
 import { API, request, messages } from 'src/helper';
-import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT,
-  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
+import { showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const FETCH_GIFTS_SUCCESS = 'FETCH_GIFTS_SUCCESS';
 const FETCH_GIFTS_FAIL = 'FETCH_GIFTS_FAIL';

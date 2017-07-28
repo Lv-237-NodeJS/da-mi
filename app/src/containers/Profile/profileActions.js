@@ -1,6 +1,5 @@
 import { API, request } from 'src/helper';
-import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT, showAlert,
-  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
+import { showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const RETRIEVE_PROFILE_SUCCESS = 'RETRIEVE_PROFILE_SUCCESS';
 const UPDATE_PROFILE_SUCCESS = 'UPDATE_PROFILE_SUCCESS';

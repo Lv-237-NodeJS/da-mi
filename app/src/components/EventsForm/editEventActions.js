@@ -1,6 +1,5 @@
 import { API, request } from 'src/helper';
-import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT, showAlert,
-  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
+import { showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const EDIT_EVENT_SUCCESS = 'EDIT_EVENT_SUCCESS';
 const EDIT_EVENT_FAILURE = 'EDIT_EVENT_FAILURE';

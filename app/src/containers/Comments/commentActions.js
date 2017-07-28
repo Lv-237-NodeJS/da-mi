@@ -1,6 +1,5 @@
 import  { API, request }  from 'src/helper';
-import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT, showAlert,
-  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
+import { showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const CREATE_COMMENT_SUCCESS = 'CREATE_COMMENT_SUCCESS';
 const CREATE_COMMENT_FAILURE = 'CREATE_COMMENT_FAILURE';

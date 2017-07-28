@@ -1,7 +1,6 @@
 import { browserHistory } from 'react-router';
 import { API, request } from 'src/helper';
-import { SHOW_ALERT, MESSAGE_ALERT, VIEW_ALERT, showAlert,
-  messageAlert, messageView, showResponseMessage } from 'src/components/Alerts/AlertsActions';
+import { showResponseMessage } from 'src/components/Alerts/AlertsActions';
 
 const CREATE_NEW_EVENT_SUCCESS = 'CREATE_NEW_EVENT_SUCCESS';
 const CREATE_NEW_EVENT_FAILURE = 'CREATE_NEW_EVENT_FAILURE';
