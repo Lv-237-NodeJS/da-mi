@@ -87,7 +87,7 @@ class Signup extends React.Component {
               name={param}
               isErrors={this.state.isErrors[param]}
               placeholder={inputsName[param]}
-              value={this.state.param}
+              value={this.state[param]}
               onChange={this.handleChange(param)}
               required />
           )}
