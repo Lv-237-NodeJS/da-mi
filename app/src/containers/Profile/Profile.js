@@ -30,12 +30,12 @@ class Profile extends React.Component {
   }
 
   fieldsName = {
-      first_name: 'First Name',
-      last_name: 'Last Name',
-      birth_date: 'Birthdate',
-      address: 'Address',
-      city: 'City',
-      country: 'Country'
+    first_name: 'First Name',
+    last_name: 'Last Name',
+    birth_date: 'Birthdate',
+    address: 'Address',
+    city: 'City',
+    country: 'Country'
   };
 
   componentWillMount() {
