@@ -106,7 +106,7 @@ class Profile extends React.Component {
 
   render() {
     const { profile } = this.props;
-    const birthdateString = moment(profile.birth_date).format('YYYY-MM-DD');
+    const birthdateString = moment(new Date(profile.birth_date)).format('YYYY-MM-DD');
     const formInputs = (
       <Form horizontal onSubmit={this.handleSubmit}>
         <div className='profile-panel'>
