@@ -1,7 +1,7 @@
 import React from 'react';
 import { Modal, Button, FormGroup, FormControl, ControlLabel, Checkbox
 } from 'react-bootstrap';
-import { ModalWindow } from 'src/components';
+import { FileUploader, ModalWindow } from 'src/components';
 import './addGift.scss';
 
 const FieldGroup = ({ id, label, ...props }) => (
@@ -34,7 +34,7 @@ export default class AddGift extends React.Component {
 
   handleChange = stateName => e => {
     this.setState({
-      [stateName]: e.target.value
+      [stateName]: e.target.value,
     });
   };
 
@@ -65,23 +65,11 @@ export default class AddGift extends React.Component {
   };
 
   handleButtonClick = e => {
-    const {actions, id} = this.props;
+    const {actions, id, fileActions, file} = this.props;
     e.preventDefault();
-    actions.createGift(id, this.state);
+    actions.createGift(id, {...this.state, image: file});
     this.toggleModal();
-  };
-
-  handleChangeImage = e => {
-    const self = this;
-    const reader = new FileReader();
-    const file = e.target.files[0];
-
-    reader.onload = upload => {
-      self.setState({
-        image: upload.target.result
-      });
-    };
-    reader.readAsDataURL(file);
+    fileActions.resetImage();
   };
 
   render() {
@@ -98,13 +86,9 @@ export default class AddGift extends React.Component {
               Only one person can check this gift
           </Checkbox>
         </div>
-        <FieldGroup
-          id="image"
-          type="file"
-          label="Image"
-          onChange={this.handleChangeImage}
-          encType='multipart/form-data'
-        />
+        <div className='image-dropzone'>
+          <FileUploader />
+        </div>
         <Button type="submit" bsSize="large" block>
           Submit
         </Button>

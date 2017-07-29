@@ -10,23 +10,26 @@ import './giftList.scss';
 export  class GiftList extends React.Component {
 
   render() {
-    const giftNode = this.props.gifts.map((gift, id) => {
+    const {actions, fileActions, file, showButtons, actionsDonor, actionsComment,
+      author, gifts} = this.props;
+
+    const giftNode = gifts.map((gift, id) => {
 
       const handleDelete = e => {
         e.preventDefault();
-        this.props.actions.deleteGift(this.props.id, gift.id);
+        actions.deleteGift(this.props.id, gift.id);
       };
 
       const handleNodeCommentDonor = e => {
         e.preventDefault();
-        this.props.actionsDonor.getDonor(this.props.id, gift.id);
-        this.props.actionsComment.retrieveComments(this.props.id, gift.id);
+        actionsDonor.getDonor(this.props.id, gift.id);
+        actionsComment.retrieveComments(this.props.id, gift.id);
       };
 
       const handleDonorCreate = e => {
         e.preventDefault();
-        this.props.actionsDonor.createDonor(this.props.id, gift.id);
-        this.props.actionsDonor.getDonor(this.props.id, gift.id);
+        actionsDonor.createDonor(this.props.id, gift.id);
+        actionsDonor.getDonor(this.props.id, gift.id);
       };
 
       return (
@@ -40,9 +43,14 @@ export  class GiftList extends React.Component {
               <a href={gift.link} target='_blank'>link to present</a>
             </p>}
             <Donor />
-            {this.props.showButtons &&
+            {showButtons &&
             <ButtonToolbar>
-              <EditGift id={this.props.id} gift={gift} actions={this.props.actions} />
+              <EditGift id={this.props.id}
+              gift={gift}
+              actions={actions}
+              fileActions={fileActions}
+              file={file}
+              />
               <Button bsStyle='danger' bsSize='small' onClick={handleDelete}>
                 Delete
               </Button>
@@ -52,7 +60,7 @@ export  class GiftList extends React.Component {
             </ButtonToolbar>}
           </div>
           <hr />
-          <Comments giftId={gift.id} eventId={this.props.id} author={this.props.author} />
+          <Comments giftId={gift.id} eventId={this.props.id} author={author} />
         </Panel>
       );
     });
