@@ -24,10 +24,19 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      profile: this.props.profile,
+      ...this.props.profile,
       showModal: false,
     };
   }
+
+  fieldsName = {
+    first_name: 'First Name',
+    last_name: 'Last Name',
+    birth_date: 'Birthdate',
+    address: 'Address',
+    city: 'City',
+    country: 'Country'
+  };
 
   componentWillMount() {
     this.setState({profile: this.props.profile});
@@ -39,7 +48,7 @@ class Profile extends React.Component {
 
   handleChange = stateName => e => {
     this.setState({
-      profile: {[stateName]: e.target.value}
+      [stateName]: e.target.value
     });
   };
 
@@ -50,16 +59,13 @@ class Profile extends React.Component {
   handleSubmit = e => {
     const {profile: {profile_id}, profile: {avatar}, actions, fileActions, fileUrl} = this.props;
     e.preventDefault();
-    actions.updateProfile({...this.state.profile, avatar: fileUrl || avatar});
-    actions.retrieveProfile(profile_id);
+    actions.updateProfile({...this.state, avatar: fileUrl || avatar});
     this.toggleModal();
     fileActions.resetImage();
   };
 
   dateTimeFieldHandleChange = date => {
-    this.setState({
-      profile: {birth_date: date}
-    });
+    this.setState({birth_date: date});
   };
 
   datePickerFields = (param, birthdateString) => {
@@ -87,10 +93,10 @@ class Profile extends React.Component {
         <FieldGroup
           key={param}
           id={param}
-          label={fieldsName[param]}
+          label={this.fieldsName[param]}
           type='text'
-          value={this.state.profile[param] || ''}
-          placeholder={this.props.profile[param]}
+          value={this.state[param] || ''}
+          placeholder={this.fieldsName[param]}
           onChange={this.handleChange(param)}
         />
       </Col>
@@ -99,16 +105,7 @@ class Profile extends React.Component {
 
   render() {
     const { profile } = this.props;
-    const birthdateString = moment(profile.birth_date).format('YYYY-MM-DD');
-    const fieldsName = {
-      first_name: 'First Name',
-      last_name: 'Last Name',
-      birth_date: 'Birthdate',
-      address: 'Address',
-      city: 'City',
-      country: 'Country'
-    };
-
+    const birthdateString = moment(new Date(profile.birth_date)).format('YYYY-MM-DD');
     const formInputs = (
       <Form horizontal onSubmit={this.handleSubmit}>
         <div className='profile-panel'>
@@ -116,10 +113,10 @@ class Profile extends React.Component {
             <FileUploader avatar={profile.avatar} />
           </Row>
           <Row>
-            { Object.keys(fieldsName, profile).map(param =>
+            { Object.keys(this.fieldsName, profile).map(param =>
               (param == 'birth_date') ?
                 this.datePickerFields(param, birthdateString) :
-                this.textFields(param, fieldsName)
+                this.textFields(param, this.fieldsName)
             )}
           </Row>
           <hr/>
