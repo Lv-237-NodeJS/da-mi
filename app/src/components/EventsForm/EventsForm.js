@@ -37,6 +37,14 @@ class EventsForm extends React.Component {
     description: 'Descripton'
   };
 
+  componentWillMount() {
+    this.setState({...this.props.event});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState({...nextProps.event});
+  }
+
   handleChange = stateName => e => {
     this.setState({[stateName]: e.target.value});
   };
