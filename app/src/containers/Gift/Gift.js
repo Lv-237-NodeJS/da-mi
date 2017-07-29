@@ -17,21 +17,21 @@ class Gift extends React.Component {
       <div>
         {showButtons &&
           <AddGift
-          id={id}
-          actions={actions}
-          file={fileUrl}
-          fileActions={fileActions}
-          gifts={gifts}
+            id={id}
+            actions={actions}
+            file={fileUrl}
+            fileActions={fileActions}
+            gifts={gifts}
           />
         }
         <GiftList
-        id={id}
-        actions={actions}
-        fileActions={fileActions}
-        file={fileUrl}
-        gifts={gifts}
-        showButtons={showButtons}
-        author={author}
+          id={id}
+          actions={actions}
+          fileActions={fileActions}
+          file={fileUrl}
+          gifts={gifts}
+          showButtons={showButtons}
+          author={author}
         />
       </div>
     );
