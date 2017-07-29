@@ -60,7 +60,6 @@ class Profile extends React.Component {
     const {profile: {profile_id}, profile: {avatar}, actions, fileActions, fileUrl} = this.props;
     e.preventDefault();
     actions.updateProfile({...this.state, avatar: fileUrl || avatar});
-    actions.retrieveProfile(profile_id);
     this.toggleModal();
     fileActions.resetImage();
   };
