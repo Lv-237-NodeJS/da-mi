@@ -7,7 +7,7 @@ import { FileUploader, ModalWindow } from 'src/components';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as profileActions from './profileActions';
-import * as fileUploaderAcions from 'src/components/FileUploader/fileUploaderActions';
+import * as fileUploaderActions from 'src/components/FileUploader/fileUploaderActions';
 import './profile.scss';
 import { Alerts, ResetPassword } from 'src/components';
 
@@ -48,11 +48,12 @@ class Profile extends React.Component {
   };
 
   handleSubmit = e => {
-    const {profile: {profile_id}, profile: {avatar}, actions, fileUrl} = this.props;
+    const {profile: {profile_id}, profile: {avatar}, actions, fileActions, fileUrl} = this.props;
     e.preventDefault();
     actions.updateProfile({...this.state.profile, avatar: fileUrl || avatar});
     actions.retrieveProfile(profile_id);
     this.toggleModal();
+    fileActions.resetImage();
   };
 
   dateTimeFieldHandleChange = date => {
@@ -180,11 +181,12 @@ class Profile extends React.Component {
 
 const mapStateToProps = state => ({
   profile: state.profile.data,
-  fileUrl: state.fileUploader.fileUrl.url
+  fileUrl: state.fileUploader.fileUrl
 });
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(profileActions, dispatch)
+  actions: bindActionCreators(profileActions, dispatch),
+  fileActions: bindActionCreators(fileUploaderActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

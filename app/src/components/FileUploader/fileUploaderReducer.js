@@ -6,6 +6,11 @@ export const UploadFileReducers = {
 
   UPLOAD_FILE_FAILURE: (state, action) => ({
     ...state
+  }),
+
+  RESET_IMAGE: (state, action) => ({
+    ...state,
+    fileUrl: ''
   })
 };
 
