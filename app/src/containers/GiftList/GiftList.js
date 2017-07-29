@@ -46,10 +46,10 @@ export  class GiftList extends React.Component {
             {showButtons &&
             <ButtonToolbar>
               <EditGift id={this.props.id}
-              gift={gift}
-              actions={actions}
-              fileActions={fileActions}
-              file={file}
+                gift={gift}
+                actions={actions}
+                fileActions={fileActions}
+                file={file}
               />
               <Button bsStyle='danger' bsSize='small' onClick={handleDelete}>
                 Delete
