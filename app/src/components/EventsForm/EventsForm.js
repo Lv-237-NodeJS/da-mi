@@ -58,7 +58,6 @@ class EventsForm extends React.Component {
   };
 
   inputFields = (param, inputsEventData) => {
-    const {event} = this.props;
     return (
       <InputGroupField
         id={param}
@@ -66,7 +65,7 @@ class EventsForm extends React.Component {
         type="text"
         placeholder = {this.inputsEventData[param]}
         label={this.inputsEventData[param] + ' of your event:'}
-        value={this.state[param] || event[param] || ''}
+        value={this.state[param] || ''}
         onChange={this.handleChange(param)}
         required={(param === 'name') && true}
       />
