@@ -115,7 +115,7 @@
   color: $soft-red;
 }
 
-.deleteEventYesButton.btn {
+.eventYesButton.btn {
   width: 200px;
   margin: 0 auto;
 }
@@ -146,4 +146,15 @@ div.modalFooter {
 .modal-input-container {
   height: 60px;
   padding: 0 5px;
+}
+
+.publishEventModalBodyHeader {
+  text-align: center;
+  color: green;
+}
+
+.publishEventModal {
+  .modal-dialog {
+    height: 280px;
+  }
 }
