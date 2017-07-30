@@ -24,18 +24,18 @@ class PublishEvent extends React.Component {
     const event = {status_event: 'public'};
 
     this.props.editEventActions.editEvent(eventId, event);
-  	this.props.guestActions.sendInvites(eventId, {firstName, lastName});
+    this.props.guestActions.sendInvites(eventId, {firstName, lastName});
     this.toggleModal();
   };
 
   render() {
-    const title = 'Publishing Event';
+    const title = 'Publish Event';
     const buttonYes = (
       <div className='well'>
         <h4 className='publishEventModalBodyHeader'>Are you sure that you want to publish this event?</h4>
         <div>
-          <p>Note, that after publishing event you will not been able to add new guests and invite them, add new gifts...</p>
-          <p>After clicking the button it will automatically send the invitations to your guests.</p>
+          Note, that after publishing event you will not been able to add new guests and invite them, add new gifts...
+          After clicking the button it will automatically send the invitations to your guests.
         </div>
         <Button className='eventYesButton main-button' bsSize="large" onClick={this.handleButtonClick} block>
           Yes
