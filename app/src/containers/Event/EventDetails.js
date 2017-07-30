@@ -8,7 +8,8 @@ import { bindActionCreators } from 'redux';
 import { Gift } from 'src/containers';
 import * as eventActions from './eventActions';
 import * as inviteActions from './inviteActions';
-import { GuestsForm, DeleteEvent, EventsForm, Alerts } from 'src/components';
+import * as editEventActions from './../../components/EventsForm/editEventActions';
+import { GuestsForm, DeleteEvent, EventsForm, Alerts, PublishEvent } from 'src/components';
 import './eventDetails.scss';
 
 const GuestsList = ({guest, ...props}) => (
@@ -47,13 +48,6 @@ class EventDetails extends React.Component {
     this.setState({status: nextProps.status});
   }
 
-  sendInvites = () => {
-    const {params: {id},
-      owner: {first_name: firstName, last_name: lastName},
-      guestActions} = this.props;
-    guestActions.sendInvites(id, {firstName, lastName});
-  };
-
   deleteGuestEmail = i => () => {
     const {params: {id}, guests, guestActions} = this.props;
     const guest = guests[i];
@@ -88,11 +82,7 @@ class EventDetails extends React.Component {
                 <div>
                   <EventsForm event={event} />
                   <DeleteEvent eventId={event.id} />
-                  <Button
-                    type='button'
-                    bsStyle='primary'
-                    onClick={this.sendInvites}>
-                    Send Invites</Button>
+                  <PublishEvent eventId={event.id} />
                 </div> ||
                 <div>
                   {Object.keys(guestStatus).map(param =>
@@ -151,7 +141,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   actions: bindActionCreators(eventActions, dispatch),
-  guestActions: bindActionCreators(inviteActions, dispatch)
+  guestActions: bindActionCreators(inviteActions, dispatch),
+  editEventActions: bindActionCreators(editEventActions, dispatch)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventDetails);

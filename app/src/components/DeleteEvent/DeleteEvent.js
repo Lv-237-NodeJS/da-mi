@@ -9,7 +9,7 @@ class DeleteEvent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {       
-      showModal: false,      
+      showModal: false    
     };
   }
   
@@ -22,11 +22,11 @@ class DeleteEvent extends React.Component {
   };
 
   render() {
-    const title = 'Are you sure that you want to delete this event?';
+    const title = 'Delete event';
     const buttonYes = (
       <div className='well'>
-        <h4 className='deleteEventModalBodyHeader'></h4>
-        <Button bsStyle='danger' className='deleteEventYesButton' bsSize="large" onClick={this.handleButtonClick} block>
+        <h4 className='deleteEventModalBodyHeader'>Are you sure that you want to delete this event?</h4>
+        <Button bsStyle='danger' className='eventYesButton' bsSize="large" onClick={this.handleButtonClick} block>
           Yes
         </Button>
       </div> 
