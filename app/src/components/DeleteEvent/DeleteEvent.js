@@ -26,7 +26,7 @@ class DeleteEvent extends React.Component {
     const buttonYes = (
       <div className='well'>
         <h4 className='deleteEventModalBodyHeader'></h4>
-        <Button bsStyle='danger' className='deleteEventYesButton' bsSize="large" onClick={this.handleButtonClick} block>
+        <Button bsStyle='danger' className='eventYesButton' bsSize="large" onClick={this.handleButtonClick} block>
           Yes
         </Button>
       </div> 
