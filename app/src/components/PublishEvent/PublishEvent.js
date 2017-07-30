@@ -2,14 +2,14 @@ import React from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as editEventActions from './../EventsModalForm/editEventActions';
+import * as editEventActions from './../EventsForm/editEventActions';
 import { ModalWindow } from 'src/components';
 
 class PublishEvent extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {       
-      showModal: false,      
+    this.state = {
+      showModal: false
     };
   }
   
@@ -18,15 +18,22 @@ class PublishEvent extends React.Component {
   };
 
   handleButtonClick = e => {
-    this.props.editEventActions.editEvent(this.state);    
+  	const eventId = this.props.eventId;
+  	const event = {status_event: 'public'};	
+    this.props.editEventActions.editEvent(eventId, event);
+    this.toggleModal();
   };
 
   render() {
     const title = 'Publishing Event';
     const buttonYes = (
       <div className='well'>
-        <h4 className='deleteEventModalBodyHeader'>Are you sure that you want to publish this event?</h4>
-        <Button bsStyle='danger' className='deleteEventYesButton' bsSize="large" onClick={this.handleButtonClick} block>
+        <h4 className='publishEventModalBodyHeader'>Are you sure that you want to publish this event?</h4>
+        <div>
+          <p>Note, that after publishing event you will not been able to add new guests and invite them, add new gifts...</p>
+          <p>After clicking the button it will automatically send the invitations to your guests.</p>
+        </div>
+        <Button className='eventYesButton main-button' bsSize="large" onClick={this.handleButtonClick} block>
           Yes
         </Button>
       </div> 
@@ -36,9 +43,9 @@ class PublishEvent extends React.Component {
       <div>        
         <ModalWindow
           title = {title}
-          buttonName={'Delete Event'}
-          styleName = {'deleteEventModal'}
-          bsStyle = {'danger'}
+          buttonName={'Publish Event'}
+          styleName = {'publishEventModal'}
+          bsStyle = {'success'}
           body = {buttonYes}
           toggleModal = {this.toggleModal} showModal = {this.state.showModal}
         />
@@ -46,3 +53,13 @@ class PublishEvent extends React.Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  event: state.event.current
+});
+
+const mapDispatchToProps = dispatch => ({
+  editEventActions: bindActionCreators(editEventActions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(PublishEvent);
