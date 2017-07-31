@@ -29,7 +29,7 @@ class Maps extends React.Component {
           defaultZoom={mapConfig.zoom}
           bootstrapURLKeys={{
             key: API.KEY_GOOGLE,
-            language: 'API.LANGUADGE'
+            language: API.LANGUADGE
           }}>
           {GoogleMapsMarker}
         </GoogleMapReact>
