@@ -52,12 +52,12 @@ export  class GiftList extends React.Component {
                   fileActions={fileActions}
                   file={file}
                 />
-                <Button bsStyle='danger' bsSize='small' onClick={handleDelete}>
+                <Button bsStyle='danger' bsSize='small' className='deleteButton' onClick={handleDelete}>
                   Delete
                 </Button>
               </div>}
               {gift.is_available === true &&
-              <Button bsStyle='success' bsSize='small'
+              <Button bsStyle='success' bsSize='small' className='main-button'
                 onClick={handleDonorCreate}>Choose</Button>}
             </ButtonToolbar>
           </div>
