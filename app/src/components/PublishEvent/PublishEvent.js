@@ -30,7 +30,7 @@ class PublishEvent extends React.Component {
 
   render() {
     const title = 'Publish Event';
-    const buttonYes = (
+    const publishEvent = (
       <div className='well'>
         <h4 className='publishEventModalBodyHeader'>Are you sure that you want to publish this event?</h4>
         <div>
@@ -44,13 +44,13 @@ class PublishEvent extends React.Component {
     );
 
     return (
-      <div>        
+      <div>
         <ModalWindow
           title = {title}
           buttonName={'Publish Event'}
           styleName = {'publishEventModal'}
-          bsStyle = {'success'}
-          body = {buttonYes}
+          bsStyle = {'success pull-right main-button'}
+          body = {publishEvent}
           toggleModal = {this.toggleModal} showModal = {this.state.showModal}
         />
       </div>

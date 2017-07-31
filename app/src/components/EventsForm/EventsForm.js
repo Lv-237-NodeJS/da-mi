@@ -119,7 +119,7 @@ class EventsForm extends React.Component {
       <ModalWindow
         title = {'Here, you can update your own event:'}
         buttonName={'Edit'}
-        bsStyle = {'info'}
+        bsStyle = {'success main-button'}
         styleName = {'editEventModal'}
         body = {formInputs}
         toggleModal = {this.toggleModal} showModal = {this.state.showModal}
