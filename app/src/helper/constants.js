@@ -2,7 +2,7 @@ const API = {
   HOST: 'http://localhost:',
   PORT: '8082',
   KEY_GOOGLE: 'AIzaSyBs58UtfzuFN0IfkzKW_3b5WPG6CwCEHGI',
-  LANGUADGE: 'en'
+  LANGUAGE: 'en'
 };
 
 const CONTACTDATA = {
