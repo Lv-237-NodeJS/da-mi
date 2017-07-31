@@ -5,7 +5,7 @@
   margin: 10px;
 }
 
-.mainText {
+.mainText, .titleContacts {
   padding-right: 15px;
 }
 
@@ -15,4 +15,12 @@
 
 .map {
   margin: 5px auto;
+}
+
+.form-control {
+  resize: none;
+}
+
+.formContacts {
+  margin-top: 5px;
 }

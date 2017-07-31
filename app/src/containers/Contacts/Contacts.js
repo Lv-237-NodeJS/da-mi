@@ -24,7 +24,7 @@ const ContactsRows = () => (
   <Row className='contact'> {['text-right', 'text-left'].map(param =>
     <Col xs={6} sm={6} md={6} className={param} key={param}>
       <div> {Object.keys(CONTACTDATA).map((key, index) =>
-        <p key={key}> {param === 'text-left' &&
+        <p key={key} className='mainText'> {param === 'text-left' &&
         <span className={`glyphicon ${index === 2 && 'glyphicon-envelope' || 
         'glyphicon-phone'}`} />} {param === 'text-right' && key || CONTACTDATA[key]}</p>)}
       </div> 
@@ -99,16 +99,16 @@ class Contacts extends React.Component {
     return (
       <Grid>
         <Alerts />
-        <PageHeader className='text-center'>Contacts us</PageHeader>
+        <PageHeader className='text-center'>Contact us</PageHeader>
         <Row className='show-grid'>
           <Col xs={12} sm={12} md={12} className='text-center'>
-            <h2>Da-Mi</h2>
+            <h2 className="titleContacts">Da-Mi</h2>
           </Col>
         </Row>
         <ContactsRows />
         <Row>
           <Col xs={12} sm={6} md={6}>
-            <Form onSubmit={this.handleButtonClick}>
+            <Form onSubmit={this.handleButtonClick} className='formContacts'>
               { Object.keys(inputsName).map(param =>
                 <FieldGroup
                   id={param}
