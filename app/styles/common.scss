@@ -21,12 +21,16 @@ $line-height: 1.5;
 $modal-backdrop-background: rgba(0, 0, 0, 0.5);
 $blue: #66afe9;
 $soft-red: #D9534F;
+$mai-tai: #AA6708;
+$coconut-cream: #F9F5E0;
+$red-damask: #D55E4E;
 
 .btn.main-button {
   background-color: $puerto-rico;
   color: $white;
 
   &:hover {
+    border: 1px solid $puerto-rico;
     color: $puerto-rico;
     background-color: $white;
   }

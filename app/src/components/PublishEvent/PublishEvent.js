@@ -30,12 +30,13 @@ class PublishEvent extends React.Component {
 
   render() {
     const title = 'Publish Event';
-    const buttonYes = (
+    const publishEvent = (
       <div className='well'>
         <h4 className='publishEventModalBodyHeader'>Are you sure that you want to publish this event?</h4>
-        <div>
-          Note, that after publishing event you will not been able to add new guests and invite them, add new gifts...
-          After clicking the button it will automatically send the invitations to your guests.
+        <div className='publishEventModalBodyWarning'>
+          <p className='warningNote'>Note, that after publishing event you will not been able
+            to add new guests, invite them, and add new gifts.</p>
+          <p className='warningNote'>After clicking the button it will automatically send the invitations to your guests.</p>
         </div>
         <Button className='eventYesButton main-button' bsSize="large" onClick={this.handleButtonClick} block>
           Yes
@@ -44,13 +45,14 @@ class PublishEvent extends React.Component {
     );
 
     return (
-      <div>        
+      <div>
         <ModalWindow
           title = {title}
           buttonName={'Publish Event'}
+          buttonClassName={'pull-right main-button'}
           styleName = {'publishEventModal'}
           bsStyle = {'success'}
-          body = {buttonYes}
+          body = {publishEvent}
           toggleModal = {this.toggleModal} showModal = {this.state.showModal}
         />
       </div>

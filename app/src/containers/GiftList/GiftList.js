@@ -43,21 +43,23 @@ export  class GiftList extends React.Component {
               <a href={gift.link} target='_blank'>link to present</a>
             </p>}
             <Donor />
-            {showButtons &&
             <ButtonToolbar>
-              <EditGift id={this.props.id}
-                gift={gift}
-                actions={actions}
-                fileActions={fileActions}
-                file={file}
-              />
-              <Button bsStyle='danger' bsSize='small' onClick={handleDelete}>
-                Delete
-              </Button>
+              {showButtons && 
+              <div>
+                <EditGift id={this.props.id}
+                  gift={gift}
+                  actions={actions}
+                  fileActions={fileActions}
+                  file={file}
+                />
+                <Button bsStyle='danger' bsSize='small' className='deleteButton' onClick={handleDelete}>
+                  Delete
+                </Button>
+              </div>}
               {gift.is_available === true &&
-              <Button bsStyle='success' bsSize='small'
+              <Button bsStyle='success' bsSize='small' className='main-button'
                 onClick={handleDonorCreate}>Choose</Button>}
-            </ButtonToolbar>}
+            </ButtonToolbar>
           </div>
           <hr />
           <Comments giftId={gift.id} eventId={this.props.id} author={author} />
