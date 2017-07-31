@@ -12,6 +12,22 @@
   }
 }
 
+.background-gift-image {
+  height: 1080px;
+  background: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.5)
+      ),
+      url(../../../img/Christmas-gift-box-vector-seamless-pattern-vector-02.jpg)
+}
+
+.background-block {
+  background: rgba(255, 255, 255, 0.75);
+  position: relative;
+  top: 30px;
+}
+
 .home-image-block {
   margin: 10px;
   width: 810px;
@@ -19,17 +35,10 @@
   float: left;
   background-size: cover;
   position: relative;
-  background: 
-  linear-gradient(
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.1)
-  ),
-  url(../../../img/birthday-gifts.jpg)
 }
 
 .about-text {
   position: absolute;
-  bottom: 10px;
   left: 10px;
   background: rgba(255, 255, 255, 0.75);
   color: $black;
