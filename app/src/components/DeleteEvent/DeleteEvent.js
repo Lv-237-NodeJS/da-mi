@@ -37,8 +37,9 @@ class DeleteEvent extends React.Component {
         <ModalWindow
           title = {title}
           buttonName={'Delete Event'}
+          buttonClassName={'deleteButton'}
           styleName = {'deleteEventModal'}
-          bsStyle = {'danger deleteEventButton'}
+          bsStyle = {'danger'}
           body = {buttonYes}
           toggleModal = {this.toggleModal} showModal = {this.state.showModal}
         />

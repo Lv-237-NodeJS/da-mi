@@ -49,6 +49,7 @@ class PublishEvent extends React.Component {
         <ModalWindow
           title = {title}
           buttonName={'Publish Event'}
+          buttonClassName={'pull-right main-button'}
           styleName = {'publishEventModal'}
           bsStyle = {'success'}
           body = {publishEvent}
