@@ -7,14 +7,13 @@ export class Donor extends React.Component {
 
   render() {
 
-    let {is_available} = this.props.donor;
-    let abilityTopresent = (is_available == null ||
-      is_available) ? 'Yes :)' : 'No :(';
+    let {is_available, donor} = this.props.donor;
     return (
       <div>
         <h4>Donor info</h4>
-        <p><b>Ability to present</b> : {abilityTopresent}</p>
-        <p><b>Donors</b>: {this.props.donor.donor}</p>
+        <p><b>Ability to present</b> : {(is_available == null ||
+          is_available) ? 'Yes :)' : 'No :('}</p>
+        <p><b>Donors</b>: {donor}</p>
       </div>
     );
   }
