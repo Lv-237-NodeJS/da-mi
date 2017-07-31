@@ -31,18 +31,27 @@ class EventsList extends React.Component {
 
     const noEvent = (
       <Jumbotron className='no-content-block'>
-        <h4 className='no-events-message'>You have no events scheduled</h4>
+        {location === '/events' && eventsList &&
+        <h4 className='no-events-message'>You have no events scheduled</h4> ||
+        <h4 className='no-events-message'>You have no invitations scheduled</h4>}
       </Jumbotron>
     );
 
     return (
       <div className='eventsList'>
-        <h2>Events</h2>
-        <Alerts />
-        <hr />
-        <NewEvent />
-        <hr />
-        {!eventNode.length && noEvent || eventNode}
+        {location === '/events' && eventsList && 
+        <div>
+          <h2>Events</h2>
+          <hr />
+          <Alerts />
+          <NewEvent />
+          <hr />        
+        </div>  ||
+        <div>
+          <h2>Invitations</h2>
+          <hr />
+        </div>}
+        {!eventNode.length && noEvent || eventNode}      
       </div>
     );
   }
