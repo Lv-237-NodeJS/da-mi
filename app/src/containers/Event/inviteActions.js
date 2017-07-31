@@ -36,7 +36,6 @@ export const sendInvites = (eventId, owner) => dispatch =>
     .post(`${API.URL}/api/event/${eventId}/guest/invite`)
     .send({owner})
     .end((err, res) => {
-      showResponseMessage(dispatch, res);
       !err && dispatch(invites());
     });
 
